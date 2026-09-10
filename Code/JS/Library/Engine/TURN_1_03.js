@@ -1,0 +1,73 @@
+/*jshint browser: true */
+/*jshint -W097 */
+/*jshint -W117 */
+/*jshint -W061 */
+/*jshint -W083 */
+"use strict";
+
+/**
+ *      dependencies:
+ *          ENGINE
+ *          GenericTimers
+ */
+
+const TURN = {
+    VERSION: "1.03",
+    CSS: "color: #b785a7",
+    position: "mid",
+    //position: "bottom",
+    getPosition(CTX, fs = 0) {
+        switch (this.position) {
+            case "bottom":
+                return CTX.canvas.height - fs;
+            case "mid":
+                return (CTX.canvas.height / 2) | 0;
+            default:
+                console.error("wrong subtitle position setting");
+        }
+    },
+    damage(attacker, defender) {
+        if (attacker.attack === 0) return 0;
+        let delta = attacker.attack - defender.defense;
+        /**
+         * Damage is calculated as a random value between:
+         * - The minimum of -1 and half of the delta (rounded down).
+         * - The maximum of the full delta or 1.
+         * 
+         * This ensures damage is at least -1 but can scale with the attack/defense difference.
+         */
+        let damage = RND(Math.min(-1, Math.floor(delta / 2)), Math.max(delta, 1));
+        return damage;
+    },
+    display(value, color = "#0F0") {
+        ENGINE.clearLayer("info");
+        let CTX = LAYER.info;
+        let fs = 16;
+        CTX.font = fs + "px Times";
+        CTX.shadowColor = "#666";
+        CTX.shadowOffsetX = 1;
+        CTX.shadowOffsetY = 1;
+        CTX.shadowBlur = 0;
+        CTX.fillStyle = color;
+        CTX.textAlign = "center";
+        CTX.fillText(value, CTX.canvas.width / 2, CTX.canvas.height / 2);
+        GenericTimers.infoTimer();
+    },
+    subtitle(text, color = "#FFF") {
+        text = text.replace(/[<>#-]/g, '');
+        ENGINE.clearLayer("subtitle");
+        let CTX = LAYER.subtitle;
+        let fs = 18;
+        CTX.font = fs + "px Times";
+        CTX.shadowColor = "#666";
+        CTX.shadowOffsetX = 1;
+        CTX.shadowOffsetY = 1;
+        CTX.shadowBlur = 0;
+        CTX.fillStyle = color;
+        CTX.textAlign = "center";
+        CTX.fillText(text, CTX.canvas.width / 2, this.getPosition(CTX, fs));
+        GenericTimers.subTimer();
+    }
+};
+//END
+console.log(`%cTURN ${TURN.VERSION} loaded.`, TURN.CSS);
