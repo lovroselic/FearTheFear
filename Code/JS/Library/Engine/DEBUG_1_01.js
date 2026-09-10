@@ -17,7 +17,8 @@ const DEBUG = {
     STAY_ALIVE: false,                     // stay alive after lives == 0
     keys: false,
     max17: false,
-    VERSION: "1.0",
+    AUTO_TEST: false,
+    VERSION: "1.1",
     calledFunction() {
         const caller = new Error().stack
             ?.split("\n")[2]

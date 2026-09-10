@@ -1,0 +1,72 @@
+/**FORM*/
+
+hr {
+    all: revert
+}
+
+hr {
+    height: 1px;
+    color: #645454;
+    width: 100%;
+}
+
+.form {
+    font-family: "Consolas";
+    box-sizing: content-box;
+    line-height: 1.2;
+}
+
+.form input[type="button"] {
+    margin: 4px;
+    border-radius: 5px;
+    background-color: #999;
+    border: 1px solid #666;
+    color: #111;
+    cursor: pointer;
+}
+
+.form input[type="button"]:active {
+    background-color: #111;
+    border: 1px solid #666;
+    color: #999;
+    cursor: pointer;
+}
+
+.form input[type="button"]:disabled {
+    background-color: #333;
+    border: 1px solid #222;
+    box-shadow: 3px 3px 3px 0px #111;
+    color: #222;
+    cursor: not-allowed;
+}
+
+#FORM {
+    border: 3px solid #645454;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+#FORM h1 {
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+    text-shadow: 1px 1px #666;
+    margin: 0px;
+    padding-top: 6px;
+}
+
+#FORM h2 {
+    text-align: left;
+    font-size: 16px;
+    color: #999;
+    text-shadow: 1px 1px #666;
+    margin-left: 20px;
+}
+
+#FORM p {
+    text-align: left;
+    font-size: 14px;
+    color: #999;
+    margin-left: 32px;
+}

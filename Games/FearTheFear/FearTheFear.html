@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- bootstrap, css -->
+    <meta charset="UTF-8">
+    <link href="/CSS/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/CSS/LaughingStyle.css" rel="stylesheet" type="text/css">
+    <link href="/CSS/FORM.css" rel="stylesheet" type="text/css">
+    <!-- END -->
+
+    <title>Fear The Fear</title>
+</head>
+
+<body>
+
+    <!-- copy start-->
+    <div id="preload" class="hidden"></div>
+    <div class="container my-5 p-5 cool_page">
+        <div id="setup">
+            <div id="load"></div>
+            <div class="row win">
+                <h1 id="title" class="FTF"></h1>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+
+
+        <div class="row my-5">
+            <div id="debug" class="section">
+                <fieldset>
+                    <legend>
+                        Engine versions:
+                    </legend>
+                    <p>My custom game engine ENGINE is made from following sub-modules:</p>
+                    ENGINE: <span id="engine_version"></span><br>
+                    GRID: <span id="grid_version"></span><br>
+                    MAZE: <span id="maze_version"></span><br>
+                    IAM: <span id="iam_version"></span><br>
+                    Prototype LIB: <span id="lib_version"></span><br>
+                    WebGL: <span id="webgl_version"></span><br>
+                    MAP Tools: <span id="maptools_version"></span><br>
+                    SPEECH: <span id="speech_version"></span><br>
+                    <br>
+                    <p id="speech_sources"></p>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div id="savegame_manager" class="section">
+                <fieldset>
+                    <legend>
+                        Manage saved games:
+                    </legend>
+                    <div id="sgm_content"></div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div>
+            <p id="buttons">
+            <div>
+                <input type='button' id='pause' value='Pause Game [F4]' disabled="disabled">
+                <input type='button' id='toggleHelp' value='Show/Hide Instructions'>
+                <input type='button' id='toggleAbout' value='About'>
+                <input type='button' id='toggleVersion' value='Version'>
+                <input type='button' id='toggleSaveGame' value='Saved games'>
+            </div>
+            </p>
+        </div>
+
+        <div id="help" class="section">
+            <fieldset>
+                <legend>
+                    Instructions:
+                </legend>
+                <div class="row">
+                    <p><strong>Save Game:</strong></p>
+                    <p>Carefully manage your saved games. You can store 5 games from active to more permanent storage.
+                        And vice versa. There is no undo.</p>
+                    <p>Game is saved every time you enter an new room. Unless it's not. The reasons that it would not
+                        are:
+                    </p>
+                    <ul class="smallList mx-4">
+                        <li>
+                            It's part of the game design. You need to do something so it will start saving again.
+                        </li>
+                    </ul>
+                </div>
+                <div class="row px-2 my-2">
+                    <div class="col-1 my-2">
+                        <img src="/Assets/Graphics/Sprites/UI/Floppy64.webp" class="img-fluid" alt="Saved"
+                            title="Saved">
+                    </div>
+                    <div class="col-11 d-flex align-items-center">
+                        <p>Icon indicates that game has been saved at last entry in the new dungeon,</p>
+                    </div>
+                    <div class="col-1 my-2">
+                        <img src="/Assets/Graphics/Sprites/UI/Beware64.webp" class="img-fluid" alt="notSaved"
+                            title="NotSaved">
+                    </div>
+                    <div class="col-11 align-items-center">
+                        <p>Icon indicates that game has NOT been saved at last entry in the new dungeon,</p>
+                    </div>
+                </div>
+
+                <div class="row my-3">
+                    <p><strong>Survival guide:</strong></p>
+                    <p><strong>KEYS:</strong></p>
+                    <p>Mouse to open doors and pick up items and interact with environment</p>
+                    <p><kbd>W</kbd> ... move forward</p>
+                    <p><kbd>S</kbd> ... move backward</p>
+                    <p><kbd>A</kbd> ... strafe left</p>
+                    <p><kbd>D</kbd> ... strafe right</p>
+                    <p><kbd>Q</kbd> ... turn left</p>
+                    <p><kbd>E</kbd> ... turn right</p>
+                    <p><kbd>P</kbd> ... look down</p>
+                    <p><kbd>L</kbd> ... look up</p>
+                    <p><kbd>&lt;</kbd> ... align to nearest orthogonal direction</p>
+                    <p><kbd>CTRL</kbd> ... cast fiery ghost repelling bouncing orbs</p>
+                    <p><kbd>SHIFT</kbd> ... jump forward</p>
+                    <p><kbd>F4</kbd> ... pause/resume game</p>
+                    <p><kbd>F9</kbd> ... get guidance, what essentials did you miss in this dungeon, it also pauses
+                        game, but costs some gold.</p>
+
+
+                    <p><strong>SCROLLS:</strong></p>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_Cripple2.webp"
+                                alt="Cripple" title="Cripple">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Cripple: Decrease speed of the nearby monsters, so that they are practically halted.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_HalfLife2.webp"
+                                alt="HalfLife" title="HalfLife">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Monster's life energy in the certain range is halved.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_Explode2.webp"
+                                alt="Bomb" title="Bomb">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Creates huge explosion which will kill everything in the vicinity and also crumble
+                                some weak walls.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_Death.webp"
+                                alt="Bomb" title="Death">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Immediately kills all the enemies close to you. Except those that are immune to this.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto"
+                                src="/Assets/Graphics/Sprites/Scrolls/SCR_MagicSupremacy.webp" alt="MagicSupremacy"
+                                title="MagicSupremacy">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Burst of magic that drains your opponent's ability to cast magic missiles. But some are
+                                immune to this. And theire missiles still remain.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_DrainMana2.webp"
+                                alt="DrainMana" title="DrainMana">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Sacrifice your remaining mana to drain mana from your opponents.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_DestroyOrbs.webp"
+                                alt="DestroyOrbs" title="DestroyOrbs">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Burst of magic that destroys all green orbs bouncing around.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_Invisibility2.webp"
+                                alt="Invisibility" title="Invisibility">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Princess becomes invisible .... for a while.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_Luck3.webp"
+                                alt="Luck" title="Luck">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>She should be so lucky. Luckly, lucky, lucky ... Luck stacks.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_VeryLucky.webp"
+                                alt="Luck" title="Luck">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Really amazing amounts of luck. Luck stacks.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_Flight.webp"
+                                alt="Flight" title="Flight">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>It's not really flight, right? But extremelly long jumps.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_BoostWeapon2.webp"
+                                alt="BoostWeapon" title="BoostWeapon">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Boosts your melee attacks.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_BoostArmor2.webp"
+                                alt="BoostArmor" title="BoostArmor">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Boosts your defense.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_MagicBoost2.webp"
+                                alt="MagicBoost" title="MagicBoost">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Boosts your magical attacks.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto"
+                                src="/Assets/Graphics/Sprites/Scrolls/SCR_DestroyWeapon2.webp" alt="DestroyWeapon"
+                                title="DestroyWeapon">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Damage enemies' weapons (attack capabilities)</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_DestroyArmor2.webp"
+                                alt="DestroyArmor" title="DestroyArmor">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Damage enemies' armor (defense capabilities).</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_FeatherFall.webp"
+                                alt="FeatherFall" title="FeatherFall">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Cushions your falls, reduces damages when falling/jumping from the heights.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_Radar2.webp"
+                                alt="Radar" title="Radar">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Allows you to see movements on the mini map.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_Death.webp"
+                                alt="Death" title="Death">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Kills everyone, except main bosses ... and you.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto" src="/Assets/Graphics/Sprites/Scrolls/SCR_ReduceMana.webp"
+                                alt="ReduceMana" title="ReduceMana">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Reduces mana cost for about 30%, for a minute. Effects stack.</p>
+                        </div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-1">
+                            <image class="d-block mx-auto"
+                                src="/Assets/Graphics/Sprites/Scrolls/SCR_ReduceManaMore.webp" alt="ReduceManaMore"
+                                title="ReduceManaMore">
+                        </div>
+                        <div class="col-10 mt-auto">
+                            <p>Reduces mana cost for about 50%, for a minute. Effects stack.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </fieldset>
+        </div>
+
+        <div id="about" class="section">
+            <fieldset>
+                <legend>
+                    About:
+                </legend>
+                <div class="row">
+                    <div class="col-12 col-lg-3 my-2 d-flex align-items-center justify-content-center">
+                        <image src="/Images/TombRaider.webp" alt="TombRaider" class="img-fluid  border-dark rounded-2"
+                            title="TombRaider">
+
+                    </div>
+                    <div class="col-12 col-lg-6 my-2">
+                        <p</p>
+
+                    </div>
+                    <div class="col-12 col-lg-3 my-2 d-flex align-items-center justify-content-center">
+                        <image src="/Images/Doom.webp" alt="Doom" class="img-fluid  border-dark rounded-2" title="Doom">
+
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <p class="version terminal" id="version"></p>
+        <p id="conv" class="warning">Loading insane amount of data ... just a minute or two ... be patient
+            ... I hope you have good internet speed ... this game is huge (###)!
+        </p>
+    </div>
+
+    <div class="container">
+        <div id="game" class="winTrans"></div>
+        <div id="bottom" class="cb" style="margin-top: 1024px"></div>
+        <div id="temp" class="hidden"></div>
+        <div id="temp2" class="hidden"></div>
+    </div>
+    <!-- COPY END -->
+
+    <!-- External JS -->
+    <script src="/External/bootstrap.bundle.min.js"></script>
+    <script src="/External/jquery-3.6.0.min.js"></script>
+    <script src="/External/gl-matrix-min.js" type="text/javascript"></script>
+    <!-- JS -->
+    <script src='/Code/JS/Library/Engine/Prototype_6_01.js' type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/LS_Matrix_1_05.js" type="text/javascript"></script>
+    <script src='/Code/JS/Library/Engine/ENGINE_5_05.js' type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/GRID_4_06.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/AI_3_03.js" type="text/javascript"></script>
+    <script src='/Code/JS/Library/Engine/IndexArrayManagers_4_03.js'></script>
+    <script src="/Code/JS/Library/Engine/MAZE_5_00.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/BWT_1_00.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/WebGL_2_05.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/DEBUG_1_01.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/TURN_1_03.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/GenericTimers_1_03.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/Lights_and_materials_1_06.js" type="text/javascript"></script>
+    <script src="/Assets/Definitions/FearTheFear/assets_FearTheFear.js" type="text/javascript"></script>
+    <script src="/Assets/Definitions/FearTheFear/MAP_FearTheFear.js" type="text/javascript"></script>
+    <script src="/Assets/Definitions/FearTheFear/Monsters_FearTheFear.js" type="text/javascript"></script>
+    <script src="/Assets/Definitions/FearTheFear/intro_movie_FearTheFear.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/MAP and SPAWN tools_3_00.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/speech_1_11.js" type="text/javascript"></script>
+    <script src='/Code/JS/Library/Engine/SaveGame_1_05.js'></script>
+    <script src='/Code/JS/Library/Engine/MINIMAP_2_00.js'></script>
+    <script src="/Games/FearTheFear/FearTheFear.js" type="text/javascript"></script>
+</body>

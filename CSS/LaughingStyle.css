@@ -1,4 +1,4 @@
-/* LS CSS v0.10.3 */
+/* LS CSS v0.10.4 */
 
 @charset "utf-8";
 
@@ -101,6 +101,12 @@
 @font-face {
     font-family: "Chasm";
     src: url("/Assets/Fonts/Chasm.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "FTF";
+    src: url("/Assets/Fonts/DarkWhispers.otf");
     font-display: swap;
 }
 
@@ -718,6 +724,12 @@ h2.INV {
 .PCC {
     font-family: 'Chasm';
     font-size: 1.5em;
+    text-shadow: 1px 1px #666;
+}
+
+.FTF {
+    font-family: 'FTF';
+    font-size: 2.5em;
     text-shadow: 1px 1px #666;
 }
 
