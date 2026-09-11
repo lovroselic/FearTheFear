@@ -89,7 +89,31 @@ const DECAL_CRESTS = [].sort();
 
 //lights
 const LIGHT_DECALS = [
-
+    "AlpineLight_153", "AlpineLight_154", "AlpineLight_155", "AlpineLight_156", "AlpineLight_157", "AlpineLight_158", "AlpineLight_159", "AlpineLight_160", "AlpineLight_161", "AlpineLight_162", "AlpineLight_163", "AlpineLight_164",
+    "AlpineLight_165", "AlpineLight_166", "AlpineLight_167", "CampFire_1173", "CampFire_1174", "CampFire_1175", "CampFire_1176", "CampFire_1177", "CampFire_1178", "CampFire_1179", "CampFire_1180", "CampFire_1181",
+    "CampFire_1182", "CampFire_1183", "CampFire_1184", "CampFire_1185", "Candelabra01", "Candelabra02", "Candelabra03", "Candelabra04", "Candelabra05", "Candelabra06", "Candelabra07", "Candelabra08",
+    "Candelabra09", "Candelabra10", "Candelabra11", "Candelabra12", "Candelabra14", "Candelabra15", "Candelabra16", "Candelabra17", "Candelabra18", "Candle50", "Candle51", "Candle52",
+    "Candle53", "Candle54", "Candle55", "Candle56", "Candle57", "Candle58", "Candle59", "Candle60", "Candle61", "Candle62", "Candle63", "Candle64",
+    "Candle65", "Candle66", "Candle67", "Candle68", "Candle69", "Candle70", "Candle71", "Candle72", "CandleL1", "CandleR1", "DuaLLantern_001", "DuaLLantern_002",
+    "DuaLLantern_003", "DuaLLantern_004", "DuaLLantern_005", "DuaLLantern_006", "DuaLLantern_007", "DuaLLantern_008", "DuaLLantern_009", "DuaLLantern_010", "DuaLLantern_011", "DuaLLantern_012", "DuaLLantern_013", "DuaLLantern_014",
+    "DuaLLantern_015", "DuaLLantern_016", "DuaLLantern_017", "DuaLLantern_018", "DuaLLantern_019", "DuaLLantern_020", "DuaLLantern_021", "DuaLLantern_022", "DuaLLantern_023", "DuaLLantern_024", "DuaLLantern_025", "DuaLLantern_026",
+    "DuaLLantern_027", "DuaLLantern_028", "DuaLLantern_029", "DuaLLantern_030", "DuaLLantern_031", "Fireplace01", "Fireplace02", "Fireplace03", "Fireplace04", "Fireplace05", "Fireplace06", "Fireplace07",
+    "Fireplace08", "Fireplace09", "Fireplace10", "Fireplace101", "Fireplace101", "Fireplace102", "Fireplace102", "Fireplace103", "Fireplace103", "Fireplace104", "Fireplace104", "Fireplace105",
+    "Fireplace105", "Fireplace106", "Fireplace106", "Fireplace107", "Fireplace107", "Fireplace11", "Fireplace12", "Fireplace13", "Fireplace14", "Fireplace15", "Fireplace201", "Fireplace201",
+    "Fireplace202", "Fireplace202", "Fireplace203", "Fireplace203", "Fireplace204", "Fireplace204", "Fireplace205", "Fireplace205", "Fireplace206", "Fireplace206", "Fireplace207", "Fireplace207",
+    "Fireplace208", "Fireplace208", "Fireplace209", "Fireplace209", "Fireplace210", "Fireplace210", "Fireplace211", "Fireplace211", "Fireplace212", "Fireplace212", "FireplaceFLuxU411", "FireplaceFLuxU411",
+    "FireplaceFLuxU412", "FireplaceFLuxU412", "FireplaceFLuxU413", "FireplaceFLuxU413", "FireplaceFLuxU414", "FireplaceFLuxU414", "FireplaceFLuxU415", "FireplaceFLuxU415", "FireplaceFLuxU416", "FireplaceFLuxU416", "FireplaceFLuxU417", "FireplaceFLuxU417",
+    "FireplaceFLuxU418", "FireplaceFLuxU418", "FireplaceFLuxU419", "FireplaceFLuxU419", "FireplaceFLuxU420", "FireplaceFLuxU420", "Fireplace_1037", "Fireplace_1038", "Fireplace_1039", "Fireplace_1040", "Fireplace_1041", "Fireplace_1042",
+    "Fireplace_1043", "Fireplace_1044", "Fireplace_1045", "Fireplace_1046", "FluxLight101", "FluxLight102", "FluxLight103", "FluxLight104", "FluxLight105", "FluxLight106", "FluxLight107", "FluxLight108",
+    "FluxLight109", "FluxLight111", "FluxLight111c", "FluxLight112", "FluxLight113", "FluxLight114", "FluxLight115", "FluxLight116", "FluxLight117", "FluxLight118", "FluxLight119", "FluxLight120",
+    "FluxLight121", "FluxLight122", "FluxLight123", "FluxLight124", "FluxLight125", "FluxLight126", "FluxLight127", "FluxLight128", "FluxLight129", "Lamp40", "Lamp41", "Lamp42",
+    "Lamp43", "Lamp44", "Lamp45", "Lamp46", "Lamp47", "Lamp48", "Lamp49", "Lamp50", "Lamp51", "Lamp52", "Lamp53", "Lantern301",
+    "Lantern302", "Lantern304", "Lights102", "Lights103", "Lights104", "Lights105", "Lights106", "Lights107", "Lights108", "Lights109", "Lights110", "Lights111",
+    "Lights112", "Lights113", "Lights114", "Lights115", "Moon50", "Moon51", "Moon52", "Moon54", "Moon55", "Moon56", "Moon58", "Moon59",
+    "Moon60", "Moon62", "Moon63", "SettingSun1", "SettingSun2", "SingleLantern1", "SkullLantern50", "SkullLantern51", "SkullLantern52", "SkullLantern53", "SkullLantern54", "SkullLantern55",
+    "SkullLantern56", "SkullLantern57", "SkullLantern58", "Sun1", "Sun2", "Torch11", "WallLamp10", "WallLamp11", "WallLamp12", "WallLamp13", "WallLamp14", "WallLamp15",
+    "WallLamp16", "WallLamp17", "WallLamp18", "WallLamp19", "WallLamp20", "WallLamp31", "WallLamp32", "WallLamp33", "WallLamp34", "WallLamp35", "WallLamp9", "lantern201",
+    "lantern303"
 ].sort();
 
 //panorama

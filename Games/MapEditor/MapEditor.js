@@ -85,7 +85,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.23.0",
+    VERSION: "0.23.1",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -2241,7 +2241,8 @@ floor: "${$("#floortexture")[0].value}",`;
 
         if (INI.USE_CEIL) {
             roomExport += `
-ceil: "${$("#ceiltexture")[0].value}",`;
+ceil: "${$("#ceiltexture")[0].value}",
+`;
         }
 
         if (INI.USE_PANORAMA) {
