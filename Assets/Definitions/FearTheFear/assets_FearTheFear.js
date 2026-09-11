@@ -12,6 +12,8 @@ LoadFonts = [
     { srcName: "ArcadeClassic.ttf", name: "Arcade" },
     { srcName: "C64_Pro-STYLE.ttf", name: "C64" },
     { srcName: "DarkWhispers.otf", name: "FTF" },
+    { srcName: "PentaGram.ttf", name: "Pentagram" },
+    { srcName: "CPU.ttf", name: "CPU" },
 ];
 
 LoadModels = [

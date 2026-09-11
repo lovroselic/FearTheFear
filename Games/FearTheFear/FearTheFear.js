@@ -25,7 +25,7 @@ DEBUG.pos_display = false;
 DEBUG.BB_display = false;
 DEBUG.INVINCIBLE = false;
 DEBUG.INF_LIVES = false;
-DEBUG.keys = false;
+DEBUG.keys = true;
 DEBUG.max17 = false;
 DEBUG.STAY_ALIVE = false;
 
@@ -160,7 +160,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.0.3",
+    VERSION: "0.1.0",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -234,9 +234,9 @@ const PRG = {
 
         /** dev settings */
         if (DEBUG.VERBOSE) {
-            WebGL.VERBOSE = true;
-            AI.VERBOSE = true;
-            ENGINE.verbose = true;
+            //WebGL.VERBOSE = true;
+            //AI.VERBOSE = true;
+           //ENGINE.verbose = true;
             MAP_TOOLS.INI.VERBOSE = true;
             //MINIMAP.verbose();
         }
@@ -1052,18 +1052,19 @@ const GAME = {
         ENGINE.hideMouse();
         ENGINE.GAME.pauseBlock();
         ENGINE.GAME.paused = true;
-
         let GameRD = new RenderData("FTF", 60, "#fF2010", "text", "#444444", 2, 2, 2);
         ENGINE.TEXT.setRD(GameRD);
         ENGINE.watchVisibility(ENGINE.GAME.lostFocus);
         ENGINE.GAME.setGameLoop(GAME.run);
         ENGINE.GAME.start(16);
 
-        AI.immobileWander = true;
+        GAME.IAM_settings();
+        GAME.WebGL_settings();
+        GAME.AI_settings();
 
         GAME.completed = false;
         GAME.lives = 1;
-        GAME.level = 100;
+        GAME.level = 1;
         GAME.gold = 13;
 
         const storeList = ["DECAL3D", "LIGHTS3D", "GATE3D", "VANISHING3D", "ITEM3D", "MISSILE3D", "INTERACTIVE_DECAL3D", "INTERACTIVE_BUMP3D", "ENTITY3D", "EXPLOSION3D", "DYNAMIC_ITEM3D", "LAIR", "FIRE3D"];
@@ -1107,6 +1108,14 @@ const GAME = {
         GAME.levelStart();
     },
     deathPlaceDecals: [],
+    AI_settings() {
+        AI.immobileWander = true;
+    },
+    IAM_settings() { },
+    WebGL_settings() {
+        WebGL.VIEWS_ALLOWED = new Set([1, 3]);
+        WebGL.GAME.setViewButtons();
+    },
     levelStart() {
         console.log("starting level", GAME.level);
         WebGL.playerList.clear();                           //requred for restart after resurrection
@@ -1115,13 +1124,13 @@ const GAME = {
         GAME.continueLevel(GAME.level);
     },
     continueLevel(level) {
-        GAME.levelExecute();
+        GAME.levelExecute(level);
     },
-    levelExecute() {
-        GAME.drawFirstFrame(GAME.level);
+    levelExecute(level) {
+        GAME.drawFirstFrame(level);
         LAIR.start();
         ENGINE.GAME.resume();
-        HERO.speak("Haunting or hunting, Hauntessa will kneel, soon she will feel my very sharp heel.");
+        HERO.speak("debug");
     },
     setCameraView() {
         WebGL.hero.firstPersonCamera = new $3D_Camera(WebGL.hero.player, DIR_NOWAY, 0.0, new Vector3(0, 0, 0), 0);

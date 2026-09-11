@@ -52,7 +52,7 @@ const BELOW3 = new Vector3D(0, 0, -1);
 const ABOVE3 = new Vector3D(0, 0, 1);
 
 const ENGINE = {
-    VERSION: "5.05",
+    VERSION: "5.06",
     CSS: "color: #0FA",
     COLOR: "#0FA",
     INI: {
@@ -4712,6 +4712,7 @@ class Timer {
         this.runs = true;
         this.register();
         this.class = this.constructor.name;
+        this.active = true;
     }
     static timeStampToString(time) {
         return this.toTimeString(this.toHMS(time));
@@ -4814,15 +4815,15 @@ class CountDown extends Timer {
     }
     quit() {
         if (!this.active) return;
-        if (this.active) this.func.call(this);
+        this.deactivate();
+
         if (!this.keep) {
             this.unregister();
         } else {
             this.stop();
-            this.deactivate();
 
         }
-        if (this.active) this.func.call(this);
+        this.func.call(this);
     }
     remains() {
         return this.value - this.now;
@@ -4833,8 +4834,8 @@ class CountDown extends Timer {
     }
 }
 class CountDownMS extends CountDown {
-    constructor(id, ms, func, kwargs) {
-        super(id, ms, func, kwargs);
+    constructor(id, ms, func, keep, kwargs) {
+        super(id, ms, func, keep, kwargs);
     }
     update() {
         this.now = (this.delta + (Date.now() - this.start));
