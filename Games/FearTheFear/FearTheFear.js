@@ -29,185 +29,74 @@ DEBUG.keys = false;
 DEBUG.max17 = false;
 DEBUG.STAY_ALIVE = false;
 
-/* const DEBUG = {
-    SETTING: true,
-    AUTO_TEST: false,
-    FPS: false,
-    VERBOSE: false,
-    _2D_display: false,
-    INVINCIBLE: false,
-    FREE_MAGIC: false,
-    keys: false,
-    killAllAllowed: false,
-    max17: false,
-    displayInv() {
-        HERO.inventory.scroll.display();
-        const list = [];
-        for (const item of HERO.inventory.item) {
-            list.push(item.name);
-        }
-        console.info("items", list);
-        console.log(`"${list.join('", "')}"`);
-    },
-    kill() {
-        if (DEBUG.killAllAllowed) {
-            console.log("KILL all");
-            LAIR.stop();
-            ENTITY3D.POOL.clear();
-            MISSILE3D.POOL.clear();
-        }
-        const alive = ENTITY3D.POOL.filter(el => el);
-        if (alive.length > 0) {
-            console.log("-------------------------------------------");
-            for (const enemy of alive) {
-                console.log(enemy.id, enemy.name, enemy.health);
-            }
-        }
-    },
-    goto(grid) {
-        HERO.player.pos = Vector3.from_Grid(Grid.toCenter(grid), 0.5);
-    },
-    checkPoint() {
+DEBUG.checkPoint = function () {
 
-        console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
+    console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-        GAME.level = 17;
-        GAME.gold = 20000;
-        //GAME.gold = 5;
-        GAME.lives = 3;
+    GAME.level = 17;
+    GAME.gold = 20000;
+    //GAME.gold = 5;
+    GAME.lives = 3;
 
-        HERO.reference_magic = 55;
-        HERO.reference_attack = 55;
-        HERO.reference_defense = 55;
+    HERO.reference_magic = 55;
+    HERO.reference_attack = 55;
+    HERO.reference_defense = 55;
 
-        HERO.magic = 55;
-        HERO.attack = 55;
-        HERO.defense = 55;
+    HERO.magic = 55;
+    HERO.attack = 55;
+    HERO.defense = 55;
 
-        HERO.mana = 500;
-        HERO.maxMana = 500;
-        HERO.health = 1;
-        HERO.maxHealth = 500;
+    HERO.mana = 500;
+    HERO.maxMana = 500;
+    HERO.health = 1;
+    HERO.maxHealth = 500;
 
-        HERO.attackExp = 18;
-        HERO.attackExpGoal = 100;
-        HERO.defenseExp = 4;
-        HERO.defenseExpGoal = 100;
-        HERO.magicExp = 0;
-        HERO.magicExpGoal = 100;
+    HERO.attackExp = 18;
+    HERO.attackExpGoal = 100;
+    HERO.defenseExp = 4;
+    HERO.defenseExpGoal = 100;
+    HERO.magicExp = 0;
+    HERO.magicExpGoal = 100;
 
 
-        let actItems = [
-        ];
+    let actItems = [
+    ];
 
-        for (let obj of actItems) {
-            let item = new ActionItem(obj.which, obj.inventorySprite);
-            HERO.inventory.scroll.add(item);
-        }
+    for (let obj of actItems) {
+        let item = new ActionItem(obj.which, obj.inventorySprite);
+        HERO.inventory.scroll.add(item);
+    }
 
-        let scrollTypes = [
-            "FeatherFall", "Flight", "Radar", "Flight", "Invisibility"
-        ];
+    let scrollTypes = [
+        "FeatherFall", "Flight", "Radar", "Flight", "Invisibility"
+    ];
 
-        for (let scrType of scrollTypes) {
-            let scroll = new Scroll(scrType);
-            HERO.inventory.scroll.add(scroll);
-        }
+    for (let scrType of scrollTypes) {
+        let scroll = new Scroll(scrType);
+        HERO.inventory.scroll.add(scroll);
+    }
 
-        TITLE.stack.scrollIndex = Math.max(TITLE.stack.scrollIndex, 0);
-        TITLE.scrolls();
+    TITLE.stack.scrollIndex = Math.max(TITLE.stack.scrollIndex, 0);
+    TITLE.scrolls();
 
-        let invItems = [
+    let invItems = [
 
-        ];
+    ];
 
-        for (let itm of invItems) {
-            const item = new NamedInventoryItem(itm, itm);
-            HERO.inventory.item.push(item);
-        }
-
-        let keys = [];
-        for (let key of keys) {
-            const K = new Key(key, `${key}Key`);
-            HERO.inventory.key.push(K);
-        }
-        TITLE.keys();
-    },
-    killStatus() {
-        console.log("-------------------------------------------");
-        console.warn("level:", GAME.level, "totalKills", MAP[GAME.level].map.totalKills, "killsRequiredToStopSpawning", MAP[GAME.level].map.killsRequiredToStopSpawning, "stopped", MAP[GAME.level].map.stopSpawning, "delay", MAP[GAME.level].map.spawnDelay,
-            "killCount", MAP[GAME.level].map.killCount, "killCountdown", MAP[GAME.level].map.killCountdown, "maxSpawned", MAP[GAME.level].map.maxSpawned, "lairs:", LAIR.POOL.length
-        );
-        console.info("monsterList", MAP[GAME.level].monsterList);
-    },
-    displayCompleteness() {
-        console.log("-------------------------------------------");
-        console.log("HERO position", Vector3.toGrid(HERO.player.pos));
-        const remains = ITEM3D.POOL.filter(el => el.active);
-        if (remains.length > 0) {
-            console.log("remains", remains);
-            console.log("---- remaining items ----");
-            for (const item of remains) {
-                console.log(item.id, item.name, item.grid, item.instanceIdentification, "category", item.category);
-            }
-        }
-        console.log("-------------------------------------------");
-        const int_decals = INTERACTIVE_DECAL3D.POOL.filter(el => el.interactive);
-        if (int_decals.length > 0) {
-            console.log("int_decals", int_decals);
-            for (const ent of int_decals) {
-                console.log(ent.id, ent.name, ent.grid, "wants", ent.wants, "gives", ent.gives, "which", ent.which, "int.cat", ent.interactionCategory, "price", ent.price);
-            }
-        }
-        console.log("-------------------------------------------");
-        const dynamic = DYNAMIC_ITEM3D.POOL.filter(el => el);
-        if (dynamic.length > 0) {
-            console.log("dynamic", dynamic);
-            for (const din of dynamic) {
-                console.log(din.id, din.name, din.grid);
-            }
-        }
-        console.log("-------------------------------------------");
-        for (const gate of INTERACTIVE_BUMP3D.POOL) {
-            console.log(gate.name, gate.grid, gate.destination.level, gate.color, "dest", gate.destination, "to", MAP[gate.destination.level].name);
-        }
-
-        console.info("**** HERO experience ****");
-        console.log("------ EXP ------");
-        for (const type of ["attack", "defense", "magic"]) {
-            console.log(type, ":", HERO[`${type}Exp`], " /", HERO[`${type}ExpGoal`]);
-        }
-        console.log("------------");
-    },
-    automaticTests() {
-        console.time("automaticTests");
-        console.info("***** Automatic level testing *****");
-        for (let level = 1; level <= 125; level++) {
-            console.log("testing level", level);
-            GAME.level = level;
-            GAME.levelStart();
-            GAME.frameDraw(17);
-        }
-        console.info("***** Automatic level testing END *****");
-        console.timeEnd("automaticTests");
-    },
-    dropItem(name) {
-        for (const [index, item] of HERO.inventory.item.entries()) {
-            if (item.name === name) {
-                HERO.inventory.item.splice(index, 1);
-                console.warn("..removed", index, item);
-                break;
-            }
-        }
-        TITLE.keys();
-    },
-    getItem(name) {
-        const item = new NamedInventoryItem(name, name);
+    for (let itm of invItems) {
+        const item = new NamedInventoryItem(itm, itm);
         HERO.inventory.item.push(item);
-        console.warn("..added", item);
-        TITLE.keys();
-    },
-}; */
+    }
+
+    let keys = [];
+    for (let key of keys) {
+        const K = new Key(key, `${key}Key`);
+        HERO.inventory.key.push(K);
+    }
+    TITLE.keys();
+};
+
+/////////////////////////////////////////////
 
 const INI = {
     HERO_SHOOT_TIMEOUT: 2000,
@@ -268,8 +157,10 @@ const INI = {
     BURNING_TIME: 1500,
 };
 
+/////////////////////////////////////////////
+
 const PRG = {
-    VERSION: "0.0.2",
+    VERSION: "0.0.3",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

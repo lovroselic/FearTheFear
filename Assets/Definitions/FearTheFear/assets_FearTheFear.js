@@ -19,6 +19,10 @@ LoadFonts = [
 LoadTextures = [
     { srcName: "Title/FearTheFear_title_768.webp", name: "Title" },
 
+    /** textures used by shaders */
+    { srcName: "Shading/Fire_color_map_512.webp", name: "Fire_color_map" },
+    { srcName: "Shading/fire_noise_512.webp", name: "Fire_noise" },
+
     //
 ];
 
@@ -27,10 +31,19 @@ LoadAudio = [
 ];
 
 LoadShaders = [
-
+    'vShader_1_2.glsl',
+    'fShader_1_5.glsl',
+    'pick_vShader_1_0.glsl', 'pick_fShader_1_0.glsl',
+    'particle_render_fShader_1_1.glsl', 'particle_render_vShader_1_0.glsl', 
+    'particle_transform_fShader_1_0.glsl', 'particle_transform_vShader_1_1.glsl',
+    'model_vShader_1_2.glsl', 
+    'fire_transform_vShader_1_0.glsl', 'fire_render_fShader_1_0.glsl',
+    'shadow_vShader_1_0.glsl', 'shadow_fShader_1_0.glsl'
 ];
 
 LoadSprites = [
+     //reserved
+    { srcName: "Reserved/DeathPlace.webp", name: "DeathPlace" },
 
     //intro
     { srcName: "Slides/FTF_slide1.webp", name: "FTF_slide1" },
