@@ -38,7 +38,7 @@
  */
 
 const WebGL = {
-    VERSION: "2.05",
+    VERSION: "2.06",
     CSS: "color: gold",
     CTX: null,
     DEBUG: false,
@@ -53,7 +53,7 @@ const WebGL = {
     VIEWS_ALLOWED: new Set([1, 2, 3, 4, 5, 6, 7]),      // which cameras are set - default all, sys expects a set
     BUTTONS_APPENDED: false,                            // perspective buttons already appended  
     VIEWPORT_SPEED: 2 * 64,                             // speed of viewport moving
-    USE_VIEWPORT: false,                                // use map bigger thatn screen, viewport movement clases with jump
+    USE_VIEWPORT: false,                                // use map bigger than screen, viewport movement clases with jump
     INI: {
         SCALE_DECAL: 1.0,                               // change/adapt decal scale for skewed surface based rendering
         ADDITIONAL_TOP_OFFSET: 0.0,                     // change/adapt top offset for skewed surface based rendering
@@ -1808,7 +1808,7 @@ const WORLD = {
             return [leftX, rightX, topY, bottomY];
         }
         function calcTall(CAT, R) {
-            const height = WebGL.INI.SCALE_DECAL;
+            const height = WebGL.INI[`${CAT}_HEIGHT`] *WebGL.INI.SCALE_DECAL;
             const width = height * R;
             const top = WebGL.INI.ADDITIONAL_TOP_OFFSET + WebGL.INI[`${CAT}_TOP`];
 
