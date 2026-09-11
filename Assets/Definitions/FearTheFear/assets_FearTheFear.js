@@ -32,6 +32,14 @@ LoadShaders = [
 
 LoadSprites = [
 
+    //intro
+    { srcName: "Slides/FTF_slide1.webp", name: "FTF_slide1" },
+    { srcName: "Slides/FTF_slide2.webp", name: "FTF_slide2" },
+    { srcName: "Slides/FTF_slide3.webp", name: "FTF_slide3" },
+    { srcName: "Slides/FTF_slide4.webp", name: "FTF_slide4" },
+    { srcName: "Slides/FTF_slide5.webp", name: "FTF_slide5" },
+    { srcName: "Slides/FTF_slide6.webp", name: "FTF_slide6" },
+
     //UI, skills
     { srcName: "UI/CompassRose.webp", name: "CompassRose" },
     { srcName: "UI/wavyL.webp", name: "wavyL" },

@@ -11,7 +11,7 @@ TODO:
 ////////////////////////////////////////////////////
 
 const SPEECH = {
-  VERSION: "1.11",
+  VERSION: "1.12",
   CSS: "color: #0A0",
   VERBOSE: true,
   browserSupport: true,
@@ -85,6 +85,8 @@ const SPEECH = {
       return;
     }
 
+    txt = String(txt).replace(/\s+/g, " ").trim();
+
     if (speechSynthesis.speaking || speechSynthesis.pending) {
       if (SPEECH.VERBOSE) console.log(`%cSPEECH in progress. Ignoring new text: ${txt}.`, "color: #A00");
       return;
@@ -104,6 +106,8 @@ const SPEECH = {
       console.log(`%cSPEECH not ready ....`, "color: #A00");
       return;
     }
+
+    txt = String(txt).replace(/\s+/g, " ").trim();
 
     if (speechSynthesis.speaking || speechSynthesis.pending) {
       if (SPEECH.VERBOSE) console.log(`%cSPEECH in progress. Ignoring new text: ${txt}.`, "color: #A00");
