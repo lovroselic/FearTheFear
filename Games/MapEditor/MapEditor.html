@@ -43,56 +43,55 @@
                             </legend>
 
                             <div id="dimensions">
-                                <input type="radio" name="dimensions" value="2D" checked="checked"> 2D
-                                <input type="radio" name="dimensions" value="3D"> 3D <br />
+                                <input type="radio" name="dimensions" value="2D"> 2D
+                                <input type="radio" name="dimensions" value="3D" checked="checked""> 3D <br />
                             </div>
 
                             Grid dimensions:
-                            <input name="gridsize" id="horizontalGrid" type="text" size="3" maxlength="3" value="17">
-                            <span> X </span>
-                            <input name="gridsize" id="verticalGrid" type="text" size="2" maxlength="2" value="12">
+                            <input name=" gridsize" id="horizontalGrid" type="text" size="2" maxlength="2" value="11">
+                                <span> X </span>
+                                <input name="gridsize" id="verticalGrid" type="text" size="2" maxlength="2" value="11">
 
-                            <div class="use_3d">
-                                <span id="depthGridVisibility">
+                                <span id="depthGridVisibility class=" use_3d">
                                     <span> X </span>
                                     <input name="gridsize" id="depthGrid" type="text" size="2" maxlength="2" value="3">
                                 </span>
-                            </div>
 
-                            <br />
-                            Grid size (px):
-                            <input name="gridsize" id="gridsize" type="text" size="2" maxlength="2" value="64">
-                            <br />
-                            RoomID:
-                            <input name="roomid" id="roomid" type="text" size="16" maxlength="16" value="1">
-                            <br />
-                            Room name:
-                            <input name="roomname" id="roomname" type="text" size="32" maxlength="64"
-                                value="Generic room name">
-                            <br />
 
-                            Arena border width:
-                            <input name="arenawidth" id="arenawidth" type="number" min="1" max="7" value="2">
-                            <br />
-                            Arena value:
-                            <select id="arena_value"></select>
+                                <br />
+                                Grid size (px):
+                                <input name="gridsize" id="gridsize" type="text" size="2" maxlength="2" value="64">
+                                <br />
+                                RoomID:
+                                <input name="roomid" id="roomid" type="text" size="16" maxlength="16" value="1">
+                                <br />
+                                Room name:
+                                <input name="roomname" id="roomname" type="text" size="32" maxlength="64"
+                                    value="Generic room name">
+                                <br />
 
-                            <br /> WIDTH (px) = <span id="ENGINEgameWIDTH"></span> / <span id="spacex"></span>
-                            <br />
-                            HEIGHT (px) =
-                            <span id="ENGINEgameHEIGHT"></span> / <span id="spacey"></span><br />
+                                Arena border width:
+                                <input name="arenawidth" id="arenawidth" type="number" min="1" max="7" value="2">
+                                <br />
+                                Arena value:
+                                <select id="arena_value"></select>
 
-                            <hr>
-                            <div class="use_savegame">
-                                <label for="checkpoint">SaveGame
-                                    checkpoint</label>
+                                <br /> WIDTH (px) = <span id="ENGINEgameWIDTH"></span> / <span id="spacex"></span>
+                                <br />
+                                HEIGHT (px) =
+                                <span id="ENGINEgameHEIGHT"></span> / <span id="spacey"></span><br />
 
-                                <select name="checkpoint" id="checkpoint">
-                                    <option value="0">Neutral</option>
-                                    <option value="1">Block</option>
-                                    <option value="2">Restore</option>
-                                </select>
-                            </div>
+                                <hr>
+                                <div class="use_savegame">
+                                    <label for="checkpoint">SaveGame
+                                        checkpoint</label>
+
+                                    <select name="checkpoint" id="checkpoint">
+                                        <option value="0">Neutral</option>
+                                        <option value="1">Block</option>
+                                        <option value="2">Restore</option>
+                                    </select>
+                                </div>
 
                         </fieldset>
 
@@ -105,11 +104,11 @@
                             <input type="radio" name="renderer" value="block3D"> Block3D <br />
                             <input type="checkbox" id="corr" value="corr" name="corr"> Draw corridor gridline<br />
                             <input type="checkbox" id="grid" value="grid" name="grid" checked="checked"> Main grid<br />
-                            <input type="checkbox" id="coord" value="coord" name="coord">
+                            <input type="checkbox" id="coord" value="coord" name="coord" checked="checked">
                             Coordinates
                             <input type="checkbox" id="all_coord" value="all_coord" name="all_coord">All
                             <br />
-                            <input type="checkbox" id="mask" value="mask" name="mask" checked="checked"> Show mask<br />
+                            <input type="checkbox" id="mask" value="mask" name="mask"> Show mask<br />
                         </fieldset>
 
                         <div id="material_light_row">
@@ -1175,18 +1174,14 @@
                     </legend>
                     <textarea id="exp" style="width: 1200px; height: 256px;">
 
-39: {
-        name: "Go Right, Maybe",
-        data: '{"width":17,"height":12,"map":"BB2A䁡AA2II2AA25䁡AA3BAA3䁡AA2䁡IAA8䁡AA2BAA12BABABAA18BAA5BB2AA2BAA9BAA3IBIBB4AA4BB3ABB2A䁡BB2I䁡ABB4䁡$BB10ABB7ABB3ABB2IBB3IBB2IABB4䁡BB2IABAA3IABAA4BB4"}',
-        wall: "Wall128_324",
-        start: '[47,5]',
-        monsters: '[[172,"Cat",5],[38,"Bat",5],[44,"Cock",3]]',
-        gold: '[[52,"Gold"],[122,"Gold"],[129,"Gold"],[185,"Gold"],[117,"Gold"],[46,"Gold"],[66,"Gold"]]',
-        carriers: '[[71,"Baloon",5]]',
-        mask: '[[151,0,32,1],[84,180,5,1],[100,180,1,1],[82,90,34,1],[74,0,29,0],[72,0,29,1],[73,0,24,1],[155,0,40,0],[103,0,32,0],[18,180,38,0],[33,270,38,0]]',
-        maskdecals: '[[195,0,0,0,64],[137,0,0,0,64],[154,0,0,0,64],[171,0,0,0,64],[59,0,0,0,64],[76,0,0,0,64],[93,0,0,0,64],[110,0,0,0,64],[127,0,0,0,64],[149,0,137,0,192],[141,0,85,0,192],[22,0,162,0,128],[173,0,111,0,64],[163,0,73,0,128],[43,0,69,0,64],[53,0,39,0,64],[82,0,52,0,64],[133,0,55,0,64],[147,0,56,0,64]]',
-        connections: '["-1","37","38","-1"]',
-    }
+1 : {
+name: "Generic room name",
+data: '{"width":"17","height":"17","depth":3,"map":"BB40AA467BABB127AA36BB30ABB100A$BB51ABB10A"}',
+sg: 0,
+wall: "BlackWall45",
+floor: "Wood1",
+ceil: "marbleFloor106",start: '[246,1]',
+}
         </textarea>
                 </fieldset>
             </div>
@@ -1239,7 +1234,7 @@
     <script src="/Code/JS/Library/Engine/BWT_1_00.js" type="text/javascript"></script>
     <script src='/Code/JS/Library/Engine/IndexArrayManagers_4_03.js'></script>
     <script src="/Code/JS/Library/Engine/WebGL_2_05.js" type="text/javascript"></script>
-    <script src="/Code/JS/Library/Engine/Lights_and_materials_1_06.js" type="text/javascript"></script>
+    <script src="/Code/JS/Library/Engine/Lights_and_materials_1_07.js" type="text/javascript"></script>
     <script src="/Assets/Definitions/FearTheFear/assets_FearTheFear.js" type="text/javascript"></script>
     <script src="/Assets/Definitions/FearTheFear/Monsters_FearTheFear.js" type="text/javascript"></script>
     <script src="/Assets/Definitions/MapEditor/MAP_for_MapEditor.js" type="text/javascript"></script>

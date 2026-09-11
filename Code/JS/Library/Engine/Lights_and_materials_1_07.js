@@ -7,7 +7,7 @@
 
 /** Lights */
 const LIGHT_COLORS = {
-    none: new Float32Array([0.0, 0.0, 0.0]),
+    
     standard: new Float32Array([0.90, 0.90, 0.81]),
     standard2: new Float32Array([0.88, 0.86, 0.78]),
     standardDimmed: new Float32Array([0.8, 0.8, 0.7]),
@@ -81,18 +81,21 @@ const LIGHT_COLORS = {
     sunlightWarm: new Float32Array([0.85, 0.78, 0.65]),             // Softer, warmer afternoon sunlight
     sunlightDusk: new Float32Array([0.70, 0.60, 0.50]),             // Subtle, warm dusk-like sunlight
     sunlightGoldenHour: new Float32Array([0.90, 0.68, 0.45]),       // Warm, glowing, rich sunset illumination
-    sunlightGoldenHourSoft: new Float32Array([0.78, 0.56, 0.38]), // Gentle, softer golden-orange, subtle late sunset ambiance
+    sunlightGoldenHourSoft: new Float32Array([0.78, 0.56, 0.38]),   // Gentle, softer golden-orange, subtle late sunset ambiance
 
     //strong remote sources
     sun: new Float32Array([80 * 0.85, 80 * 0.78, 80 * 0.65]),
     mediumSun: new Float32Array([40 * 0.85, 40 * 0.78, 40 * 0.65]),
     weakSun: new Float32Array([22 * 0.85, 22 * 0.78, 21 * 0.65]),
+
+    //
+    none: new Float32Array([0.0, 0.0, 0.0]),
 };
 
 /** Materials */
 
 const MATERIAL = {
-    VERSION: "1.06",
+    VERSION: "1.07",
     wall: new Material(LIGHT_COLORS.gray, LIGHT_COLORS.lightgray, LIGHT_COLORS.darkgray, 0.8),
     marble: new Material(LIGHT_COLORS.gray, LIGHT_COLORS.lightgray, LIGHT_COLORS.darkgray, 0.85),
     standard: new Material(LIGHT_COLORS.standard, LIGHT_COLORS.standard, LIGHT_COLORS.standard, 0.125),

@@ -12,7 +12,7 @@ const INI = {
     SPACE_X: 4192,
     SPACE_Y: 4192,
     CANVAS_RESOLUTION: 256,
-    TEXTURE_RESOLUTION: 128, //320
+    TEXTURE_RESOLUTION: 320, //320
     DRAW_OCCLUSION_MAP: false,
     OCCLUSION_RESOLUTION: 4,
 
@@ -21,20 +21,20 @@ const INI = {
     USE_QUAD_MAP: false,
     USE_OCCLUSION_MAP: false,
     USE_TEXTURES: true,
-    USE_FLOORS: false,
-    USE_CEIL: false,
+    USE_FLOORS: true,
+    USE_CEIL: true,
     USE_TERRAIN: false,
     USE_PANORAMA: false,
-    USE_LIGHTS: false,
-    USE_DECALS: false,
+    USE_LIGHTS: true,
+    USE_DECALS: true,
     USE_MASK: false,
     USE_MONSTERS: true,
-    USE_STEPS: false,
-    USE_ENTITIES: false,
+    USE_STEPS: true,
+    USE_ENTITIES: true,
     USE_ITEMS: true,
-    USE_MAZE: false,
-    USE_SAVEGAME: false,
-    USE_3D: false,
+    USE_MAZE: true,
+    USE_SAVEGAME: true,
+    USE_3D: true,
     USE_WORLD: false,
     USE_SPAWN: false,
     USE_CONNECTIONS: false,
@@ -49,13 +49,15 @@ const INI = {
 
 const MAP = {
     1: {
-        name: "Start",
-        data: '{"width":"17","height":"12","map":"B$ABAA2BB5AA63BB2AA23䁡A䁡AA12䁩䁩2AA15BABB8AA2BAA2BB9ABB8䁡䁩BB11AA2BB2ABB10䁩BB5AA2BAA2BB2"}',
-        wall: "BrownishMossy_128",
-        start: '[134,5]',
-        mask: '[]',
-        maskdecals: '[[144,0,0,0,64],[161,0,0,0,64],[178,0,0,0,64],[195,0,0,0,64],[2,0,1,0,320],[6,0,2,0,320],[10,0,3,0,320],[14,0,4,0,320],[147,0,0,0,64],[164,0,0,0,64],[181,0,0,0,64]]',
-        connections: '["-1","2","-1","-1"]',
+        name: "Generic room name",
+        data: '{"width":11,"height":11,"depth":3,"map":"AA242BB8AA42BB26AA6BB38A$"}',
+        sg: 0,
+        wall: "",
+
+        floor: "",
+
+        ceil: "",
+        start: '[93,1]',
     }
 };
 
@@ -509,6 +511,7 @@ const GAME = {
             ENGINE.addBOX("SLOPE", 2048, 128, ["slope"], null);
             ENGINE.addBOX("SIDE_SLOPE", 2048, 768, ["sideslope"], null);
         }
+
         ENGINE.addBOX("WEBGL", 1024, 768, ["3d_webgl"], null);
 
         $("#buttons").append("<input type='button' id='new' value='New' class='red_button'>");
@@ -528,6 +531,10 @@ const GAME = {
         }
 
         $("#gridsize").on("change", GAME.render);
+
+        //arena values
+        $("#arena_value").append(`<option value="${MAPDICT.EMPTY}">Space</option>`);
+        $("#arena_value").append(`<option value="${MAPDICT.HOLE}">Hole</option>`);
 
         //fill_value
         $("#fill_value").append(`<option value="${MAPDICT.EMPTY}">Space</option>`);
@@ -959,6 +966,7 @@ const GAME = {
         $('#searchMonster').on('keyup', () => filterOptions("#monster_type", "#searchMonster"));
         $('#searchWall').on('keyup', () => filterOptions("#walltexture", "#searchWall"));
         $('#searchFloor').on('keyup', () => filterOptions("#floortexture", "#searchFloor"));
+        $('#searchCeil').on('keyup', () => filterOptions("#ceiltexture", "#searchCeil"));
         $('#searchFrontPanorama').on('keyup', () => filterOptions("#frontPanorama", "#searchFrontPanorama"));
         $('#searchLeftPanorama').on('keyup', () => filterOptions("#leftPanorama", "#searchLeftPanorama"));
         $('#searchRightPanorama').on('keyup', () => filterOptions("#rightPanorama", "#searchRightPanorama"));
@@ -1018,7 +1026,6 @@ const GAME = {
     randomTexture(TextureList, id, canvas) {
         const texture = TextureList.chooseRandom();
         $(id).val(texture).change();
-        ENGINE.drawToId(canvas, 0, 0, ENGINE.conditionalResize(TEXTURE[$(id)[0].value], 320));
     },
     randomMaskDecal() {
         const searchMD = $("#searchMasksDecals").val().toLowerCase();
@@ -1078,7 +1085,7 @@ const GAME = {
 
         ENGINE.resizeAndFill(LAYER.wallcanvas, wallTexture, INI.TEXTURE_RESOLUTION);
         ENGINE.resizeAndFill(LAYER.floorcanvas, floorTexture, INI.TEXTURE_RESOLUTION);
-        ENGINE.resizeAndFill(LAYER.ceilcanvas, floorTexture, INI.TEXTURE_RESOLUTION);
+        ENGINE.resizeAndFill(LAYER.ceilcanvas, ceilTexture, INI.TEXTURE_RESOLUTION);
         ENGINE.resizeAndFill(LAYER.texturecanvas, textureTexture, INI.CANVAS_RESOLUTION);
 
         const frontPanorama = TEXTURE[$("#frontPanorama")[0].value];
@@ -2224,20 +2231,17 @@ spawnDelay: ${SpawnDelay},`;
 
         if (INI.USE_TEXTURES) {
             roomExport += `
-wall: "${$("#walltexture")[0].value}",
-`;
+wall: "${$("#walltexture")[0].value}",`;
         }
 
         if (INI.USE_FLOORS) {
             roomExport += `
-floor: "${$("#floortexture")[0].value}",
-`;
+floor: "${$("#floortexture")[0].value}",`;
         }
 
         if (INI.USE_CEIL) {
             roomExport += `
-ceil: "${$("#ceiltexture")[0].value}",
-`;
+ceil: "${$("#ceiltexture")[0].value}",`;
         }
 
         if (INI.USE_PANORAMA) {
