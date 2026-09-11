@@ -35,10 +35,11 @@ const INI = {
     USE_MAZE: true,
     USE_SAVEGAME: true,
     USE_3D: true,
-    USE_WORLD: false,
-    USE_SPAWN: false,
+    USE_WORLD: true,
+    USE_SPAWN: true,
     USE_CONNECTIONS: false,
     USE_ROPES: false,
+    USE_TEXTURE_MAP: true,
 
     //download flags
     DOWNLOAD_MASK: false,
@@ -49,15 +50,14 @@ const INI = {
 
 const MAP = {
     1: {
-        name: "Generic room name",
-        data: '{"width":11,"height":11,"depth":3,"map":"AA242BB8AA42BB26AA6BB38A$"}',
+        name: "Demo",
+        data: '{"width":"17","height":"17","depth":3,"map":"BB37AA216BB3AA18BB3AA227BABB40AA3BB87AA36BB30ABB100A$BB51ABB10A"}',
         sg: 0,
-        wall: "",
-
-        floor: "",
-
-        ceil: "",
-        start: '[93,1]',
+        wall: "BlackWall45",
+        floor: "Wood1",
+        ceil: "marbleFloor106",
+        start: '[246,1]',
+        lights: '[[484,1,"DuaLLantern_025","standard"]]',
     }
 };
 
@@ -85,7 +85,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.23.1",
+    VERSION: "0.23.2",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -102,6 +102,8 @@ const PRG = {
         ENGINE.setGridSize(64);
         ENGINE.setSpriteSheetSize(64);
         ENGINE.init();
+
+        WebGL.VERBOSE = true;
     },
     setup() {
         console.log("PRG.setup");
@@ -282,7 +284,7 @@ const GAME = {
         WebGL.INI.BACKGROUND_ALPHA = 0.0;
         WebGL.USE_SHADOW = false;
         WebGL.USE_INTERACTION = false;
-        WebGL.NO_TOP_CEILING = true;
+        WebGL.NO_TOP_CEILING = false;
         WebGL.FIRST_PERSON_DUAL_DISPLAY = true;
         WebGL.VIEWS_ALLOWED = new Set([1, 3]);
 
@@ -359,10 +361,54 @@ const GAME = {
     levelStart() {
         const map = GAME.activeMap();
         if (!map || !map.GA) throw new Error("levelStart: no active $MAP.map");
-        GAME.initLevel(GAME.level);
-        //WebGL.render2DScene(map);
+        const dimension = $("#dimensions input[name=dimensions]:checked").val();
+
+        switch (dimension) {
+            case "2D":
+                GAME.initLevel2D(GAME.level);
+                break;
+            case "3D":
+                GAME.initLevel3D(GAME.level);
+                break;
+        }
     },
-    initLevel(level) {
+    initLevel3D(level) {
+        const map = GAME.activeMap();
+
+        GAME.syncLegacyLevel(level, map);
+        GAME.ensureMapArrays(map);
+
+        if (!map.startPosition) GAME.setStartPositionFromStart(map);
+
+        const start_dir = map.startPosition.vector;
+        let start_grid = map.startPosition.grid;
+        start_grid = Vector3.from_Grid(Grid.toCenter(start_grid), 0.6);
+        WebGL.init_required_IAM(map, HERO);
+        WebGL.CONFIG.set("first_person", false);
+        HERO.player = new $3D_player(start_grid, Vector3.from_2D_dir(start_dir), map, HERO_TYPE.ThePrincess);
+        WebGL.hero.firstPersonCamera = new $3D_Camera(WebGL.hero.player, DIR_NOWAY, 0.0, new Vector3(0, 0, 0), 0);
+
+        GAME.buildWorld(level, map);
+        GAME.setWorld3D(map);
+        WebGL.GAME.setFirstPerson();
+        console.error("report map", map);
+        WebGL.renderScene(map);
+    },
+    setWorld3D(map = GAME.activeMap(), decalsAreSet = false) {
+        console.log("setting 3D MapEditor world", { map });
+        console.time("setWorld3D");
+
+        const textureData = {
+            wall: TEXTURE[$("#walltexture").val()],
+            floor: TEXTURE[$("#floortexture").val()],
+            ceil: TEXTURE[$("#ceiltexture").val()]
+        };
+
+        WebGL.updateShaders();
+        WebGL.init("webgl", map.world, textureData, HERO.player, decalsAreSet);
+        console.timeEnd("setWorld3D");
+    },
+    initLevel2D(level) {
         const map = GAME.activeMap();
 
         GAME.syncLegacyLevel(level, map);
@@ -370,19 +416,19 @@ const GAME = {
         if (INI.USE_TERRAIN) GAME.ensureTerrain();
         if (!map.startPosition) GAME.setStartPositionFromStart(map);
 
+
         WebGL.MOUSE.initialize("ROOM");
         WebGL.setContext("webgl");
 
         if (INI.USE_WORLD) {
-
             GAME.buildWorld(level, map);                                        // Build surface FIRST, because hero placement depends on quadMap/zMap.
 
             const start_dir = map.startPosition.vector;
             const start_grid = Grid.toClass(map.startPosition.grid);
-            HERO.player = new $2D_player(start_grid, start_dir, HERO_TYPE.Booga, map.GA, map);
+            HERO.player = new $2D_player(start_grid, start_dir, HERO_TYPE.ThePrincess, map.GA, map);
 
-            GAME.setCameraView();
-            GAME.setWorld(map);
+            GAME.setCameraView2D();
+            GAME.setWorld2D(map);
         }
         console.info("MapEditor init completed", map);
     },
@@ -398,16 +444,17 @@ const GAME = {
             map.zMap1 = QUAD_MAP.create_zMap(map.quadMap, map.GA, 1);
         }
 
-        //if (typeof SPAWN_TOOLS !== "undefined" && SPAWN_TOOLS.spawn) SPAWN_TOOLS.spawn(level);
+        if (typeof SPAWN_TOOLS !== "undefined" && SPAWN_TOOLS.spawn) SPAWN_TOOLS.spawn(level);
 
         //if (INI.USE_OCCLUSION_MAP) GAME.rebuildOcclusionMap(map);
         //map.world = WORLD.buildSurfaceBasedWorld(map);
         map.world = WORLD.build(map);
         MAP[level].world = map.world;
+        if (INI.USE_TEXTURE_MAP) map.textureMap = map.GA.toTextureMap();
 
         return map.world;
     },
-    setWorld(map = GAME.activeMap(), decalsAreSet = false) {
+    setWorld2D(map = GAME.activeMap(), decalsAreSet = false) {
         console.log("setting MapEditor world", { map: map });
         console.time("setWorld");
 
@@ -483,7 +530,7 @@ const GAME = {
         if (!Number.isFinite(map.occlusionMap.resolution)) throw new Error("render map occlusionMap has invalid resolution");
 
     },
-    setCameraView() {
+    setCameraView2D() {
         WebGL.hero.camera2D = new $2D_Camera(ENGINE.gameWIDTH, ENGINE.gameHEIGHT);
         WebGL.camera = WebGL.hero.camera2D;
     },
@@ -1131,9 +1178,9 @@ const GAME = {
             if (res) $(`#${ids[i]}`).html(`width: ${res[0]}, height: ${res[1]}`);
         }
 
-        /*if (restart && GAME.started && $MAP.map?.GA) {
+        if (restart && GAME.started) {
             GAME.levelStart();
-        }*/
+        }
     },
     repaintTextures() {
         GAME.updateTextures();
@@ -2399,9 +2446,9 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
         GAME.resizeGL_window();
         $(ENGINE.gameWindowId).width(ENGINE.gameWIDTH + 4);
 
-        //$MAP.map.textureMap = $MAP.map.GA.toTextureMap();
+        $MAP.map.textureMap = $MAP.map.GA.toTextureMap();
         GAME.render();
-
+        GAME.updateTextures();
         console.info("IMPORT $MAP.map", $MAP.map);
     },
     changeFloor() {

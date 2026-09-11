@@ -14,10 +14,17 @@ LoadFonts = [
     { srcName: "DarkWhispers.otf", name: "FTF" },
 ];
 
-
+LoadModels = [
+    'ThePrincess.gltf',
+];
 
 LoadTextures = [
     { srcName: "Title/FearTheFear_title_768.webp", name: "Title" },
+
+    /** princess */
+    { srcName: "ObjectTextures/BluePrincess.webp", name: "BluePrincess" },
+    { srcName: "ObjectTextures/GoldPrincess.webp", name: "GoldPrincess" },
+    { srcName: "ObjectTextures/TheInvisiblePrincess.webp", name: "TheInvisiblePrincess" },
 
     /** textures used by shaders */
     { srcName: "Shading/Fire_color_map_512.webp", name: "Fire_color_map" },
