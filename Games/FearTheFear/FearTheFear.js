@@ -1680,7 +1680,7 @@ const GAME = {
             ENGINE.GAME.keymap[ENGINE.KEY.map.enter] = false;
         }
         if (map[ENGINE.KEY.map.ctrl]) {
-            HERO.shoot();
+            //HERO.shoot();
             ENGINE.GAME.keymap[ENGINE.KEY.map.ctrl] = false; //NO repeat
 
         }

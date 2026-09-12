@@ -20,6 +20,7 @@ const MAP = {
         floor: "Wood1",
         ceil: "marbleFloor106",
         start: '[246,1]',
+        decals: '[[262,1,"FemDommes_23053","picture"],[264,1,"FemDommes_17543","picture"]]',
         lights: '[[484,1,"DuaLLantern_025","standard"],[236,3,"DuaLLantern_007","standard2"]]',
     }
 };
