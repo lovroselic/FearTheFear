@@ -160,7 +160,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.1.4",
+    VERSION: "0.1.5",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -1115,6 +1115,7 @@ const GAME = {
     WebGL_settings() {
         WebGL.VIEWS_ALLOWED = new Set([1, 3]);
         WebGL.GAME.setViewButtons();
+        ELEMENT._bb_for_internal_elements();
     },
     levelStart() {
         console.log("starting level", GAME.level);

@@ -1808,7 +1808,7 @@ const WORLD = {
             return [leftX, rightX, topY, bottomY];
         }
         function calcTall(CAT, R) {
-            const height = WebGL.INI[`${CAT}_HEIGHT`] *WebGL.INI.SCALE_DECAL;
+            const height = WebGL.INI[`${CAT}_HEIGHT`] * WebGL.INI.SCALE_DECAL;
             const width = height * R;
             const top = WebGL.INI.ADDITIONAL_TOP_OFFSET + WebGL.INI[`${CAT}_TOP`];
 
@@ -6897,6 +6897,16 @@ const ELEMENT = {
         const H = (BB.max.z - BB.min.z) * scale;
         return { W: W, H: H };
     },
+    _bb_for_internal_elements() {
+        for (const el of this.internalElements) {
+            this[el].boundingBox = this.getBoundingBox(this[el]);
+        }
+    },
+    internalElements: [
+        "FRONT_FACE", "BACK_FACE", "RIGHT_FACE", "LEFT_FACE", "TOP_FACE", "BOTTOM_FACE",
+        "CUBE", "CUBE_80", "CUBE_60", "CUBE_40", "CUBE_20", "CUBE_SM", "CUBE_CENTERED",
+        "BAR"
+    ],
     FRONT_FACE: {
         positions: [0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0],
         indices: [0, 1, 2, 0, 2, 3],

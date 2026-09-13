@@ -1069,6 +1069,70 @@ LoadTextures = [
 
 LoadAudio = [
     { srcName: "Fear The Fear - LaughingSkull.mp3", name: "Title" },
+
+    //action sounds
+    { srcName: "UseScroll.mp3", name: "PickBox" },
+    { srcName: "Scream.mp3", name: "Scream" },
+    { srcName: "SqueekyDoorOpen.mp3", name: "OpenGate" },
+    { srcName: "OpenGate.mp3", name: "LiftGate" },
+    { srcName: "ClosedDoor.mp3", name: "ClosedDoor" },
+    { srcName: "Keys.mp3", name: "Keys" },
+    { srcName: "Swallow.mp3", name: "Swallow" },
+    { srcName: "death.mp3", name: "Death" },
+    { srcName: "UseScroll.mp3", name: "UseScroll" },
+    { srcName: "Scroll.mp3", name: "Scroll" },
+    { srcName: "Potion.mp3", name: "Potion" },
+    { srcName: "Chirp.mp3", name: "Chirp" },
+    { srcName: "Failed magic.mp3", name: "MagicFail" },
+    { srcName: "Cast.mp3", name: "MagicCast" },
+    { srcName: "Power up.mp3", name: "PowerUp" },
+    { srcName: "Level up.mp3", name: "LevelUp" },
+    { srcName: "Pick up gold.mp3", name: "Pick" },
+    { srcName: "Evil laughter.mp3", name: "EvilLaughter" },
+    { srcName: "Explosion1.mp3", name: "Explosion" },
+    { srcName: "OpenChest.mp3", name: "OpenChest" },
+    { srcName: "SwordHit.mp3", name: "SwordHit" },
+    { srcName: "SwordMiss2.mp3", name: "SwordMiss" },
+    { srcName: "short-buzz.mp3", name: "Buzz" },
+    { srcName: "thud.mp3", name: "Thud" },
+    { srcName: "Fuse.mp3", name: "Fuse" },
+    { srcName: "AngryCat.mp3", name: "AngryCat" },
+    { srcName: "Sheep.mp3", name: "Sheep" },
+    { srcName: "Banshee.mp3", name: "Banshee" },
+    { srcName: "CatchFireball.mp3", name: "CatchFireball" },
+    { srcName: "PrincessScream.mp3", name: "PrincessScream" },
+    { srcName: "Eating.mp3", name: "Eating" },
+    { srcName: "Land.mp3", name: "Land" },
+    { srcName: "BirdScreech.mp3", name: "BirdScreech" },
+
+    //monstersounds
+    { srcName: "MonsterDeath.mp3", name: "MonsterDeath" },
+    { srcName: "MonsterAttack1.mp3", name: "MonsterAttack1" },
+    { srcName: "MonsterAttack2.mp3", name: "MonsterAttack2" },
+    { srcName: "SnakeAttack.mp3", name: "SnakeAttack" },
+    { srcName: "MonsterHurt.mp3", name: "MonsterHurt" },
+    { srcName: "MonsterHurt2.mp3", name: "MonsterHurt2" },
+    { srcName: "BatAttack.mp3", name: "BatAttack" },
+    { srcName: "MonsterHurt3.mp3", name: "MonsterHurt3" },
+    { srcName: "PainSqueek.mp3", name: "PainSqueek" },
+    { srcName: "DeathPain1.mp3", name: "DeathPain1" },
+    { srcName: "HumanAttack1.mp3", name: "HumanAttack1" },
+    { srcName: "Ow.mp3", name: "Ow" },
+    { srcName: "MonsterRoar.mp3", name: "MonsterRoar" },
+    { srcName: "BeastAttack.mp3", name: "BeastAttack" },
+    { srcName: "BeastAttack2.mp3", name: "BeastAttack2" },
+    { srcName: "DeepZombieAttack.mp3", name: "DeepZombieAttack" },
+    { srcName: "FemaleAttack1.mp3", name: "FemaleAttack1" },
+    { srcName: "FemaleAttack2.mp3", name: "FemaleAttack2" },
+    { srcName: "FemaleAttack3.mp3", name: "FemaleAttack3" },
+    { srcName: "FemaleAttack4.mp3", name: "FemaleAttack4" },
+    { srcName: "HurtScream.mp3", name: "HurtScream" },
+    { srcName: "Ow2.mp3", name: "Ow2" },
+    { srcName: "PiercingScream.mp3", name: "PiercingScream" },
+    { srcName: "Roar.mp3", name: "Roar" },
+    { srcName: "PigSqueal.mp3", name: "PigSqueal" },
+    { srcName: "PigAttack.mp3", name: "PigAttack" },
+    { srcName: "DragonRoar.mp3", name: "DragonRoar" },
 ];
 
 LoadShaders = [
@@ -1086,7 +1150,7 @@ LoadSprites = [
     //reserved
     { srcName: "Reserved/DeathPlace.webp", name: "DeathPlace" },
 
-     //action movables
+    //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
     { srcName: "ActionMovables/BabyDragon.webp", name: "BabyDragon" },
     { srcName: "ActionMovables/RedSpider.webp", name: "RedSpider" },
@@ -1233,6 +1297,16 @@ LoadSprites = [
     { srcName: "UI/Heart64.webp", name: "Heart" },
     { srcName: "UI/Floppy64.webp", name: "SavedOK" },
     { srcName: "UI/Beware64.webp", name: "SavedFail" },
+
+    //gold, valuables
+    { srcName: "Items/Coins.webp", name: "Coins" },
+    { srcName: "Items/GoldBar.webp", name: "GoldBar" },
+    { srcName: "Items/SilverBar.webp", name: "SilverBar" },
+    { srcName: "Items/GoldSphere.webp", name: "GoldSphere" },
+    { srcName: "Items/GoldCube.webp", name: "GoldCube" },
+    { srcName: "Items/RedGem.webp", name: "RedGem" },
+    { srcName: "Items/BlueGem.webp", name: "BlueGem" },
+    { srcName: "Items/GreenGem.webp", name: "GreenGem" },
 
     //scrolls
     { srcName: "Scrolls/SCR_Cripple2.webp", name: "SCR_Cripple" },

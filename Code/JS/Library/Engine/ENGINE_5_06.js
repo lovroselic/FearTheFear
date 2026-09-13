@@ -1383,8 +1383,6 @@ const ENGINE = {
         ELEMENT[NAME].textureCoordinates = webglVertexData[1];
         ELEMENT[NAME].vertexNormals = webglVertexData[2];
         ELEMENT[NAME].boundingBox = ELEMENT.getBoundingBox(ELEMENT[NAME]);
-
-
     },
     saveCTXAsPNG(CTX, filename, background = "#000000") {
         if (!CTX || !CTX.canvas) throw new Error("saveCTXAsPNG: expected a 2D canvas context.");
