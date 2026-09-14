@@ -20,9 +20,8 @@ const MAP = {
         floor: "Wood1",
         ceil: "marbleFloor106",
         start: '[246,1]',
-        decals: '[[262,1,"FemDommes_23053","picture"],[264,1,"FemDommes_17543","picture"]]',
-        lights: '[[236,3,"Candle54","standard",["1.99","10.0","1.0"]],[484,1,"DuaLLantern_011","standard",["1.99","5.0","0.0"]]]',
-        //lights: '[[236,3,"Candle54","standard",["9.99","50.0","5.0"]],[484,1,"DuaLLantern_011","standard",["9.99","50.0","5.0"]]]',
+        decals: '[[262,1,"FemDommes_23053","picture"],[264,1,"FemDommes_17543","picture"],[195,1,"Skull318","crest"]]',
+        lights: '[[236,3,"Candle54","standard",["9.99","50.0","5.0"]],[484,1,"DuaLLantern_011","standard",["9.99","50.0","5.0"]]]',
         gold: '[[36,"GoldCube"],[37,"GoldBar"],[39,"SilverBar"],[42,"RedGem"]]',
     }
 };
