@@ -4473,13 +4473,21 @@ class StaticDecal extends Decal {
 }
 
 class LightDecal extends Decal {
-    constructor(grid, face, texture, category, name, lightColor, expand, position = null) {
+    constructor(grid, face, texture, category, name, lightColor, expand, position = null,
+        ambientStrength = WebGL.DEFAULT_AMBIENT_STRENGTH,
+        diffuseStrength = WebGL.DEFAULT_DIFFUSE_STRENGTH,
+        specularStrength = WebGL.DEFAULT_SPECULAR_STRENGTH
+    ) {
         super(grid, face, texture, category, name);
         this.lightColor = lightColor;
         this.type = "LightDecal";
         this.interactive = false;
         this.expand = expand;
         this.position = position || LightDecal.setPosition(grid, face);
+        
+        this.ambientStrength = ambientStrength;
+        this.diffuseStrength = diffuseStrength;
+        this.specularStrength = specularStrength;
     }
     static setPosition(grid, face) {
         const gridType = grid.constructor.name;

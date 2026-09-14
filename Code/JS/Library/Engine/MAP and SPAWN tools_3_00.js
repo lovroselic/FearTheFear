@@ -242,6 +242,8 @@ const SPAWN_TOOLS = {
             const face = DirectionToFace(Vector.fromInt(L[1]));
             const picture = L[2];
             const type = L[3];
+            const strength = L[4].map(x => parseFloat(x));
+            console.warn("strength", strength);
             const sprite = SPRITE[picture];
             let expand = false;
             let category = "light";
@@ -256,7 +258,7 @@ const SPAWN_TOOLS = {
                 position = WORLD.surfaceLightPosition(quadNode, face, WebGL.INI.SURFACE_WALL_HEIGHT);
                 position = Vector3.from_array(position);
             }
-            LIGHTS3D.add(new LightDecal(grid, face, sprite, category, picture, LIGHT_COLORS[type], expand, position));
+            LIGHTS3D.add(new LightDecal(grid, face, sprite, category, picture, LIGHT_COLORS[type], expand, position, strength[0], strength[1], strength[2]));
         }
     },
     externalGates(map, GA) {

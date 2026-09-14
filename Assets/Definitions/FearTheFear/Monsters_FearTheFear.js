@@ -139,6 +139,9 @@ const COMMON_ITEM_TYPE = {
         explosionType: BlueExplosion,
         construct: Blue3D_Bouncer,
         collectible: false,
+        ambientStrength: 0.1,
+        diffuseStrength: 10.0,
+        specularStrength: 0.05,
     },
     Bounceball: {
         name: "Bounceball",
@@ -153,6 +156,9 @@ const COMMON_ITEM_TYPE = {
         explosionType: GreenMetalExplosion,
         construct: BouncingMissile,
         collectible: false,
+        ambientStrength: 0.1,
+        diffuseStrength: 10.0,
+        specularStrength: 0.05,
     },
     RedFireball: {
         name: "RedFireball",
@@ -167,6 +173,9 @@ const COMMON_ITEM_TYPE = {
         explosionType: ParticleExplosion,
         construct: Missile,
         collectible: false,
+        ambientStrength: 0.1,
+        diffuseStrength: 10.0,
+        specularStrength: 0.05,
     },
     Orb: {
         name: "Orb",
@@ -181,6 +190,9 @@ const COMMON_ITEM_TYPE = {
         explosionType: ParticleExplosion,
         construct: BouncingMissile,
         collectible: true,
+        ambientStrength: 0.1,
+        diffuseStrength: 10.0,
+        specularStrength: 0.05,
     },
     Scroll: {
         name: "Scroll",

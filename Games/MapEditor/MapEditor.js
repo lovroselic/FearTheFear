@@ -85,7 +85,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.24.0",
+    VERSION: "0.24.1",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -289,7 +289,7 @@ const GAME = {
         WebGL.VIEWS_ALLOWED = new Set([1, 3]);
 
         if (typeof INI !== "undefined" && Number.isFinite(INI.HERO_HEIGHT)) WebGL.INI.HERO_HEIGHT = INI.HERO_HEIGHT;
-         ELEMENT._bb_for_internal_elements();
+        ELEMENT._bb_for_internal_elements();
 
         //WebGL.CONFIG.setMovementMode("surface");
     },
@@ -1404,7 +1404,8 @@ const GAME = {
                         dirIndex = dir.toInt();
                         nameId = $("#light_decal")[0].value;
                         type = $("#lighttype")[0].value;
-                        $MAP.map.lights.push(Array(gridIndex, dirIndex, nameId, type));
+                        const strength = [$("#AmbientStrength")[0].value, $("#DiffuseStrength")[0].value, $("#SpecularStrength")[0].value];
+                        $MAP.map.lights.push(Array(gridIndex, dirIndex, nameId, type, strength));
                         break;
                     default:
                         $("#error_message").html(`Light placement not supported on value: ${currentValue}`);
