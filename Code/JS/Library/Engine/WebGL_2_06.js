@@ -54,6 +54,11 @@ const WebGL = {
     BUTTONS_APPENDED: false,                            // perspective buttons already appended  
     VIEWPORT_SPEED: 2 * 64,                             // speed of viewport moving
     USE_VIEWPORT: false,                                // use map bigger than screen, viewport movement clases with jump
+
+    DEFAULT_AMBIENT_STRENGTH: 9.99,
+    DEFAULT_DIFFUSE_STRENGTH: 50.0,
+    DEFAULT_SPECULAR_STRENGTH: 5.0,
+
     INI: {
         SCALE_DECAL: 1.0,                               // change/adapt decal scale for skewed surface based rendering
         ADDITIONAL_TOP_OFFSET: 0.0,                     // change/adapt top offset for skewed surface based rendering
@@ -848,6 +853,9 @@ const WebGL = {
                 lights: gl.getUniformLocation(this[prog].program, "uPointLights"),
                 lightColors: gl.getUniformLocation(this[prog].program, "uLightColors"),
                 lightDirections: gl.getUniformLocation(this[prog].program, "uLightDirections"),
+                lightAmbient: gl.getUniformLocation(this[prog].program, "uLightAmbientStrength"),
+                lightDiffuse: gl.getUniformLocation(this[prog].program, "uLightDiffuseStrength"),
+                lightSpecular: gl.getUniformLocation(this[prog].program, "uLightSpecularStrength"),
                 u_sampler: gl.getUniformLocation(this[prog].program, "uSampler"),
                 uMaterialAmbientColor: gl.getUniformLocation(this[prog].program, 'uMaterial.ambientColor'),
                 uMaterialDiffuseColor: gl.getUniformLocation(this[prog].program, 'uMaterial.diffuseColor'),
@@ -860,6 +868,9 @@ const WebGL = {
                 uGridSize: gl.getUniformLocation(this[prog].program, "uGridSize"),
                 uOcclusionOrigin: gl.getUniformLocation(this[prog].program, "uOcclusionOrigin"),
                 uOcclusionResolution: gl.getUniformLocation(this[prog].program, "uOcclusionResolution"),
+                innerAmbientStrength: gl.getUniformLocation(this[prog].program, "innerAmbientStrength"),
+                innerDiffuseStrength: gl.getUniformLocation(this[prog].program, "innerDiffuseStrength"),
+                innerSpecularStrength: gl.getUniformLocation(this[prog].program, "innerSpecularStrength"),
                 uUnlitTexture: gl.getUniformLocation(shaderProgram, "uUnlitTexture"),
             };
 
@@ -992,12 +1003,15 @@ const WebGL = {
                 modelViewMatrix: gl.getUniformLocation(shaderProgram, "uModelViewMatrix"),
                 uSampler: gl.getUniformLocation(shaderProgram, "uSampler"),
                 cameraPos: gl.getUniformLocation(shaderProgram, "uCameraPos"),
-                lights: gl.getUniformLocation(shaderProgram, "uPointLights"),
                 uScale: gl.getUniformLocation(shaderProgram, "uScale"),
                 uTranslate: gl.getUniformLocation(shaderProgram, "uTranslate"),
                 uItemPosition: gl.getUniformLocation(shaderProgram, "uItemPosition"),
+                lights: gl.getUniformLocation(shaderProgram, "uPointLights"),
                 lightColors: gl.getUniformLocation(shaderProgram, "uLightColors"),
                 lightDirections: gl.getUniformLocation(shaderProgram, "uLightDirections"),
+                lightAmbient: gl.getUniformLocation(shaderProgram, "uLightAmbientStrength"),
+                lightDiffuse: gl.getUniformLocation(shaderProgram, "uLightDiffuseStrength"),
+                lightSpecular: gl.getUniformLocation(shaderProgram, "uLightSpecularStrength"),
                 uRotY: gl.getUniformLocation(shaderProgram, "uRotateY"),
                 uMaterialAmbientColor: gl.getUniformLocation(shaderProgram, 'uMaterial.ambientColor'),
                 uMaterialDiffuseColor: gl.getUniformLocation(shaderProgram, 'uMaterial.diffuseColor'),
@@ -1057,6 +1071,9 @@ const WebGL = {
         const lights = [];
         const lightColors = [];
         const lightDirections = [];
+        const lightAmbient = [];
+        const lightDiffuse = [];
+        const lightSpecular = [];
 
         // Static lights
         for (let light of LIGHTS3D.POOL) {
@@ -1064,30 +1081,40 @@ const WebGL = {
             lightDirections.push(...dir.array);
             lights.push(...light.position.array);
             lightColors.push(...light.lightColor);
+            lightAmbient.push(light.ambientStrength || WebGL.DEFAULT_AMBIENT_STRENGTH);
+            lightDiffuse.push(light.diffuseStrength || WebGL.DEFAULT_DIFFUSE_STRENGTH);
+            lightSpecular.push(light.specularStrength || WebGL.DEFAULT_SPECULAR_STRENGTH);
         }
 
         //suns
-        this.computeSuns(lights, lightColors, lightDirections);
+        this.computeSuns(lights, lightColors, lightDirections, lightAmbient, lightDiffuse, lightSpecular);
 
         // Dynamic lights
         const dynLights = [];
         const dynLightColors = [];
         const dynLightDirs = [];
+        const dynLightAmbient = [];
+        const dynLightDiffuse = [];
+        const dynLightSpecular = [];
         let dynCount = 0;
 
         for (let source of this.dynamicLightSources) {
             for (let light of source.POOL) {
                 if (!light) continue;
 
-                dynLights.push(...light.pos.array);
-                dynLightColors.push(...light.lightColor);
-                dynLightDirs.push(0, 0, 0); // No specific direction
-
-                dynCount++;
                 if (dynCount > this.INI.DYNAMIC_LIGHTS_RESERVATION) {
                     console.error("Dynamic light sources exceed reserved memory!");
                     break;
                 }
+
+                dynLights.push(...light.pos.array);
+                dynLightColors.push(...light.lightColor);
+                dynLightDirs.push(0, 0, 0); // No specific direction
+                dynLightAmbient.push(light.ambientStrength ?? WebGL.DEFAULT_AMBIENT_STRENGTH);
+                dynLightDiffuse.push(light.diffuseStrength ?? WebGL.DEFAULT_DIFFUSE_STRENGTH);
+                dynLightSpecular.push(light.specularStrength ?? WebGL.DEFAULT_SPECULAR_STRENGTH);
+
+                dynCount++;
             }
         }
 
@@ -1096,24 +1123,36 @@ const WebGL = {
             dynLights.push(-1, -1, -1);
             dynLightColors.push(0, 0, 0);
             dynLightDirs.push(128, 128, 128);
+            dynLightAmbient.push(0);
+            dynLightDiffuse.push(0);
+            dynLightSpecular.push(0);
         }
 
         // Combine static and dynamic lights
         lights.push(...dynLights);
         lightColors.push(...dynLightColors);
         lightDirections.push(...dynLightDirs);
+        lightAmbient.push(...dynLightAmbient);
+        lightDiffuse.push(...dynLightDiffuse);
+        lightSpecular.push(...dynLightSpecular);
 
         return {
             lights: new Float32Array(lights),
             lightColors: new Float32Array(lightColors),
             lightDirections: new Float32Array(lightDirections),
+            lightAmbient: new Float32Array(lightAmbient),
+            lightDiffuse: new Float32Array(lightDiffuse),
+            lightSpecular: new Float32Array(lightSpecular),
         };
     },
-    computeSuns(lights, lightColors, lightDirections) {
+    computeSuns(lights, lightColors, lightDirections, lightAmbient, lightDiffuse, lightSpecular) {
         for (let sun of SUN3D.POOL) {
             lights.push(...sun.pos.array);
             lightDirections.push(...sun.dir.array);
             lightColors.push(...sun.lightColor);
+            lightAmbient.push(sun.ambientStrength ?? WebGL.DEFAULT_AMBIENT_STRENGTH);
+            lightDiffuse.push(sun.diffuseStrength ?? WebGL.DEFAULT_DIFFUSE_STRENGTH);
+            lightSpecular.push(sun.specularStrength ?? WebGL.DEFAULT_SPECULAR_STRENGTH);
         }
     },
     enableAttributes(gl) {
@@ -1214,11 +1253,15 @@ const WebGL = {
         gl.uniform1f(this.program.uniformLocations.uMaterialMetallic, MATERIAL.wall.metallic);
         gl.uniform1f(this.program.uniformLocations.uMaterialFresnelStrength, MATERIAL.wall.fresnelStrength);
 
-        let { lights, lightColors, lightDirections } = this.computeLights();
+        // lights (static, dynamic)
+        let { lights, lightColors, lightDirections, lightAmbient, lightDiffuse, lightSpecular } = this.computeLights();
 
         gl.uniform3fv(this.program.uniformLocations.lights, lights);
         gl.uniform3fv(this.program.uniformLocations.lightColors, lightColors);
         gl.uniform3fv(this.program.uniformLocations.lightDirections, lightDirections);
+        gl.uniform1fv(this.program.uniformLocations.lightAmbient, lightAmbient);
+        gl.uniform1fv(this.program.uniformLocations.lightDiffuse, lightDiffuse);
+        gl.uniform1fv(this.program.uniformLocations.lightSpecular, lightSpecular);
 
         //3D occlusion map 
         gl.activeTexture(gl.TEXTURE1); // Use texture unit 1
@@ -1228,7 +1271,7 @@ const WebGL = {
         gl.uniform2fv(this.program.uniformLocations.uOcclusionOrigin, map.occlusionMap.originXZ);
         gl.uniform1f(this.program.uniformLocations.uOcclusionResolution, map.occlusionMap.resolution);
 
-        //defaults that can be changed
+        //inner light defaults that can be changed
         gl.uniform1f(this.program.uniformLocations.innerAmbientStrength, this.ambient_light_strength);
         gl.uniform1f(this.program.uniformLocations.innerDiffuseStrength, this.diffuse_light_strength);
         gl.uniform1f(this.program.uniformLocations.innerSpecularStrength, this.specular_light_strength);
@@ -1243,6 +1286,9 @@ const WebGL = {
         gl.uniform3fv(this.model_program.uniforms.lights, lights);
         gl.uniform3fv(this.model_program.uniforms.lightColors, lightColors);
         gl.uniform3fv(this.model_program.uniforms.lightDirections, lightDirections);
+        gl.uniform1fv(this.model_program.uniforms.lightAmbient, lightAmbient);
+        gl.uniform1fv(this.model_program.uniforms.lightDiffuse, lightDiffuse);
+        gl.uniform1fv(this.model_program.uniforms.lightSpecular, lightSpecular);
 
         gl.activeTexture(gl.TEXTURE0); // Use texture unit 0
         gl.uniform1i(this.model_program.uniforms.u_sampler, 0);
@@ -1263,6 +1309,11 @@ const WebGL = {
         gl.uniform3fv(this.model_program.uniforms.uGridSize, map.occlusionMap.size);
         gl.uniform2fv(this.model_program.uniforms.uOcclusionOrigin, map.occlusionMap.originXZ);
         gl.uniform1f(this.model_program.uniforms.uOcclusionResolution, map.occlusionMap.resolution);
+
+        //inner light defaults that can be changed
+        gl.uniform1f(this.model_program.uniforms.innerAmbientStrength, this.ambient_light_strength);
+        gl.uniform1f(this.model_program.uniforms.innerDiffuseStrength, this.diffuse_light_strength);
+        gl.uniform1f(this.model_program.uniforms.innerSpecularStrength, this.specular_light_strength);
 
         /** PICK */
         //pickProgram uniforms and defaults

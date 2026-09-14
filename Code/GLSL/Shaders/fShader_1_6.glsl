@@ -3,6 +3,7 @@
 /*
 * v1.6
 * DownHeel - specular fixes + corrected high-resolution occlusion raycast
+* FearTheFear light strengths for point light
 *
 * Occlusion notes:
 * - uOcclusionResolution = texels per world/grid unit.
@@ -49,6 +50,9 @@ const int N_LIGHTS = 1;                                         // replaced befo
 uniform vec3 uPointLights[N_LIGHTS];
 uniform vec3 uLightColors[N_LIGHTS];
 uniform vec3 uLightDirections[N_LIGHTS];
+uniform float uLightAmbientStrength[N_LIGHTS];
+uniform float uLightDiffuseStrength[N_LIGHTS];
+uniform float uLightSpecularStrength[N_LIGHTS];
 
 uniform sampler2D uSampler;
 uniform vec3 uCameraPos;
@@ -79,9 +83,9 @@ const vec3 GLOBAL_AMBIENT = vec3(0.05f);
 const float DEFAULT_ROUGHNESS = 0.65f;
 const float MIN_ROUGHNESS = 0.04f;
 
-const float PL_AmbientStrength = 9.99f;
-const float PL_DiffuseStrength = 50.0f;
-const float PL_SpecularStrength = 5.0f;
+//const float PL_AmbientStrength = 9.99f;
+//const float PL_DiffuseStrength = 50.0f;
+//const float PL_SpecularStrength = 5.0f;
 
 const float IGNORE_ALPHA = 0.1f;
 
@@ -145,7 +149,6 @@ ivec3 getOcclusionTextureSize();
 bool isOcclusion3D();
 vec3 worldToOcclusionCoord(vec3 position3D);
 bool isOccludedTexel(ivec3 texel);
-//bool isOccluded(vec3 position3D);
 
 // ----------------------------------------------------------------------------
 
@@ -177,27 +180,7 @@ void main(void) {
     vec3 specularPart = vec3(0.0f);
 
     // Inner light from camera position.
-    vec3 innerLight = CalcLight(
-        uCameraPos,
-        FragPos,
-        viewDir,
-        norm,
-        innerLightColor,
-        shininess,
-        ambientColor,
-        diffuseColor,
-        specularColor,
-        roughness,
-        metallic,
-        fresnelStrength,
-        innerAmbientStrength,
-        innerDiffuseStrength,
-        innerSpecularStrength,
-        1,
-        viewDir,
-        baseColor,
-        specularPart
-    );
+    vec3 innerLight = CalcLight(uCameraPos, FragPos, viewDir, norm, innerLightColor, shininess, ambientColor, diffuseColor, specularColor, roughness, metallic, fresnelStrength, innerAmbientStrength, innerDiffuseStrength, innerSpecularStrength, 1, viewDir, baseColor, specularPart);
 
     specularTotal += specularPart;
 
@@ -207,27 +190,7 @@ void main(void) {
         if (uPointLights[i].x < 0.0f)
             continue;
 
-        PL_output += CalcLight(
-            uPointLights[i],
-            FragPos,
-            viewDir,
-            norm,
-            uLightColors[i],
-            shininess,
-            ambientColor,
-            diffuseColor,
-            specularColor,
-            roughness,
-            metallic,
-            fresnelStrength,
-            PL_AmbientStrength,
-            PL_DiffuseStrength,
-            PL_SpecularStrength,
-            0,
-            uLightDirections[i],
-            baseColor,
-            specularPart
-        );
+        PL_output += CalcLight(uPointLights[i], FragPos, viewDir, norm, uLightColors[i], shininess, ambientColor, diffuseColor, specularColor, roughness, metallic, fresnelStrength, uLightAmbientStrength[i], uLightDiffuseStrength[i], uLightSpecularStrength[i], 0, uLightDirections[i], baseColor, specularPart);
 
         specularTotal += specularPart;
     }
@@ -418,11 +381,7 @@ bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, float illumination) {
     if (dirLen < EPSILON)
         return false;
 
-    vec3 stepDir = vec3(
-        direction.x > EPSILON ? 1.0f : (direction.x < -EPSILON ? -1.0f : 0.0f),
-        direction.y > EPSILON ? 1.0f : (direction.y < -EPSILON ? -1.0f : 0.0f),
-        direction.z > EPSILON ? 1.0f : (direction.z < -EPSILON ? -1.0f : 0.0f)
-    );
+    vec3 stepDir = vec3(direction.x > EPSILON ? 1.0f : (direction.x < -EPSILON ? -1.0f : 0.0f), direction.y > EPSILON ? 1.0f : (direction.y < -EPSILON ? -1.0f : 0.0f), direction.z > EPSILON ? 1.0f : (direction.z < -EPSILON ? -1.0f : 0.0f));
 
     ivec3 stepCell = ivec3(stepDir);
     ivec3 currentCell = ivec3(floor(rayOrigin));
@@ -437,9 +396,7 @@ bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, float illumination) {
     if (stepDir.x != 0.0f) {
         tDelta.x = 1.0f / abs(direction.x);
 
-        float nextBoundaryX = (stepDir.x > 0.0f)
-            ? floor(rayOrigin.x) + 1.0f
-            : floor(rayOrigin.x);
+        float nextBoundaryX = (stepDir.x > 0.0f) ? floor(rayOrigin.x) + 1.0f : floor(rayOrigin.x);
 
         tMax.x = abs((nextBoundaryX - rayOrigin.x) / direction.x);
     }
@@ -449,9 +406,7 @@ bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, float illumination) {
     if (stepDir.y != 0.0f) {
         tDelta.y = 1.0f / abs(direction.y);
 
-        float nextBoundaryY = (stepDir.y > 0.0f)
-            ? floor(rayOrigin.y) + 1.0f
-            : floor(rayOrigin.y);
+        float nextBoundaryY = (stepDir.y > 0.0f) ? floor(rayOrigin.y) + 1.0f : floor(rayOrigin.y);
 
         tMax.y = abs((nextBoundaryY - rayOrigin.y) / direction.y);
     }
@@ -461,9 +416,7 @@ bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, float illumination) {
     if (stepDir.z != 0.0f) {
         tDelta.z = 1.0f / abs(direction.z);
 
-        float nextBoundaryZ = (stepDir.z > 0.0f)
-            ? floor(rayOrigin.z) + 1.0f
-            : floor(rayOrigin.z);
+        float nextBoundaryZ = (stepDir.z > 0.0f) ? floor(rayOrigin.z) + 1.0f : floor(rayOrigin.z);
 
         tMax.z = abs((nextBoundaryZ - rayOrigin.z) / direction.z);
     }
@@ -523,11 +476,6 @@ vec3 worldToOcclusionCoord(vec3 position3D) {
 
     return vec3(texXY.x, texXY.y, texZ);
 }
-
-/* bool isOccluded(vec3 position3D) {
-    vec3 occCoord = worldToOcclusionCoord(position3D);
-    return isOccludedTexel(ivec3(floor(occCoord)));
-} */
 
 bool isOccludedTexel(ivec3 texel) {
     ivec3 size = getOcclusionTextureSize();
