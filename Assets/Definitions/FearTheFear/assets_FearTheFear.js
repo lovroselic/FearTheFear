@@ -1028,7 +1028,6 @@ LoadTextures = [
     { srcName: "ObjectTextures/Owl_color.webp", name: "Owl_color" },
     { srcName: "ObjectTextures/dragon_greenColor.webp", name: "GreenManaDragon" },
 
-
     /** other object textures */
     { srcName: "ObjectTextures/Apple_BaseColor.webp", name: "Apple_BaseColor" },
     { srcName: "ObjectTextures/Pear_baseColor.webp", name: "Pear_baseColor" },
@@ -1137,7 +1136,7 @@ LoadAudio = [
 
 LoadShaders = [
     'vShader_1_2.glsl',
-    'fShader_1_5.glsl',
+    'fShader_1_6.glsl',
     'pick_vShader_1_0.glsl', 'pick_fShader_1_0.glsl',
     'particle_render_fShader_1_1.glsl', 'particle_render_vShader_1_0.glsl',
     'particle_transform_fShader_1_0.glsl', 'particle_transform_vShader_1_1.glsl',

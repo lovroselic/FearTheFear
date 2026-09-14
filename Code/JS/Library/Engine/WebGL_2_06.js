@@ -5192,6 +5192,7 @@ class BouncingMissile extends Missile {
         this.originalScale = new Float32Array(this.scale);
         this.friendly = friendly;
         this.collectibleType = collectibleType;
+        this.explosionType = explosionType;
     }
     static calcMana(magic) {
         return Math.floor(1.1 * (magic ** 1.1));

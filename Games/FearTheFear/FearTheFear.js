@@ -160,7 +160,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.1.5",
+    VERSION: "0.1.6",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -236,7 +236,7 @@ const PRG = {
         if (DEBUG.VERBOSE) {
             //WebGL.VERBOSE = true;
             //AI.VERBOSE = true;
-           //ENGINE.verbose = true;
+            //ENGINE.verbose = true;
             MAP_TOOLS.INI.VERBOSE = true;
             //MINIMAP.verbose();
         }
@@ -691,7 +691,7 @@ const HERO = {
         HERO.canShoot = false;
         const position = HERO.player.pos.translate(HERO.player.dir, HERO.player.r);
         const missile = new BouncingMissile(position, HERO.player.dir, COMMON_ITEM_TYPE.Orb, HERO.magic, ParticleExplosion, true, INTERACTION_OBJECT.Orb);
-        //console.warn("hero shoots", missile);
+        console.warn("hero shoots", missile);
         MISSILE3D.add(missile);
         setTimeout(() => (HERO.canShoot = true), INI.HERO_SHOOT_TIMEOUT);
         return;
@@ -1115,6 +1115,9 @@ const GAME = {
     WebGL_settings() {
         WebGL.VIEWS_ALLOWED = new Set([1, 3]);
         WebGL.GAME.setViewButtons();
+        WebGL.ambient_light_strength = 0.3;
+        WebGL.diffuse_light_strength = 9.0;
+        WebGL.specular_light_strength = 1.5;
         ELEMENT._bb_for_internal_elements();
     },
     levelStart() {
@@ -1629,6 +1632,8 @@ const GAME = {
         //debug
         if (map[ENGINE.KEY.map.F7]) {
             if (!DEBUG.keys) return;
+            DEBUG.setAdjustment();
+            ENGINE.GAME.keymap[ENGINE.KEY.map.F7] = false;
         }
         if (map[ENGINE.KEY.map.F8]) {
             if (!DEBUG.keys) return;
@@ -1658,6 +1663,17 @@ const GAME = {
             console.log("#######################################################");
         }
 
+        if (map[ENGINE.KEY.map.plus]) {
+            if (!DEBUG.keys) return;
+            DEBUG.incAjustment();
+            ENGINE.GAME.keymap[ENGINE.KEY.map.plus] = false;
+        }
+        if (map[ENGINE.KEY.map.minus]) {
+            if (!DEBUG.keys) return;
+            DEBUG.decAjustment();
+            ENGINE.GAME.keymap[ENGINE.KEY.map.minus] = false;
+        }
+
         //controls
         if (map[ENGINE.KEY.map.left]) {
             TITLE.stack.scrollIndex--;
@@ -1681,7 +1697,7 @@ const GAME = {
             ENGINE.GAME.keymap[ENGINE.KEY.map.enter] = false;
         }
         if (map[ENGINE.KEY.map.ctrl]) {
-            //HERO.shoot();
+            HERO.shoot();
             ENGINE.GAME.keymap[ENGINE.KEY.map.ctrl] = false; //NO repeat
 
         }

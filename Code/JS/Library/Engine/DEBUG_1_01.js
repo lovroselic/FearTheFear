@@ -19,6 +19,39 @@ const DEBUG = {
     max17: false,
     AUTO_TEST: false,
     VERSION: "1.1",
+    _adjustmentIndex: 0,
+    adjustments: [
+        {
+            attribute: "ambient_light_strength",
+            step: 0.05,
+        },
+        {
+            attribute: "diffuse_light_strength",
+            step: 0.5,
+        },
+        {
+            attribute: "specular_light_strength",
+            step: 0.1,
+        },
+    ],
+    setAdjustment() {
+        const L = DEBUG.adjustments.length;
+        DEBUG._adjustmentIndex += 1;
+        DEBUG._adjustmentIndex += L;
+        DEBUG._adjustmentIndex %= L;
+        console.info("Adjustment: ", DEBUG._adjustmentIndex, DEBUG.adjustments[DEBUG._adjustmentIndex].attribute, WebGL[DEBUG.adjustments[DEBUG._adjustmentIndex].attribute]);
+    },
+    incAjustment() {
+        WebGL[DEBUG.adjustments[DEBUG._adjustmentIndex].attribute] += DEBUG.adjustments[DEBUG._adjustmentIndex].step;
+        console.info("adjustment inc", DEBUG.adjustments[DEBUG._adjustmentIndex].attribute, WebGL[DEBUG.adjustments[DEBUG._adjustmentIndex].attribute]);
+
+    },
+    decAjustment() {
+        WebGL[DEBUG.adjustments[DEBUG._adjustmentIndex].attribute] -= DEBUG.adjustments[DEBUG._adjustmentIndex].step;
+        WebGL[DEBUG.adjustments[DEBUG._adjustmentIndex].attribute] = Math.max(WebGL[DEBUG.adjustments[DEBUG._adjustmentIndex].attribute], 0);
+        console.info("adjustment dec", DEBUG.adjustments[DEBUG._adjustmentIndex].attribute, WebGL[DEBUG.adjustments[DEBUG._adjustmentIndex].attribute]);
+    },
+    ///
     calledFunction() {
         const caller = new Error().stack
             ?.split("\n")[2]

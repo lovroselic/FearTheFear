@@ -85,7 +85,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.23.2",
+    VERSION: "0.24.0",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -289,6 +289,7 @@ const GAME = {
         WebGL.VIEWS_ALLOWED = new Set([1, 3]);
 
         if (typeof INI !== "undefined" && Number.isFinite(INI.HERO_HEIGHT)) WebGL.INI.HERO_HEIGHT = INI.HERO_HEIGHT;
+         ELEMENT._bb_for_internal_elements();
 
         //WebGL.CONFIG.setMovementMode("surface");
     },

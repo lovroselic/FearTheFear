@@ -1,7 +1,7 @@
 #version 300 es
 ///fShader///
 /*
-* v1.5
+* v1.6
 * DownHeel - specular fixes + corrected high-resolution occlusion raycast
 *
 * Occlusion notes:
@@ -49,6 +49,7 @@ const int N_LIGHTS = 1;                                         // replaced befo
 uniform vec3 uPointLights[N_LIGHTS];
 uniform vec3 uLightColors[N_LIGHTS];
 uniform vec3 uLightDirections[N_LIGHTS];
+
 uniform sampler2D uSampler;
 uniform vec3 uCameraPos;
 uniform Material uMaterial;
@@ -144,7 +145,7 @@ ivec3 getOcclusionTextureSize();
 bool isOcclusion3D();
 vec3 worldToOcclusionCoord(vec3 position3D);
 bool isOccludedTexel(ivec3 texel);
-bool isOccluded(vec3 position3D);
+//bool isOccluded(vec3 position3D);
 
 // ----------------------------------------------------------------------------
 
@@ -523,10 +524,10 @@ vec3 worldToOcclusionCoord(vec3 position3D) {
     return vec3(texXY.x, texXY.y, texZ);
 }
 
-bool isOccluded(vec3 position3D) {
+/* bool isOccluded(vec3 position3D) {
     vec3 occCoord = worldToOcclusionCoord(position3D);
     return isOccludedTexel(ivec3(floor(occCoord)));
-}
+} */
 
 bool isOccludedTexel(ivec3 texel) {
     ivec3 size = getOcclusionTextureSize();
