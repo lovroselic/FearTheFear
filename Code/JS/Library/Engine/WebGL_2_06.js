@@ -3568,6 +3568,7 @@ class $3D_player {
 
         this.setMode("idle");
         this.actionModes = ["attacking"];
+        this.continuousModes = ["falling", "jumping"];
         this.actionCallback = null;
         this.initTextureMap(TEXTURE[this.texture]);
         this.velocity_Z = 0.0;
@@ -3668,6 +3669,8 @@ class $3D_player {
             EXPLOSION3D.add(new LandExplosion(landExplosionPosition));
         }
 
+        this.setMode('idle');
+
         //
         //const feetPos3 = this.pos.translate(UP3, this.heigth);
         //console.warn("jump concluded feetpos", feetPos3.y);
@@ -3688,6 +3691,7 @@ class $3D_player {
         this.velocity_Z = jumpParams.velocity_Z;
         this.jumpSpeed = jumpParams.moveSpeed;                                                              // Adjusted horizontal speed
         this.acceleration_Z = WebGL.INI.GRAVITY;
+        this.setMode('jumping');
     }
     fallingDamage() {
         let cutOff = WebGL.INI.DEFAULT_FALL_CUTOFF;
@@ -3754,6 +3758,7 @@ class $3D_player {
         this.descendPhase = true;
         this.velocity_Z = Math.min(this.velocity_Z, 0.0);
         this.setPos(this.pos.adjuctCirclePos(this.r));                      //push hero to inside of the grid to avoid landing mid grid!
+        this.setMode("falling");
     }
     checkLanding(nextPos3) {
         const feetPos3 = nextPos3.translate(UP3, this.heigth);                                      //the position of soles
@@ -3833,49 +3838,51 @@ class $3D_player {
         this.texture = this.textureMap[label];
     }
     setMode(mode) {
-        /**
-         * idle             : draws skin
-         * walking          : animation 0
-         * attacking        : animation 1
-         * Breaking:        : animation 0
-         * LeftMove:        : animation 1
-         * RightMove        : animation 2
-         * Sliding          : animation 3
-         */
         if (this.mode === 'idle' && mode === 'idle') this.resetBirth();
         this.mode = mode;
         if (this.actor) {
             switch (this.mode) {
                 case "idle":
                 case "walking":
-                    this.actor.animationIndex = 0;
+                    this.actor.animationIndex = this.getAnimationIndex("Walk");
                     this.actionCallback = null;
                     break;
                 case "attacking":
-                    this.actor.animationIndex = 1;
+                    this.actor.animationIndex = this.getAnimationIndex("Attack");
                     this.actionCallback = this.attackPerformed;
                     this.resetBirth();
                     break;
                 case "Breaking":
-                    this.actor.animationIndex = 0;
+                    this.actor.animationIndex = this.getAnimationIndex("Breaking");;
                     this.actionCallback = null;
                     break;
                 case "LeftMove":
-                    this.actor.animationIndex = 1;
+                    this.actor.animationIndex = this.getAnimationIndex("LeftMove");;
                     this.actionCallback = null;
                     break;
                 case "RightMove":
-                    this.actor.animationIndex = 2;
+                    this.actor.animationIndex = this.getAnimationIndex("RightMove");;
                     this.actionCallback = null;
                     break;
                 case "Sliding":
-                    this.actor.animationIndex = 3;
+                    this.actor.animationIndex = this.getAnimationIndex("Sliding");;
+                    this.actionCallback = null;
+                    break;
+                case "jumping":
+                    this.actor.animationIndex = this.getAnimationIndex("Jump");
+                    this.actionCallback = null;
+                    break;
+                case "falling":
+                    this.actor.animationIndex = this.getAnimationIndex("Fall");
                     this.actionCallback = null;
                     break;
                 default:
-                    throw Error(`3D played mode error: ${this.mode}`);
+                    throw Error(`3D player mode error: ${this.mode}`);
             }
         }
+    }
+    getAnimationIndex(animationName) {
+        return this.model.animationMap[animationName];
     }
     setModel() {
         this.model = $3D_MODEL[this.model];
@@ -4392,6 +4399,8 @@ class $3D_player {
             case "RightMove":
             case "LeftMove":
             case "Breaking":
+            case "jumping":
+            case "falling":
                 gl.uniformMatrix4fv(uJointMat, false, this.jointMatrix);
                 break;
             default:

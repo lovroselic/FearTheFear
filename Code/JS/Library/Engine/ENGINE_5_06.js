@@ -2314,6 +2314,9 @@ const ENGINE = {
 
                         //add to models
                         $3D_MODEL[modelName] = new $3D_Model(modelName, buffer, images, meshes, samplers, skins, animations);
+                        $3D_MODEL[modelName].animationMap = Object.fromEntries(
+                            animations.map((animation, index) => [animation.name, index])
+                        );
                         //finished
 
                         ENGINE.LOAD.Models++;

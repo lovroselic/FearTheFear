@@ -1317,7 +1317,7 @@
 					}
 				}
 			],
-			"name":"[Action Stash]",
+			"name":"Temp",
 			"samplers":[
 				{
 					"input":7,
@@ -2440,7 +2440,7 @@
 					}
 				}
 			],
-			"name":"2_Climb",
+			"name":"Climb",
 			"samplers":[
 				{
 					"input":101,
@@ -3563,7 +3563,7 @@
 					}
 				}
 			],
-			"name":"3_jump",
+			"name":"Jump",
 			"samplers":[
 				{
 					"input":101,
@@ -4686,7 +4686,7 @@
 					}
 				}
 			],
-			"name":"4_Fall",
+			"name":"Fall",
 			"samplers":[
 				{
 					"input":286,
@@ -5809,7 +5809,7 @@
 					}
 				}
 			],
-			"name":"5_Swim",
+			"name":"Swim",
 			"samplers":[
 				{
 					"input":286,
@@ -6932,7 +6932,7 @@
 					}
 				}
 			],
-			"name":"6_idle",
+			"name":"Idle",
 			"samplers":[
 				{
 					"input":286,
@@ -8055,7 +8055,7 @@
 					}
 				}
 			],
-			"name":"7_duck",
+			"name":"Duck",
 			"samplers":[
 				{
 					"input":286,
@@ -9178,7 +9178,7 @@
 					}
 				}
 			],
-			"name":"1_Attack",
+			"name":"Attack",
 			"samplers":[
 				{
 					"input":556,
@@ -10301,7 +10301,7 @@
 					}
 				}
 			],
-			"name":"0_Walk",
+			"name":"Walk",
 			"samplers":[
 				{
 					"input":7,
