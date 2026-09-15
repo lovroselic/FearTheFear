@@ -15,7 +15,7 @@ TODO:
 */
 
 const IndexArrayManagers = {
-    VERSION: "4.03",
+    VERSION: "4.04",
     VERBOSE: false,
     DEAD_LAPSED_TIME: 5,
     DEADLY_TOUCH: false,

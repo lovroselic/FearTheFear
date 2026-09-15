@@ -24,6 +24,7 @@ const MAP = {
         lights: '[[236,3,"Candle54","standard",["9.99","50.0","5.0"]],[484,1,"DuaLLantern_011","standard",["9.99","50.0","5.0"]]]',
         monsters: '[[74,"Bat",3]]',
         gold: '[[36,"GoldCube"],[37,"GoldBar"],[39,"SilverBar"],[42,"RedGem"]]',
+        containers: '[[44,"TreasureChest","GOLD_ITEM_TYPE.GoldSphere",7]]',
         movables: '[[59,"RoastChicken"]]',
     }
 };

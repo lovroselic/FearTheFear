@@ -1758,7 +1758,16 @@ const SKY_DECALS = [
 
 
 const TRIGGER_DECALS = ["SmoothWallButton", "RockTriggerButton", "MarbleTriggerButton", "PurpleTriggerButton"];
-const LAIR_DECALS = [].sort();
+const LAIR_DECALS = [
+    "Lair01", "Lair02", "Lair03", "Lair04", "Lair05", "Lair06", "Lair07", "Lair08", "Lair09", "Lair10", "Lair11", "Lair12",
+    "Lair13", "Lair14", "Lair15", "Lair16", "Lair17", "Lair18", "Lair19", "Lair20", "Lair21", "Lair22", "Lair23", "Lair24",
+    "Lair25", "Lair26", "Lair27", "Lair28", "Lair29", "Lair30", "Lair31", "Lair32", "Lair33", "Lair34", "Lair35", "Lair36",
+    "Lair37", "Lair38", "Lair39", "Lair40", "Lair41", "Lair42", "Lair43", "Lair44", "Lair45", "Lair451", "Lair452", "Lair453",
+    "Lair454", "Lair455", "Lair456", "Lair457", "Lair458", "Lair46", "Lair47", "Lair48", "Lair49", "Lair50", "Lair51", "Lair52",
+    "Lair53", "Lair54", "Lair55", "Lair56", "Lair57", "Lair58", "Lair59", "Lair60", "Lair61", "Lair62", "Lair63", "Lair64",
+    "Lair65", "Lair66", "Lair67", "Lair68", "Lair69", "Lair70", "Lair71", "Lair72", "Lair73", "Lair74", "Lair75", "Lair76",
+    "Lair77", "Lair78", "Lair79", "Lair80", "Lair81", "Lair82",
+].sort();
 
 const CONTAINER_LIST = [];
 if (typeof CONTAINER_ITEM_TYPE !== "undefined") {

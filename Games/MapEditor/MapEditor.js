@@ -965,7 +965,7 @@ const GAME = {
         }
 
         //lairs
-        if (typeof TRIGGER_LAIR_DECALSDECALS !== "undefined" && LAIR_DECALS.length > 0) {
+        if (typeof LAIR_DECALS !== "undefined" && LAIR_DECALS.length > 0) {
             for (const lair of LAIR_DECALS) {
                 $("#lair_type").append(`<option value="${lair}">${lair}</option>`);
             }
