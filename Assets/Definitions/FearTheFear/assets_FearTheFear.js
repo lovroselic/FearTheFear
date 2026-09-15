@@ -30,7 +30,7 @@ LoadObjects = [
 ];
 
 LoadModels = [
-    'ThePrincess.gltf',
+    "AnimatedPrincess.gltf",
     "Chicken.gltf", "Pig.gltf", "Sheep.gltf",
     "Bat.gltf", "MissGalaxy.gltf", "Spider.gltf", "Dragon.gltf",
     "mandy.gltf", "NeverBlink.gltf", "EvilNun.gltf", "LizardMan.gltf", "NecroMorph.gltf", "CyGirl.gltf",

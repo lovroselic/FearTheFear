@@ -2403,10 +2403,12 @@ const ENGINE = {
                 function processAccessor(model, buffer, idx) {
 
                     const accessor = model.accessors[idx];
+
                     if (!accessor) {
                         console.error(model.meshes[0].name, idx);
                     }
-                    const bufferView = model.bufferViews[idx];
+                    //const bufferView = model.bufferViews[idx];
+                    const bufferView = model.bufferViews[accessor.bufferView];
                     const component_type = GL_CONSTANT[accessor.componentType];
 
                     const TArrLookup = {
@@ -2420,7 +2422,9 @@ const ENGINE = {
                     const TArr = TArrLookup[component_type];
                     if (!TArr) throw new Error(`Illegal component type: ${component_type}`);
                     const aLen = accessor.count * GL_DATA_LENGTH[accessor.type];
-                    let array = new TArr(buffer, bufferView.byteOffset, aLen);
+                    //let array = new TArr(buffer, bufferView.byteOffset, aLen);
+                    const byteOffset = (bufferView.byteOffset ?? 0) + (accessor.byteOffset ?? 0);
+                    let array = new TArr(buffer, byteOffset, aLen);
                     let target = GL_CONSTANT[bufferView.target] || null;
                     const min = accessor.min || null;
                     const max = accessor.max || null;
