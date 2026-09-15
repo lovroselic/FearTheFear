@@ -46,14 +46,16 @@ const WebGL = {
     PRUNE: true,                                        // if true, only visible faces are considered - looks bad in 3rd person, but the amount of vertices are significantlly reduced
     PRUNE_BLOCKS: true,                                 // if true, only visible blocks considered - looks better 3rd person, a compromise which allows separate pruning of faces
     HERO_AS_INNER: false,                               // if true inner light comes from hero player pos, not from camera
-    USE_SHADOW: false,                                  // if true draws shaow on the floor from the fake sun
+    USE_SHADOW: false,                                  // if true draws shadow on the floor from the fake sun
     USE_INTERACTION: true,                              // if true, draws interaction buffer
-    FIRST_PERSON_DUAL_DISPLAY: true,                    // if true displays alos the hero model
+    FIRST_PERSON_DUAL_DISPLAY: true,                    // if true displays also the hero model
     NO_TOP_CEILING: false,                              // if true we don't display ctop ceiling  regardless of first person
     VIEWS_ALLOWED: new Set([1, 2, 3, 4, 5, 6, 7]),      // which cameras are set - default all, sys expects a set
     BUTTONS_APPENDED: false,                            // perspective buttons already appended  
     VIEWPORT_SPEED: 2 * 64,                             // speed of viewport moving
     USE_VIEWPORT: false,                                // use map bigger than screen, viewport movement clases with jump
+    CAMERA_SAFETY_WITH_ZMAP: false,                     // use zMap to determine the safety of 3rd person camera
+    CAMERA_SAFETY_WITH_GA: true,                        // use grid array (GA) to determine the safety of 3rd person camera
 
     DEFAULT_AMBIENT_STRENGTH: 9.99,
     DEFAULT_DIFFUSE_STRENGTH: 50.0,
@@ -2701,6 +2703,7 @@ class $3D_Camera {
         this.reference = reference;
         this.setFov(fov);
         this.update();
+        this.GA = this.reference.GA;
     }
     setFov(fov = 70) {
         this.fov = Math.radians(fov);
@@ -2710,34 +2713,58 @@ class $3D_Camera {
         this.updateDir();
         pos = pos.translate(this.reference.dir.reverse2D(), this.back_offset);
 
-        if (this.isCameraSafe(pos) || !this.pos) {
-            this.pos = pos;
-        } else {
-            //if (!pos) console.error("pos not defined", pos);
-            //if (!this.reference.pos) console.error("this.reference.pos not defined", this.reference.pos);
-
-            this.pos = this.findSafeCameraPos(this.reference.pos, pos);
-            //console.info("camera pos was blocked, new pos", this.pos);
+        if (!WebGL.CONFIG.firstperson) {
+            if (WebGL.CAMERA_SAFETY_WITH_ZMAP) {
+                if (!this.isCameraSafe(pos) && this.pos) {
+                    pos = this.findCameraPos(this.reference.pos, pos, this.isCameraSafe);
+                }
+            } else if (WebGL.CAMERA_SAFETY_WITH_GA) {
+                if (!this.isCameraFree(pos) && this.pos) {
+                    pos = this.findCameraPos(this.reference.pos, pos, this.isCameraFree);
+                }
+            }
         }
+
+        this.pos = pos;
+        return;
     }
-    findSafeCameraPos(fallback, desired) {
+    findCameraPos(fallback, desired, testPosition) {
         let best = fallback;
-        const STEPS = WebGL.INI.CAMERA_SAFETY_LERP_STEPS;;
+        const STEPS = WebGL.INI.CAMERA_SAFETY_LERP_STEPS;
 
         for (let i = 1; i <= STEPS; i++) {
-            //console.warn("best", best, "i", i);
-            const t = i / STEPS;
-            let candidate = glMatrix.vec3.create();
-            glMatrix.vec3.lerp(candidate, fallback.array, desired.array, t);
-            candidate = Vector3.from_array(candidate);
-            //console.log("..candidate", candidate, "i", i, "t", t, "fallback.array, desired.array", fallback.array, desired.array);
-            if (this.isCameraSafe(candidate)) {
-                best = candidate;
-            } else break;
-
+            const candidateArray = glMatrix.vec3.create();
+            glMatrix.vec3.lerp(candidateArray, fallback.array, desired.array, i / STEPS);
+            const candidate = Vector3.from_array(candidateArray);
+            if (!testPosition.call(this, candidate)) break;
+            best = candidate;
         }
-        return best;
 
+        return best;
+    }
+    isCameraFree(pos) {
+        //pos is Vector3
+        const R = WebGL.INI.CAMERA_SAFETY_RADIUS;
+        const samples = [
+            // [dx, dz, dy] — eight corners
+            [R, R, R],
+            [R, R, -R],
+            [R, -R, R],
+            [R, -R, -R],
+            [-R, R, R],
+            [-R, R, -R],
+            [-R, -R, R],
+            [-R, -R, -R],
+        ];
+
+        for (const [dx, dz, dy] of samples) {
+            const testPos = pos.add(new FP_Vector3D(dx, dy, dz));
+            const testGrid = Vector3.to_Grid3D(testPos);
+            if (this.GA.isOutOfBounds(testGrid)) return false;
+            if (this.GA.just_check(testGrid, CAMERA_EXCLUSION.sum())) return false;
+        }
+
+        return true;
     }
     isCameraSafe(pos) {
         const ZM = this.reference.map.zMap;
@@ -3640,6 +3667,10 @@ class $3D_player {
             const landExplosionPosition = this.pos.translate(UP3, this.heigth - 0.1);
             EXPLOSION3D.add(new LandExplosion(landExplosionPosition));
         }
+
+        //
+        //const feetPos3 = this.pos.translate(UP3, this.heigth);
+        //console.warn("jump concluded feetpos", feetPos3.y);
     }
     calculateJumpVelocity(desiredJumpDistance) {
         const initialVelocity_Z = Math.sqrt(2 * Math.abs(WebGL.INI.GRAVITY) * WebGL.INI.MAX_JUMP_HEIGHT);
@@ -3729,10 +3760,15 @@ class $3D_player {
         const feetGrid3D = Vector3.to_Grid3D(feetPos3);
         const gridType = REVERSED_MAPDICT[this.GA.getValue(feetGrid3D)];
 
-        // console.info("checkLanding", "feetPos3", feetPos3, "feetGrid3D", feetGrid3D, "gridType", gridType);
+        //console.info("checkLanding", "feetPos3", feetPos3, "feetGrid3D", feetGrid3D, "gridType", gridType, "feetPos3.y", feetPos3.y, "value", this.GA.getValue(feetGrid3D));
 
         switch (gridType) {
             case undefined:
+                if (feetPos3.y < 0.0) {
+                    this.resetToGround(nextPos3);
+                    return true;
+                }
+                return false;
             case "HOLE":
                 if (feetPos3.y < -0.9) {
                     console.error("DONE FALLING into HOLE", "feetPos3.y", feetPos3.y, "this.velocity_Z", this.velocity_Z, "nextPos3", nextPos3);
