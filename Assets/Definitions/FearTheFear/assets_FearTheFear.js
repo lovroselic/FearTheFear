@@ -1307,6 +1307,34 @@ LoadSprites = [
     { srcName: "Items/BlueGem.webp", name: "BlueGem" },
     { srcName: "Items/GreenGem.webp", name: "GreenGem" },
 
+    //status
+    { srcName: "Status/Invisible2.webp", name: "Invisible" },
+    { srcName: "Status/Clover2.webp", name: "Clover" },
+    { srcName: "Status/Wings.webp", name: "Wings" },
+    { srcName: "Status/FeatherFall.webp", name: "FeatherFall" },
+    { srcName: "Status/Radar2.webp", name: "Radar" },
+    { srcName: "Status/GoldClover.webp", name: "GoldClover" },
+
+    //health items
+    { srcName: "Items/BeerHealth.webp", name: "BeerHealth" },
+    { srcName: "Items/Cake.webp", name: "Cake" },
+    { srcName: "Items/Champagne.webp", name: "Champagne" },
+    { srcName: "Items/HealthBox.webp", name: "HealthBox" },
+    { srcName: "Items/Steak.webp", name: "Steak" },
+    { srcName: "Items/RoastChicken.webp", name: "RoastChicken" },
+    { srcName: "Items/RoastPig.webp", name: "RoastPig" },
+
+    //mana items
+    { srcName: "Items/Amanita.webp", name: "Amanita" },
+    { srcName: "Items/Snail.webp", name: "Snail" },
+    { srcName: "Items/ManaFrog.webp", name: "ManaFrog" },
+    { srcName: "Items/RedButterfly.webp", name: "RedButterfly" },
+    { srcName: "Items/ManaGoat.webp", name: "ManaGoat" },
+    { srcName: "Items/Owl.webp", name: "Owl" },
+    { srcName: "Items/GreenManaDragon.webp", name: "GreenManaDragon" },
+    { srcName: "Items/BluePrincesssMana.webp", name: "BluePrincesssMana" },
+    { srcName: "Items/GoldPrincessMana.webp", name: "GoldPrincessMana" },
+
     //scrolls
     { srcName: "Scrolls/SCR_Cripple2.webp", name: "SCR_Cripple" },
     { srcName: "Scrolls/SCR_Explode2.webp", name: "SCR_Explode" },

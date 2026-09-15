@@ -243,7 +243,6 @@ const SPAWN_TOOLS = {
             const picture = L[2];
             const type = L[3];
             const strength = L[4].map(x => parseFloat(x));
-            console.warn("strength", strength);
             const sprite = SPRITE[picture];
             let expand = false;
             let category = "light";

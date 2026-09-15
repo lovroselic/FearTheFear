@@ -4484,7 +4484,7 @@ class LightDecal extends Decal {
         this.interactive = false;
         this.expand = expand;
         this.position = position || LightDecal.setPosition(grid, face);
-        
+
         this.ambientStrength = ambientStrength;
         this.diffuseStrength = diffuseStrength;
         this.specularStrength = specularStrength;

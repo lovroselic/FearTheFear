@@ -1757,7 +1757,7 @@ const SKY_DECALS = [
 ].sort();
 
 
-const TRIGGER_DECALS = [];
+const TRIGGER_DECALS = ["SmoothWallButton", "RockTriggerButton", "MarbleTriggerButton", "PurpleTriggerButton"];
 const LAIR_DECALS = [].sort();
 
 const CONTAINER_LIST = [];

@@ -160,7 +160,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.2.1",
+    VERSION: "0.2.2",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -238,6 +238,7 @@ const PRG = {
             //AI.VERBOSE = true;
             //ENGINE.verbose = true;
             MAP_TOOLS.INI.VERBOSE = true;
+            WebGL.DEBUG = true;
             //MINIMAP.verbose();
         }
     },
@@ -1186,6 +1187,7 @@ const GAME = {
         start_grid = new Vector3(start_grid.x + 0.5, start_grid.z + HERO.height, start_grid.y + 0.5);
         HERO.player = new $3D_player(start_grid, Vector3.from_2D_dir(start_dir), MAP[level].map, HERO_TYPE.ThePrincess);
         HERO.player.addToTextureMap("invisible", TEXTURE.TheInvisiblePrincess);
+        HERO.player.useCollision(HERO.player.circleCollision);
         GAME.setCameraView();
         AI.initialize(HERO.player, "3D3");
         GAME.setWorld(level);
@@ -1639,7 +1641,7 @@ const GAME = {
         }
         if (map[ENGINE.KEY.map.F8]) {
             if (!DEBUG.keys) return;
-            DEBUG.kill();
+            DEBUG.killAll();
             ENGINE.GAME.keymap[ENGINE.KEY.map.F8] = false;
         }
         if (map[ENGINE.KEY.map.F9]) {

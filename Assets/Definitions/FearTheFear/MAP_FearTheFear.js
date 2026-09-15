@@ -22,6 +22,8 @@ const MAP = {
         start: '[246,1]',
         decals: '[[262,1,"FemDommes_23053","picture"],[264,1,"FemDommes_17543","picture"],[195,1,"Skull318","crest"]]',
         lights: '[[236,3,"Candle54","standard",["9.99","50.0","5.0"]],[484,1,"DuaLLantern_011","standard",["9.99","50.0","5.0"]]]',
+        monsters: '[[74,"Bat",3]]',
         gold: '[[36,"GoldCube"],[37,"GoldBar"],[39,"SilverBar"],[42,"RedGem"]]',
+        movables: '[[59,"RoastChicken"]]',
     }
 };

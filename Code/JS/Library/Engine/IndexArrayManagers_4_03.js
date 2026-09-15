@@ -702,11 +702,11 @@ class Decal3D extends IAM {
         }
         return null;
     }
-    manage(lapsedTime) {
+    manage(lapsedTime, date) {
         this.reIndex();
         for (const item of this.POOL) {
             if (item) {
-                item.manage(lapsedTime);
+                item.manage(lapsedTime, date);
             }
         }
     }

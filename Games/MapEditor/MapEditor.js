@@ -53,11 +53,17 @@ const MAP = {
         name: "Demo",
         data: '{"width":"17","height":"17","depth":3,"map":"BB37AA216BB3AA18BB3AA227BABB40AA3BB87AA36BB30ABB100A$BB51ABB10A"}',
         sg: 0,
+        maxSpawned: -1,
+        killCountdown: -1,
+        killsRequiredToStopSpawning: -1,
+        spawnDelay: -1,
         wall: "BlackWall45",
         floor: "Wood1",
         ceil: "marbleFloor106",
         start: '[246,1]',
-        lights: '[[484,1,"DuaLLantern_025","standard"]]',
+        decals: '[[262,1,"FemDommes_23053","picture"],[264,1,"FemDommes_17543","picture"],[195,1,"Skull318","crest"]]',
+        lights: '[[236,3,"Candle54","standard",["9.99","50.0","5.0"]],[484,1,"DuaLLantern_011","standard",["9.99","50.0","5.0"]]]',
+        gold: '[[36,"GoldCube"],[37,"GoldBar"],[39,"SilverBar"],[42,"RedGem"]]',
     }
 };
 

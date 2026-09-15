@@ -4257,12 +4257,15 @@ class $3D_MoveState {
             const angle = UP.radAngleBetweenVectors(Vector3D.toVector2D(this.dir));
             if (!isNaN(angle)) this.rotation_angle = angle;
         }
+        //console.info("setRotation", "this.rotation_angle", this.rotation_angle, "this.lookAngle", this.lookAngle, "this.dir", this.dir);
         this.rotate = glMatrix.mat4.create();
         glMatrix.mat4.rotate(this.rotate, this.rotate, this.rotation_to_north + this.rotation_angle, [0, 1, 0]);
     }
     setRotatedBoundingBox() {
         const totalAngle = this.rotation_to_north + this.rotation_angle;
+        //console.warn("totalAngle", totalAngle);
         const turns = BoundingBox.radToTurns(totalAngle);
+        //console.warn("turns", turns);
         this.rotatedBoundingBox = this.parent.boundingBox.getRotatedBoundingBoxYTurns(turns);
     }
     setGrid() {
