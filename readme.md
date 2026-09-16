@@ -31,3 +31,8 @@ Princess defeats ....
 
 
 Fear the Fear is a sequel to Haunting the Hauntessa it will feature a new antagonist: DeMonique Scariette McFear. She is brought to life by a ritual gone wrong performed by a bored and slightly tipsy Princess's young cousin. name the Cousin.
+
+add scrolls:
+- light
+- map 
+- DestroyOrbs

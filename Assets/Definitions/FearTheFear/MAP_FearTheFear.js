@@ -23,6 +23,7 @@ const MAP = {
         decals: '[[25,7,"BookShelf05","crest"],[262,1,"FemDommes_26897","picture"],[264,1,"Domme232","picture"]]',
         lights: '[[219,3,"Lamp52","standard",["9.99","50.0","5.0"]],[450,1,"SkullLantern50","standard",["9.99","50.0","5.0"]]]',
         monsters: '[[127,"Bat",1]]',
+        scrolls: '[[195,13]]',
         gold: '[[37,"GreenGem"],[39,"GoldSphere"]]',
         containers: '[[44,"WoodenCrate439","GOLD_ITEM_TYPE.GreenGem",7],[47,"Barrel_476","INTERACTION_ITEM.ManaSkill",7]]',
         movables: '[[175,"RoastChicken"]]',

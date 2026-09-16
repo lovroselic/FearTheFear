@@ -5,7 +5,7 @@
 "use strict";
 
 const MINIMAP = {
-    VERSION: "2.00",
+    VERSION: "2.01",
     CSS: "color: #4AA",
     VERBOSE: false,
     SETTING: {
@@ -182,7 +182,7 @@ const MINIMAP = {
         //enemy if radar
         if (radar) {
             CTX.fillStyle = MINIMAP.LEGEND.ENEMY;
-            const todo = [ENTITY3D, DYNAMIC_ITEM3D, ENEMY_TG];
+            const todo = [ENTITY3D, DYNAMIC_ITEM3D];
             for (const IAM of todo) {
                 if (!IAM.POOL) continue;
                 for (const entity of IAM.POOL) {
