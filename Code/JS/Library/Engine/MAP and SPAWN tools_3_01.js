@@ -7,7 +7,7 @@
 
 /** features to parse MazEditor outputs */
 const MAP_TOOLS = {
-    VERSION: "3.00",
+    VERSION: "3.01",
     CSS: "color: #F9A",
     properties: ['start', 'decals', 'lights', 'gates', 'keys', 'monsters', 'scrolls', 'potions', 'gold', 'skills', 'containers',
         'shrines', 'doors', 'triggers', 'entities', 'objects', 'traps', 'oracles', 'movables', 'trainers', 'interactors', 'lairs',
@@ -20,35 +20,44 @@ const MAP_TOOLS = {
         LEGACY_WIDTH: 512,
         TEXTURE_WIDTH: 1024,
         VERBOSE: false,
-        DIM_3D: true, //if false reverts to 2D
+        DIM_3D: false,
+        DIM_E3D: true,
     },
     use2D() {
         MAP_TOOLS.INI.DIM_3D = false;
+        MAP_TOOLS.INI.DIM_E3D = false;
     },
     use3D() {
+        MAP_TOOLS.INI.DIM_3D = true;
+        MAP_TOOLS.INI.DIM_E3D = false;
+    },
+    useE3D() {
         MAP_TOOLS.INI.DIM_3D = false;
+        MAP_TOOLS.INI.DIM_E3D = true;
     },
     manageMAP(level) {
-        if (MAP[level].map.spawnDelay < 0) return;
-        if (MAP[level].map.stopSpawning) return;
+        const map = this.MAP[level].map;
+        if (map.spawnDelay < 0) return;
+        if (map.stopSpawning) return;
+        
         /** check the lair cooldown */
-        if (MAP[level].map.killCount >= MAP[level].map.killCountdown) {
-            MAP[level].map.killCountdown = Math.max(1, --MAP[level].map.killCountdown);
-            MAP[level].map.maxSpawned = Math.max(1, --MAP[level].map.maxSpawned);
-            if (MAP[level].map.killCountdown === 1) MAP[level].map.killCountdown = 999;
-            MAP[level].map.spawnDelay = Math.round(MAP[level].map.spawnDelay * MAP_TOOLS.INI.SPAWN_DELAY_INC_FACTOR);
-            MAP[level].map.killCount = 0;
-            LAIR.set_timeout(MAP[level].map.spawnDelay);
+        if (map.killCount >= map.killCountdown) {
+            map.killCountdown = Math.max(1, --map.killCountdown);
+            map.maxSpawned = Math.max(1, --map.maxSpawned);
+            if (map.killCountdown === 1) map.killCountdown = 999;
+            map.spawnDelay = Math.round(map.spawnDelay * MAP_TOOLS.INI.SPAWN_DELAY_INC_FACTOR);
+            map.killCount = 0;
+            LAIR.set_timeout(map.spawnDelay);
         }
         /** check the termination of spawning */
-        if (MAP[level].map.totalKills > MAP[level].map.killsRequiredToStopSpawning) {
-            if (MAP_TOOLS.INI.VERBOSE) console.warn("Terminating spawning on level ", level, "totalKills", MAP[level].map.totalKills, "killsRequiredToStopSpawning", MAP[level].map.killsRequiredToStopSpawning);
-            MAP[level].map.stopSpawning = true;
+        if (map.totalKills >= map.killsRequiredToStopSpawning) {
+            if (MAP_TOOLS.INI.VERBOSE) console.warn("Terminating spawning on level ", level, "totalKills", map.totalKills, "killsRequiredToStopSpawning", map.killsRequiredToStopSpawning);
+            map.stopSpawning = true;
         }
     },
     initialize(pMapObject) {
         this.MAP = pMapObject;
-        this.MAP.manage = this.manageMAP;
+        this.MAP.manage = this.manageMAP.bind(this);
     },
     setByteSize(byte) {
         if (![1, 2, 4].includes(byte)) {
@@ -59,67 +68,61 @@ const MAP_TOOLS = {
         if (MAP_TOOLS.INI.VERBOSE) console.log(`MAP TOOLS GA bytesize`, MAP_TOOLS.INI.GA_BYTE_SIZE);
     },
     unpack(level) {
-        if (this.MAP[level].unpacked) return;                                                   // already unpacked, nothing to do
+        const entry = this.MAP[level];
+        if (entry.unpacked) return;                                                   // already unpacked, nothing to do
 
-        const mapData = JSON.parse(this.MAP[level].data);
+        const mapData = JSON.parse(entry.data);
         let rebuilt = false;
 
-        if (this.MAP[level].adapted_data) {
-            mapData.map = this.MAP[level].adapted_data;
+        if (entry.adapted_data) {
+            mapData.map = entry.adapted_data;
             if (MAP_TOOLS.INI.VERBOSE) console.warn("loading adapted data", mapData);
             rebuilt = true;
         }
 
         if (this.INI.DIM_3D) {
-            this.MAP[level].map = FREE_MAP3D.import(mapData, MAP_TOOLS.INI.GA_BYTE_SIZE);
-        } else this.MAP[level].map = FREE_MAP.import(mapData, MAP_TOOLS.INI.GA_BYTE_SIZE);
+            entry.map = FREE_MAP3D.import(mapData, MAP_TOOLS.INI.GA_BYTE_SIZE);
+        } else if (this.INI.DIM_E3D) {
+            entry.map = EXTENDED_FREE_MAP3D.import(mapData);
+        } else entry.map = FREE_MAP.import(mapData, MAP_TOOLS.INI.GA_BYTE_SIZE);
 
+        const map = entry.map;
+        const GA = map.GA;
 
-        this.MAP[level].map.rebuilt = rebuilt;
+        map.rebuilt = rebuilt;
+        entry.pw = map.width * ENGINE.INI.GRIDPIX;
+        entry.ph = map.height * ENGINE.INI.GRIDPIX;
+        map.level = level;
 
-        const GA = this.MAP[level].map.GA;
-        this.MAP[level].pw = this.MAP[level].map.width * ENGINE.INI.GRIDPIX;
-        this.MAP[level].ph = this.MAP[level].map.height * ENGINE.INI.GRIDPIX;
-        this.MAP[level].map.level = level;
+        if (this.INI.FOG && !map.rebuilt) GA.massSet(MAPDICT.FOG);
 
-        if (this.INI.FOG && !this.MAP[level].map.rebuilt) {
-            GA.massSet(MAPDICT.FOG);
-        }
-        const start = JSON.parse(this.MAP[level].start ?? "null");
-        if (start) {
-            this.MAP[level].map.startPosition = new Pointer_3DGrid(GA.indexToGrid(start[0]), Vector.fromInt(start[1]));
-            this.MAP[level].map.start = start;
-        }
         for (const prop of [...this.properties, ...this.lists]) {
-            if (this.MAP[level][prop] !== undefined) {
-                this.MAP[level].map[prop] = JSON.parse(this.MAP[level][prop]);
-            } else {
-                this.MAP[level].map[prop] = [];
-            }
-        }
-        if (!this.MAP[level].name) {
-            this.MAP[level].name = `Room - ${level}`;
+            map[prop] = entry[prop] !== undefined ? JSON.parse(entry[prop]) : [];
         }
 
-        /** terrain data */
-        if (this.MAP[level].terrain) this.MAP[level].terrain = JSON.parse(this.MAP[level].terrain);
+        if (map.start?.length >= 2) {
+            map.startPosition = new Pointer_3DGrid(GA.indexToGrid(map.start[0]), Vector.fromInt(map.start[1]));
+        }
 
-        /** connections */
-        if (this.MAP[level].connections) this.MAP[level].connections = JSON.parse(this.MAP[level].connections);
+        if (!entry.name) entry.name = `Room - ${level}`;
+
+        if (typeof entry.terrain === "string") entry.terrain = JSON.parse(entry.terrain);
+        if (typeof entry.connections === "string") entry.connections = JSON.parse(entry.connections);
+
 
         /** initialize global map proterties */
-        const SG = this.MAP[level].sg || null;
-        this.MAP[level].map.sg = SG;
-        this.MAP[level].map.storage = new IAM_Storage();
-        this.MAP[level].map.killCount = this.MAP[level].killCount || 0;
-        this.MAP[level].map.maxSpawned = this.MAP[level].maxSpawned || -1;
-        this.MAP[level].map.killCountdown = this.MAP[level].killCountdown || -1;
-        this.MAP[level].map.spawnDelay = this.MAP[level].spawnDelay || -1;
-        this.MAP[level].map.totalKills = this.MAP[level].totalKills || 0;
-        this.MAP[level].map.killsRequiredToStopSpawning = this.MAP[level].killsRequiredToStopSpawning || factorial(this.MAP[level].killCountdown) + this.MAP[level].maxSpawned;
-        this.MAP[level].map.stopSpawning = this.MAP[level].stopSpawning || false;
+        const SG = entry.sg || null;
+        map.sg = SG;
+        map.storage = new IAM_Storage();
+        map.killCount = entry.killCount ?? 0;
+        map.maxSpawned = entry.maxSpawned ?? 0;
+        map.killCountdown = entry.killCountdown ?? 0;
+        map.spawnDelay = entry.spawnDelay ?? -1;
+        map.totalKills = entry.totalKills ?? 0;
+        map.killsRequiredToStopSpawning = entry.killsRequiredToStopSpawning ?? (map.killCountdown >= 0 ? factorial(map.killCountdown) + map.maxSpawned : Infinity);
+        map.stopSpawning = entry.stopSpawning || false;
+        entry.unpacked = true;
 
-        this.MAP[level].unpacked = true;
         if (ENGINE.verbose) {
             console.note(`Unpacked MAP level: ${level}, unpacked: ${this.MAP[level].unpacked}`);
             console.log("map:", this.MAP[level].map);
@@ -128,6 +131,7 @@ const MAP_TOOLS = {
     },
     resetStorages() {
         for (const level in this.MAP) {
+            if (level === "manage") continue;
             if (this.MAP[level].map) this.MAP[level].map.storage = new IAM_Storage();
             this.MAP[level].unused_storage = new IAM_Storage();
         }
@@ -173,19 +177,19 @@ const MAP_TOOLS = {
         this.setOcclusionMap(level);
     },
     applyStorageActions(level) {
-        if (MAP_TOOLS.INI.VERBOSE) console.info("Try to Apply actions for level", level,
-            "\nthis.MAP[level].map.storage", this.MAP[level].map.storage.action_list.length, ...this.MAP[level].map.storage.action_list,
-            "\nthis.MAP[level].map.storage.empty()", this.MAP[level].map.storage.empty(),
-            "\nthis.MAP[level].unused_storage", this.MAP[level].unused_storage.action_list.length, ...this.MAP[level].unused_storage.action_list);
-        if (!this.MAP[level].unused_storage) return;
-        if (this.MAP[level].map.storage.empty() || this.MAP[level].unused_storage) {
-            if (MAP_TOOLS.INI.VERBOSE) console.info("Applying actions for level", level);
-            this.MAP[level].unused_storage.apply();
-            this.MAP[level].map.storage.addStorage(this.MAP[level].unused_storage);
-            this.MAP[level].unused_storage.clear();
-            if (MAP_TOOLS.INI.VERBOSE) console.log("this.MAP[level].map.storage", this.MAP[level].map.storage);
-            MAP_TOOLS.setOcclusionMap(level);
-        }
+        const entry = this.MAP[level];
+        const pending = entry.unused_storage;
+
+        if (!pending || pending.empty()) return;
+        const storage = entry.map.storage;
+
+        if (this.INI.VERBOSE) console.info("Applying stored actions for level", level, pending.action_list);
+
+        pending.apply();
+        storage.addStorage(pending);
+        pending.clear();
+
+        this.setOcclusionMap(level);
     }
 };
 

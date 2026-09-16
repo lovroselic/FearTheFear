@@ -1089,7 +1089,6 @@ const MAPDICT = {
     HOLE: 2 ** 7,                           //128
 
     //aliases
-    //MASK: 2 ** 2,                         // DEPRECATED!!!!!!!!!!!!!!!! 4 - alias door, this is fucked Lovro, change to  VACANT_PLACEHOLDER1 for the next version!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     MASK: 2 ** 3,                           //8 - use this in the future
     WARP: 2 ** 5,                           //32 - STAIR alias -> route to another part of the dungeon
     GOAL: 2 ** 14,                          //16384 alias RESERVED
@@ -1101,16 +1100,37 @@ const MAPDICT = {
     WALL6: 2 ** 10,
     WALL8: 2 ** 11,
 
-    //unused
-    UNUSED: 2 ** 12,
+    // 3d dungeons
+    UNUSED4: 2 ** 6,                        // 64 - alias SHRINE
+    UNUSED: 2 ** 12,                        // 4096
+    UNUSED2: 2 ** 13,                       // 8192 - alias START_POSITION
 
     //special
-    FOG: 2 ** 15,                            //32768 - fog,water should remain largest!
-    WATER: 2 ** 15,                          //32768 - fog,water should remain largest!
-    RESERVED: 2 ** 14,                       //16384
-    START_POSITION: 2 ** 13,                 //8192
+    FOG: 2 ** 15,                            // 32768 - fog,water should remain largest!
+    WATER: 2 ** 15,                          // 32768 - fog,water should remain largest!
+    RESERVED: 2 ** 14,                       // 16384 - keep unused to avoid overflow, this is only used in procedural dungeons
+    START_POSITION: 2 ** 13,                 // 8192 - used in procedural dungeon generation
+};
 
-    //32 bit, not yet used
+const EXT_MAPDICT = {
+    EMPTY: 0,               // 0
+    UNUSED0: 2 ** 0,        // 1
+    UNUSED1: 2 ** 1,        // 2
+    UNUSED2: 2 ** 2,        // 4
+    UNUSED3: 2 ** 3,        // 8
+    UNUSED4: 2 ** 4,        // 16
+    UNUSED5: 2 ** 5,        // 32
+    UNUSED6: 2 ** 6,        // 64
+    UNUSED7: 2 ** 7,        // 128
+    UNUSED8: 2 ** 8,        // 256
+    UNUSED9: 2 ** 9,        // 512
+    UNUSED10: 2 ** 10,      // 1024
+    UNUSED11: 2 ** 11,      // 2048
+    UNUSED12: 2 ** 12,      // 4096
+    UNUSED13: 2 ** 13,      // 8192
+    UNUSED14: 2 ** 14,      // 16384
+
+    BLOCKED15: 2 ** 15,     // 32768 - keep unset for safe serialization
 };
 
 const WallSizeToHeight = (value) => {
@@ -1128,7 +1148,7 @@ const reverseDictionary = (dict) => {
 const REVERSED_MAPDICT = reverseDictionary(MAPDICT);
 const STAIRCASE_GRIDS = [MAPDICT.WALL2, MAPDICT.WALL4, MAPDICT.WALL6, MAPDICT.WALL8];
 const GROUND_MOVE_GRID_EXCLUSION = [MAPDICT.WALL, MAPDICT.HOLE, MAPDICT.BLOCKWALL, ...STAIRCASE_GRIDS, MAPDICT.PILLAR];
-const CAMERA_EXCLUSION = [MAPDICT.WALL, MAPDICT.BLOCKWALL, ...STAIRCASE_GRIDS, MAPDICT.PILLAR ];
+const CAMERA_EXCLUSION = [MAPDICT.WALL, MAPDICT.BLOCKWALL, ...STAIRCASE_GRIDS, MAPDICT.PILLAR];
 const HERO_GROUND_MOVE_GRID_EXCLUSION = [MAPDICT.WALL, MAPDICT.HOLE, MAPDICT.BLOCKWALL, MAPDICT.PILLAR];
 const NO_FLY = [MAPDICT.WALL8, MAPDICT.WALL6];
 const AIR_MOVE_GRID_EXCLUSION = [MAPDICT.WALL, MAPDICT.BLOCKWALL, ...NO_FLY, MAPDICT.PILLAR];
@@ -2552,6 +2572,44 @@ class GridArray3D extends Classes([ArrayBasedDataStructure3D, GA_Dimension_Agnos
     isTopGrid(grid) {
         return grid.z === this.depth - 1;
     }
+}
+
+/**
+ * 
+ */
+class ExtendedGridArray3D extends GridArray3D {
+    constructor(sizeX, sizeY, sizeZ) {
+        super(sizeX, sizeY, sizeZ, 2, 0);
+        this.extendedMap = new Uint16Array(this.map.length);
+    }
+    massClear() {
+        this.map.fill(0);
+        this.extendedMap.fill(0);
+    }
+    static fromString(EGA, basicString, extendedString) {
+        const offset = 65;
+        for (let i = 0; i < basicString.length; i++) {
+            EGA.map[i] = basicString[i].charCodeAt(0) - offset;
+            EGA.extendedMap[i] = extendedString[i].charCodeAt(0) - offset;
+        }
+    }
+    extendedToString(clear = null) {
+        const offset = 65;
+        let str = "";
+        for (let byte of this.extendedMap) {
+            if (clear) byte &= (2 ** this.gridSizeBit - 1 - clear);
+            str += String.fromCharCode(byte + offset);
+        }
+        return str;
+    }
+    exportExtendedMap() {
+        return BWT.rle_encode(BWT.bwt(this.extendedToString()));
+    }
+    //TODO:
+    //static importMap(){} - we can inherit this one, jumple rle conversion and BWT decoding
+    //toString(){}
+    //exportMap(){}
+    //toTextureMap(){}
 }
 
 class IndexArray3D extends Classes([ArrayBasedDataStructure3D, IA_Dimension_Agnostic_Methods]) {

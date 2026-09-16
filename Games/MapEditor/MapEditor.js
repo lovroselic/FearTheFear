@@ -19,7 +19,7 @@ const INI = {
     //usage flags
     USE_NOISE_FUNCTIONS: false,
     USE_QUAD_MAP: false,
-    USE_OCCLUSION_MAP: false,
+    USE_OCCLUSION_MAP: true,
     USE_TEXTURES: true,
     USE_FLOORS: true,
     USE_CEIL: true,
@@ -51,19 +51,21 @@ const INI = {
 const MAP = {
     1: {
         name: "Demo",
-        data: '{"width":"17","height":"17","depth":3,"map":"BB37AA216BB3AA18BB3AA227BABB40AA3BB87AA36BB30ABB100A$BB51ABB10A"}',
+        data: '{"width":"17","height":"17","depth":3,"map":"BB37AA216BB3AA6BB3AA239BABB40AA3BB87AA36BB30ABB100A$BB51ABB10A","extendedMap":"AA867$"}',
         sg: 0,
         maxSpawned: -1,
         killCountdown: -1,
-        killsRequiredToStopSpawning: -1,
+        killsRequiredToStopSpawning: 99,
         spawnDelay: -1,
         wall: "BlackWall45",
-        floor: "Wood1",
-        ceil: "marbleFloor106",
+        floor: "Wood12",
+        ceil: "WebbedFloor4",
         start: '[246,1]',
-        decals: '[[262,1,"FemDommes_23053","picture"],[264,1,"FemDommes_17543","picture"],[195,1,"Skull318","crest"]]',
-        lights: '[[236,3,"Candle54","standard",["9.99","50.0","5.0"]],[484,1,"DuaLLantern_011","standard",["9.99","50.0","5.0"]]]',
-        gold: '[[36,"GoldCube"],[37,"GoldBar"],[39,"SilverBar"],[42,"RedGem"]]',
+        decals: '[[25,7,"BookShelf05","crest"],[262,1,"FemDommes_26897","picture"],[264,1,"Domme232","picture"]]',
+        lights: '[[219,3,"Lamp52","standard",["9.99","50.0","5.0"]],[450,1,"SkullLantern50","standard",["9.99","50.0","5.0"]]]',
+        monsters: '[[127,"Bat",1]]',
+        gold: '[[37,"GreenGem"],[39,"GoldSphere"]]',
+        movables: '[[175,"RoastChicken"]]',
     }
 };
 
@@ -91,7 +93,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.24.1",
+    VERSION: "0.25.0",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -375,6 +377,7 @@ const GAME = {
                 GAME.initLevel2D(GAME.level);
                 break;
             case "3D":
+            case "E3D":
                 GAME.initLevel3D(GAME.level);
                 break;
         }
@@ -452,12 +455,18 @@ const GAME = {
         }
 
         if (typeof SPAWN_TOOLS !== "undefined" && SPAWN_TOOLS.spawn) SPAWN_TOOLS.spawn(level);
-
         //if (INI.USE_OCCLUSION_MAP) GAME.rebuildOcclusionMap(map);
         //map.world = WORLD.buildSurfaceBasedWorld(map);
+
         map.world = WORLD.build(map);
         MAP[level].world = map.world;
+
         if (INI.USE_TEXTURE_MAP) map.textureMap = map.GA.toTextureMap();
+
+        if (INI.USE_OCCLUSION_MAP) {
+            if (map.occlusionMap?.texture) WebGL.CTX.deleteTexture(map.occlusionMap.texture);
+            MAP_TOOLS.setOcclusionMap(level);
+        }
 
         return map.world;
     },
@@ -504,7 +513,7 @@ const GAME = {
         return QM;
     },
     rebuildOcclusionMap(map = GAME.activeMap()) {
-        if (!USE_OCCLUSION_MAP) return;
+        if (!INI.USE_OCCLUSION_MAP) return;
         if (!map || !map.zMap1) throw new Error("rebuildOcclusionMap: map.zMap1 missing");
 
         const zMap = map.zMap1;
@@ -1082,6 +1091,7 @@ const GAME = {
         $(id).val(texture).change();
     },
     randomMaskDecal() {
+        if (!USE_MASK) return;
         const searchMD = $("#searchMasksDecals").val().toLowerCase();
         const filtered_mask_decals = MASK_DECALS.filter(decal => decal.toLowerCase().includes(searchMD));
         const pic = filtered_mask_decals.chooseRandom();
@@ -2058,6 +2068,7 @@ const GAME = {
                         //GAME.blockGrid3D();
                         break;
                     case "3D":
+                    case "E3D":
                         GAME.blockGrid3D();
                         break;
                 };
@@ -2107,6 +2118,7 @@ const GAME = {
                 $MAP.map.GA.fillArea(from.x, from.y, W, H, fillValue);
                 break;
             case "3D":
+            case "E3D":
                 $MAP.map.GA.fillArea(from.x, from.y, W, H, from.z, fillValue);
                 break;
         };
@@ -2203,6 +2215,10 @@ const GAME = {
                     $MAP.map = FREE_MAP3D.create($MAP.width, $MAP.height, $MAP.depth, null, MAP_TOOLS.INI.GA_BYTE_SIZE);
                     GAME.setFloorButtons();
                     break;
+                case "E3D":
+                    $MAP.map = EXTENDED_FREE_MAP3D.create($MAP.width, $MAP.height, $MAP.depth);
+                    GAME.setFloorButtons();
+                    break;
             };
 
             $MAP.map.GA.fill(MAPDICT.EMPTY);
@@ -2256,6 +2272,11 @@ const GAME = {
         if (dimension === "2D") {
             Export = { width: $MAP.width, height: $MAP.height, map: rle };
         } else Export = { width: $MAP.width, height: $MAP.height, depth: $MAP.depth, map: rle };
+
+        if (dimension === "E3D") {
+            let extendedMap = $MAP.map.GA.exportExtendedMap();
+            Export["extendedMap"] = extendedMap;
+        }
 
 
         let RoomID = $("#roomid")[0].value;
@@ -2408,6 +2429,10 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
                 $MAP.map = FREE_MAP3D.import(Import, MAP_TOOLS.INI.GA_BYTE_SIZE);
                 GAME.setFloorButtons();
                 break;
+            case "E3D":
+                $MAP.map = EXTENDED_FREE_MAP3D.import(Import);
+                GAME.setFloorButtons();
+                break;
         };
 
         $MAP.init();
@@ -2539,17 +2564,17 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
         const maze = $MAP.map;
         if (!maze.start[0]) return;
         let startGrid = GA.indexToGrid(maze.start[0]);
-
         console.warn("creating maze", startGrid, "maze", maze);
+
         if (dimension === "2D") {
-            maze.carveMaze(start);
+            maze.carveMaze(startGrid);
         } else {
             startGrid = Grid3D.toGrid(startGrid);
             const XY_plane_length = maze.width * maze.height;
             const start = XY_plane_length * GAME.floor;
             const end = start + XY_plane_length;
             const plane_GA_map = maze.GA.map.slice(start, end);
-            const tempMaze = FREE_MAP.create(maze.width, maze.height, MAP_TOOLS.INI.GA_BYTE_SIZE);
+            const tempMaze = FREE_MAP.create(maze.width, maze.height, null, MAP_TOOLS.INI.GA_BYTE_SIZE);
             tempMaze.GA.importMap(plane_GA_map);
             tempMaze.carveMaze(startGrid);
             maze.GA.map.set(tempMaze.GA.map, start);
@@ -2561,7 +2586,8 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
         //floors
         GAME.floor = 0;
         $("#floors").html("");
-        const nFloors = $("#depthGrid")[0].value;
+        //const nFloors = $("#depthGrid")[0].value;
+        const nFloors = $MAP.depth;
         for (let i = 0; i < nFloors; i++) {
             $("#floors").append(`<option value="${i}">${i}</option>`);
         }
@@ -2578,6 +2604,7 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
                 $("#floors").hide();
                 break;
             case "3D":
+            case "E3D":
                 $("#depthGridVisibility").show();
                 $("#floors").show();
                 break;

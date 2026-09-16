@@ -4,7 +4,7 @@
 /*jshint -W061 */
 "use strict";
 
-///////////////////////Dungeon.js///////////////
+///////////////////////MAZE.js//////////////////
 //                                            //
 //        Procedureal maze and dungeon        //
 //             generation                     //
@@ -55,6 +55,7 @@ class Room {
         else return true;
     }
 }
+
 class Tree {
     constructor(leaf) {
         this.leaf = leaf;
@@ -81,6 +82,7 @@ class Tree {
         } else return false;
     }
 }
+
 class Bias {
     constructor(size) {
         this.size = size;
@@ -101,6 +103,7 @@ class Bias {
         if (this.current >= this.size) this.reset();
     }
 }
+
 class MasterDungeon {
     constructor(sizeX, sizeY, byte = 1) {
         this.width = parseInt(sizeX, 10);
@@ -1261,6 +1264,7 @@ class MasterDungeon {
         return newPool;
     }
 }
+
 class Maze extends MasterDungeon {
     constructor(sizeX, sizeY, start) {
         let t0 = performance.now();
@@ -1271,6 +1275,7 @@ class Maze extends MasterDungeon {
         console.log(`%cMaze construction ${performance.now() - t0} ms.`, DUNGEON.CSS);
     }
 }
+
 class Arena extends MasterDungeon {
     constructor(sizeX, sizeY, byte = 1) {
         let t0 = performance.now();
@@ -1406,6 +1411,7 @@ class Arena extends MasterDungeon {
         }
     }
 }
+
 class Dungeon extends MasterDungeon {
     constructor(sizeX, sizeY, byte = 1) {
         let t0 = performance.now();
@@ -1522,6 +1528,7 @@ class Dungeon extends MasterDungeon {
         return;
     }
 }
+
 class PacDungeon extends MasterDungeon {
     constructor(sizeX, sizeY) {
         let t0 = performance.now();
@@ -1610,6 +1617,7 @@ class PacDungeon extends MasterDungeon {
         return false;
     }
 }
+
 class PacGrid {
     constructor(sizeX, sizeY, buffer) {
         this.width = sizeX;
@@ -1653,6 +1661,7 @@ class PacGrid {
         return new PacGrid(sizeX, sizeY, mapBuffer);
     }
 }
+
 class RatArena extends MasterDungeon {
     constructor(sizeX, sizeY) {
         let t0 = performance.now();
@@ -1696,7 +1705,9 @@ class RatArena extends MasterDungeon {
         console.log(`%cRat-Arena construction ${performance.now() - t0} ms.`, DUNGEON.CSS);
     }
 }
-class FreeMap extends MasterDungeon {
+
+class
+    FreeMap extends MasterDungeon {
     constructor(sizeX, sizeY, GA = null, byte = 1) {
         super(sizeX, sizeY, byte);
         this.type = "FREE-MAP";
@@ -1710,9 +1721,9 @@ class FreeMap3D {
         this.width = parseInt(sizeX, 10);
         this.height = parseInt(sizeY, 10);
         this.depth = parseInt(sizeZ, 10);
-        this.maxX = sizeX - 2;
-        this.maxY = sizeY - 2;
-        this.maxZ = sizeZ;
+        this.maxX = this.width - 2;
+        this.maxY = this.height - 2;
+        this.maxZ = this.depth - 1;
         this.minX = 1;
         this.minY = 1;
         this.minZ = 0;
@@ -1726,12 +1737,35 @@ class FreeMap3D {
         this.rooms = [];
         this.lockedRooms = {};
         this.keys = {};
-        this.GA = new GridArray3D(sizeX, sizeY, sizeZ, byte, 1);
-
-        //override with imported GA
-        if (GA !== null) this.GA = GA;
+        this.GA = GA ?? new GridArray3D(sizeX, sizeY, sizeZ, byte, 1);
     }
 }
+class ExtendedFreeMap3D {
+    constructor(sizeX, sizeY, sizeZ, GA = null) {
+        this.type = "EXTENDED-FREE-MAP-3D";
+        this.width = parseInt(sizeX, 10);
+        this.height = parseInt(sizeY, 10);
+        this.depth = parseInt(sizeZ, 10);
+        this.maxX = this.width - 2;
+        this.maxY = this.height - 2;
+        this.maxZ = this.depth - 1;
+        this.minX = 1;
+        this.minY = 1;
+        this.minZ = 0;
+        this.volume = this.width * this.height * this.depth;
+
+        this.deadEnds = [];
+        this.nodeMap = null;
+        this.entrance = null;
+        this.exit = null;
+        this.startPosition = null;
+        this.rooms = [];
+        this.lockedRooms = {};
+        this.keys = {};
+        this.GA = GA ?? new ExtendedGridArray3D(this.width, this.height, this.depth);
+    }
+}
+
 const MAZE = {
     opened: false,
     openDirs: null,
@@ -1763,11 +1797,13 @@ const MAZE = {
         return MAZE.configure(new Maze(sizeX, sizeY, start), sizeX, sizeY, start);
     }
 };
+
 const PACDUNGEON = {
     create(sizeX, sizeY) {
         return new PacDungeon(sizeX, sizeY);
     }
 };
+
 const RAT_ARENA = {
     NCORR: 5,
     CORR_PAD: 1,
@@ -1782,6 +1818,7 @@ const RAT_ARENA = {
         return rat_arena;
     }
 };
+
 const ARENA = {
     CENTRAL_ROOM_SIZE: 1,
     CENTRAL_ROOM_WALL_WIDTH: 2,
@@ -1800,6 +1837,7 @@ const ARENA = {
         return arena;
     }
 };
+
 const FREE_MAP = {
     create(sizeX, sizeY, GA = null, byte = 1) {
         return new FreeMap(sizeX, sizeY, GA, byte);
@@ -1807,9 +1845,10 @@ const FREE_MAP = {
     import(data, byte = 1) {
         data.map = GridArray.importMap(data.map);
         data.map = GridArray.fromString(data.width, data.height, data.map, byte);
-        return FREE_MAP.create(parseInt(data.width, 10), parseInt(data.height, 10), data.map, byte);
+        return this.create(parseInt(data.width, 10), parseInt(data.height, 10), data.map, byte);
     }
 };
+
 const FREE_MAP3D = {
     create(sizeX, sizeY, sizeZ, GA = null, byte = 1) {
         return new FreeMap3D(sizeX, sizeY, sizeZ, GA, byte);
@@ -1817,11 +1856,31 @@ const FREE_MAP3D = {
     import(data, byte = 2) {
         data.map = GridArray3D.importMap(data.map);
         data.map = GridArray3D.fromString(data.width, data.height, data.depth, data.map, byte);
-        return FREE_MAP3D.create(parseInt(data.width, 10), parseInt(data.height, 10), parseInt(data.depth, 10), data.map, byte);
+        return this.create(parseInt(data.width, 10), parseInt(data.height, 10), parseInt(data.depth, 10), data.map, byte);
     },
 };
+const EXTENDED_FREE_MAP3D = {
+    create(sizeX, sizeY, sizeZ, EGA = null) {
+        return new ExtendedFreeMap3D(sizeX, sizeY, sizeZ, EGA);
+    },
+    import(data) {
+        const basicString = ExtendedGridArray3D.importMap(data.map);
+        const extendedString = ExtendedGridArray3D.importMap(data.extendedMap);
+
+        const width = parseInt(data.width, 10);
+        const height = parseInt(data.height, 10);
+        const depth = parseInt(data.depth, 10);
+
+        const EGA = new ExtendedGridArray3D(width, height, depth);
+        ExtendedGridArray3D.fromString(EGA, basicString, extendedString);
+
+        return this.create(width, height, depth, EGA);
+    }
+};
+
+
 const DUNGEON = {
-    VERSION: "5.00",
+    VERSION: "5.01",
     CSS: "color: #f4ee42",
     REFUSE_CONNECTION_TO_ROOM: true,
     LIMIT_ROOMS: false,
