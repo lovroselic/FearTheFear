@@ -1297,6 +1297,28 @@ LoadSprites = [
     { srcName: "UI/Floppy64.webp", name: "SavedOK" },
     { srcName: "UI/Beware64.webp", name: "SavedFail" },
 
+    //skills
+    { srcName: "Skills/Heart48.webp", name: "HeartSkill" },
+    { srcName: "Skills/ManaSkill.webp", name: "ManaIncSkill" },
+    { srcName: "Skills/ManaSkill.webp", name: "Mana" },
+
+    { srcName: "Skills/Magic.png", name: "Magic" },
+    { srcName: "Skills/Attack.png", name: "Attack" },
+    { srcName: "Skills/Defense.png", name: "Defense" },
+
+    //keys
+    { srcName: "Keys/BlueKey2.webp", name: "BlueKey" },
+    { srcName: "Keys/EmeraldKey2.webp", name: "EmeraldKey" },
+    { srcName: "Keys/GoldKey2.webp", name: "GoldKey" },
+    { srcName: "Keys/GreenKey2.webp", name: "GreenKey" },
+    { srcName: "Keys/PearlKey2.webp", name: "PearlKey" },
+    { srcName: "Keys/PurpleKey2.webp", name: "PurpleKey" },
+    { srcName: "Keys/RedKey2.webp", name: "RedKey" },
+    { srcName: "Keys/SilverKey2.webp", name: "SilverKey" },
+    { srcName: "Keys/OrangeKey.webp", name: "OrangeKey" },
+    { srcName: "Keys/PinkKey.webp", name: "PinkKey" },
+    { srcName: "Keys/CyanKey.webp", name: "CyanKey" },
+
     //gold, valuables
     { srcName: "Items/Coins.webp", name: "Coins" },
     { srcName: "Items/GoldBar.webp", name: "GoldBar" },

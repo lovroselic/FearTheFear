@@ -20,7 +20,7 @@ retests:
 
 DEBUG.FPS = false;
 DEBUG.VERBOSE = true;
-DEBUG._2D_display = false;
+DEBUG._2D_display = true;
 DEBUG.pos_display = false;
 DEBUG.BB_display = false;
 DEBUG.INVINCIBLE = false;
@@ -160,7 +160,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.6.0",
+    VERSION: "0.6.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

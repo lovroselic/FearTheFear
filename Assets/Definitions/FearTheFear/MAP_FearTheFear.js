@@ -24,6 +24,7 @@ const MAP = {
         lights: '[[219,3,"Lamp52","standard",["9.99","50.0","5.0"]],[450,1,"SkullLantern50","standard",["9.99","50.0","5.0"]]]',
         monsters: '[[127,"Bat",1]]',
         gold: '[[37,"GreenGem"],[39,"GoldSphere"]]',
+        containers: '[[44,"WoodenCrate439","GOLD_ITEM_TYPE.GreenGem",7],[47,"Barrel_476","INTERACTION_ITEM.ManaSkill",7]]',
         movables: '[[175,"RoastChicken"]]',
     }
 };

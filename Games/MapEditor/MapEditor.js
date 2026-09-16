@@ -93,7 +93,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.25.0",
+    VERSION: "0.25.1",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -854,6 +854,7 @@ const GAME = {
             }
             $("#content_type").change(function () {
                 const sprite = $("#content_type")[0].value.split(".")[1];
+                console.log("sprite", sprite);
                 ENGINE.drawToId("container_item_canvas", 0, 0, SPRITE[sprite]);
             });
             $("#content_type").trigger("change");
@@ -1002,6 +1003,9 @@ const GAME = {
         $("#randcrest").click(GAME.randomCrest);
         $("#randlight").click(GAME.randomLight);
         $("#randmaskdecal").click(GAME.randomMaskDecal);
+        $("#randcontainer").click(GAME.randomContainer);
+        $("#randlair").click(GAME.random_lair);
+        $("#randtriggerdecal").click(GAME.randomTrigger);
 
         /** clicks */
 
