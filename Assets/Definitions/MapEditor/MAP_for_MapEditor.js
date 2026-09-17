@@ -75,7 +75,15 @@ const TEXTURE_LIST = [
     "SpiderWeb10", "SpiderWeb12", "SpiderWeb15", "SpiderWeb22", "SpiderWeb31", "SpiderWeb334", "SpiderWeb6", "StoneWall40", "StoneWall41", "StrangeGoldy1", "StrangeWall3", "VaultedCeiling1",
     "Water11", "Water12", "Water30", "Water31", "Water32", "WebbedFloor1", "WebbedFloor2", "WebbedFloor4", "WebbedFloor5", "WebbedFloor9", "WetBlackWall35", "WetBlackWall36",
     "WhiteWall24", "WhiteWall25", "WhiteWall26", "WhiteWall28", "Wood1", "Wood10", "Wood11", "Wood12", "Wood13", "Wood21", "Wood3", "Wood4",
-    "Wood5", "Wood6", "Wood7", "Wood8", "Wood9", "marbleFloor106"
+    "Wood5", "Wood6", "Wood7", "Wood8", "Wood9", "marbleFloor106",
+    "JuggWall_495", "JuggWall_496", "JuggWall_497", "JuggWall_498", "JuggWall_499", "JuggWall_500", "JuggWall_501", "JuggWall_502", "JuggWall_503", "JuggWall_504", "JuggWall_505", "JuggWall_506",
+    "JuggWall_507", "JuggWall_508", "JuggWall_509", "JuggWall_510", "KleinWall_455", "KleinWall_456", "KleinWall_457", "KleinWall_458", "KleinWall_459", "KleinWall_460", "KleinWall_461", "KleinWall_462",
+    "KleinWall_463", "KleinWall_464", "KleinWall_465", "KleinWall_466", "KleinWall_467", "KleinWall_468", "KleinWall_469", "KleinWall_470", "KleinWall_471", "KleinWall_472", "KleinWall_473", "KleinWall_474",
+    "KleinWall_475", "KleinWall_476", "KleinWall_477", "KleinWall_478", "KleinWall_479", "KleinWall_480", "KleinWall_481", "KleinWall_482", "KleinWall_483", "KleinWall_484", "KleinWall_485", "KleinWall_486",
+    "KleinWall_487", "KleinWall_488", "KleinWall_489", "KleinWall_490", "KleinWall_491", "KleinWall_492", "KleinWall_493", "KleinWall_494", "KleinWall_511", "KleinWall_512", "KleinWall_513", "KleinWall_514",
+    "KleinWall_515", "KleinWall_516", "KreaWall_517", "KreaWall_518", "KreaWall_519", "KreaWall_520", "KreaWall_521", "KreaWall_522", "KreaWall_523", "KreaWall_524", "KreaWall_525", "KreaWall_526",
+    "KreaWall_527", "KreaWall_528", "KreaWall_529", "KreaWall_530", "KreaWall_531", "KreaWall_532", "KreaWall_533", "KreaWall_534", "KreaWall_535", "KreaWall_536", "KreaWall_537", "KreaWall_538",
+    "KreaWall_539", "KreaWall_540", "KreaWall_541"
 ].sort();
 
 /** Decals */
