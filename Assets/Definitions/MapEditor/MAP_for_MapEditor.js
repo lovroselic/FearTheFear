@@ -83,7 +83,10 @@ const TEXTURE_LIST = [
     "KleinWall_487", "KleinWall_488", "KleinWall_489", "KleinWall_490", "KleinWall_491", "KleinWall_492", "KleinWall_493", "KleinWall_494", "KleinWall_511", "KleinWall_512", "KleinWall_513", "KleinWall_514",
     "KleinWall_515", "KleinWall_516", "KreaWall_517", "KreaWall_518", "KreaWall_519", "KreaWall_520", "KreaWall_521", "KreaWall_522", "KreaWall_523", "KreaWall_524", "KreaWall_525", "KreaWall_526",
     "KreaWall_527", "KreaWall_528", "KreaWall_529", "KreaWall_530", "KreaWall_531", "KreaWall_532", "KreaWall_533", "KreaWall_534", "KreaWall_535", "KreaWall_536", "KreaWall_537", "KreaWall_538",
-    "KreaWall_539", "KreaWall_540", "KreaWall_541"
+    "KreaWall_539", "KreaWall_540", "KreaWall_541",
+    "JuggWall_542", "JuggWall_543", "JuggWall_544", "JuggWall_545", "JuggWall_546", "JuggWall_547", "JuggWall_548", "JuggWall_549", "JuggWall_550", "JuggWall_551", "JuggWall_552", "JuggWall_553",
+    "JuggWall_554", "JuggWall_555", "JuggWall_556", "JuggWall_557", "JuggWall_558", "JuggWall_559", "JuggWall_560", "JuggWall_561", "JuggWall_562", "JuggWall_563", "KreaWall_564", "KreaWall_565",
+    "KreaWall_566", "KreaWall_567", "KreaWall_568", "KreaWall_569", "KreaWall_570", "KreaWall_571", "KreaWall_572", "KreaWall_573", "KreaWall_574", "KreaWall_575", "KreaWall_576"
 ].sort();
 
 /** Decals */
