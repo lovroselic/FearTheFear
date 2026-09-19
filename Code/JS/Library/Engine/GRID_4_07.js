@@ -1133,6 +1133,20 @@ const EXT_MAPDICT = {
     BLOCKED15: 2 ** 15,     // 32768 - keep unset for safe serialization
 };
 
+const COLLISION_MODE = Object.freeze({
+    NONE: "NONE",
+    CELL: "CELL",               // Existing complete-grid collision.
+    BOUNDS: "BOUNDS",           // Six planes generated from the element's min/max bounds.
+    CONVEX: "CONVEX",           // Unique planes compiled from one convex proxy mesh.
+    MESH: "MESH",               // Reserved for rare cases that truly require triangles.
+});
+
+const OCCLUSION_TYPE = {
+    PASS: 0,       // treat as empty
+    BLOCK: 1,      // treat as full cell
+    CUSTOM: 2      // reserve for the future
+};
+
 const WallSizeToHeight = (value) => {
     return (Math.log2(value) - 7) * 2;
 };
