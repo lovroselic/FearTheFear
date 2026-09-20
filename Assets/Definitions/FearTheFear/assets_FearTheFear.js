@@ -6,8 +6,11 @@
 "use strict";
 
 
+// elements
+ElementsToCompile = ["WEDGE"];
 
 
+// assets
 LoadFonts = [
     { srcName: "ArcadeClassic.ttf", name: "Arcade" },
     { srcName: "C64_Pro-STYLE.ttf", name: "C64" },

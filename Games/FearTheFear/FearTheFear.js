@@ -160,7 +160,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.6.5",
+    VERSION: "0.7.0",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -801,8 +801,10 @@ const GAME = {
         WebGL.ambient_light_strength = 0.3;
         WebGL.diffuse_light_strength = 9.0;
         WebGL.specular_light_strength = 1.5;
-        //
+
+        // element compilations
         ELEMENT._bb_for_internal_elements();
+        ELEMENT.compileElementsToPlanes();
     },
     levelStart() {
         console.log("starting level", GAME.level);
