@@ -7,7 +7,9 @@
 
 
 // elements
-ElementsToCompile = ["WEDGE"];
+ElementsToCompile = [
+    { shapeName: "WEDGE", collisionMode: "CONVEX" },
+];
 
 
 // assets

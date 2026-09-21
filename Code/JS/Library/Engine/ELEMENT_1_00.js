@@ -7,7 +7,25 @@
 
 /** Elements */
 
+
+/**
+ * format: array of objects
+ * {
+ *  shapeName: string shape name
+ *  collisionMode: enum COLLISION_MODE
+ * }
+ */
+
 var ElementsToCompile = [];                         // required elements will be provided in asset file
+
+
+const COLLISION_MODE = Object.freeze({
+    NONE: "NONE",
+    CELL: "CELL",               // Existing complete-grid collision.
+    BOUNDS: "BOUNDS",           // Six planes generated from the element's min/max bounds.
+    CONVEX: "CONVEX",           // Unique planes compiled from one convex proxy mesh.
+    MESH: "MESH",               // Reserved for rare cases that truly require triangles.
+});
 
 const ELEMENT = {
     VERSION: "1.00",
@@ -16,8 +34,9 @@ const ELEMENT = {
 
     compileElementsToPlanes(arr = ElementsToCompile) {
         for (const EL of arr) {
-            const planes = this.compileElementPlanes(ELEMENT[EL], EL);
-            this[EL].planes = planes;
+            const planes = this.compileElementPlanes(ELEMENT[EL.shapeName], EL.shapeName);
+            this[EL.shapeName].planes = planes;
+            this[EL.shapeName].collisionMode = EL.collisionMode;
         }
     },
 

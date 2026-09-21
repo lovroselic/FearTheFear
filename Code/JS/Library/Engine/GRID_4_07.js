@@ -1146,8 +1146,7 @@ const EXT_MAPDICT = {
         return yaw;
     },
     toFlip(flip) {
-        (flip & 1) <<= this.FLIP_SHIFT;
-        return flip;
+        return (flip & 1) << this.FLIP_SHIFT;
     },
     getFlip(value) {
         let flip = value & this.FLIP_MASK;
@@ -1162,20 +1161,17 @@ const EXT_MAPDICT = {
         return value;
     },
     getAll(value) {
-        return [this.getShapeIndex(value), this.yawToAngle(value), this.getFlip(value)];
+        return {
+            used: this.isUsed(value),
+            shapeIndex: this.getShapeIndex(value),
+            angle: this.yawToAngle(value),
+            flip: this.getFlip(value)
+        };
     },
     isUsed(value) {
-       return (value & this.USED) !== 0;
+        return (value & this.USED) !== 0;
     },
 };
-
-const COLLISION_MODE = Object.freeze({
-    NONE: "NONE",
-    CELL: "CELL",               // Existing complete-grid collision.
-    BOUNDS: "BOUNDS",           // Six planes generated from the element's min/max bounds.
-    CONVEX: "CONVEX",           // Unique planes compiled from one convex proxy mesh.
-    MESH: "MESH",               // Reserved for rare cases that truly require triangles.
-});
 
 const OCCLUSION_TYPE = {
     PASS: 0,       // treat as empty
