@@ -1113,24 +1113,60 @@ const MAPDICT = {
 };
 
 const EXT_MAPDICT = {
-    EMPTY: 0,               // 0
-    UNUSED0: 2 ** 0,        // 1
-    UNUSED1: 2 ** 1,        // 2
-    UNUSED2: 2 ** 2,        // 4
-    UNUSED3: 2 ** 3,        // 8
-    UNUSED4: 2 ** 4,        // 16
-    UNUSED5: 2 ** 5,        // 32
-    UNUSED6: 2 ** 6,        // 64
-    UNUSED7: 2 ** 7,        // 128
-    UNUSED8: 2 ** 8,        // 256
-    UNUSED9: 2 ** 9,        // 512
-    UNUSED10: 2 ** 10,      // 1024
-    UNUSED11: 2 ** 11,      // 2048
-    UNUSED12: 2 ** 12,      // 4096
-    UNUSED13: 2 ** 13,      // 8192
-    UNUSED14: 2 ** 14,      // 16384
+    // Bits 0–7: shape index, 1–255; 2**8 - 1
+    SHAPE_MASK: 0b0000000011111111, //255
+    WEDGE: 1,
 
-    BLOCKED15: 2 ** 15,     // 32768 - keep unset for safe serialization
+    // unused
+    UNUSED8: 2 ** 8,                // 256
+    UNUSED9: 2 ** 9,                // 512
+    UNUSED10: 2 ** 10,              // 1024
+
+    USED: 2 ** 11,                  // 2048, 0 EGA not used, 1 EGA used
+    YAW_SHIFT: 12,
+    YAW_MASK: 0b0011000000000000,
+    YAW_MASK1: 2 ** 12,             // 4096,  0, +0°, 1: +90°
+    YAW_MASK2: 2 ** 13,             // 8192,  0, +0°, +180°
+    FLIP_SHIFT: 14,
+    FLIP_MASK: 0b0100000000000000,
+    FLIP: 2 ** 14,                  // 16384: 0, floor, 1 ceiling
+
+    BLOCKED15: 2 ** 15,             // 32768 - keep unset for safe serialization
+    getShapeIndex(val) {
+        return val & this.SHAPE_MASK;
+    },
+    yawToAngle(yaw) {
+        let angle = yaw & this.YAW_MASK;
+        angle >>>= this.YAW_SHIFT;
+        return angle * 90;
+    },
+    angleToYaw(angle) {
+        let yaw = (angle / 90) & 0b11;
+        yaw <<= this.YAW_SHIFT;
+        return yaw;
+    },
+    toFlip(flip) {
+        (flip & 1) <<= this.FLIP_SHIFT;
+        return flip;
+    },
+    getFlip(value) {
+        let flip = value & this.FLIP_MASK;
+        flip >>>= this.FLIP_SHIFT;
+        return flip;
+    },
+    set(shapeIndex, angle, flip = 0) {
+        shapeIndex &= this.SHAPE_MASK;
+        let value = shapeIndex | this.angleToYaw(angle);
+        value |= this.toFlip(flip);
+        value |= this.USED;
+        return value;
+    },
+    getAll(value) {
+        return [this.getShapeIndex(value), this.yawToAngle(value), this.getFlip(value)];
+    },
+    isUsed(value) {
+       return (value & this.USED) !== 0;
+    },
 };
 
 const COLLISION_MODE = Object.freeze({
