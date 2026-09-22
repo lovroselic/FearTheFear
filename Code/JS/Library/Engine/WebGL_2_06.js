@@ -2153,6 +2153,109 @@ const WORLD = {
 
         this._appendGeometry(type, positions, indices, textureCoordinates, vertexNormals);
     },
+    addOrientedElement(E, Y, grid, type, angle = 0, flip = 0, scale = null) {
+        if (angle === 0 && flip === 0) return this.addElement(E, Y, grid, type);
+
+        const positions = E.positions.slice();
+        const indices = E.indices.slice();
+        const textureCoordinates = E.textureCoordinates.slice();
+        const vertexNormals = E.vertexNormals.slice();
+
+        /*
+         * Copy and transform positions, normals and winding,
+         * then call _appendGeometry().
+         */
+        // transformed implementation here
+
+        angle = Math.radians(angle);
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+
+        /*
+        * Transform local vertex positions.
+        *
+        * ELEMENT coordinates:
+        * X: 0..1
+        * Y: 0..1
+        * Z: 0..1
+        *
+        * Yaw rotates around the centre of the grid cell:
+        * X/Z pivot = 0.5/0.5.
+        *
+        * Flip mirrors vertically:
+        * Y becomes 1-Y.
+        */
+
+        for (let p = 0; p < positions.length; p += 3) {
+            let x = positions[p];
+            let y = positions[p + 1];
+            let z = positions[p + 2];
+
+            if (scale) {
+                x *= scale[0];
+                y *= scale[1];
+                z *= scale[2];
+            }
+
+            if (flip) y = 1 - y;
+
+            /*
+            * Move X/Z rotation pivot to origin.
+            */
+
+            x -= 0.5;
+            z -= 0.5;
+
+            /*
+            * Rotate in the X/Z floor plane.
+            * This direction corresponds to Canvas rotation when
+            * map Y represents world Z.
+            */
+
+            const rotatedX = x * cos - z * sin;
+            const rotatedZ = x * sin + z * cos;
+
+            /*
+            * Return from the centre pivot and translate into
+            * the world grid.
+            */
+
+            positions[p] = rotatedX + 0.5 + grid.x;
+            positions[p + 1] = y + Y;
+            positions[p + 2] = rotatedZ + 0.5 + grid.y;
+        }
+
+        /** transform normals */
+
+        for (let n = 0; n < vertexNormals.length; n += 3) {
+
+            const nx = vertexNormals[n];
+            let ny = vertexNormals[n + 1];
+            const nz = vertexNormals[n + 2];
+
+            if (flip) ny = -ny;
+
+            vertexNormals[n] = nx * cos - nz * sin;
+            vertexNormals[n + 1] = ny;
+            vertexNormals[n + 2] = nx * sin + nz * cos;
+        }
+
+        /*
+        * A flip is a reflection, which reverses triangle
+        * winding. Swapping B and C so back-face culling continues
+        * to see the outside of the element.
+        */
+
+        if (flip) {
+            for (let i = 0; i < indices.length; i += 3) {
+                const swap = indices[i + 1];
+                indices[i + 1] = indices[i + 2];
+                indices[i + 2] = swap;
+            }
+        }
+
+        this._appendGeometry(type, positions, indices, textureCoordinates, vertexNormals);
+    },
     reserveObject(E, type) {
         let positions = E.positions.slice();
         let indices = E.indices.slice();
@@ -2282,6 +2385,7 @@ const WORLD = {
         console.log("--------------------------------");
         console.log("World.build->maxDepth", maxDepth);
 
+        /** basic map */
         for (let [index, value] of GA.map.entries()) {
             let grid = GA.indexToGrid(index);
             let prune = null;
@@ -2341,6 +2445,17 @@ const WORLD = {
                 default:
                     console.error("world building GA value error", value, initial, "grid", grid);
             }
+        }
+
+        /** extende map parsing */
+        for (let [index, value] of GA.extendedMap.entries()) {
+            if (!EXT_MAPDICT.isUsed(value)) continue;
+
+            const grid = GA.indexToGrid(index);
+            const shape = EXT_MAPDICT.getAll(value);
+            const element = ELEMENT[EXT_TO_SHAPE[shape.shapeIndex]];
+            console.warn("EGA build", index, value, "shape", shape, "element", element);
+            this.addOrientedElement(element, grid.z, grid, "wall", shape.angle, shape.flip);
         }
 
         /** build static decals */

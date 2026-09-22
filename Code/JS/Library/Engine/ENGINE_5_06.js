@@ -3576,12 +3576,10 @@ const ENGINE = {
             let value = maze.GA.eGetValue(grid);
             if (!EXT_MAPDICT.isUsed(value)) return;
             const shapeDescription = EXT_MAPDICT.getAll(value);
-            const shape = EXT_TO_SHAPE[shapeDescription.shapeIndex];
             const path = SHAPE_PATH[shapeDescription.shapeIndex].path;
             const color = SHAPE_PATH[shapeDescription.shapeIndex].color;
             const centerGridPoint = GRID.gridToCenterPX(grid);
             const half = ENGINE.INI.GRIDPIX >>> 1;
-            console.warn("shapeDraw3D", grid, value, "shapeDescription", shapeDescription, "shape", shape, "path", path, "centerGridPoint", centerGridPoint, "color", color);
 
             const CTX = ENGINE.BLOCKGRID.layer;
             CTX.save();
