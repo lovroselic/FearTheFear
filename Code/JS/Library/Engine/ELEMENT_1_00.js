@@ -870,6 +870,8 @@ const ELEMENT = {
     },
 };
 
+/** Shapes */
+
 
 /**
  * shape paths
@@ -895,6 +897,93 @@ const SHAPE_PATH = (() => {
     };
 
 })();
+
+const SHAPE_TRANSFORM = {
+    create(grid, angle, flip, originY = grid.z) {
+        const radians = Math.radians(angle);
+
+        return {
+            originX: grid.x,
+            originY,
+            originZ: grid.y,
+            cos: Math.cos(radians),
+            sin: Math.sin(radians),
+            flip,
+        };
+    },
+    pointToWorld(point, transform, out = {}) {
+        /*
+         * Canonical element coordinates use the centre of
+         * the grid cell as their yaw pivot.
+         */
+        const x = point.x - 0.5;
+        const z = point.z - 0.5;
+        const y = transform.flip ? 1 - point.y : point.y;
+
+        out.x = transform.originX + 0.5 + x * transform.cos - z * transform.sin;
+        out.y = transform.originY + y;
+        out.z = transform.originZ + 0.5 + x * transform.sin + z * transform.cos;
+
+        return out;
+    },
+    normalToWorld(normal, transform, out = {}) {
+        /*
+         * Normals are rotated and flipped, but never translated or moved.
+         */
+        const ny = transform.flip ? -normal.y : normal.y;
+
+        out.x = normal.x * transform.cos - normal.z * transform.sin;
+        out.y = ny;
+        out.z = normal.x * transform.sin + normal.z * transform.cos;
+
+        return out;
+    },
+    compilePlacedCollider(element, transform) {
+        const worldPlanes = [];
+
+        for (const plane of element.planes.planes) {
+            const normal = plane.normal;
+
+            /*
+             * Because normal has length 1, normal * d is
+             * guaranteed to lie on the plane.
+             */
+            const localPlanePoint = { x: normal.x * plane.d, y: normal.y * plane.d, z: normal.z * plane.d, };
+            const worldNormal = SHAPE_TRANSFORM.normalToWorld(normal, transform);
+            const worldPlanePoint = SHAPE_TRANSFORM.pointToWorld(localPlanePoint, transform);
+            const worldD = worldNormal.x * worldPlanePoint.x + worldNormal.y * worldPlanePoint.y + worldNormal.z * worldPlanePoint.z;
+            worldPlanes.push({ normal: worldNormal, d: worldD, });
+        }
+
+        return {
+            planes: worldPlanes,
+        };
+    },
+    compileExtendedColliders(GA) {
+        const colliders = new Array(GA.extendedMap.length);
+
+        for (const [index, value] of GA.extendedMap.entries()) {
+            if (!EXT_MAPDICT.isUsed(value)) continue;
+
+            const description = EXT_MAPDICT.getAll(value);
+            const shapeName = EXT_TO_SHAPE[description.shapeIndex];
+            const element = ELEMENT[shapeName];
+            const grid = GA.indexToGrid(index);
+
+            const transform = SHAPE_TRANSFORM.create(grid, description.angle, description.flip);
+
+            colliders[index] = {
+                shapeIndex: description.shapeIndex,
+                element,
+                transform,
+                ...SHAPE_TRANSFORM.compilePlacedCollider(element, transform),
+            };
+        }
+
+        return colliders;
+    }
+
+};
 
 //END
 console.log(`%cELEMENT ${ELEMENT.VERSION} loaded.`, ELEMENT.CSS);

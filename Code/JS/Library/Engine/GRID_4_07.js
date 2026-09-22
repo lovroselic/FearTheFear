@@ -1531,7 +1531,7 @@ class GA_Dimension_Agnostic_Methods {
     }
     forwardPointsFrontEntity(pos, dir, r, resolution = GRID.SETTING.FORWARD_CIRCLE_RESOLUTION) {
         let checks = [pos];
-        const increment = (GRID.SETTING.FORWARD_CIRCLE_CHECK_ANGLE) / resolution;
+        const increment = (GRID.SETTING.FORWARD_CIRCLE_CHECK_ANGLE) / resolution;                       // default Math.PI / 4, resolution default 2
         for (let i = 1; i <= resolution; i++) {
             let theta = increment * i;
             checks.push(pos.translate(dir.rotate(theta), r));

@@ -2154,7 +2154,7 @@ const WORLD = {
         this._appendGeometry(type, positions, indices, textureCoordinates, vertexNormals);
     },
     addOrientedElement(E, Y, grid, type, angle = 0, flip = 0, scale = null) {
-        if (angle === 0 && flip === 0) return this.addElement(E, Y, grid, type);
+        if (angle === 0 && flip === 0) return this.addElement(E, Y, grid, type, scale);
 
         const positions = E.positions.slice();
         const indices = E.indices.slice();
@@ -2454,9 +2454,12 @@ const WORLD = {
             const grid = GA.indexToGrid(index);
             const shape = EXT_MAPDICT.getAll(value);
             const element = ELEMENT[EXT_TO_SHAPE[shape.shapeIndex]];
-            console.warn("EGA build", index, value, "shape", shape, "element", element);
+            //console.warn("EGA build", index, value, "shape", shape, "element", element);
             this.addOrientedElement(element, grid.z, grid, "wall", shape.angle, shape.flip);
         }
+
+        /** EGA plane compilation */
+        GA.extendedColliders = SHAPE_TRANSFORM.compileExtendedColliders(GA);
 
         /** build static decals */
         for (const iam of [...WebGL.staticDecalList, ...WebGL.interactiveDecalList]) {
@@ -4303,15 +4306,16 @@ class $3D_player {
         let Dir2D = Vector3.to_FP_Vector(dir);
         const elevation = nextPos3.y - this.floorReference();
 
-        if (elevation <= WebGL.INI.DELTA_HEIGHT_CLIMB + 0.01) {                                                     //if elevation is too big then climbing needs to be resolved first
-            let check;
+        if (elevation <= WebGL.INI.DELTA_HEIGHT_CLIMB + 0.01) {                                                     // if elevation is too big then climbing needs to be resolved first
+            let check;                                                                                              // boolean, if true there is no collision
             if (WebGL.CONFIG.prevent_movement_in_exlusion_grids) {
-                check = this.GA.forwardPositionIsEmpty(nextPos, Dir2D, this.r, this.depth);
+                check = this.GA.forwardPositionIsEmpty(nextPos, Dir2D, this.r, this.depth);                         // this is main 3D approach
             } else {
-                check = this.GA.entityNotInWall(nextPos, Dir2D, this.r, this.depth);                                //this shouild be now obsolete - it's not
+                check = this.GA.entityNotInWall(nextPos, Dir2D, this.r, this.depth);                                // this shouild be now obsolete - it's not
             }
+
             if (check) {
-                nextPos3.set_y(this.minY + this.heigth + this.depth);                                               //reset from climbing, if applicable 
+                nextPos3.set_y(this.minY + this.heigth + this.depth);                                               // reset from climbing, if applicable 
                 return this.setPos(nextPos3);
             } else return;
 
