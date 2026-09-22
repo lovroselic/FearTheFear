@@ -28,12 +28,13 @@ DEBUG.INF_LIVES = false;
 DEBUG.keys = true;
 DEBUG.max17 = false;
 DEBUG.STAY_ALIVE = false;
+DEBUG.INF_MANA = true;
 
 DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 17;
+    GAME.level = 1;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -48,7 +49,7 @@ DEBUG.checkPoint = function () {
 
     HERO.mana = 500;
     HERO.maxMana = 500;
-    HERO.health = 1;
+    HERO.health = 199;
     HERO.maxHealth = 500;
 
     HERO.attackExp = 18;
@@ -160,7 +161,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.7.7",
+    VERSION: "0.7.8",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -362,7 +363,7 @@ const HERO = {
         let cost = BouncingMissile.calcMana(HERO.reference_magic);
         cost = Math.round(cost * this.manaDiscount);
 
-        if (DEBUG.FREE_MAGIC) cost = 0;
+        if (DEBUG.INF_MANA) cost = 0;
         if (cost > HERO.mana) return AUDIO.MagicFail.play();
 
         HERO.mana -= cost;
@@ -759,7 +760,7 @@ const GAME = {
         GAME.time = new Timer("Main");
 
         /** DEBUG */
-        //DEBUG.checkPoint();
+        DEBUG.checkPoint();
         /** END DEBUG */
 
         //SAVE GAME

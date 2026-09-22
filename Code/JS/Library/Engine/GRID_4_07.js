@@ -2686,6 +2686,61 @@ class ExtendedGridArray3D extends GridArray3D {
         }
         return true;
     }
+    pointInsideElementPlane(point, placedElement) {
+        const EPSILON = 1E-6;
+        let closestPlane = null;
+        let closestDistance = -Infinity;
+
+        for (const plane of placedElement.planes) {
+            const distance = plane.normal.x * point.x + plane.normal.y * point.y + plane.normal.z * point.z - plane.d;
+            if (distance > EPSILON) return null;
+
+            /*
+             * The largest distance is closest to zero and
+             * therefore identifies the nearest surface.
+             */
+            if (distance > closestDistance) {
+                closestDistance = distance;
+                closestPlane = plane;
+            }
+        }
+
+        return closestPlane;
+    }
+    missileInShapePoint(obj, resolution = 8) {
+        let checks;
+
+        if (obj.bounce3D) {
+            checks = this.spherePointsAroundCenter(obj.pos, obj.dir, obj.r);                // Returns arrays in WebGL order: [worldX, worldY, worldZ]
+        } else {
+            const pos2D = Vector3.to_FP_Grid(obj.pos);
+            const dir2D = Vector3.to_FP_Vector(obj.dir);
+            checks = this.pointsAroundEntity(pos2D, dir2D, obj.r, resolution);              // Returns FP_Grid-style points: x = world X, y = world Z
+        }
+
+        for (const check of checks) {
+            let point;
+
+            if (obj.bounce3D) {
+                point = Vector3.from_array(check);
+            } else {
+                point = new Vector3(check.x, obj.pos.y, check.y);
+            }
+
+            const grid = new Grid3D(point.x, point.z, point.y);                             // Convert WebGL coordinates into Grid3D order
+            const index = this.gridToIndex(grid);
+            const placedElement = this.extendedColliders[index];
+            if (!placedElement) continue;
+
+            const plane = this.pointInsideElementPlane(point, placedElement);
+            if (!plane) continue;
+            const normal = new Vector3(plane.normal.x, plane.normal.y, plane.normal.z);     // Return consistent Vector3 values for both missile collision modes.
+
+            return [true, point, normal];
+        }
+
+        return [false, null, null];
+    }
 }
 
 class IndexArray3D extends Classes([ArrayBasedDataStructure3D, IA_Dimension_Agnostic_Methods]) {

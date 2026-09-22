@@ -768,6 +768,14 @@ class Missile3D extends IAM {
                     continue;
                 }
 
+                // Check EGA shape collision
+                const [shapeHit, shapePoint, shapeNormal] = GA.missileInShapePoint(obj);
+                if (shapeHit) {
+                    obj.hitWall(this, shapePoint, GA, shapeNormal);
+                    continue;
+                }
+
+
                 if (this.missile_entity_collision(obj, GA)) continue;                                                       //check entity collision
 
                 const playerHit = GRID.circleCollision3D(this.hero.player.pos, obj.pos, this.hero.player.r + obj.r);        //check player collision

@@ -15,6 +15,7 @@ const DEBUG = {
     INVINCIBLE: false,
     INF_LIVES: false,
     STAY_ALIVE: false,                     // stay alive after lives == 0
+    INF_MANA: false,
     keys: false,
     max17: false,
     AUTO_TEST: false,
