@@ -4257,13 +4257,15 @@ class $3D_player {
 
         if (elevation <= WebGL.INI.DELTA_HEIGHT_CLIMB + 0.01) {                                                     // if elevation is too big then climbing needs to be resolved first
             let check;                                                                                              // boolean, if true there is no collision
+            let extendedCheck = true;
             if (WebGL.CONFIG.prevent_movement_in_exlusion_grids) {
-                check = this.GA.forwardPositionIsEmpty(nextPos, Dir2D, this.r, this.depth);                         // this is main 3D approach
+                check = this.GA.forwardPositionIsEmpty(nextPos, Dir2D, this.r, this.depth);                                         // this is main 3D approach
+                if (check) extendedCheck = this.GA.forwardPositionNotInShape(nextPos, Dir2D, this.r, this.depth, this.heigth);      // this is extended 3D approach
             } else {
                 check = this.GA.entityNotInWall(nextPos, Dir2D, this.r, this.depth);                                // this shouild be now obsolete - it's not
             }
 
-            if (check) {
+            if (check && extendedCheck) {
                 nextPos3.set_y(this.minY + this.heigth + this.depth);                                               // reset from climbing, if applicable 
                 return this.setPos(nextPos3);
             } else return;

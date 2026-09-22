@@ -2664,7 +2664,28 @@ class ExtendedGridArray3D extends GridArray3D {
     eGetValue(grid) {
         return this.extendedMap[this.gridToIndex(grid)];
     }
+    forwardPositionNotInShape(pos, dir, r, depth, height, resolution = GRID.SETTING.FORWARD_CIRCLE_RESOLUTION) {
+        const points = this.forwardPointsFrontEntity(pos, dir, r, resolution);
+        for (const point2D of points) {
+            const grid = new Grid3D(point2D.x, point2D.y, depth);
+            const index = this.gridToIndex(grid);
+            const placedElement = this.extendedColliders[index];
+            const point3D = { x: point2D.x, y: depth + height, z: point2D.y, };
+            if (placedElement) {
+                if (this.pointInsideElement(point3D, placedElement)) return false;              // any point in shape means collision, false means not clear
+            }
+        }
+        return true;
+    }
+    pointInsideElement(point, placedElement) {
+        const EPSILON = 1E-6;
 
+        for (const plane of placedElement.planes) {
+            const distance = plane.normal.x * point.x + plane.normal.y * point.y + plane.normal.z * point.z - plane.d;
+            if (distance > EPSILON) return false;  // beyond blane, no collision possible
+        }
+        return true;
+    }
 }
 
 class IndexArray3D extends Classes([ArrayBasedDataStructure3D, IA_Dimension_Agnostic_Methods]) {
