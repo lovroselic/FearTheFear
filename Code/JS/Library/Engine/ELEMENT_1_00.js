@@ -13,6 +13,7 @@
  * {
  *  shapeName: string shape name
  *  collisionMode: enum COLLISION_MODE
+ *  occlusionType: enum COLLISION_MODE
  * }
  */
 
@@ -27,6 +28,12 @@ const COLLISION_MODE = Object.freeze({
     MESH: "MESH",               // Reserved for rare cases that truly require triangles.
 });
 
+const OCCLUSION_TYPE = Object.freeze({
+    PASS: "PASS",
+    BLOCK: "BLOCK",
+    CUSTOM: "CUSTOM",
+});
+
 const ELEMENT = {
     VERSION: "1.00",
     CSS: "color: silver",
@@ -37,6 +44,7 @@ const ELEMENT = {
             const planes = this.compileElementPlanes(ELEMENT[EL.shapeName], EL.shapeName);
             this[EL.shapeName].planes = planes;
             this[EL.shapeName].collisionMode = EL.collisionMode;
+            this[EL.shapeName].occlusionType = EL.occlusionType;
         }
     },
 
@@ -861,6 +869,32 @@ const ELEMENT = {
 
     },
 };
+
+
+/**
+ * shape paths
+ * SVG format:
+    * M moveto
+    * L line
+    * Z close path
+ */
+const SHAPE_PATH = (() => {
+
+    const SIZE = ENGINE.INI.GRIDPIX;
+    const HALF = SIZE / 2;
+
+    return {
+
+        [EXT_MAPDICT.WEDGE]: {
+            path: new Path2D(
+                `M 0 0 L ${HALF} 0 L 0 ${HALF} Z`
+            ),
+            color: "#999",
+        },
+
+    };
+
+})();
 
 //END
 console.log(`%cELEMENT ${ELEMENT.VERSION} loaded.`, ELEMENT.CSS);

@@ -102,6 +102,12 @@ const GRID = {
         let y = grid.y * ENGINE.INI.GRIDPIX + half;
         return new Point(x, y);
     },
+    grid3DToCenterPlanePX(grid) {
+        const half = ENGINE.INI.GRIDPIX >>> 1;
+        let x = grid.x * ENGINE.INI.GRIDPIX + half;
+        let y = grid.z * ENGINE.INI.GRIDPIX + half;
+        return new Point(x, y);
+    },
     gridToSprite(grid, actor) {
         GRID.coordToSprite(GRID.gridToCoord(grid), actor);
     },
@@ -1173,10 +1179,8 @@ const EXT_MAPDICT = {
     },
 };
 
-const OCCLUSION_TYPE = {
-    PASS: 0,       // treat as empty
-    BLOCK: 1,      // treat as full cell
-    CUSTOM: 2      // reserve for the future
+const EXT_TO_SHAPE = {
+    1: "WEDGE",
 };
 
 const WallSizeToHeight = (value) => {
@@ -2651,11 +2655,16 @@ class ExtendedGridArray3D extends GridArray3D {
     exportExtendedMap() {
         return BWT.rle_encode(BWT.bwt(this.extendedToString()));
     }
-    //TODO:
-    //static importMap(){} - we can inherit this one, jumple rle conversion and BWT decoding
-    //toString(){}
-    //exportMap(){}
-    //toTextureMap(){}
+
+    // EGA (extendedMap) action, map not touched
+    eSet(index, shapeIndex, angle, flip = 0) {
+        const value = EXT_MAPDICT.set(shapeIndex, angle, flip);
+        this.extendedMap[index] = value;
+    }
+    eGetValue(grid) {
+        return this.extendedMap[this.gridToIndex(grid)];
+    }
+
 }
 
 class IndexArray3D extends Classes([ArrayBasedDataStructure3D, IA_Dimension_Agnostic_Methods]) {

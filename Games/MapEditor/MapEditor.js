@@ -40,6 +40,7 @@ const INI = {
     USE_CONNECTIONS: false,
     USE_ROPES: false,
     USE_TEXTURE_MAP: true,
+    USE_SHAPES: true,
 
     //download flags
     DOWNLOAD_MASK: false,
@@ -93,7 +94,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.25.2",
+    VERSION: "0.25.3",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -241,6 +242,9 @@ const PRG = {
         if (!INI.USE_ROPES) {
             $(".use_ropes").hide();
         }
+        if (!INI.USE_SHAPES) {
+            $(".use_shapes").hide();
+        }
     },
     start() {
         console.log(PRG.NAME + " started.");
@@ -298,6 +302,7 @@ const GAME = {
 
         if (typeof INI !== "undefined" && Number.isFinite(INI.HERO_HEIGHT)) WebGL.INI.HERO_HEIGHT = INI.HERO_HEIGHT;
         ELEMENT._bb_for_internal_elements();
+        ELEMENT.compileElementsToPlanes();
 
         //WebGL.CONFIG.setMovementMode("surface");
     },
@@ -659,6 +664,13 @@ const GAME = {
 
 
         GAME.updateTextures();                  //common to textures and panorama
+
+        /** shapes */
+        //ElementsToCompile exist always
+        for (const shape of ElementsToCompile) {
+            const name = shape.shapeName;
+            $("#shape_type").append(`<option value="${name}">${name}</option>`);
+        }
 
 
         /** ropes */
@@ -1048,6 +1060,7 @@ const GAME = {
         $('#searchShrines').on('keyup', () => filterOptions("#shrine_type", "#searchShrines"));
         $('#searchMIE').on('keyup', () => filterOptions("#movable_type", "#searchMIE"));
         $('#searchInteractors').on('keyup', () => filterOptions("#interactor_type", "#searchInteractors"));
+        $('#searchShape').on('keyup', () => filterOptions("#shape_type", "#searchShape"));
 
         /** shortcuts */
 
@@ -1932,9 +1945,25 @@ const GAME = {
                 dir = GAME.getSelectedDir();
                 dirIndex = dir.toInt();
                 $MAP.map.carriers.push(Array(gridIndex, $("#rope_type")[0].value, dirIndex));
-                console.info("carriers", Array(gridIndex, $("#rope_type")[0].value, dirIndex));
+                //console.info("carriers", Array(gridIndex, $("#rope_type")[0].value, dirIndex));
                 break;
 
+            case "shape":
+                switch (currentValue) {
+                    case MAPDICT.EMPTY:
+                        break;
+                    default:
+                        $("#error_message").html(`Shape placement not supported on value: ${currentValue}`);
+                        return;
+                }
+                const shape_rotation = parseInt($("#shape_rotation")[0].value, 10);
+                const shape_flip = parseInt($("#shape_flip")[0].value, 10);
+                const shape_name = $("#shape_type")[0].value;
+                const shape_index = EXT_MAPDICT[shape_name];
+                GA.eSet(gridIndex, shape_index, shape_rotation, shape_flip);
+
+                console.warn("shape", shape_rotation, shape_flip, shape_name, shape_index, "gridIndex", gridIndex);
+                break;
         }
 
         GAME.stack.previousRadio = radio;

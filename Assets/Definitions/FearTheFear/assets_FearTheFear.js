@@ -8,7 +8,7 @@
 
 // elements
 ElementsToCompile = [
-    { shapeName: "WEDGE", collisionMode: "CONVEX" },
+    { shapeName: "WEDGE", collisionMode: "CONVEX", occlusionType: "PASS" },
 ];
 
 

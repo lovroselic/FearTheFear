@@ -10,7 +10,7 @@ console.log("%cMAP for FearTheFear loaded.", "color: #888");
 const MAP = {
     1: {
         name: "Generic room name",
-        data: '{"width":"17","height":"17","depth":3,"map":"BB37AA216BB3AA6BB3AA237BAA2BABB40AA3BB90AA36BB33ABB3ABB59$BB30ABB51ABB10A","extendedMap":"AA867$"}',
+        data: '{"width":"17","height":"17","depth":3,"map":"BB37AA216BB3AA6BB3AA237BAA2BABB40AA3BB90AA36BB33ABB3ABB59$BB30ABB51ABB10A","extendedMap":"AA830ࡂ$AA36"}',
         sg: 0,
         maxSpawned: -1,
         killCountdown: -1,

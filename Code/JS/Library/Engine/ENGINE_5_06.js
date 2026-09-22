@@ -3565,10 +3565,35 @@ const ENGINE = {
                         if (value & MAPDICT.STAIR) value = MAPDICT.STAIR;
                         ENGINE.BLOCKGRID.corr(x, y, CTX, value, corr);
                     }
+
+                    this.shapeDraw3D(maze, grid);
                 }
             }
 
             ENGINE.BLOCKGRID3D.decalDraw3D(maze, CTX, z);
+        },
+        shapeDraw3D(maze, grid) {
+            let value = maze.GA.eGetValue(grid);
+            if (!EXT_MAPDICT.isUsed(value)) return;
+            const shapeDescription = EXT_MAPDICT.getAll(value);
+            const shape = EXT_TO_SHAPE[shapeDescription.shapeIndex];
+            const path = SHAPE_PATH[shapeDescription.shapeIndex].path;
+            const color = SHAPE_PATH[shapeDescription.shapeIndex].color;
+            const centerGridPoint = GRID.gridToCenterPX(grid);
+            const half = ENGINE.INI.GRIDPIX >>> 1;
+            console.warn("shapeDraw3D", grid, value, "shapeDescription", shapeDescription, "shape", shape, "path", path, "centerGridPoint", centerGridPoint, "color", color);
+
+            const CTX = ENGINE.BLOCKGRID.layer;
+            CTX.save();
+            CTX.translate(centerGridPoint.x, centerGridPoint.y);
+            CTX.rotate(Math.radians(shapeDescription.angle));
+            CTX.translate(-half, -half);
+            CTX.strokeStyle = color;
+            CTX.fillStyle = color;
+            CTX.lineWidth = 1; 
+            CTX.fill(path);
+            CTX.stroke(path);
+            CTX.restore();
         },
         decalDraw3D(maze, CTX, z) {
             const decalWidth = 3;

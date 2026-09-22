@@ -345,6 +345,11 @@
                                 <hr>
                             </div>
 
+                            <div class="use_shapes">
+                                <input type="radio" name="painter" value="shape"> Shape <br />
+                                <hr>
+                            </div>
+
 
                             <div class="use_decals"><input type="radio" name="painter" value="decal"> Decal <br /></div>
                             <div class="use_lights"><input type="radio" name="painter" value="light"> Light <br /></div>
@@ -508,6 +513,37 @@
                                 </div>
                             </fieldset>
 
+                        </div>
+
+
+                        <div class="use_shapes">
+                            <fieldset>
+                                <legend>Shape</legend>
+
+
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <input type="text" id="searchShape" class="w-75" placeholder="Search shapes ...">
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <select id="shape_type"> </select>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    Rotation: <select id="shape_rotation">
+                                        <option value=0>0</option>
+                                        <option value=90>90</option>
+                                        <option value=180>180</option>
+                                        <option value=270>270</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    Flip: <select id="shape_flip">
+                                        <option value="0">Floor</option>
+                                        <option value="1">Ceiling</option>
+                                    </select>
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
@@ -1193,7 +1229,7 @@
 
 1 : {
 name: "Generic room name",
-data: '{"width":"17","height":"17","depth":3,"map":"BB37AA216BB3AA6BB3AA237BAA2BABB40AA3BB90AA36BB33ABB3ABB59$BB30ABB51ABB10A","extendedMap":"AA867$"}',
+data: '{"width":"17","height":"17","depth":3,"map":"BB37AA216BB3AA6BB3AA237BAA2BABB40AA3BB90AA36BB33ABB3ABB59$BB30ABB51ABB10A","extendedMap":"AA830ࡂ$AA36"}',
 sg: 0,
 maxSpawned: -1,
 killCountdown: -1,
