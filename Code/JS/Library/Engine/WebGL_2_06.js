@@ -2155,98 +2155,52 @@ const WORLD = {
     },
     addOrientedElement(E, Y, grid, type, angle = 0, flip = 0, scale = null) {
         if (angle === 0 && flip === 0) return this.addElement(E, Y, grid, type, scale);
-
+        const transform = SHAPE_TRANSFORM.create(grid, angle, flip, Y);
+        return this.addTransformedElement(E, type, transform, scale);
+    },
+    addTransformedElement(E, type, transform, scale = null) {
         const positions = E.positions.slice();
         const indices = E.indices.slice();
         const textureCoordinates = E.textureCoordinates.slice();
         const vertexNormals = E.vertexNormals.slice();
 
-        /*
-         * Copy and transform positions, normals and winding,
-         * then call _appendGeometry().
-         */
-        // transformed implementation here
-
-        angle = Math.radians(angle);
-        const cos = Math.cos(angle);
-        const sin = Math.sin(angle);
-
-        /*
-        * Transform local vertex positions.
-        *
-        * ELEMENT coordinates:
-        * X: 0..1
-        * Y: 0..1
-        * Z: 0..1
-        *
-        * Yaw rotates around the centre of the grid cell:
-        * X/Z pivot = 0.5/0.5.
-        *
-        * Flip mirrors vertically:
-        * Y becomes 1-Y.
-        */
+        const localPoint = { x: 0, y: 0, z: 0, };
+        const worldPoint = { x: 0, y: 0, z: 0, };
 
         for (let p = 0; p < positions.length; p += 3) {
-            let x = positions[p];
-            let y = positions[p + 1];
-            let z = positions[p + 2];
+            localPoint.x = positions[p];
+            localPoint.y = positions[p + 1];
+            localPoint.z = positions[p + 2];
 
             if (scale) {
-                x *= scale[0];
-                y *= scale[1];
-                z *= scale[2];
+                localPoint.x *= scale[0];
+                localPoint.y *= scale[1];
+                localPoint.z *= scale[2];
             }
 
-            if (flip) y = 1 - y;
+            SHAPE_TRANSFORM.pointToWorld(localPoint, transform, worldPoint);
 
-            /*
-            * Move X/Z rotation pivot to origin.
-            */
-
-            x -= 0.5;
-            z -= 0.5;
-
-            /*
-            * Rotate in the X/Z floor plane.
-            * This direction corresponds to Canvas rotation when
-            * map Y represents world Z.
-            */
-
-            const rotatedX = x * cos - z * sin;
-            const rotatedZ = x * sin + z * cos;
-
-            /*
-            * Return from the centre pivot and translate into
-            * the world grid.
-            */
-
-            positions[p] = rotatedX + 0.5 + grid.x;
-            positions[p + 1] = y + Y;
-            positions[p + 2] = rotatedZ + 0.5 + grid.y;
+            positions[p] = worldPoint.x;
+            positions[p + 1] = worldPoint.y;
+            positions[p + 2] = worldPoint.z;
         }
 
-        /** transform normals */
+        const localNormal = { x: 0, y: 0, z: 0, };
+        const worldNormal = { x: 0, y: 0, z: 0, };
 
         for (let n = 0; n < vertexNormals.length; n += 3) {
+            localNormal.x = vertexNormals[n];
+            localNormal.y = vertexNormals[n + 1];
+            localNormal.z = vertexNormals[n + 2];
 
-            const nx = vertexNormals[n];
-            let ny = vertexNormals[n + 1];
-            const nz = vertexNormals[n + 2];
+            SHAPE_TRANSFORM.normalToWorld(localNormal, transform, worldNormal);
 
-            if (flip) ny = -ny;
-
-            vertexNormals[n] = nx * cos - nz * sin;
-            vertexNormals[n + 1] = ny;
-            vertexNormals[n + 2] = nx * sin + nz * cos;
+            vertexNormals[n] = worldNormal.x;
+            vertexNormals[n + 1] = worldNormal.y;
+            vertexNormals[n + 2] = worldNormal.z;
         }
 
-        /*
-        * A flip is a reflection, which reverses triangle
-        * winding. Swapping B and C so back-face culling continues
-        * to see the outside of the element.
-        */
-
-        if (flip) {
+        if (transform.flip) {
             for (let i = 0; i < indices.length; i += 3) {
                 const swap = indices[i + 1];
                 indices[i + 1] = indices[i + 2];
@@ -2447,19 +2401,14 @@ const WORLD = {
             }
         }
 
-        /** extende map parsing */
-        for (let [index, value] of GA.extendedMap.entries()) {
-            if (!EXT_MAPDICT.isUsed(value)) continue;
-
-            const grid = GA.indexToGrid(index);
-            const shape = EXT_MAPDICT.getAll(value);
-            const element = ELEMENT[EXT_TO_SHAPE[shape.shapeIndex]];
-            //console.warn("EGA build", index, value, "shape", shape, "element", element);
-            this.addOrientedElement(element, grid.z, grid, "wall", shape.angle, shape.flip);
-        }
-
         /** EGA plane compilation */
         GA.extendedColliders = SHAPE_TRANSFORM.compileExtendedColliders(GA);
+
+        /** extended map parsing */
+        for (const placedElement of GA.extendedColliders) {
+            if (!placedElement) continue;
+            this.addTransformedElement(placedElement.element, "wall", placedElement.transform);
+        }
 
         /** build static decals */
         for (const iam of [...WebGL.staticDecalList, ...WebGL.interactiveDecalList]) {
