@@ -769,9 +769,9 @@ class Missile3D extends IAM {
                 }
 
                 // Check EGA shape collision
-                const [shapeHit, shapePoint, shapeNormal] = GA.missileInShapePoint(obj);
+                const [shapeHit, shapePoint, shapeNormal, shapePenetration] = GA.missileInShapePoint(obj);
                 if (shapeHit) {
-                    obj.hitWall(this, shapePoint, GA, shapeNormal);
+                    obj.hitWall(this, shapePoint, GA, shapeNormal, shapePenetration);
                     continue;
                 }
 

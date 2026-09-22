@@ -2705,7 +2705,15 @@ class ExtendedGridArray3D extends GridArray3D {
             }
         }
 
-        return closestPlane;
+        return {
+            plane: closestPlane,
+
+            /*
+             * Inside distance is negative, so penetration
+             * becomes positive.
+             */
+            penetration: -closestDistance,
+        };
     }
     missileInShapePoint(obj, resolution = 8) {
         let checks;
@@ -2732,14 +2740,15 @@ class ExtendedGridArray3D extends GridArray3D {
             const placedElement = this.extendedColliders[index];
             if (!placedElement) continue;
 
-            const plane = this.pointInsideElementPlane(point, placedElement);
-            if (!plane) continue;
-            const normal = new Vector3(plane.normal.x, plane.normal.y, plane.normal.z);     // Return consistent Vector3 values for both missile collision modes.
+            const collision  = this.pointInsideElementPlane(point, placedElement);
+            if (!collision ) continue;
 
-            return [true, point, normal];
+            const normal = new Vector3(collision.plane.normal.x, collision.plane.normal.y, collision. plane.normal.z);          // Return consistent Vector3 values for both missile collision modes.
+
+            return [true, point, normal, collision.penetration];
         }
 
-        return [false, null, null];
+        return [false, null, null, 0];
     }
 }
 

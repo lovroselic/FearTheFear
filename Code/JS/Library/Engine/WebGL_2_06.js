@@ -5374,18 +5374,38 @@ class BouncingMissile extends Missile {
     calcPower(magic) {
         return Math.max(1, Math.round((0.9 * magic)) + RND(-3, 3));
     }
-    rebound(innerPoint, GA, normal, IAM) {
+    rebound(innerPoint, GA, normal, IAM, penetration = 0) {
+        if (normal) {
+            const direction = this.dir.array;
+            const surfaceNormal = normal.array;
+            const dot = glMatrix.vec3.dot(direction, surfaceNormal);
+
+            if (dot < 0) {
+                const reflected = glMatrix.vec3.create();                                   // With outward-facing normals, dot < 0 means the missile is moving into the surface.
+                glMatrix.vec3.scaleAndAdd(reflected, direction, surfaceNormal, -2 * dot);
+                glMatrix.vec3.normalize(reflected, reflected);
+                this.dir = Vector3.from_array(reflected);
+            }
+
+            this.pos = this.pos.translate(normal, penetration + 1E-4);                      // use penetration to move missile back from the collision prison
+            this.bounceCount++;
+            return;
+        }
+
+        /*
+         * Legacy cubic-grid rebound.
+         */
         const pos2D = Vector3.to_FP_Grid(this.pos);
         const dir2D = Vector3.to_FP_Vector(this.dir);
         const reboundDir = GRID.getReboundDir(innerPoint, pos2D, dir2D, GA, this.depth);
+
         if (!reboundDir) return this.explode(IAM);
-        const new3D_dir = Vector3.from_2D_dir(reboundDir);
-        this.dir = new3D_dir;
+        this.dir = Vector3.from_2D_dir(reboundDir);
         this.bounceCount++;
     }
-    hitWall(IAM, point, GA, normal) {
+    hitWall(IAM, point, GA, normal, penetration = 0) {
         if (this.power > this.minPower) {
-            this.rebound(point, GA, normal, IAM);
+            this.rebound(point, GA, normal, IAM, penetration);
             AUDIO.Buzz.volume = RAY.volume(this.distance);
             AUDIO.Buzz.play();
             this.power--;
