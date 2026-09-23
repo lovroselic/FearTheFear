@@ -1122,6 +1122,7 @@ const EXT_MAPDICT = {
     // Bits 0–7: shape index, 1–255; 2**8 - 1
     SHAPE_MASK: 0b0000000011111111, //255
     WEDGE: 1,
+    BALCONY: 2,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1181,6 +1182,7 @@ const EXT_MAPDICT = {
 
 const EXT_TO_SHAPE = {
     1: "WEDGE",
+    2: "BALCONY",
 };
 
 const WallSizeToHeight = (value) => {
@@ -2660,6 +2662,9 @@ class ExtendedGridArray3D extends GridArray3D {
     eSet(index, shapeIndex, angle, flip = 0) {
         const value = EXT_MAPDICT.set(shapeIndex, angle, flip);
         this.extendedMap[index] = value;
+    }
+    eZero(index) {
+        this.extendedMap[index] = 0;
     }
     eGetValue(grid) {
         return this.extendedMap[this.gridToIndex(grid)];

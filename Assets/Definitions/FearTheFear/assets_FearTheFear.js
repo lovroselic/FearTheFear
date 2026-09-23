@@ -9,6 +9,7 @@
 // elements
 ElementsToCompile = [
     { shapeName: "WEDGE", collisionMode: "CONVEX", occlusionType: "PASS" },
+    { shapeName: "BALCONY", collisionMode: "CONVEX", occlusionType: "BLOCK" },
 ];
 
 
@@ -32,6 +33,7 @@ LoadObjects = [
     "apple.obj", "crown.obj", "dagger.obj", "mushroom.obj", "skull.obj", "Candle.obj",
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
+    "Balcony.obj",
 ];
 
 LoadModels = [

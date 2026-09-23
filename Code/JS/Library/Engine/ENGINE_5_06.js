@@ -62,7 +62,7 @@ const ENGINE = {
         SPRITESHEET_DEFAULT_HEIGHT: 48,
         sprite_maxW: 300,
         sprite_maxH: 100,
-        GRIDPIX: 48,
+        GRIDPIX: 64,
         FADE_FRAMES: 50,
         PATH_ROUNDS: 1999,
         MAX_PATH: 999,
@@ -72,10 +72,10 @@ const ENGINE = {
         MAX_JOINTS: 160,                  //don't mess with this, it's hardcoded in fragment shader, both needs to be corrected at the same time, 
     },
     verbose: false,
-    setGridSize(size = 48) {
+    setGridSize(size = 64) {
         ENGINE.INI.GRIDPIX = size;
     },
-    setSpriteSheetSize(size = 48) {
+    setSpriteSheetSize(size = 64) {
         ENGINE.INI.SPRITESHEET_DEFAULT_WIDTH = size;
         ENGINE.INI.SPRITESHEET_DEFAULT_HEIGHT = size;
     },

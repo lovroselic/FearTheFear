@@ -2173,7 +2173,7 @@ const GAME = {
             }
             arrType.removeIfIndexInArray(iElementToRemove);
         }
-
+        if (GA.extendedMap) GA.eZero(gridIndex);
     },
     assertUniqueDecalPosition(gridIndex, dirIndex, array) {
         for (let [index, element] of array.entries()) {
@@ -2512,6 +2512,7 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
         GAME.resizeGL_window();
         $(ENGINE.gameWindowId).width(ENGINE.gameWIDTH + 4);
 
+        $MAP.map.GA.extendedColliders = SHAPE_TRANSFORM.compileExtendedColliders($MAP.map.GA);
         $MAP.map.textureMap = $MAP.map.GA.toTextureMap();
         GAME.render();
         GAME.updateTextures();
@@ -2588,6 +2589,7 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
         let GA = $MAP.map.GA;
         GA.sliceFill(GAME.floor * $MAP.map.width * $MAP.map.height, $MAP.map.width * $MAP.map.height, $("#arena_value")[0].value);
         GA.border(parseInt($("#arenawidth").val(), 10), GAME.floor);
+        GA.extendedColliders = SHAPE_TRANSFORM.compileExtendedColliders(GA);
         $MAP.map.textureMap = $MAP.map.GA.toTextureMap();
         GAME.render();
     },

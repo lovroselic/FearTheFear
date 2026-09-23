@@ -91,7 +91,7 @@ const ELEMENT = {
     },
 
     compileElementPlanes(element, shapeName = "UNKNOWN") {
-        const MAX_PLANES = 6;
+        const MAX_PLANES = 12;
         const CONVEXITY_EPSILON = 1E-5;
 
         if (!element) throw new Error(`${shapeName}: element does not exist.`);
@@ -883,7 +883,9 @@ const ELEMENT = {
 const SHAPE_PATH = (() => {
 
     const SIZE = ENGINE.INI.GRIDPIX;
+    //const SIZE = 64;
     const HALF = SIZE / 2;
+    const OFF = 8;
 
     return {
 
@@ -892,6 +894,12 @@ const SHAPE_PATH = (() => {
                 `M 0 0 L ${HALF} 0 L 0 ${HALF} Z`
             ),
             color: "#999",
+        },
+        [EXT_MAPDICT.BALCONY]: {
+            path: new Path2D(
+                `M 0 0 L ${SIZE} ${OFF} L ${SIZE} ${SIZE - OFF} L 0 ${SIZE} Z`
+            ),
+            color: "#888",
         },
 
     };
