@@ -2694,7 +2694,7 @@ class ExtendedGridArray3D extends GridArray3D {
 
         for (const plane of placedElement.planes) {
             const distance = plane.normal.x * point.x + plane.normal.y * point.y + plane.normal.z * point.z - plane.d;
-            if (distance > EPSILON) return false;  // beyond blane, no collision possible
+            if (distance > EPSILON) return false;  // beyond plane, no collision possible
         }
         return true;
     }

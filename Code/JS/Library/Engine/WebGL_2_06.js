@@ -2828,6 +2828,13 @@ class $3D_Camera {
             const testPos = pos.add(new FP_Vector3D(dx, dy, dz));
             const testGrid = Vector3.to_Grid3D(testPos);
             if (this.GA.isOutOfBounds(testGrid)) return false;
+
+            const index = this.GA.gridToIndex(testGrid);
+            const placedElement = this.GA.extendedColliders[index];
+            if (placedElement) {
+                if (this.GA.pointInsideElement(testPos, placedElement)) return false;              // any point in shape means collision, false means not clear
+            }
+
             if (this.GA.just_check(testGrid, CAMERA_EXCLUSION.sum())) return false;
         }
 
