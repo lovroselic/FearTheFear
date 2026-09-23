@@ -3813,7 +3813,6 @@ class $3D_player {
                 return true;
             case "EMPTY":
             case "HOLE":
-                //return false;
                 break;
             default:
                 throw new Error(`Unsupported gridType for upwardCheck: ${gridType}`);
@@ -3822,9 +3821,7 @@ class $3D_player {
         //EGA test
         const eValue = this.GA.eGetValue(headGrid3D);
         if (EXT_MAPDICT.isUsed(eValue)) {
-            const shapeIndex = EXT_MAPDICT.getShapeIndex(eValue);
-            const shape = EXT_TO_SHAPE[shapeIndex];
-            console.log("shape", shape);
+            const shape = EXT_TO_SHAPE[EXT_MAPDICT.getShapeIndex(eValue)];
             if (EGA_JUMP_BLOCKERS.has(shape)) return true;
         }
 
@@ -3842,10 +3839,20 @@ class $3D_player {
     checkLanding(nextPos3) {
         const feetPos3 = nextPos3.translate(UP3, this.heigth);                                      //the position of soles
         const feetGrid3D = Vector3.to_Grid3D(feetPos3);
+
+
+        //EGA check
+        const eValue = this.GA.eGetValue(feetGrid3D);
+        if (EXT_MAPDICT.isUsed(eValue)) {
+            const shape = EXT_TO_SHAPE[EXT_MAPDICT.getShapeIndex(eValue)];
+            if (EGA_JUMP_LANDERS.has(shape)) {
+                this.resetToGround(nextPos3);
+                return true;
+            }
+        }
+
+        //GA check
         const gridType = REVERSED_MAPDICT[this.GA.getValue(feetGrid3D)];
-
-        //console.info("checkLanding", "feetPos3", feetPos3, "feetGrid3D", feetGrid3D, "gridType", gridType, "feetPos3.y", feetPos3.y, "value", this.GA.getValue(feetGrid3D));
-
         switch (gridType) {
             case undefined:
                 if (feetPos3.y < 0.0) {
@@ -3883,7 +3890,7 @@ class $3D_player {
                 return true;
             default:
                 console.warn("feetPos3.y", feetPos3.y, "this.velocity_Z", this.velocity_Z, "feetGrid3D", feetGrid3D);
-                throw new Error(`Unsupported gridType fro checkLanding: ${gridType}`);
+                throw new Error(`Unsupported gridType for checkLanding: ${gridType}`);
         }
     }
     resetToGround(nextPos3, offset = 0) {

@@ -1214,6 +1214,7 @@ const GRID2D_FLOOR_SUPPORT = [MAPDICT.WALL, MAPDICT.STAIR];
 
 //EGA based
 const EGA_JUMP_BLOCKERS = new Set(["BALCONY"]);
+const EGA_JUMP_LANDERS = new Set(["BALCONY"]);
 
 
 class ArrayBasedDataStructure {
@@ -2672,6 +2673,7 @@ class ExtendedGridArray3D extends GridArray3D {
         this.extendedMap[index] = 0;
     }
     eGetValue(grid) {
+        if (this.isOutOfBounds(grid)) return 0;                 // politely ignores everything
         return this.extendedMap[this.gridToIndex(grid)];
     }
     forwardPositionNotInShape(pos, dir, r, depth, height, resolution = GRID.SETTING.FORWARD_CIRCLE_RESOLUTION) {

@@ -10,7 +10,7 @@ console.log("%cMAP for FearTheFear loaded.", "color: #888");
 const MAP = {
     1: {
         name: "Generic room name",
-        data: '{"width":"17","height":"17","depth":3,"map":"BB3ABB32AA19BAA85BAA107BB3AA6BAA4BB2AA132BAA61BAA44BABABB40AA4BB47ABB38ABB3AA4BB2AA27BB2AA3BB5ABB2ABB21ABB62$BB30ABB51ABB10A","extendedMap":"AA36⡂ᡂAA12ᡂAA114ࡃAA183⡂⡂2AA150ᡃAA33$AA164ᡂAA15ࡂࡂ3A㡂㡂2AA146"}',
+        data: '{"width":"17","height":"17","depth":3,"map":"BB3ABB10AA72BAA5BAA63BB2AA15BB2ÁÁ3ABB15ABB25ABB12ABB5AA4BAA7ÁBB6AÁBB13ABB30$BB10ÁÁ2BB11ABB112ÁÁ2BÁÁ2BÁÁ18BB48ÁÁ3BB24ÁÁ73ABÁÁ6AA2ÁÁ92BB2ÁBB2ÁÁ48BB3ÁÁ20BÁÁ34AA2ÁÁ22BB18","extendedMap":"AA36⡂ᡂAA12ᡂAA114ࡃAA183⡂⡂2AA150ᡃAA33$AA164ᡂAA15ࡂࡂ3A㡂㡂2AA146"}',
         sg: 0,
         maxSpawned: -1,
         killCountdown: -1,
@@ -19,7 +19,7 @@ const MAP = {
         wall: "BlackWall45",
         floor: "Wood12",
         ceil: "WebbedFloor4",
-        start: '[242,3]',
+        start: '[682,5]',
         decals: '[[262,1,"FemDommes_26897","picture"],[264,1,"Domme232","picture"],[8,7,"KnightStatue_498","crest"],[256,4,"Firepit1","crest"],[450,7,"Sconce_11","crest"]]',
         lights: '[[219,3,"Lamp52","standard",["9.99","50.0","5.0"]],[450,1,"SkullLantern50","standard",["9.99","50.0","5.0"]]]',
         monsters: '[[127,"Bat",1]]',
