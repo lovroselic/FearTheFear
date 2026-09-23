@@ -39,7 +39,7 @@ const MAP_TOOLS = {
         const map = this.MAP[level].map;
         if (map.spawnDelay < 0) return;
         if (map.stopSpawning) return;
-        
+
         /** check the lair cooldown */
         if (map.killCount >= map.killCountdown) {
             map.killCountdown = Math.max(1, --map.killCountdown);
@@ -156,12 +156,15 @@ const MAP_TOOLS = {
             };
 
         } else {
-            const texture = WebGL.createOcclusionTexture3D(GA.toTextureMap(), map.width, map.height, map.depth);
+            /** EGA plane compilation */
+            if (!GA.extendedColliders) GA.extendedColliders = SHAPE_TRANSFORM.compileExtendedColliders(GA);
+
+            const texture = WebGL.createOcclusionTexture3D(GA.toTextureMap(), GA.width, GA.height, GA.depth);
             map.occlusionMap = {
                 texture: texture,
                 originXZ: new Float32Array([0, 0]),
                 resolution: 1,
-                size: new Float32Array([map.width, map.height, map.depth])
+                size: new Float32Array([GA.width, GA.height, GA.depth])
             };
         }
     },

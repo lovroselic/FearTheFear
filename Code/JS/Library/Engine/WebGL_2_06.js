@@ -2402,7 +2402,7 @@ const WORLD = {
         }
 
         /** EGA plane compilation */
-        GA.extendedColliders = SHAPE_TRANSFORM.compileExtendedColliders(GA);
+        if (!GA.extendedColliders) GA.extendedColliders = SHAPE_TRANSFORM.compileExtendedColliders(GA);
 
         /** extended map parsing */
         for (const placedElement of GA.extendedColliders) {

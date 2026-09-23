@@ -2740,15 +2740,44 @@ class ExtendedGridArray3D extends GridArray3D {
             const placedElement = this.extendedColliders[index];
             if (!placedElement) continue;
 
-            const collision  = this.pointInsideElementPlane(point, placedElement);
-            if (!collision ) continue;
+            const collision = this.pointInsideElementPlane(point, placedElement);
+            if (!collision) continue;
 
-            const normal = new Vector3(collision.plane.normal.x, collision.plane.normal.y, collision. plane.normal.z);          // Return consistent Vector3 values for both missile collision modes.
+            const normal = new Vector3(collision.plane.normal.x, collision.plane.normal.y, collision.plane.normal.z);          // Return consistent Vector3 values for both missile collision modes.
 
             return [true, point, normal, collision.penetration];
         }
 
         return [false, null, null, 0];
+    }
+    shapeBlocksLight(index) {
+        const placedElement = this.extendedColliders[index];
+        return (placedElement && placedElement.element.occlusionType === "BLOCK");
+    }
+    toTextureMap() {
+        /** 
+         * 0    - light can pass through 
+         * 255  - light blocked
+         **/
+
+        const W = this.width;
+        const H = this.height;
+        const D = this.depth;
+        const pixelData = new Uint8Array(W * H * D).fill(255);
+
+        for (let z = 0; z < this.depth; z++) {
+            for (let y = 0; y < this.height; y++) {
+                for (let x = 0; x < this.width; x++) {
+                    const grid = new Grid3D(x, y, z);
+                    const index = z * W * H + y * W + x;
+                    const basicShapeBlocks = !this.notWall(grid) || !this.notBlockWall(grid) || !this.notPillar(grid);
+                    const extendedShapeBlocks = this.shapeBlocksLight(index);
+                    pixelData[index] = basicShapeBlocks || extendedShapeBlocks ? 255 : 0;
+                }
+            }
+        }
+
+        return pixelData;
     }
 }
 
