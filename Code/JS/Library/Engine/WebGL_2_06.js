@@ -2401,7 +2401,7 @@ const WORLD = {
             }
         }
 
-        /** EGA plane compilation */
+        /** fallback EGA plane compilation if not yet performed in SPAWN */
         if (!GA.extendedColliders) GA.extendedColliders = SHAPE_TRANSFORM.compileExtendedColliders(GA);
 
         /** extended map parsing */
@@ -3813,10 +3813,22 @@ class $3D_player {
                 return true;
             case "EMPTY":
             case "HOLE":
-                return false;
+                //return false;
+                break;
             default:
                 throw new Error(`Unsupported gridType for upwardCheck: ${gridType}`);
         }
+
+        //EGA test
+        const eValue = this.GA.eGetValue(headGrid3D);
+        if (EXT_MAPDICT.isUsed(eValue)) {
+            const shapeIndex = EXT_MAPDICT.getShapeIndex(eValue);
+            const shape = EXT_TO_SHAPE[shapeIndex];
+            console.log("shape", shape);
+            if (EGA_JUMP_BLOCKERS.has(shape)) return true;
+        }
+
+        return false;
     }
     fallDown() {
         this.isFalling = true;
