@@ -2690,6 +2690,7 @@ class ExtendedGridArray3D extends GridArray3D {
         return true;
     }
     pointInsideElement(point, placedElement) {
+        if (placedElement.planes === null) return false;
         const EPSILON = 1E-6;
 
         for (const plane of placedElement.planes) {

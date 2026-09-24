@@ -39,12 +39,88 @@ const ELEMENT = {
     CSS: "color: silver",
     DEBUG: true,
 
+    compileBoxPlanes(min, max, shapeName, collisionMode) {
+
+        const planes = [
+            {
+                side: "MIN_X",
+                normal: { x: -1, y: 0, z: 0 },
+                d: -min.x,
+            },
+            {
+                side: "MAX_X",
+                normal: { x: 1, y: 0, z: 0 },
+                d: max.x,
+            },
+            {
+                side: "MIN_Y",
+                normal: { x: 0, y: -1, z: 0 },
+                d: -min.y,
+            },
+            {
+                side: "MAX_Y",
+                normal: { x: 0, y: 1, z: 0 },
+                d: max.y,
+            },
+            {
+                side: "MIN_Z",
+                normal: { x: 0, y: 0, z: -1 },
+                d: -min.z,
+            },
+            {
+                side: "MAX_Z",
+                normal: { x: 0, y: 0, z: 1 },
+                d: max.z,
+            },
+        ];
+
+        return {
+            shapeName,
+            collisionMode,
+            sourceTriangleCount: 0,
+            planeCount: planes.length,
+            planes,
+        };
+    },
+    compileCellPlanes(shapeName) {
+        const min = { x: 0, y: 0, z: 0 };
+        const max = { x: 1, y: 1, z: 1 };
+        return this.compileBoxPlanes(min, max, shapeName, COLLISION_MODE.CELL);
+    },
+
+    compileBoundsPlanes(element, shapeName) {
+        const boundingBox = this.getBoundingBox(element);
+        return this.compileBoxPlanes(boundingBox.min, boundingBox.max, shapeName, COLLISION_MODE.BOUNDS);
+    },
     compileElementsToPlanes(arr = ElementsToCompile) {
         for (const EL of arr) {
-            const planes = this.compileElementPlanes(ELEMENT[EL.shapeName], EL.shapeName);
-            this[EL.shapeName].planes = planes;
-            this[EL.shapeName].collisionMode = EL.collisionMode;
-            this[EL.shapeName].occlusionType = EL.occlusionType;
+            const shapeName = EL.shapeName;
+            const element = this[shapeName];
+
+            element.collisionMode = EL.collisionMode;
+            element.occlusionType = EL.occlusionType;
+
+            switch (EL.collisionMode) {
+                case COLLISION_MODE.NONE:
+                    element.planes = null;
+                    break;
+
+                case COLLISION_MODE.CELL:
+                    element.planes = this.compileCellPlanes(shapeName);
+                    break;
+
+                case COLLISION_MODE.BOUNDS:
+                    element.planes = this.compileBoundsPlanes(element, shapeName);
+                    break;
+
+                case COLLISION_MODE.CONVEX:
+                    element.planes = this.compileElementPlanes(element, shapeName);
+                    element.planes.collisionMode = COLLISION_MODE.CONVEX;
+                    break;
+
+                case COLLISION_MODE.MESH: throw new Error(`${shapeName}: MESH collision is not implemented.`);
+                default: throw new Error(`${shapeName}: unsupported collision mode ` + `${EL.collisionMode}.`);
+            }
         }
     },
 
@@ -248,7 +324,7 @@ const ELEMENT = {
         }
         let extremity = sign * Infinity;
         for (let i = 0; i < element.positions.length; i += 3) {
-            if (element.positions[i + offset] * sign < extremity) {
+            if (element.positions[i + offset] * sign < extremity * sign) {
                 extremity = element.positions[i + offset];
             }
         }
@@ -947,6 +1023,9 @@ const SHAPE_TRANSFORM = {
         return out;
     },
     compilePlacedCollider(element, transform) {
+        if (element.collisionMode === COLLISION_MODE.NONE) {
+            return { planes: null, };
+        }
         const worldPlanes = [];
 
         for (const plane of element.planes.planes) {
