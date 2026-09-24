@@ -2906,6 +2906,7 @@ class $3D_Camera {
         for (const [dx, dz, dy] of samples) {
             const testPos = pos.add(new FP_Vector3D(dx, dy, dz));
             const testGrid = Vector3.to_Grid3D(testPos);
+            if (!this.GA) return false;
             if (this.GA.isOutOfBounds(testGrid)) return false;
 
             const index = this.GA.gridToIndex(testGrid);
