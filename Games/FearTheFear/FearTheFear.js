@@ -156,12 +156,13 @@ const INI = {
     WINDOW_SCALE: 0.90,
     HELP_PRICE: 10,
     BURNING_TIME: 1500,
+    DARK_DUNGEON_AMBIENCE: 0.05,
 };
 
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.10.0",
+    VERSION: "0.10.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -798,8 +799,9 @@ const GAME = {
     WebGL_settings() {
         WebGL.VIEWS_ALLOWED = new Set([1, 3]);
         WebGL.GAME.setViewButtons();
+
         //inner
-        WebGL.ambient_light_strength = 0.05;        // 0.3
+        WebGL.ambient_light_strength = INI.DARK_DUNGEON_AMBIENCE;        // 0.3
         WebGL.diffuse_light_strength = 8.0;         // 9
         WebGL.specular_light_strength = 0.6;        // 1.5
 
@@ -899,6 +901,9 @@ const GAME = {
             backPanorama: panoramaTexture(map.backPanorama),
             skyPanorama: panoramaTexture(map.skyPanorama),
         };
+
+        const DungeonAmbience = parseFloat(map.dungeonAmbience || INI.DARK_DUNGEON_AMBIENCE);
+        WebGL.ambient_light_strength = DungeonAmbience;
 
         WebGL.updateShaders();
 

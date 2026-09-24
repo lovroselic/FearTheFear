@@ -62,6 +62,7 @@ const MAP = {
     3: {
         name: "TowerTest",
         data: '{"width":"17","height":"17","depth":5,"map":"ÁBB14AA14BAA13BB2AA223BAA9$AA3B䁢ABB2AA2ÁÁ3BB2ÁÁ20ABÁÁ368BB2ÁÁ22BÁBB17ÁÁ3BB2ÁÁ124BÁÁ419BÁÁ166BB2A","extendedMap":"AA1445$"}',
+        dungeonAmbience: 2,
         sg: 0,
         maxSpawned: -1,
         killCountdown: -1,

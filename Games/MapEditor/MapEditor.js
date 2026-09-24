@@ -2319,11 +2319,15 @@ const GAME = {
         let SpawnStop = $("#killsRequiredToStopSpawning")[0].value || -1;
         let SpawnDelay = $("#spawn_delay")[0].value || -1;
         let SG = parseInt($("#checkpoint")[0].value, 10);
+        let DungeonAmbience = parseFloat($("#DungeonAmbience")[0].value || 0.03);
 
 
         let roomExport = `${RoomID} : {
 name: "${RoomName}",
 data: '${JSON.stringify(Export)}',`;
+
+        roomExport += `
+dungeonAmbience: ${DungeonAmbience},`;
 
         if (INI.USE_SAVEGAME) {
             roomExport += `
@@ -2405,6 +2409,9 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
         $("#roomname").val(roomName);
 
         console.log(roomId, roomName);
+
+        const DungeonAmbience = ImportText.extractGroup(/dungeonAmbience:\s(\d*\.?\d*)/);
+        $("#DungeonAmbience").val(DungeonAmbience);
 
         const SG = ImportText.extractGroup(/sg:\s(\d{1})/);
         $('#checkpoint').val(SG).trigger('change');
