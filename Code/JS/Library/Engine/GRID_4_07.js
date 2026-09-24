@@ -1123,6 +1123,7 @@ const EXT_MAPDICT = {
     SHAPE_MASK: 0b0000000011111111, //255
     WEDGE: 1,
     BALCONY: 2,
+    CRENNEL: 3,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1183,6 +1184,7 @@ const EXT_MAPDICT = {
 const EXT_TO_SHAPE = {
     1: "WEDGE",
     2: "BALCONY",
+    3: "CRENNEL",
 };
 
 const WallSizeToHeight = (value) => {
@@ -2728,6 +2730,45 @@ class ExtendedGridArray3D extends GridArray3D {
             penetration: -closestDistance,
         };
     }
+    boundaryCollision(point) {
+        // point is in WebGL order: x, y (height), z.
+        // The normal points from outside the map back into it.
+        let nx = 0;
+        let ny = 0;
+        let nz = 0;
+        let deepest = 0;
+
+        if (point.x < 0) {
+            nx = 1;
+            deepest = Math.max(deepest, -point.x);
+        } else if (point.x >= this.width) {
+            nx = -1;
+            deepest = Math.max(deepest, point.x - this.width);
+        }
+
+        if (point.y < 0) {
+            ny = 1;
+            deepest = Math.max(deepest, -point.y);
+        } else if (point.y >= this.depth) {
+            ny = -1;
+            deepest = Math.max(deepest, point.y - this.depth);
+        }
+
+        if (point.z < 0) {
+            nz = 1;
+            deepest = Math.max(deepest, -point.z);
+        } else if (point.z >= this.height) {
+            nz = -1;
+            deepest = Math.max(deepest, point.z - this.height);
+        }
+
+        const length = Math.hypot(nx, ny, nz);
+
+        return {
+            normal: new Vector3(nx / length, ny / length, nz / length),
+            penetration: deepest * length,
+        };
+    }
     missileInShapePoint(obj, resolution = 8) {
         let checks;
 
@@ -2749,6 +2790,12 @@ class ExtendedGridArray3D extends GridArray3D {
             }
 
             const grid = new Grid3D(point.x, point.z, point.y);                             // Convert WebGL coordinates into Grid3D order
+
+            if (this.isOutOfBounds(grid)) {
+                const hit = this.boundaryCollision(point);
+                return [true, point, hit.normal, hit.penetration];
+            }
+
             const index = this.gridToIndex(grid);
             const placedElement = this.extendedColliders[index];
             if (!placedElement) continue;

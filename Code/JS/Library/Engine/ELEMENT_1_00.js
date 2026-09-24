@@ -978,6 +978,12 @@ const SHAPE_PATH = (() => {
             ),
             color: "#888",
         },
+        [EXT_MAPDICT.CRENNEL]: {
+            path: new Path2D(
+                `M 0 ${HALF} L ${SIZE} ${HALF} L ${SIZE} ${SIZE} L 0 ${SIZE} Z`
+            ),
+            color: "#888",
+        },
 
     };
 
