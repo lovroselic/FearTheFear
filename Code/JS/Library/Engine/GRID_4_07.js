@@ -2792,6 +2792,64 @@ class ExtendedGridArray3D extends GridArray3D {
 
         return pixelData;
     }
+    getDirectionsIfNot(grid, value, fly = false, leaveOut = null) {
+        const directions = [];
+        const DIR = fly > 0.0 ? [...ENGINE.directions3D] : [...ENGINE.directions3D_XY_plane];
+
+        for (let D = 0; D < DIR.length; D++) {
+            if (leaveOut === null || !leaveOut.same(DIR[D])) continue;
+            let newGrid = grid.add(DIR[D]);
+            if (this.isOutOfBounds(newGrid)) continue;
+            if (this.just_check(newGrid, value)) continue;
+
+            if (this.extendedColliders) {
+                const index = this.gridToIndex(newGrid);
+                const placedElement = this.extendedColliders[index];
+
+                if (placedElement?.element.passable === false) continue;
+            }
+
+            directions.push(DIR[D]);
+        }
+
+        return directions;
+    }
+    setNodeMap(where = "nodeMap", path = [0], type = "value", block = [], cls = PathNode3D) {
+        const pathSum = path.sum();
+        const map = Array.from({ length: this.width }, (_, x) =>
+            Array.from({ length: this.height }, (_, y) =>
+                Array.from({ length: this.depth }, (_, z) => {
+                    const grid = new Grid3D(x, y, z);
+
+                    const carveTypes = {
+                        value: path.includes(this.map[this.gridToIndex(grid)]),
+                        exclude: !this.check(grid, pathSum),
+                        include: this.check(grid, pathSum)
+                    };
+
+                    return carveTypes[type] ? new cls(x, y, z) : null;
+                })
+            )
+        );
+
+        for (const obj of block) {
+            map[obj.x][obj.y][obj.z] = null;
+        }
+
+        // Remove nodes occupied by impassable EGA shapes.
+        if (this.extendedColliders) {
+            for (const [index, placedElement] of this.extendedColliders.entries()) {
+                if (placedElement?.element.passable !== false) continue;
+
+                const grid = this.indexToGrid(index);
+                map[grid.x][grid.y][grid.z] = null;
+            }
+        }
+
+        this[where] = map;
+        return map;
+    }
+
 }
 
 class IndexArray3D extends Classes([ArrayBasedDataStructure3D, IA_Dimension_Agnostic_Methods]) {

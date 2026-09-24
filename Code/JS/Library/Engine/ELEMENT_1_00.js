@@ -99,6 +99,7 @@ const ELEMENT = {
 
             element.collisionMode = EL.collisionMode;
             element.occlusionType = EL.occlusionType;
+            element.passable = EL.passable;
 
             switch (EL.collisionMode) {
                 case COLLISION_MODE.NONE:

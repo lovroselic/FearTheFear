@@ -8,8 +8,8 @@
 
 // elements
 ElementsToCompile = [
-    { shapeName: "WEDGE", collisionMode: "CONVEX", occlusionType: "PASS" },
-    { shapeName: "BALCONY", collisionMode: "CONVEX", occlusionType: "BLOCK" },
+    { shapeName: "WEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
+    { shapeName: "BALCONY", collisionMode: "CONVEX", occlusionType: "BLOCK", passable: false },
 ];
 
 
