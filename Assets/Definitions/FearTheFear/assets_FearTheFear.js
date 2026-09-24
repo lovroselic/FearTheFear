@@ -59,6 +59,12 @@ LoadTextures = [
     { srcName: "Shading/Fire_color_map_512.webp", name: "Fire_color_map" },
     { srcName: "Shading/fire_noise_512.webp", name: "Fire_noise" },
 
+     //panorama
+    { srcName: "Panorama/AlpinePanorama_168.webp", name: "AlpinePanorama_168" },
+
+    //sky
+    { srcName: "Sky/Sky_204.webp", name: "Sky_204" },
+
     //wall, floor, ceiling
     { srcName: "Wall/BalconyTexture_773.webp", name: "BalconyTexture_773" },
     { srcName: "Wall/BalconyTexture_774.webp", name: "BalconyTexture_774" },

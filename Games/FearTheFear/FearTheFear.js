@@ -34,7 +34,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 1;
+    GAME.level = 3;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -161,7 +161,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.9.0",
+    VERSION: "0.9.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -799,9 +799,9 @@ const GAME = {
         WebGL.VIEWS_ALLOWED = new Set([1, 3]);
         WebGL.GAME.setViewButtons();
         //inner
-        WebGL.ambient_light_strength = 0.3;
-        WebGL.diffuse_light_strength = 9.0;
-        WebGL.specular_light_strength = 1.5;
+        WebGL.ambient_light_strength = 0.05;        // 0.3
+        WebGL.diffuse_light_strength = 8.0;         // 9
+        WebGL.specular_light_strength = 0.6;        // 1.5
 
         // element compilations
         ELEMENT._bb_for_internal_elements();
@@ -880,20 +880,34 @@ const GAME = {
     },
     setWorld(level, decalsAreSet = false) {
         console.time("setWorld");
+        const map = MAP[level];
+
+        const panoramaTexture = (name) => {
+            if (!name) return null;
+            const image = TEXTURE[name] ?? null;
+            return image;
+        };
+
         const textureData = {
-            wall: TEXTURE[MAP[level].wall],
-            floor: TEXTURE[MAP[level].floor],
-            ceil: TEXTURE[MAP[level].ceil]
+            wall: TEXTURE[map.wall],
+            floor: TEXTURE[map.floor],
+            ceil: TEXTURE[map.ceil],
+
+            frontPanorama: panoramaTexture(map.frontPanorama),
+            leftPanorama: panoramaTexture(map.leftPanorama),
+            rightPanorama: panoramaTexture(map.rightPanorama),
+            backPanorama: panoramaTexture(map.backPanorama),
+            skyPanorama: panoramaTexture(map.skyPanorama),
         };
 
         WebGL.updateShaders();
 
         if (WebGL.CONFIG.firstperson) {
-            WebGL.init('webgl', MAP[level].world, textureData, WebGL.hero.player, decalsAreSet);              //firstperson
+            WebGL.init('webgl', map.world, textureData, WebGL.hero.player, decalsAreSet);              //firstperson
         } else {
-            WebGL.init('webgl', MAP[level].world, textureData, WebGL.hero.topCamera, decalsAreSet);           //thirdperson
+            WebGL.init('webgl', map.world, textureData, WebGL.hero.topCamera, decalsAreSet);           //thirdperson
         }
-        LAIR.set_timeout(MAP[level].map.spawnDelay);
+        LAIR.set_timeout(map.map.spawnDelay);
         console.timeEnd("setWorld");
     },
     buildWorld(level) {

@@ -24,7 +24,7 @@ const INI = {
     USE_FLOORS: true,
     USE_CEIL: true,
     USE_TERRAIN: false,
-    USE_PANORAMA: false,
+    USE_PANORAMA: true,
     USE_LIGHTS: true,
     USE_DECALS: true,
     USE_MASK: false,
@@ -94,7 +94,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.25.3",
+    VERSION: "0.25.4",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -2350,8 +2350,7 @@ floor: "${$("#floortexture")[0].value}",`;
 
         if (INI.USE_CEIL) {
             roomExport += `
-ceil: "${$("#ceiltexture")[0].value}",
-`;
+ceil: "${$("#ceiltexture")[0].value}",`;
         }
 
         if (INI.USE_PANORAMA) {

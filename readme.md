@@ -2,7 +2,7 @@ fear the fear::
 
 Antagonist ideas: DeMonique Scariette McFear,
 
-- 2 pic entities before, after ????? - requires dungeon rebuild .... expensive, reduced smoothness
+
 - cutscenes ?
 
 - Attack:

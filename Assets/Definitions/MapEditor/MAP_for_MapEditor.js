@@ -1827,7 +1827,7 @@ const LIGHT_DECALS = [
 
 //panorama
 const PANORAMA_DECALS = [
-
+    "AlpinePanorama_168",
 ].sort();
 
 //arch
@@ -1837,7 +1837,7 @@ const ARCH_DECALS = [
 
 //sky
 const SKY_DECALS = [
-
+    "Sky_204",
 ].sort();
 
 

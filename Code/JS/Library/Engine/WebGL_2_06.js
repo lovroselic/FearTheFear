@@ -687,8 +687,8 @@ const WebGL = {
         this.texture = {};
 
         // wall, ceil, floor, panorama ...
-        for (let T in textureData) {
-            this.texture[T] = this.createTexture(textureData[T]);
+        for (const [name, image] of Object.entries(textureData)) {
+            this.texture[name] = image == null ? null : this.createTexture(image);
         }
 
         //sys_textures
@@ -1190,8 +1190,8 @@ const WebGL = {
         gl.enableVertexAttribArray(this.pickProgram.attribLocations.vertexPosition);
     },
     drawTexturedRange(type, texture, unlit = false) {
+        if (!texture) return;
         const gl = this.CTX;
-
         gl.uniform1i(this.program.uniformLocations.uUnlitTexture, unlit ? 1 : 0);
         gl.bindTexture(gl.TEXTURE_2D, texture);
         gl.drawElements(gl.TRIANGLES, this.world.offset[`${type}_count`], gl.UNSIGNED_SHORT, this.world.offset[`${type}_start`] * 2);
@@ -1364,12 +1364,13 @@ const WebGL = {
             this.drawTexturedRange("ceil", this.texture.ceil, unlit);
         }
 
+        //panorama
         this.drawTexturedRange("archPanorama", this.texture.archPanorama, unlit);
         this.drawTexturedRange("frontPanorama", this.texture.frontPanorama, true);
         this.drawTexturedRange("leftPanorama", this.texture.leftPanorama, true);
         this.drawTexturedRange("rightPanorama", this.texture.rightPanorama, true);
         this.drawTexturedRange("backPanorama", this.texture.backPanorama, true);
-        this.drawTexturedRange("skyPanorama", this.texture.skyPanorama, true);
+        if (this.CONFIG.firstperson) this.drawTexturedRange("skyPanorama", this.texture.skyPanorama, true);
         this.drawTexturedRange("floorPanorama", this.texture.floorPanorama, true);
 
         //static decals
@@ -2410,6 +2411,9 @@ const WORLD = {
             this.addTransformedElement(placedElement.element, "wall", placedElement.transform);
         }
 
+        /** panorama box */
+        this.addTightBackgroundBox(GA);
+
         /** build static decals */
         for (const iam of [...WebGL.staticDecalList, ...WebGL.interactiveDecalList]) {
             for (const decal of iam.POOL) {
@@ -2509,6 +2513,81 @@ const WORLD = {
             nx, ny, nz,
             nx, ny, nz,
         ];
+    },
+    addTightBackgroundBox(GA) {
+        const minX = 0;
+        const maxX = GA.width;
+
+        const minH = 0;
+        const maxH = GA.depth - 0.15;   // grid z -> world y (height), offset so it doesn't class with ceiling
+
+        const minLat = 0;
+        const maxLat = GA.height; // grid y -> world z (lateral)
+
+        // FRONT, x = 0
+        this.addTexturedQuad(
+            [
+                new Vector3(minX, minH, maxLat),
+                new Vector3(minX, minH, minLat),
+                new Vector3(minX, maxH, minLat),
+                new Vector3(minX, maxH, maxLat),
+            ],
+            "frontPanorama",
+            null,
+            new Vector3(1, 0, 0)
+        );
+
+        // BACK, x = maxX
+        this.addTexturedQuad(
+            [
+                new Vector3(maxX, minH, minLat),
+                new Vector3(maxX, minH, maxLat),
+                new Vector3(maxX, maxH, maxLat),
+                new Vector3(maxX, maxH, minLat),
+            ],
+            "backPanorama",
+            null,
+            new Vector3(-1, 0, 0)
+        );
+
+        // LEFT, world z = 0
+        this.addTexturedQuad(
+            [
+                new Vector3(minX, minH, minLat),
+                new Vector3(maxX, minH, minLat),
+                new Vector3(maxX, maxH, minLat),
+                new Vector3(minX, maxH, minLat),
+            ],
+            "leftPanorama",
+            null,
+            new Vector3(0, 0, 1)
+        );
+
+        // RIGHT, world z = maxLat
+        this.addTexturedQuad(
+            [
+                new Vector3(maxX, minH, maxLat),
+                new Vector3(minX, minH, maxLat),
+                new Vector3(minX, maxH, maxLat),
+                new Vector3(maxX, maxH, maxLat),
+            ],
+            "rightPanorama",
+            null,
+            new Vector3(0, 0, -1)
+        );
+
+        // SKY, world y = maxH
+        this.addTexturedQuad(
+            [
+                new Vector3(minX, maxH, minLat),
+                new Vector3(maxX, maxH, minLat),
+                new Vector3(maxX, maxH, maxLat),
+                new Vector3(minX, maxH, maxLat),
+            ],
+            "skyPanorama",
+            null,
+            new Vector3(0, -1, 0)
+        );
     },
     addBackgroundBox(bounds) {
         const D = WebGL.INI.BACKGROUND_DISTANCE;
