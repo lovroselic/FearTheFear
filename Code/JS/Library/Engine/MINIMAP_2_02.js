@@ -5,7 +5,7 @@
 "use strict";
 
 const MINIMAP = {
-    VERSION: "2.01",
+    VERSION: "2.02",
     CSS: "color: #4AA",
     VERBOSE: false,
     SETTING: {
@@ -31,7 +31,7 @@ const MINIMAP = {
         DOOR: "#333",
         STAIR: "#008000",
         WALL: "#8b4513",            //brown
-        PILLAR: "#8b4513",            
+        PILLAR: "#8b4513",
         LOCKED_DOOR: "#826644",
         HERO: "#FFF",
         SHRINE: "#FF00FF",
@@ -39,6 +39,7 @@ const MINIMAP = {
         BLOCKWALL: "#d2691e",
         ENEMY: "#ff9800",           //orange
         STAIR_WALL: "#0000CC",
+        EGA_IMPASSABLE: "#8b4513",
     },
     DATA: {
         PIX_SIZE: 4,
@@ -156,8 +157,13 @@ const MINIMAP = {
                         break;
                 }
             }
+
+            const eCollider = GA.extendedColliders[index];
+            if (eCollider && !eCollider.element.passable) {
+                CTX.fillStyle = MINIMAP.LEGEND.EGA_IMPASSABLE;
+            }
+
             let grid = GA.indexToGrid(index);
-            //console.warn(index, "index,", grid, "grid");
             CTX.pixelAt(this.DATA.drawX + grid.x * this.DATA.PIX_SIZE, this.DATA.drawY + grid.y * this.DATA.PIX_SIZE, this.DATA.PIX_SIZE);
         }
 
@@ -190,7 +196,7 @@ const MINIMAP = {
                     if (this.player.depth !== entity.depth) continue;
                     let position;
                     if (entity.moveState.grid) {
-                        position = Grid.toClass(entity.moveState.grid)
+                        position = Grid.toClass(entity.moveState.grid);
                     } else if (entity.moveState.homeGrid) {
                         position = Grid.toClass(entity.moveState.homeGrid);
                     } else throw "MINIMAP can't get enemy position from grid";
