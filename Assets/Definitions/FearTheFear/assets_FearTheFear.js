@@ -11,6 +11,7 @@ ElementsToCompile = [
     { shapeName: "WEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "BALCONY", collisionMode: "CONVEX", occlusionType: "BLOCK", passable: false },
     { shapeName: "CRENNEL", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
+    { shapeName: "ARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
 ];
 
 
@@ -34,7 +35,7 @@ LoadObjects = [
     "apple.obj", "crown.obj", "dagger.obj", "mushroom.obj", "skull.obj", "Candle.obj",
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
-    "Balcony.obj", "Crennel.obj",
+    "Balcony.obj", "Crennel.obj","Arch.obj",
 ];
 
 LoadModels = [

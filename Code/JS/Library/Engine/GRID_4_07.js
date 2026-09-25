@@ -1124,6 +1124,7 @@ const EXT_MAPDICT = {
     WEDGE: 1,
     BALCONY: 2,
     CRENNEL: 3,
+    ARCH: 4,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1185,6 +1186,7 @@ const EXT_TO_SHAPE = {
     1: "WEDGE",
     2: "BALCONY",
     3: "CRENNEL",
+    4: "ARCH",
 };
 
 const WallSizeToHeight = (value) => {
@@ -2702,6 +2704,7 @@ class ExtendedGridArray3D extends GridArray3D {
         return true;
     }
     pointInsideElementPlane(point, placedElement) {
+        if (placedElement.planes === null) return false;
         const EPSILON = 1E-6;
         let closestPlane = null;
         let closestDistance = -Infinity;

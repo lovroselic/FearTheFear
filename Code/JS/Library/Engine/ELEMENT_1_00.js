@@ -984,6 +984,12 @@ const SHAPE_PATH = (() => {
             ),
             color: "#888",
         },
+        [EXT_MAPDICT.ARCH]: {
+            path: new Path2D(
+                `M 0 0  L ${HALF} ${OFF} L ${SIZE} 0 L ${SIZE} ${SIZE} L ${HALF} ${SIZE- OFF} L 0 ${SIZE} Z`
+            ),
+            color: "#BBB",
+        },
 
     };
 

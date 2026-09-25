@@ -39,7 +39,8 @@ const MAP = {
     ,
     2: {
         name: "room2",
-        data: '{"width":"17","height":"17","depth":3,"map":"BB4ABB10AA155BABB31ABB14ABAA10BB17ABB12䁢BB19ÁÁ2ABB128$BB9ÁÁ24BB84ÁÁ312BB27","extendedMap":"AA867$"}',
+        data: '{"width":"17","height":"17","depth":3,"map":"B䁢BB6ABB2AA54BB2AA10BB4AA7BB2AA55BB3AA14BAA2BB10ABB3AA6BB30AA4BAA7BB17ABB12䁢BB19ÁAÁBB128$BB9ÁÁ14BÁÁ10BB2ÁÁ3BB56ABB7ÁBB25ÁÁ123BB2ÁÁ11BÁÁ9BB3ÁÁ14BÁÁ9BÁÁ132BB24","extendedMap":"AA739ᡅ$AA76ᡅᡅ2AA49"}',
+        dungeonAmbience: 0.03,
         sg: 0,
         maxSpawned: -1,
         killCountdown: -1,
@@ -48,7 +49,6 @@ const MAP = {
         wall: "BlackWall45",
         floor: "Wood12",
         ceil: "WebbedFloor4",
-
         frontPanorama: "",
         leftPanorama: "",
         rightPanorama: "",
@@ -56,6 +56,7 @@ const MAP = {
         archPanorama: "",
         skyPanorama: "",
         start: '[59,7]',
+        lights: '[[195,1,"Candle70","standard",["9.99","50.0","5.0"]]]',
         gates: '[[8,7,"2.1","1.1","Gold"],[68,5,"2.2","3.1","Closed"]]',
     }
     ,
