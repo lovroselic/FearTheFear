@@ -990,6 +990,12 @@ const SHAPE_PATH = (() => {
             ),
             color: "#BBB",
         },
+        [EXT_MAPDICT.HALFARCH]: {
+            path: new Path2D(
+                `M 0 ${HALF}  L ${HALF} ${HALF - OFF} L ${SIZE} ${HALF} L ${SIZE} ${SIZE} L ${HALF} ${SIZE- OFF} L 0 ${SIZE} Z`
+            ),
+            color: "#BBB",
+        },
 
     };
 
