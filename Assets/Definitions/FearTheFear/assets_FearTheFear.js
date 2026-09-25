@@ -14,6 +14,7 @@ ElementsToCompile = [
     { shapeName: "ARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "HALFARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "GRILLE", collisionMode: "CELL", occlusionType: "PASS", passable: false },
+   
 ];
 
 

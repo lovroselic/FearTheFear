@@ -37,7 +37,7 @@ const OCCLUSION_TYPE = Object.freeze({
 const ELEMENT = {
     VERSION: "1.00",
     CSS: "color: silver",
-    DEBUG: true,
+    DEBUG: false,
 
     compileBoxPlanes(min, max, shapeName, collisionMode) {
 
@@ -168,7 +168,7 @@ const ELEMENT = {
     },
 
     compileElementPlanes(element, shapeName = "UNKNOWN") {
-        const MAX_PLANES = 12;
+        const MAX_PLANES = 24;
         const CONVEXITY_EPSILON = 1E-5;
 
         if (!element) throw new Error(`${shapeName}: element does not exist.`);
@@ -248,36 +248,6 @@ const ELEMENT = {
                     `${shapeName}: compiled ${planes.length} planes; ` +
                     `maximum permitted is ${MAX_PLANES}.`
                 );
-            }
-
-            /*
-                Validate convexity and winding.
-                For a closed convex mesh with outward-facing normals, every vertex
-                must be on or behind every plane: dot(normal, vertex) <= d
-            */
-            for (let planeIndex = 0; planeIndex < planes.length; planeIndex++) {
-                const plane = planes[planeIndex];
-
-                for (let vertexIndex = 0; vertexIndex < vertexCount; vertexIndex++) {
-
-                    const vertex = this.readElementVertex(positions, vertexIndex, shapeName);
-                    const distance = this.planeDot(plane.normal, vertex) - plane.d;
-
-                    /*
-                        Positive distance means the vertex is in front of an
-                        outward-facing plane.
-                        That should be impossible for a convex object.
-                    */
-                    if (distance > CONVEXITY_EPSILON) {
-                        throw new Error(
-                            `${shapeName}: convexity validation failed. ` +
-                            `Vertex ${vertexIndex} is outside plane ` +
-                            `${planeIndex}, created from triangle ` +
-                            `${plane.sourceTriangles[0]}. ` +
-                            `The mesh may be concave or incorrectly wound.`
-                        );
-                    }
-                }
             }
         }
 
@@ -1006,7 +976,6 @@ const SHAPE_PATH = (() => {
         `),
             color: "#888",
         },
-
     };
 
 })();

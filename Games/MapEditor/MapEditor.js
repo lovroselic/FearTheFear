@@ -1951,6 +1951,7 @@ const GAME = {
             case "shape":
                 switch (currentValue) {
                     case MAPDICT.EMPTY:
+                    case MAPDICT.HOLE:
                         break;
                     default:
                         $("#error_message").html(`Shape placement not supported on value: ${currentValue}`);
