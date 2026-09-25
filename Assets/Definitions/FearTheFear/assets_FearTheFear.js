@@ -13,6 +13,7 @@ ElementsToCompile = [
     { shapeName: "CRENNEL", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "ARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "HALFARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
+    { shapeName: "GRILLE", collisionMode: "CELL", occlusionType: "PASS", passable: false },
 ];
 
 
@@ -26,7 +27,7 @@ LoadFonts = [
 ];
 
 LoadObjects = [
-    "gem.obj", "coins.obj", "key.obj", "ball.obj", "blockwall.obj",
+    "gem.obj", "coins.obj", "key.obj", "ball.obj", "BlockWall3.obj",
     "pentagram.obj", "sting.obj", "heart.obj", "shield.obj", "magicFlask.obj",
     "treasure_chest.obj", "wardrobe.obj", "barrel.obj", "Barell2.obj", "Barell3.obj", "crate.obj", "crateFragile.obj", "closet.obj", "bookshelf.obj",
     "pirate_chest.obj", "closet4.obj", "iron_chest.obj", "Chest10.obj", "BarrelX.obj", "BarrelMedieval.obj",
@@ -36,7 +37,7 @@ LoadObjects = [
     "apple.obj", "crown.obj", "dagger.obj", "mushroom.obj", "skull.obj", "Candle.obj",
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
-    "Balcony.obj", "Crennel.obj","Arch.obj","HalfArch.obj",
+    "Balcony.obj", "Crennel.obj","Arch.obj","HalfArch.obj", "Grille.obj",
 ];
 
 LoadModels = [

@@ -960,9 +960,11 @@ const ELEMENT = {
 const SHAPE_PATH = (() => {
 
     const SIZE = ENGINE.INI.GRIDPIX;
-    //const SIZE = 64;
     const HALF = SIZE / 2;
     const OFF = 8;
+    const LEFT = HALF - OFF;
+    const RIGHT = HALF + OFF;
+    const T = OFF / 2;
 
     return {
 
@@ -986,15 +988,23 @@ const SHAPE_PATH = (() => {
         },
         [EXT_MAPDICT.ARCH]: {
             path: new Path2D(
-                `M 0 0  L ${HALF} ${OFF} L ${SIZE} 0 L ${SIZE} ${SIZE} L ${HALF} ${SIZE- OFF} L 0 ${SIZE} Z`
+                `M 0 0  L ${HALF} ${OFF} L ${SIZE} 0 L ${SIZE} ${SIZE} L ${HALF} ${SIZE - OFF} L 0 ${SIZE} Z`
             ),
             color: "#BBB",
         },
         [EXT_MAPDICT.HALFARCH]: {
             path: new Path2D(
-                `M 0 ${HALF}  L ${HALF} ${HALF - OFF} L ${SIZE} ${HALF} L ${SIZE} ${SIZE} L ${HALF} ${SIZE- OFF} L 0 ${SIZE} Z`
+                `M 0 ${HALF}  L ${HALF} ${HALF - OFF} L ${SIZE} ${HALF} L ${SIZE} ${SIZE} L ${HALF} ${SIZE - OFF} L 0 ${SIZE} Z`
             ),
             color: "#BBB",
+        },
+        [EXT_MAPDICT.GRILLE]: {
+            path: new Path2D(`
+            M ${LEFT - T} ${OFF} H ${LEFT + T} V ${SIZE - OFF} H ${LEFT - T} Z
+            M ${RIGHT - T} ${OFF} H ${RIGHT + T} V ${SIZE - OFF} H ${RIGHT - T} Z
+            M 0 ${HALF - T} H ${SIZE} V ${HALF + T} H 0 Z
+        `),
+            color: "#888",
         },
 
     };
