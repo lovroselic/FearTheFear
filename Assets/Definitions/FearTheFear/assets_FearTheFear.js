@@ -14,6 +14,7 @@ ElementsToCompile = [
     { shapeName: "ARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "HALFARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "GRILLE", collisionMode: "CELL", occlusionType: "PASS", passable: false },
+    { shapeName: "ROUNDBOUND", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
    
 ];
 
@@ -38,7 +39,7 @@ LoadObjects = [
     "apple.obj", "crown.obj", "dagger.obj", "mushroom.obj", "skull.obj", "Candle.obj",
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
-    "Balcony.obj", "Crennel.obj","Arch.obj","HalfArch.obj", "Grille.obj",
+    "Balcony.obj", "Crennel.obj","Arch.obj","HalfArch.obj", "Grille.obj", "RoundBound.obj",
 ];
 
 LoadModels = [

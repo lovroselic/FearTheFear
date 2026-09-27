@@ -62,7 +62,7 @@ const MAP = {
     ,
     3: {
         name: "TowerTest",
-        data: '{"width":"17","height":"17","depth":5,"map":"ÁBB12AA11BB2ABAA13BB2AA223BAA11$BB2䁢BB2ABAA3ÁÁ5BÁBAÁÁ21BÁBÁÁ437BB4ÁÁ5BÁÁ17BÁBB7ÁÁ3BB15ÁÁ511BÁÁ102BÁÁ16BA","extendedMap":"AA1429ࡄ$ࡄࡄ14A"}',
+        data: '{"width":"17","height":"17","depth":5,"map":"ÁBB5ABAA2BAA22䁢AA5BB6AA3BB3AA103BAA4BB5ࡁɁсAA59ŁAA28ÁÁ5AA9B$AA7BAA9BAÁÁ4BÁÁ4BB2ÁÁ2AÁÁ21BÁÁ2BÁÁ141ABÁÁ2BAÁÁ254BÁÁ8BÁÁ139BB4ÁÁ5BÁÁ16BÁBÁÁ2BAA2ÁÁ2BB5ÁBࡁBB14ÁÁ175BÁÁ42BÁÁ19BÁÁ156BÁÁ39BAŁɁсÁÁ60AÁAÁAÁAÁA","extendedMap":"AA1376ᡈᡈ4AA42$AA3ࡄࡄ15AA5"}',
         dungeonAmbience: 2,
         sg: 0,
         maxSpawned: -1,

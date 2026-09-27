@@ -23,8 +23,8 @@ const GRID = {
     SETTING: {
         ALLOW_CROSS: false,
         EPSILON: 0.05,
-        FORWARD_CIRCLE_RESOLUTION: 12,  // was 2, 8
-        FORWARD_CIRCLE_CHECK_ANGLE: Math.PI / 3,  //was 4
+        FORWARD_CIRCLE_RESOLUTION: 2,  // was 2, 8
+        FORWARD_CIRCLE_CHECK_ANGLE: Math.PI / 4,  //was 4
         WALL_COLLISION_TOLERANCE: 0.975,
         WALL_COLLISTION_OVERKILL: 1.1,
         COLLISION_STEP: 2,
@@ -1127,6 +1127,7 @@ const EXT_MAPDICT = {
     ARCH: 4,
     HALFARCH: 5,
     GRILLE: 6,
+    ROUNDBOUND: 7,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1191,6 +1192,7 @@ const EXT_TO_SHAPE = {
     4: "ARCH",
     5: "HALFARCH",
     6: "GRILLE",
+    7: "ROUNDBOUND",
 };
 
 const WallSizeToHeight = (value) => {
@@ -1221,7 +1223,7 @@ const GRID2D_SIDEVIEW = [MAPDICT.WALL];
 const GRID2D_FLOOR_SUPPORT = [MAPDICT.WALL, MAPDICT.STAIR];
 
 //EGA based
-const EGA_JUMP_BLOCKERS = new Set(["BALCONY"]);
+const EGA_JUMP_BLOCKERS = new Set(["BALCONY", "ROUNDBOUND", "CRENNEL"]);
 const EGA_JUMP_LANDERS = new Set(["BALCONY"]);
 
 

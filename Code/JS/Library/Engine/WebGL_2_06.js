@@ -3837,6 +3837,7 @@ class $3D_player {
         return { velocity_Z: initialVelocity_Z, moveSpeed: adjustedMoveSpeed };
     }
     jump(jumpPower) {
+        this.jumpStartDepth = this.depth;
         this.onGround = false;
         this.isJumping = true;
         this.isFalling = false;
@@ -3875,7 +3876,7 @@ class $3D_player {
 
             const forwardCheck = this.GA.forwardPositionAreIn(Vector3.to_FP_Grid(nextPos3), Vector3.to_FP_Vector(this.dir), this.r, this.depth, JUMP_MOVE);
             if (!forwardCheck) return this.fallDown();
-
+            if (this.jumpBlockedByShape(nextPos3)) return this.fallDown();
             if (this.bumpEnemy(Vector3.to_FP_Grid(nextPos3), nextPos3)) return this.fallDown();
         }
 
@@ -3886,10 +3887,14 @@ class $3D_player {
         this.setPos(nextPos3);
     }
     upwardCheck(nextPos3) {
-        if (nextPos3.y > this.GA.maxZ + 1 - 0.15) return true;
-        const headPosAdjusted = nextPos3.translate(DOWN3, 0.15);
-        const headGrid3D = Vector3.to_Grid3D(headPosAdjusted);
-        const gridType = REVERSED_MAPDICT[this.GA.getValue(headGrid3D)];
+        if (nextPos3.y >= this.GA.maxZ + 1 - 0.15) return true;
+
+        const headPos = nextPos3.translate(DOWN3, 0.15);
+        const headGrid = Vector3.to_Grid3D(headPos);
+        if (this.GA.isOutOfBounds(headGrid)) true;
+
+        // Original GA check: head only.
+        const gridType = REVERSED_MAPDICT[this.GA.getValue(headGrid)];
 
         switch (gridType) {
             case "WALL":
@@ -3901,13 +3906,18 @@ class $3D_player {
             case "EMPTY":
             case "HOLE":
                 break;
-            default:
-                throw new Error(`Unsupported gridType for upwardCheck: ${gridType}`);
+
+            default: throw new Error(`Unsupported gridType for upwardCheck: ${gridType}`);
         }
 
-        //EGA test
-        const eValue = this.GA.eGetValue(headGrid3D);
-        if (EXT_MAPDICT.isUsed(eValue)) {
+        // EGA check: both ends of the player's vertical span.
+        const feetPos = nextPos3.translate(UP3, this.heigth);
+        const feetGrid = Vector3.to_Grid3D(feetPos);
+        if (this.GA.isOutOfBounds(feetGrid)) true;
+
+        for (const grid of [headGrid, feetGrid]) {
+            const eValue = this.GA.eGetValue(grid);
+            if (!EXT_MAPDICT.isUsed(eValue)) continue;
             const shape = EXT_TO_SHAPE[EXT_MAPDICT.getShapeIndex(eValue)];
             if (EGA_JUMP_BLOCKERS.has(shape)) return true;
         }
@@ -3923,10 +3933,25 @@ class $3D_player {
         this.setPos(this.pos.adjuctCirclePos(this.r));                      //push hero to inside of the grid to avoid landing mid grid!
         this.setMode("falling");
     }
+    jumpBlockedByShape(nextPos3) {
+        const nextPos2D = Vector3.to_FP_Grid(nextPos3);
+        const dir2D = Vector3.to_FP_Vector(this.dir);
+        const points = this.GA.forwardPointsFrontEntity(nextPos2D, dir2D, this.r);
+
+        for (const point of points) {
+            const grid = new Grid3D(point.x, point.y, this.jumpStartDepth);                                         // Deliberately use the layer where the jump started.
+            if (this.GA.isOutOfBounds(grid)) return true;
+            const value = this.GA.eGetValue(grid);
+            if (!EXT_MAPDICT.isUsed(value)) continue;
+            const shape = EXT_TO_SHAPE[EXT_MAPDICT.getShapeIndex(value)];
+            if (EGA_JUMP_BLOCKERS.has(shape) && (this.ascendPhase || !EGA_JUMP_LANDERS.has(shape))) return true;    // Block every jump blocker on ascent; on descent, allow those that support landing.
+        }
+
+        return false;
+    }
     checkLanding(nextPos3) {
         const feetPos3 = nextPos3.translate(UP3, this.heigth);                                      //the position of soles
         const feetGrid3D = Vector3.to_Grid3D(feetPos3);
-
 
         //EGA check
         const eValue = this.GA.eGetValue(feetGrid3D);
@@ -4347,7 +4372,7 @@ class $3D_player {
     }
     _applyMove_(lapsedTime, dir) {
         let length = (lapsedTime / 1000) * this.moveSpeed;
-        let nextPos3 = this.pos.translate(dir, length); //3D - Vector3
+        let nextPos3 = this.pos.translate(dir, length);                                                                             //3D - Vector3
         let nextPos = Vector3.to_FP_Grid(nextPos3);
         let bump = this.usingStaircase(nextPos);
 
@@ -4361,21 +4386,22 @@ class $3D_player {
         let Dir2D = Vector3.to_FP_Vector(dir);
         const elevation = nextPos3.y - this.floorReference();
 
-        if (elevation <= WebGL.INI.DELTA_HEIGHT_CLIMB + 0.01) {                                                     // if elevation is too big then climbing needs to be resolved first
-            let check;                                                                                              // boolean, if true there is no collision
+        if (elevation <= WebGL.INI.DELTA_HEIGHT_CLIMB + 0.01) {                                                                     // if elevation is too big then climbing needs to be resolved first
+            let check;                                                                                                              // boolean, if true there is no collision
             let extendedCheck = true;
+
             if (WebGL.CONFIG.prevent_movement_in_exlusion_grids) {
                 check = this.GA.forwardPositionIsEmpty(nextPos, Dir2D, this.r, this.depth);                                         // this is main 3D approach
                 if (check) extendedCheck = this.GA.forwardPositionNotInShape(nextPos, Dir2D, this.r, this.depth, this.heigth);      // this is extended 3D approach
             } else {
-                check = this.GA.entityNotInWall(nextPos, Dir2D, this.r, this.depth);                                // this shouild be now obsolete - it's not
+                check = this.GA.entityNotInWall(nextPos, Dir2D, this.r, this.depth);                                                // this shouild be now obsolete - it's not
             }
 
-            if (check && extendedCheck) {
-                nextPos3.set_y(this.minY + this.heigth + this.depth);                                               // reset from climbing, if applicable 
+            if (check) {
+                if (!extendedCheck) return;                                                                                         // EGA shape blocks movement
+                nextPos3.set_y(this.minY + this.heigth + this.depth);                                                               // reset from climbing, if applicable 
                 return this.setPos(nextPos3);
-            } else return;
-
+            }                                                                                                                       // else, checking block climb
         }
 
         return this.blockClimb(nextPos3, Dir2D, nextPos, elevation);

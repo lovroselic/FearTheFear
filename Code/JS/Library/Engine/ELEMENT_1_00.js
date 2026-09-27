@@ -976,6 +976,14 @@ const SHAPE_PATH = (() => {
         `),
             color: "#888",
         },
+        [EXT_MAPDICT.ROUNDBOUND]: {
+            path: new Path2D(
+                `M ${OFF} 0 L ${SIZE - OFF} 0 
+                L ${SIZE} ${HALF} L ${SIZE - OFF} ${SIZE}
+                L ${OFF} ${SIZE} L 0 ${HALF} Z`
+            ),
+            color: "#BBB",
+        },
     };
 
 })();
