@@ -1128,6 +1128,8 @@ const EXT_MAPDICT = {
     HALFARCH: 5,
     GRILLE: 6,
     ROUNDBOUND: 7,
+    PILLAR3: 8,
+    EXTRUDEDWEDGE: 9,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1193,6 +1195,8 @@ const EXT_TO_SHAPE = {
     5: "HALFARCH",
     6: "GRILLE",
     7: "ROUNDBOUND",
+    8: "PILLAR3",
+    9: "EXTRUDEDWEDGE",
 };
 
 const WallSizeToHeight = (value) => {

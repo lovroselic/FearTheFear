@@ -3538,6 +3538,7 @@ const ENGINE = {
                         ENGINE.BLOCKGRID.corr(x, y, CTX, value, corr, offset);
                     }
 
+                    this.shapeDraw3D(maze, grid);
                 }
             }
         },

@@ -984,6 +984,22 @@ const SHAPE_PATH = (() => {
             ),
             color: "#BBB",
         },
+        [EXT_MAPDICT.PILLAR3]: {
+            path: new Path2D(`
+                M ${HALF} 0
+                A ${HALF} ${HALF} 0 0 1 ${HALF} ${SIZE}
+                A ${HALF} ${HALF} 0 0 1 ${HALF} 0
+                Z
+                `
+            ),
+            color: "#8b4513",
+        },
+        [EXT_MAPDICT.EXTRUDEDWEDGE]: {
+            path: new Path2D(
+                `M 0 0 L 16 0 L 12 12 L 0 16 Z`
+            ),
+            color: "#999",
+        },
     };
 
 })();
