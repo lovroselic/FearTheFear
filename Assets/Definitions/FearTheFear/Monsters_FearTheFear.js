@@ -19,7 +19,7 @@ for (let [index, key] of KEY_TYPES.entries()) {
 const SCROLL_TYPE = [
     "Invisibility", "Cripple", "HalfLife", "Explode", "Luck", "Flight", "BoostWeapon", "BoostArmor", "MagicBoost",
     "DestroyWeapon", "DestroyArmor", "DrainMana", "FeatherFall", "Radar", "VeryLucky", "Death",
-    "ReduceMana", "ReduceManaMore",
+    "ReduceMana", "ReduceManaMore", "DestroyOrbs", "Light",
 ];
 
 const GOLD_ITEM_TYPE = {

@@ -1477,6 +1477,7 @@ LoadSprites = [
     { srcName: "Status/FeatherFall.webp", name: "FeatherFall" },
     { srcName: "Status/Radar2.webp", name: "Radar" },
     { srcName: "Status/GoldClover.webp", name: "GoldClover" },
+    { srcName: "Status/Light48.webp", name: "Light" },
 
     //health items
     { srcName: "Items/BeerHealth.webp", name: "BeerHealth" },
@@ -1519,6 +1520,7 @@ LoadSprites = [
     { srcName: "Scrolls/SCR_VeryLucky.webp", name: "SCR_VeryLucky" },
     { srcName: "Scrolls/SCR_ReduceMana.webp", name: "SCR_ReduceMana" },
     { srcName: "Scrolls/SCR_ReduceManaMore.webp", name: "SCR_ReduceManaMore" },
+    { srcName: "Scrolls/SCR_Light.webp", name: "SCR_Light" },
 
     //lights
     { srcName: "Lights/AlpineLight_153.webp", name: "AlpineLight_153" },

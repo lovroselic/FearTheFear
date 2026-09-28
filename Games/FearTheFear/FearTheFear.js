@@ -34,7 +34,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 3;
+    GAME.level = 2;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -69,7 +69,7 @@ DEBUG.checkPoint = function () {
     }
 
     let scrollTypes = [
-        "FeatherFall", "Flight", "Radar", "Flight", "Invisibility"
+        "FeatherFall", "Flight", "Radar", "Flight", "Invisibility", "Light", "DestroyOrbs",
     ];
 
     for (let scrType of scrollTypes) {
@@ -162,7 +162,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.10.9",
+    VERSION: "0.10.10",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

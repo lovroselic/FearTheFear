@@ -314,6 +314,11 @@ class Scroll {
                 }
                 TITLE.skills();
                 break;
+            case "DestroyOrbs":
+                for (let missile of MISSILE3D.POOL) {
+                    if (missile) missile.explode(MISSILE3D);
+                }
+                break;
             default:
                 console.error("ERROR scroll action", this);
                 break;
