@@ -2301,6 +2301,15 @@ LoadSprites = [
     { srcName: "ObjDecals/WallSkelly102.webp", name: "WallSkelly102" },
     { srcName: "ObjDecals/WallSkelly103.webp", name: "WallSkelly103" },
     { srcName: "ObjDecals/WallSkelly104.webp", name: "WallSkelly104" },
+    { srcName: "ObjDecals/WallSconce_655.webp", name: "WallSconce_655" },
+    { srcName: "ObjDecals/WallSconce_656.webp", name: "WallSconce_656" },
+    { srcName: "ObjDecals/WallSconce_657.webp", name: "WallSconce_657" },
+    { srcName: "ObjDecals/WallSconce_658.webp", name: "WallSconce_658" },
+    { srcName: "ObjDecals/WallSconce_659.webp", name: "WallSconce_659" },
+    { srcName: "ObjDecals/WallSconce_660.webp", name: "WallSconce_660" },
+    { srcName: "ObjDecals/WallSconce_661.webp", name: "WallSconce_661" },
+    { srcName: "ObjDecals/WallSconce_662.webp", name: "WallSconce_662" },
+    { srcName: "ObjDecals/WallSconce_663.webp", name: "WallSconce_663" },
 
     //pic decals
     { srcName: "PicDecals/1942_200.webp", name: "1942_200" },

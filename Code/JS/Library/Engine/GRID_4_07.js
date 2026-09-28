@@ -2857,7 +2857,7 @@ class ExtendedGridArray3D extends GridArray3D {
         const DIR = fly > 0.0 ? [...ENGINE.directions3D] : [...ENGINE.directions3D_XY_plane];
 
         for (let D = 0; D < DIR.length; D++) {
-            if (leaveOut === null || !leaveOut.same(DIR[D])) continue;
+            if (leaveOut !== null && leaveOut.same(DIR[D])) continue;
             let newGrid = grid.add(DIR[D]);
             if (this.isOutOfBounds(newGrid)) continue;
             if (this.just_check(newGrid, value)) continue;

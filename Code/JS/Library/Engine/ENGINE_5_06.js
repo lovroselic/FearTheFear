@@ -1291,17 +1291,11 @@ const ENGINE = {
     audioToAudio(obj) {
         AUDIO[obj.name] = obj.audio;
     },
-    linkToWasm(obj) {
-        var bin = obj.exports;
-        let name = null;
-        for (var fn in bin) {
-            if (typeof bin[fn] === "function") {
-                name = fn;
-                break;
-            }
-        }
-        WASM[name] = bin[name];
-        MEMORY[name] = bin.memory;
+    linkToWasm(instance, name, importedMemory = null) {
+        if (Object.hasOwn(WASM, name)) throw new Error(`Duplicate WASM module name: ${name}`);
+
+        WASM[name] = instance.exports;
+        MEMORY[name] = instance.exports.memory ?? importedMemory;
     },
     spriteToAsset(obj) {
         ASSET[obj.asset].linear.push(SPRITE[obj.name]);
@@ -2147,20 +2141,47 @@ const ENGINE = {
             }
 
             async function loadWASM(arrPath = LoadExtWasm) {
-                if (!arrPath) return;
-                const LoadIntWasm = []; // internal hard-coded ENGINE requirements, never used yet
-                const toLoad = [...arrPath, ...LoadIntWasm];
+                const LoadIntWasm = []; // Add internal modules here when needed.
+
+                const toLoad = [...(arrPath ?? []), ...LoadIntWasm].map(item => {
+                    if (typeof item === "string") {
+                        return {
+                            file: item,
+                            name: item.split("/").pop().replace(/\.wasm$/i, ""),
+                            imports: {},
+                            memory: null
+                        };
+                    }
+
+                    // Object entries allow imports and an explicit module name.
+                    return {
+                        file: item.file,
+                        name: item.name ?? item.file.split("/").pop().replace(/\.wasm$/i, ""),
+                        imports: item.imports ?? {},
+                        memory: item.memory ?? null
+                    };
+                });
+
+                if (toLoad.length === 0) return true;
+
                 console.log(`%c ...loading ${toLoad.length} WASM files`, ENGINE.CSS);
                 ENGINE.LOAD.HMWASM = toLoad.length;
-                if (ENGINE.LOAD.HMWASM) appendCanvas("WASM");
+                appendCanvas("WASM");
+
                 try {
-                    const instances = await Promise.all(toLoad.map((wasm) => loadWebAssembly(wasm, "WASM")));
-                    instances.forEach((instance) => {
-                        ENGINE.linkToWasm(instance);
-                    });
+                    const loaded = await Promise.all(toLoad.map(async spec => ({
+                        spec,
+                        instance: await loadWebAssembly(spec.file, "WASM", spec.imports)
+                    })));
+
+                    for (const { spec, instance } of loaded) {
+                        ENGINE.linkToWasm(instance, spec.name, spec.memory);
+                    }
+
+                    return true;
                 } catch (error) {
-                    console.error(`Error loading wasm: ${error}`);
-                    return false;
+                    console.error("Error loading WASM:", error);
+                    throw error;                                                                // Stops preload() before ENGINE.ready().
                 }
             }
 
@@ -2584,11 +2605,13 @@ const ENGINE = {
             async function loadWebAssembly(fileName, counter) {
                 try {
                     const response = await fetch(ENGINE.WASM_SOURCE + fileName);
-                    const buffer = await response.arrayBuffer();
-                    const module = await WebAssembly.compile(buffer);
+                    if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+                    const bytes = await response.arrayBuffer();
+                    const { instance } = await WebAssembly.instantiate(bytes, imports);
+
                     ENGINE.LOAD[counter]++;
                     ENGINE.drawLoadingGraph(counter);
-                    return new WebAssembly.Instance(module);
+                    return instance;
                 } catch (error) {
                     throw new Error(`Error loading WebAssembly: ${fileName}`, error);
                 }
@@ -3589,7 +3612,7 @@ const ENGINE = {
             CTX.translate(-half, -half);
             CTX.strokeStyle = color;
             CTX.fillStyle = color;
-            CTX.lineWidth = 1; 
+            CTX.lineWidth = 1;
             CTX.fill(path);
             CTX.stroke(path);
             CTX.restore();

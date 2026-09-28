@@ -169,13 +169,13 @@ const ELEMENT = {
 
     compileElementPlanes(element, shapeName = "UNKNOWN") {
         const MAX_PLANES = 24;
-        const CONVEXITY_EPSILON = 1E-5;
+        //const CONVEXITY_EPSILON = 1E-5;
 
         if (!element) throw new Error(`${shapeName}: element does not exist.`);
 
         const positions = element.positions;
         const indices = element.indices;
-        const vertexCount = positions.length / 3;
+        //const vertexCount = positions.length / 3;
         const sourceTriangleCount = indices.length / 3;
         const planes = [];
 
