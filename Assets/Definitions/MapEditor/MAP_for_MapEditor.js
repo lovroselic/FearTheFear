@@ -1822,7 +1822,11 @@ const LIGHT_DECALS = [
     "Moon60", "Moon62", "Moon63", "SettingSun1", "SettingSun2", "SingleLantern1", "SkullLantern50", "SkullLantern51", "SkullLantern52", "SkullLantern53", "SkullLantern54", "SkullLantern55",
     "SkullLantern56", "SkullLantern57", "SkullLantern58", "Sun1", "Sun2", "Torch11", "WallLamp10", "WallLamp11", "WallLamp12", "WallLamp13", "WallLamp14", "WallLamp15",
     "WallLamp16", "WallLamp17", "WallLamp18", "WallLamp19", "WallLamp20", "WallLamp31", "WallLamp32", "WallLamp33", "WallLamp34", "WallLamp35", "WallLamp9", "lantern201",
-    "lantern303"
+    "lantern303",
+    "Light_617", "Light_618", "Light_619", "Light_620", "Light_621", "Light_622", "Light_623", "Light_624", "Light_625", "Light_626", "Light_627", "Light_628",
+    "Light_629", "Light_630", "Light_631", "Light_632", "Light_633", "Light_634", "Light_635", "Light_636", "Light_637", "Light_638", "Light_639", "Light_640",
+    "Light_641", "Light_642", "Light_643", "Light_644", "Light_645", "Light_646", "Light_647", "Light_648", "Light_649", "Light_650", "Light_651", "Light_652",
+    "Light_653", "Light_654",
 ].sort();
 
 //panorama
