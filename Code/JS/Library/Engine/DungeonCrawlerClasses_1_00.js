@@ -5,6 +5,10 @@
 /*jshint esversion: 11 */
 "use strict";
 
+/**
+ * expeczs INI settings in GAME
+ */
+
 const DungeonCrawlerClasses = {
     VERSION: "1.00",
     VERBOSE: false,
@@ -190,11 +194,6 @@ class Scroll {
                 HERO.mana = 0;
                 TITLE.skills();
                 break;
-            case "DestroyOrbs":
-                for (let missile of MISSILE3D.POOL) {
-                    if (!missile.friendly) missile.explode(MISSILE3D);
-                }
-                break;
             case "Invisibility":
                 console.warn("invisibility");
                 HERO.startInvisibility();
@@ -317,6 +316,20 @@ class Scroll {
             case "DestroyOrbs":
                 for (let missile of MISSILE3D.POOL) {
                     if (missile) missile.explode(MISSILE3D);
+                }
+                break;
+            case "Light":
+                console.warn("Light");
+                HERO.startLight();
+                const lightTimerId = "lightTimer";
+                if (ENGINE.TIMERS.exists(lightTimerId)) {
+                    T = ENGINE.TIMERS.access(lightTimerId);
+                    T.extend(INI.LIGHT_TIME);
+                } else {
+                    T = new CountDown(lightTimerId, INI.LIGHT_TIME, HERO.cancelLight);
+                    let status = new Status("Light", "Light");
+                    HERO.inventory.status.push(status);
+                    TITLE.keys();
                 }
                 break;
             default:

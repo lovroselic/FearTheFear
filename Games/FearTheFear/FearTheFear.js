@@ -69,7 +69,9 @@ DEBUG.checkPoint = function () {
     }
 
     let scrollTypes = [
-        "FeatherFall", "Flight", "Radar", "Flight", "Invisibility", "Light", "DestroyOrbs",
+        "FeatherFall", "Flight", "Radar", "Flight", "Invisibility", "Light", "Light", "Light", "Light",
+        "DestroyOrbs",
+        "Explode",
     ];
 
     for (let scrType of scrollTypes) {
@@ -141,6 +143,7 @@ const INI = {
     SCROLL_RANGE: 30,
     CRIPPLE_SPEED: 0.1,
     INVISIBILITY_TIME: 60,
+    LIGHT_TIME: 60,
     JUMP_POWER: 1.55,                    // jump distance in grid units 1.55 default
     MAX_JUMP_POWER: 3.5,
     LUCKY_TIME: 59,
@@ -157,12 +160,14 @@ const INI = {
     HELP_PRICE: 10,
     BURNING_TIME: 1500,
     DARK_DUNGEON_AMBIENCE: 0.05,
+    LIGHT_DIFFUSE: 50.0,
+    NORMAL_DIFFUSE: 8.0,
 };
 
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.10.10",
+    VERSION: "0.10.11",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -559,7 +564,7 @@ const HERO = {
         HERO.invisible = false;
     },
     cancelInvisibility() {
-        console.warn("invisinbility END");
+        //console.warn("invisinbility END");
         HERO.removeStatus("Invisibility");
         HERO.visible();
         TITLE.keys();
@@ -595,7 +600,7 @@ const HERO = {
         HERO.speak(text.chooseRandom());
     },
     startInvisibility() {
-        console.warn("invisinbility START");
+        //console.warn("invisinbility START");
         HERO.invisible = true;
         HERO.player.useTexture("invisible");
         const text = [
@@ -712,6 +717,61 @@ const HERO = {
     burnOff() {
         HERO.burning = false;
     },
+    startLight() {
+        WebGL.diffuse_light_strength = INI.LIGHT_DIFFUSE;
+        const text = [
+            "Let there be light.",
+            "Now I cab see all the dust specs on the wall.",
+            "Much better. I prefer to see what is trying to kill me.",
+            "Behold. The dungeon remains hideous, only clearer.",
+            "There. Now the monsters can admire me properly.",
+            "The darkness was atmospheric. The teeth were less charming.",
+            "Light. Because walking into walls lacks dignity.",
+            "At last, I can distinguish treasure from suspiciously shiny slime.",
+            "Wonderful. Every cobweb is now visible in exquisite detail.",
+            "The shadows have retreated. Sensible shadows.",
+            "A little light for the dungeon. It clearly spent nothing on windows.",
+            "Now I can see exactly how badly this place fails inspection.",
+            "Illuminated doom is still doom, but at least it is presentable.",
+            "There. If something eats me now, I shall know what to blame.",
+            "The dungeon has come into focus. Regrettably.",
+            "Good. Now I can see where all the tetanus lives.",
+            "I refuse to be ambushed by anything I cannot criticize properly.",
+            "Finally, lighting worthy of the leading lady.",
+            "Much clearer. Unfortunately, so are the stains.",
+            "And now, the traditional reveal: more dungeon.",
+
+        ];
+        this.speak(text.chooseRandom());
+    },
+    cancelLight() {
+        WebGL.diffuse_light_strength = INI.NORMAL_DIFFUSE;
+        HERO.removeStatus("Light");
+        TITLE.keys();
+        const text = [
+            "Oh good, the gloom is back. I was beginning to feel optimistic.",
+            "Apparently, illumination was a limited time offer.",
+            "The light has expired. Naturally, the monsters have not.",
+            "Back to dusk. How tastefully inconvenient.",
+            "The walls are fading from view. Their appearance has improved.",
+            "The spell is over. Please resume lurking.",
+            "Wonderful. I can barely see the danger again.",
+            "Ah, dusk. When every shadow gets promoted to monster.",
+            "Visibility has left. My patience is considering the same.",
+            "So much for enlightenment.",
+            "The dungeon is dim again. It must feel more like itself.",
+            "The light is gone. My opinion of this place remains unchanged.",
+            "Back to silhouettes, suspicious noises, and regrettable decisions.",
+            "At least the dust is less obvious now.",
+            "The gloom returns, rested and ready to be tedious.",
+            "And there goes the light. Extended illumination is apparently extra.",
+            "Once again, I must navigate by menace.",
+            "The dungeon has lowered the lights. Nothing romantic is about to happen.",
+            "Dusk again. Try not to look edible.",
+            "And thus the dungeon returns to its preferred state: poorly supervised.",
+        ];
+        HERO.speak(text.chooseRandom());
+    },
 };
 
 /**
@@ -802,7 +862,7 @@ const GAME = {
 
         //inner
         WebGL.ambient_light_strength = INI.DARK_DUNGEON_AMBIENCE;        // 0.3
-        WebGL.diffuse_light_strength = 8.0;         // 9
+        WebGL.diffuse_light_strength = INI.NORMAL_DIFFUSE;         // 8
         WebGL.specular_light_strength = 0.6;        // 1.5
 
         // element compilations

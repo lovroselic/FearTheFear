@@ -6535,7 +6535,7 @@ class StaticParticleBomb extends ParticleEmmiter {
         const blastVector = new FP_Vector3D(WebGL.INI.BLAST_RADIUS, WebGL.INI.BLAST_RADIUS, WebGL.INI.BLAST_RADIUS);
         const TL = Grid3D.toClass(position3D.sub(blastVector));
         const BR = Grid3D.toClass(position3D.add(blastVector));
-        console.info("TL BR", TL, BR);
+        //console.info("TL BR", TL, BR);
 
         let modified_grid = false;
         let monsters_than_can_be_affected = [];
