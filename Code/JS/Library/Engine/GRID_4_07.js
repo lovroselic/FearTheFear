@@ -1130,6 +1130,7 @@ const EXT_MAPDICT = {
     ROUNDBOUND: 7,
     PILLAR3: 8,
     EXTRUDEDWEDGE: 9,
+    BIGARCH: 10,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1197,6 +1198,7 @@ const EXT_TO_SHAPE = {
     7: "ROUNDBOUND",
     8: "PILLAR3",
     9: "EXTRUDEDWEDGE",
+    10: "BIGARCH",
 };
 
 const WallSizeToHeight = (value) => {

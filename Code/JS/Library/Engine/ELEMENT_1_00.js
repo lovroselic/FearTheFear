@@ -1000,6 +1000,12 @@ const SHAPE_PATH = (() => {
             ),
             color: "#999",
         },
+        [EXT_MAPDICT.BIGARCH]: {
+            path: new Path2D(
+                `M 0 0 L ${HALF} ${OFF} L ${SIZE} 0 L 0 ${SIZE - OFF} Z`
+            ),
+            color: "#BBB",
+        },
     };
 
 })();

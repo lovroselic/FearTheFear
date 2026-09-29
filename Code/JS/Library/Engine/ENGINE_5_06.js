@@ -4623,7 +4623,7 @@ class Form {
         $("#FORM").append(`<hr style='position: absolute; top:${hr_top}px;'>`);
         $("#FORM").append(`<input type = 'button' value = 'Done' id = 'form_done' class = 'form' style='position: absolute; top:${done_top}px; left:${done_left}px'/>`);
         $("#form_done").on("click", FORM.exit);
-        $("#form_done").val("Next Slope");
+        $("#form_done").val("OK");
 
         ENGINE.showMouse();
     }
