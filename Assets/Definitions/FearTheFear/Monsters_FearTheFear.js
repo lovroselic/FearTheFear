@@ -1561,6 +1561,38 @@ const INTERACTION_ITEM = {
         inventorySprite: "OrangeKey",
         color: "Orange"
     },
+
+    // money
+    Banknote10: {
+        name: "Banknote10",
+        category: "interaction_item",
+        inventorySprite: "Banknote10",
+        text: "That is a lot of money. 10 Castle Marks."
+    },
+    Banknote20: {
+        name: "Banknote20",
+        category: "interaction_item",
+        inventorySprite: "Banknote20",
+        text: "That is a lot of money. 20 Castle Marks."
+    },
+    Banknote50: {
+        name: "Banknote50",
+        category: "interaction_item",
+        inventorySprite: "Banknote50",
+        text: "That is a lot of money. 50 Castle Marks."
+    },
+    Banknote100: {
+        name: "Banknote100",
+        category: "interaction_item",
+        inventorySprite: "Banknote100",
+        text: "That is a lot of money. 100 Castle Marks."
+    },
+    Banknote200: {
+        name: "Banknote200",
+        category: "interaction_item",
+        inventorySprite: "Banknote200",
+        text: "That is a lot of money. 200 Castle Marks."
+    },
 };
 
 const MONSTER_TYPE = {

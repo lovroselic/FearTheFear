@@ -82,9 +82,11 @@ const DEBUG = {
         throw new Error(message);
     },
     killAll() {
-        console.note("Killing all enemies.");
+        console.note("Killing all enemies, lairs, missiles.");
         ENEMY2D.POOL.clear();
         ENTITY3D.POOL.clear();
+        LAIR.stop();
+        MISSILE3D.POOL.clear();
     },
     displayInv() {
         HERO.inventory.scroll.display();

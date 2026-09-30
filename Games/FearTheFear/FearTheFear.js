@@ -35,7 +35,18 @@ DEBUG.checkPoint = function () {
      
     area 1: ButtCrack Hotel
 
-    Receptionist wants money () give key to leave ()
+    Receptionist wants money (Banknote10, Banknote20, Banknote50, Banknote100, Banknote200) give key to leave (Green Key)
+
+
+    Banknote10:
+    Banknote20:
+    Banknote50:
+    Banknote100:
+    Banknote200:
+
+
+    Green Key: receptionist;
+    Blue Key: found on Balcony
 
      */
 
@@ -174,7 +185,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.12.0",
+    VERSION: "0.12.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -228,7 +239,7 @@ const PRG = {
         ENGINE.sideWIDTH = ENGINE.titleWIDTH - ENGINE.gameWIDTH - INI.SCREEN_BORDER;
         ENGINE.gameHEIGHT = 768;
         ENGINE.titleHEIGHT = 96;
-        ENGINE.bottomHEIGHT = 80;
+        ENGINE.bottomHEIGHT = 100; //80
         ENGINE.bottomWIDTH = ENGINE.titleWIDTH;
         MAP_TOOLS.INI.FOG = false;
 
@@ -271,6 +282,7 @@ const PRG = {
         }
 
         $("#startGame").addClass("hidden");
+        SUBTITLE.init();
         ENGINE.disableDefaultKeys();
         SAVE_GAME.manager_HTML();
         TITLE.startTitle();
@@ -890,7 +902,9 @@ const GAME = {
         GAME.drawFirstFrame(level);
         LAIR.start();
         ENGINE.GAME.resume();
-        HERO.speak("debug");
+        HERO.speak(`My last day of vacation in this beautiful alpine country. Excellent ButtBoarding. Dignity is overrated.
+            Time to check out of Hotel ButtCrack and head home to Castle Creep. Even paradise has a checkout time. Surely this game wouldn't kill its leading lady.
+            The journey will be peaceful, and all will be well at the castle. I'll wear my deadly heels, just in case. Optimism needs backup.`);
     },
     setCameraView() {
         WebGL.hero.firstPersonCamera = new $3D_Camera(WebGL.hero.player, DIR_NOWAY, 0.0, new Vector3(0, 0, 0), 0);

@@ -1503,6 +1503,13 @@ LoadSprites = [
     { srcName: "Keys/PinkKey.webp", name: "PinkKey" },
     { srcName: "Keys/CyanKey.webp", name: "CyanKey" },
 
+    //paper money
+    { srcName: "Items/Banknote10.webp", name: "Banknote10" },
+    { srcName: "Items/Banknote20.webp", name: "Banknote20" },
+    { srcName: "Items/Banknote50.webp", name: "Banknote50" },
+    { srcName: "Items/Banknote100.webp", name: "Banknote100" },
+    { srcName: "Items/Banknote200.webp", name: "Banknote200" },
+
     //gold, valuables
     { srcName: "Items/Coins.webp", name: "Coins" },
     { srcName: "Items/GoldBar.webp", name: "GoldBar" },

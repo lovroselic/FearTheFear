@@ -9,10 +9,11 @@
  *      dependencies:
  *          ENGINE
  *          GenericTimers
+ *          SUBTITLE
  */
 
 const TURN = {
-    VERSION: "1.03",
+    VERSION: "1.04",
     CSS: "color: #b785a7",
     position: "mid",
     //position: "bottom",
@@ -54,19 +55,7 @@ const TURN = {
         GenericTimers.infoTimer();
     },
     subtitle(text, color = "#FFF") {
-        text = text.replace(/[<>#-]/g, '');
-        ENGINE.clearLayer("subtitle");
-        let CTX = LAYER.subtitle;
-        let fs = 18;
-        CTX.font = fs + "px Times";
-        CTX.shadowColor = "#666";
-        CTX.shadowOffsetX = 1;
-        CTX.shadowOffsetY = 1;
-        CTX.shadowBlur = 0;
-        CTX.fillStyle = color;
-        CTX.textAlign = "center";
-        CTX.fillText(text, CTX.canvas.width / 2, this.getPosition(CTX, fs));
-        GenericTimers.subTimer();
+        SUBTITLE.timedSubtitle(text, color, GenericTimers.INI.SUB_TIMER);
     }
 };
 //END
