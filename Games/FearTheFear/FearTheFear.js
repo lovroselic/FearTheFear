@@ -31,10 +31,17 @@ DEBUG.STAY_ALIVE = false;
 DEBUG.INF_MANA = true;
 
 DEBUG.checkPoint = function () {
+    /**
+     
+    area 1: ButtCrack Hotel
+
+    Receptionist wants money () give key to leave ()
+
+     */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 2;
+    GAME.level = 1;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -167,7 +174,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.11.01",
+    VERSION: "0.12.0",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
