@@ -70,7 +70,7 @@ LoadTextures = [
     { srcName: "Shading/fire_noise_512.webp", name: "Fire_noise" },
 
     //panorama
-    { srcName: "Panorama/AlpinePanorama_168.webp", name: "AlpinePanorama_168" },
+    { srcName: "Panorama/HotelBalconyView.webp", name: "HotelBalconyView" },
 
     //sky
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },
@@ -1293,6 +1293,11 @@ LoadShaders = [
 LoadSprites = [
     //reserved
     { srcName: "Reserved/DeathPlace.webp", name: "DeathPlace" },
+
+    //entities
+    { srcName: "EntityPictures/PrincessHotelBed.webp", name: "PrincessHotelBed" },
+    { srcName: "EntityPictures/HotelNews.webp", name: "HotelNews" },
+    { srcName: "EntityPictures/TanNylon.webp", name: "TanNylon" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },

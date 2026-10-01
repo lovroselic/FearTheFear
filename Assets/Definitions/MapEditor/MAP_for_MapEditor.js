@@ -1838,7 +1838,7 @@ const LIGHT_DECALS = [
 
 //panorama
 const PANORAMA_DECALS = [
-    "AlpinePanorama_168",
+    "HotelBalconyView",
 ].sort();
 
 //arch

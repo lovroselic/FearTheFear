@@ -16,6 +16,34 @@ for (let [index, key] of KEY_TYPES.entries()) {
     KEY_TYPE[key] = new KeyTypeDefinition(key, `${key}Key`, key, KEY_TEXTURES[index], MATERIAL[KEY_MATERIAL[index]]);
 }
 
+const ORACLE_TYPE = {
+    PrincessHotelBed: {
+        name: "PrincessHotelBed",
+        sprite: "PrincessHotelBed",
+        category: 'crest',
+        voice: "Princess",
+        text: `A standard issue princess bed. I have a similar one at Castle Creep. Royal luxury, available in bulk.`,
+        interactionCategory: "oracle",
+    },
+     TanNylon: {
+        name: "TanNylon",
+        sprite: "TanNylon",
+        category: 'crest',
+        voice: "Female",
+        text: `Always check the TV news. We only get Dungeon Network. Channel surfing is strictly theoretical.`,
+        interactionCategory: "oracle",
+    },
+    HotelNews: {
+        name: "HotelNews",
+        sprite: "HotelNews",
+        category: 'crest',
+        voice: "News",
+        text: `Breaking news from Dungeon Network: eyewitnesses report monsters and assorted whatnots manifesting at Castle Creep. Apparently, the castle needed more character.
+The Princess's cousin, the Cousin, acting regent of Castle Creep, has allegedly vanished under mysterious circumstances. So much for leaving someone in charge.`,
+        interactionCategory: "oracle",
+    },
+};
+
 const SCROLL_TYPE = [
     "Invisibility", "Cripple", "HalfLife", "Explode", "Luck", "Flight", "BoostWeapon", "BoostArmor", "MagicBoost",
     "DestroyWeapon", "DestroyArmor", "DrainMana", "FeatherFall", "Radar", "VeryLucky", "Death",

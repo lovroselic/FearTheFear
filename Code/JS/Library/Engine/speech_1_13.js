@@ -11,7 +11,7 @@ TODO:
 ////////////////////////////////////////////////////
 
 const SPEECH = {
-  VERSION: "1.12",
+  VERSION: "1.13",
   CSS: "color: #0A0",
   VERBOSE: true,
   browserSupport: true,
@@ -388,6 +388,11 @@ const VOICE = {
     source: ["Catherine", "Hazel"],
     voice: 0,
     setting: new VoiceSetting(1.1, 0.1, 1.0)
+  },
+  'News': {
+    source: ["Zira"],
+    voice: 0,
+    setting: new VoiceSetting(1.75, 1.3, 1.0)
   },
 };
 console.log(`%cSPEECH ${SPEECH.VERSION} loaded.`, SPEECH.CSS);
