@@ -1006,6 +1006,12 @@ const SHAPE_PATH = (() => {
             ),
             color: "#BBB",
         },
+        [EXT_MAPDICT.CORNERWEDGE]: {
+            path: new Path2D(
+                `M 0 0 L ${SIZE} 0 L ${SIZE} ${HALF} L ${HALF} ${SIZE} L 0 ${SIZE} Z`
+            ),
+            color: "#999",
+        },
     };
 
 })();
