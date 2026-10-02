@@ -1,9 +1,9 @@
 #version 300 es
 ///fShader///
 /*
-* v1.6
+* v1.7
 * DownHeel - specular fixes + corrected high-resolution occlusion raycast
-* FearTheFear light strengths for point light
+* FearTheFear - light strengths for point light, raycast end voxel bug correction
 *
 * Occlusion notes:
 * - uOcclusionResolution = texels per world/grid unit.
@@ -11,6 +11,12 @@
 * - Bounds are read from textureSize(uOcclusionMap, 0).
 * - uGridSize is kept for JS compatibility, but occlusion bounds no longer depend on it.
 */
+
+/*
+ * Corrections applied to the original v1.6 shader:
+ * CHANGE 1: Receiver-normal ray endpoint, bounded biases, and destination voxel testing.
+ * CHANGE 2: Distance-limited backwards/low-illumination ambient glow.
+ */
 
 #ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
@@ -79,14 +85,8 @@ in vec2 vTextureCoord;
 
 const vec3 innerLightColor = vec3(1.0f, 1.0f, 1.0f);
 const vec3 GLOBAL_AMBIENT = vec3(0.05f);
-
 const float DEFAULT_ROUGHNESS = 0.65f;
 const float MIN_ROUGHNESS = 0.04f;
-
-//const float PL_AmbientStrength = 9.99f;
-//const float PL_DiffuseStrength = 50.0f;
-//const float PL_SpecularStrength = 5.0f;
-
 const float IGNORE_ALPHA = 0.1f;
 
 // Increased because DDA now walks occlusion texels.
@@ -95,7 +95,7 @@ const int MAX_STEPS = 4096;
 
 const float EPSILON = 0.005f;
 const float PL_AMBIENT_OCCLUSION = 0.10f;
-const float PL_DIFFUSE_OCCLUSION = 0.10f;
+const float PL_DIFFUSE_OCCLUSION = 0.02f; //0.10
 const float PL_AMBIENT_ILLUMINATION_REDUCTION = 0.02f;
 const float PL_DIFUSSE_ILLUMINATION_REDUCTION = 0.05f;
 const float PL_DIFUSSE_LIGHT_HALO_REDUCTION = 0.25f;
@@ -107,9 +107,21 @@ const float MAXLIGHT = 0.999f;
 const float IGNORED_ATTN_DISTANCE = 0.012f;
 const float ILLUMINATION_CUTOFF = 0.10f;
 const float BEHIND_LIGHT_FACTOR = 0.02f;
+
+// Additional distance fade for the existing weak rear/side ambient.
+// The fade multiplier is 1 at/below START and 0 at/above END.
+// Existing distance attenuation is still applied separately.
+// Distances are in world/grid units from the Y-adjusted emitter position.
+const float BACK_GLOW_FADE_START = 0.25f;
+const float BACK_GLOW_FADE_END = 0.75f;
 const float DISTANCE_LIGHT = 0.25f;
 const float LIGHT_POS_Y_OFFSET = 0.35f;
-const float INTO_WALL = 0.01f;
+const float HALO_FADE_START = DISTANCE_LIGHT * 0.5f;
+const float CONE_FADE_HALF_WIDTH = 0.05f;
+
+// Replaces INTO_WALL; the endpoint now moves OUT of the surface.
+// Small world-space offset along the outward receiving normal.
+const float RAY_TARGET_BIAS = 0.01f;
 const float RAY_ORIGIN_BIAS = EPSILON * 5.0f;
 
 out vec4 fragColor;
@@ -142,7 +154,7 @@ vec3 CalcLight(
     out vec3 specularOut
 );
 
-bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, float illumination);
+bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, vec3 surfaceNormal);
 bool isOmniDirectional(vec3 dir);
 
 ivec3 getOcclusionTextureSize();
@@ -191,7 +203,6 @@ void main(void) {
             continue;
 
         PL_output += CalcLight(uPointLights[i], FragPos, viewDir, norm, uLightColors[i], shininess, ambientColor, diffuseColor, specularColor, roughness, metallic, fresnelStrength, uLightAmbientStrength[i], uLightDiffuseStrength[i], uLightSpecularStrength[i], 0, uLightDirections[i], baseColor, specularPart);
-
         specularTotal += specularPart;
     }
 
@@ -247,27 +258,32 @@ vec3 CalcLight(
         lightPosition.y -= LIGHT_POS_Y_OFFSET;
 
     float lightPosDistance = distance(lightPosition, FragPos);
-    vec3 lightToFrag = normalize(FragPos - lightPosition);       // light -> fragment
-    vec3 fragToLight = -lightToFrag;                             // fragment -> light
+
+    // Radial fade on top of the existing attenuation.
+    // Only the directional-light rear/low-illumination ambient paths use it.
+    float backGlow = 1.0f - smoothstep(BACK_GLOW_FADE_START, BACK_GLOW_FADE_END, lightPosDistance);
+
+    vec3 lightToFrag = normalize(FragPos - lightPosition);          // light -> fragment
+    vec3 fragToLight = -lightToFrag;                                  // fragment -> light
     vec3 dirLight = normalize(lightDirection);
     float invDistance = 1.0f / (lightPosDistance + EPSILON);
     float attenuation = invDistance / (ATTNF + ATTNF2 * lightPosDistance);
 
     // -------------------- directional cone illumination --------------------
-    // illumination in [0..1], based on angle between light forward and light -> fragment
+
     float cone = 1.0f;
-    float illumination = 1.0f;
 
     if (inner == 0 && !isOmniDirectional(lightDirection)) {
         cone = dot(lightToFrag, dirLight);
-        illumination = max(cone, 0.0f);
     }
 
     vec3 ambientLight = vec3(0.0f);
 
     // If fragment is behind the directional light, return only tiny ambient, no occlusion.
     if (inner == 0 && !isOmniDirectional(lightDirection) && cone < -ILLUMINATION_CUTOFF) {
-        ambientLight = pointLightColor * ambientStrength * attenuation * ambientColor * BEHIND_LIGHT_FACTOR;
+        // Keep the local supporting-wall glow, but fade distant spill.
+        // Occlusion remains bypassed here for the wall behind the offset decal.
+        ambientLight = pointLightColor * ambientStrength * attenuation * ambientColor * BEHIND_LIGHT_FACTOR * backGlow;
         return ambientLight;
     }
 
@@ -275,10 +291,9 @@ vec3 CalcLight(
     bool occluded = false;
 
     if (inner == 0) {
-        occluded = Raycast3D(lightPosition, FragPos, illumination);
+        // normal is the normalized world-space receiving normal.
+        occluded = Raycast3D(lightPosition, FragPos, normal);
     }
-
-    bool isLight = (lightPosDistance < DISTANCE_LIGHT);
 
     // -------------------- ambient --------------------
     if (inner == 1) {
@@ -327,23 +342,53 @@ vec3 CalcLight(
     vec3 specularLight = pointLightColor * specAmount * specularStrength * attenuation * finalSpecColor;
 
     // -------------------- illumination reductions / occlusion --------------------
-    if (illumination < ILLUMINATION_CUTOFF) {
-        if (isLight) {
-            float invlightDistance = 1.0f / max(lightPosDistance, EPSILON);
-            float attenuationHalo = invlightDistance / (HATTNF + HATTNF2 * lightPosDistance);
-            float haloReduction = PL_DIFUSSE_LIGHT_HALO_REDUCTION * attenuationHalo;
 
-            diffuselight *= haloReduction;
-            specularLight *= haloReduction;
-        } else {
-            diffuselight *= PL_DIFUSSE_ILLUMINATION_REDUCTION;
-            specularLight *= PL_DIFUSSE_ILLUMINATION_REDUCTION;
-        }
+    // Bound the halo multiplier.
+    // It can strengthen ordinary side fill, but cannot amplify the
+    // already calculated diffuse/specular light above its original strength.
+    float invlightDistance = 1.0f / max(lightPosDistance, EPSILON);
+    float attenuationHalo = invlightDistance / (HATTNF + HATTNF2 * lightPosDistance);
+    float haloReduction = clamp(PL_DIFUSSE_LIGHT_HALO_REDUCTION * attenuationHalo, PL_DIFUSSE_ILLUMINATION_REDUCTION, 1.0f);
 
-        if (lightPosDistance > IGNORED_ATTN_DISTANCE) {
-            ambientLight *= PL_AMBIENT_ILLUMINATION_REDUCTION;
-        }
-    } else if (occluded && inner == 0) {
+    // Smoothly blend the bounded halo into ordinary side fill.
+    // The transition ends at DISTANCE_LIGHT, eliminating the old distance jump.
+    float haloBlend = 1.0f - smoothstep(HALO_FADE_START, DISTANCE_LIGHT, lightPosDistance);
+    float sideDiffuseFactor = mix(PL_DIFUSSE_ILLUMINATION_REDUCTION, haloReduction, haloBlend);
+
+    // Smooth the forward-cone transition around the old illumination cutoff.
+    // With the proposed constants, it runs from cone = 0.05 to cone = 0.15.
+    float coneBlend = smoothstep(ILLUMINATION_CUTOFF - CONE_FADE_HALF_WIDTH, ILLUMINATION_CUTOFF + CONE_FADE_HALF_WIDTH, cone);
+
+    // Fade direct spill out as fragments move behind the emitter.
+    // It reaches zero at the existing backwards-ambient early-return boundary.
+    float rearBlend = smoothstep(-ILLUMINATION_CUTOFF, 0.0f, cone);
+
+    // Blend side/halo lighting into full forward lighting.
+    // Inner and omnidirectional lights have cone = 1, producing a factor of 1.
+    float directFactor = mix(sideDiffuseFactor * rearBlend, 1.0f, coneBlend);
+
+    diffuselight *= directFactor;
+    specularLight *= directFactor;
+
+    // Smooth ambient across the same angular transition.
+    // Retain the distance-limited supporting-wall glow.
+    float backAmbientFactor = BEHIND_LIGHT_FACTOR * backGlow;
+    float sideAmbientFactor = PL_AMBIENT_ILLUMINATION_REDUCTION * backGlow;
+
+    // Preserve the existing very-close ambient exception.
+    if (lightPosDistance <= IGNORED_ATTN_DISTANCE) {
+        sideAmbientFactor = 1.0f;
+    }
+
+    // Blend rear ambient into side ambient, then into full forward ambient.
+    // The rear blend also smooths the very-close ambient exception near
+    // the backwards-ambient early-return boundary.
+    float ambientFactor = mix(mix(backAmbientFactor, sideAmbientFactor, rearBlend), 1.0f, coneBlend);
+
+    ambientLight *= ambientFactor;
+
+    // Apply occlusion independently, after all distance/angular reductions.
+    if (occluded && inner == 0) {
         return PL_AMBIENT_OCCLUSION * ambientLight + PL_DIFFUSE_OCCLUSION * diffuselight;
     }
 
@@ -355,7 +400,8 @@ vec3 CalcLight(
 // Raycasting / occlusion
 // ----------------------------------------------------------------------------
 
-bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, float illumination) {
+// surfaceNormal must be normalized, outward-facing, and in WORLD space.
+bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, vec3 surfaceNormal) {
     vec3 worldDirection = rayTarget3D - rayOrigin3D;
     float worldDirLen = length(worldDirection);
 
@@ -365,10 +411,19 @@ bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, float illumination) {
     vec3 worldDirNorm = worldDirection / worldDirLen;
 
     // Biases are still in WORLD units.
-    // Origin bias helps avoid immediately hitting the light's own texel.
-    // Target pullback helps prevent the destination surface from shadowing itself.
-    vec3 biasedOriginWorld = rayOrigin3D + worldDirNorm * RAY_ORIGIN_BIAS;
-    vec3 biasedTargetWorld = rayTarget3D - worldDirNorm * INTO_WALL;
+    // Limit both biases to 25% of the original segment length.
+    // A fixed origin bias could overshoot a very close receiving surface.
+    float originBias = min(RAY_ORIGIN_BIAS, worldDirLen * 0.25f);
+    float targetBias = min(RAY_TARGET_BIAS, worldDirLen * 0.25f);
+
+    // Advance slightly from the emitter towards the receiving surface.
+    vec3 biasedOriginWorld = rayOrigin3D + worldDirNorm * originBias;
+
+    // Move the endpoint OUTSIDE the receiver along its outward normal.
+    // Pulling towards the light could put it INSIDE a wall when lit from behind.
+    // For voxelized EGA shapes, a mesh-exterior point may still be in a solid
+    // voxel; accurate voxelization is still needed to avoid false self-shadowing.
+    vec3 biasedTargetWorld = rayTarget3D + surfaceNormal * targetBias;
 
     // Convert to OCCLUSION TEXTURE SPACE.
     // From here on, one DDA step means one occlusion texel.
@@ -422,14 +477,17 @@ bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, float illumination) {
     }
 
     for (int i = 0; i < MAX_STEPS; i++) {
-        // Do not let the destination texel shadow itself.
-        if (all(equal(currentCell, targetCell))) {
-            return false;
-        }
+        // Check occupancy BEFORE declaring the endpoint reached.
+        // The outward endpoint bias handles cube-surface self-shadowing.
 
         // currentCell is already in OCCLUSION TEXTURE SPACE.
         if (isOccludedTexel(currentCell)) {
             return true;
+        }
+
+        // The endpoint voxel has been checked and is empty: the ray is clear.
+        if (all(equal(currentCell, targetCell))) {
+            return false;
         }
 
         if (tMax.x <= tMax.y && tMax.x <= tMax.z) {

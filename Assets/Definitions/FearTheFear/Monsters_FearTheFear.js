@@ -17,6 +17,14 @@ for (let [index, key] of KEY_TYPES.entries()) {
 }
 
 const ORACLE_TYPE = {
+    MetalBlueSitter3: {
+        name: "MetalBlueSitter3",
+        sprite: "MetalBlueSitter3",
+        category: 'crest',
+        voice: "Female2",
+        text: `Remember keys and keyholes? We'll be using them a lot in this world. In the locksmith sense, not erotic sense. Behave. Some keys can be found. Others must be earned.`,
+        interactionCategory: "oracle",
+    },
     PrincessHotelBed: {
         name: "PrincessHotelBed",
         sprite: "PrincessHotelBed",

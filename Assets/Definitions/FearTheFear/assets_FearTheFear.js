@@ -1281,7 +1281,7 @@ LoadAudio = [
 
 LoadShaders = [
     'vShader_1_2.glsl',
-    'fShader_1_6.glsl',
+    'fShader_1_7.glsl',
     'pick_vShader_1_0.glsl', 'pick_fShader_1_0.glsl',
     'particle_render_fShader_1_1.glsl', 'particle_render_vShader_1_0.glsl',
     'particle_transform_fShader_1_0.glsl', 'particle_transform_vShader_1_1.glsl',
@@ -1298,6 +1298,7 @@ LoadSprites = [
     { srcName: "EntityPictures/PrincessHotelBed.webp", name: "PrincessHotelBed" },
     { srcName: "EntityPictures/HotelNews.webp", name: "HotelNews" },
     { srcName: "EntityPictures/TanNylon.webp", name: "TanNylon" },
+     { srcName: "EntityPictures/MetalBlueSitter3.webp", name: "MetalBlueSitter3" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
