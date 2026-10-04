@@ -93,7 +93,7 @@ const MAP = {
     ,
     4: {
         name: "Reception",
-        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BB2ABB2AA25BB2ABABAA5BÁÁ2AA2BAA12ŁAA13BABB2AA6BAA3BB3AA3ŁAA4BB11AÁBB3ABB25ABB19ABB4ABB9ABB11ÁÁ2BABB33ABŁŁ2ࡁBB6ÁŁBB11ABB4AA2B䁢BB10AÁBB12ÁBB27ABB60䂂BB82ABB15ÁBB6ÁÁ2BB20$BB3ÁBB2ÁBB7ÁÁ2ABB2AÁBÁÁ2BÁÁ3BB2ÁBÁBB5ÁÁ2BB6ÁÁ2BB2ÁBB2ÁÁ6BB3ÁÁ2BÁÁ3BÁÁ2BB3AÁBB5ÁBB84ÁÁ3BB2ࡁÁBÁBÁBB40ÁÁ46BB3ÁÁ7BÁÁ39BÁÁ4BÁÁ13BÁÁ22BÁÁ28BÁÁ7BB2ÁBB3ÁBÁÁ2BB2ÁÁ29BÁÁ2ࡁAÁÁ87BÁÁ26BB12ÁÁ16BB16ɁɁ2AA2ŁŁ2AA4сс2ŁŁ3ࡁࡁ2ɁɁ3сс3BB4","extendedMap":"AA64⡂$AA87⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA43硃AA123⡂⡂2A⡂AA2⡂AA16ᡋAA21⡂AA113ᡅAA61ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
+        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BABB2AA3BAA20BB2ABAA2BAA4BÁÁ2AA2BAA12ŁAA13BABB2AA6BAA3BB3AA3BŁBB2AA4BB11AÁBB3ABB31ABB27ABB6ÁÁ2BB7ABB9ÁÁ3BABABB32ABŁŁ2ࡁBB6ÁŁBB11ABB4AA2B䁢BB10AÁBB12ÁBB27ABB60䂂BB82ABB15ÁBB6ÁÁ2BB20$BB3ÁBB2ÁBB7ÁÁ2ABB2AÁBÁÁ2BB2ÁBÁBÁÁ2BB5ÁBB6ÁÁ2BB2ÁBB2ÁÁ3BÁBÁÁ5BÁÁ2BB4ÁAÁBB5ÁBB78ÁÁ3BB2ࡁÁBB2ÁÁ2BB37ÁÁ46BB3ÁÁ10BÁÁ36BÁÁ7BÁÁ11BÁÁ20AÁBÁÁ34BB3ÁBB2ÁBÁÁ5BB2ÁÁ26BÁÁ5ࡁAÁÁ84AÁÁ2BÁÁ8ࡁÁÁ14AÁBB10ÁÁ2ɁÁÁ11BB14ɁɁ2AA2ŁŁ2AA4Bсс2ŁŁ3ࡁࡁ2ɁɁ3сс3BB5","extendedMap":"AA64⡂$AA87⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA43硃AA123⡂⡂2A⡂AA2⡂AA16ᡋAA21⡂AA113ᡅAA61ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
         dungeonAmbience: 0.03,
         sg: 0,
         maxSpawned: 2,
@@ -109,7 +109,7 @@ const MAP = {
         backPanorama: "",
         archPanorama: "",
         skyPanorama: "",
-        start: '[22,7]',
+        start: '[512,1]',
         lights: '[[1098,1,"Lamp51","standardYellowFaint",["5","10","2"]],[1100,1,"Lamp51","standardYellowFaint",["5","10","2"]],[357,7,"FluxLight109","standard2",["10","10","2"]],[168,5,"DuaLLantern_018","standard2",["9.99","50.0","5.0"]],[756,1,"DuaLLantern_017","standard2",["5","10","1"]],[756,3,"AlpineLight_159","standard2",["5","10","1"]],[758,5,"Light_648","standard2",["5","10","1"]]]',
         gates: '[[7,7,"4.1","2.3","Blue"]]',
         entities: '[[447,1,"TheReceptionist"]]',
