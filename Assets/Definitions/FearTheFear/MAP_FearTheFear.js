@@ -10,6 +10,7 @@ const MAP_TEXT = {
     1: `My bedroom in the Hotel ButtCrack. I will not make the bed. I am the Princess.`,
     2: "My main room in the Hotel ButtCrack. Should I listen to the news? Perhaps?",
     3: `What a beautiful view. I'd enjoy it more if my castle weren't under attack. Again. Most inconsiderate.`,
+    4: ``,
 };
 
 /** Map definitions */
@@ -68,16 +69,16 @@ const MAP = {
     ,
     3: {
         name: "Hotel Balcony",
-        data: '{"width":"9","height":"9","depth":5,"map":"BB8AA42BB4$BB10AA9BB43ÁÁ2BB18ÁBB18ÁBB45䁢ABB10ÁÁ8BÁÁ6BÁÁ2BÁBB24ÁÁ126BB22","extendedMap":"AA46㡋ࡈAA62㡋㡋3AA253$AA4ࡈࡈ6A㡋㡋24AA4"}',
+        data: '{"width":"9","height":"9","depth":5,"map":"BB8AA42BB4$BB10AA9BB43ÁÁ2BB18ÁBB18ÁBB45䁢BB8ÁÁ8BÁÁ6BÁÁ2BÁB䂂ABB23ÁÁ126BB23","extendedMap":"AA46㡋ࡈAA62㡋㡋3AA253$AA4ࡈࡈ6A㡋㡋24AA4"}',
         dungeonAmbience: 10,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
         killsRequiredToStopSpawning: 12,
         spawnDelay: 9999,
-        wall: "BlackWall45",
-        floor: "Wood12",
-        ceil: "WebbedFloor4",
+        wall: "KreaWall_538",
+        floor: "RedMArbleFloor2",
+        ceil: "LightWallSDXL310",
         frontPanorama: "",
         leftPanorama: "HotelBalconyView",
         rightPanorama: "",
@@ -88,6 +89,30 @@ const MAP = {
         gates: '[[76,1,"3.1","2.2","Closed"]]',
         keys: '[[70,4]]',
         oracles: '[[73,1,"MetalBlueSitter3"]]',
+    }
+    ,
+    4: {
+        name: "Reception",
+        data: '{"width":"15","height":"15","depth":5,"map":"BB2ABABB3AA24BAA6BB2ABAA3BAA4BÁÁ2AA14ŁAA13BABB2AA6BAŁAA3BB3AA3ŁAA3BB12AÁBB2ABB25ABB7ABB9ABAA2BB22ÁÁ2BB25ÁBB8AŁAࡁBB6ABB11ABB4AA2B䁢BB10AÁBB13ÁBB26ABB62䂂BB80ABB15ÁBB6ÁÁ2BB20$BB4ÁBB8ABABÁÁ3BB4ÁBB4ÁÁ4BB5ÁÁ2BÁÁ7BÁÁ12BB5AÁBB88ÁÁ4BB2ÁÁ4BB41ÁÁ46BB4ÁÁ7BÁÁ39BÁÁ48ࡁÁÁ29BB4ÁBB4ÁBÁÁ3BÁÁ29BÁÁ3ࡁAÁÁ29BÁÁ58BÁÁ26BB6ÁÁ22BB22ɁŁɁAA5сс2ŁŁ3ࡁࡁ2ɁɁ3сс3BB4","extendedMap":"AA713㡋$AA382ᡋAA22ᡋᡋ2A㡋㡋2A"}',
+        dungeonAmbience: 0.03,
+        sg: 0,
+        maxSpawned: 2,
+        killCountdown: 3,
+        killsRequiredToStopSpawning: 12,
+        spawnDelay: 9999,
+        wall: "KleinWall_488",
+        floor: "BloodMarbleFloorWall_SDXL_020",
+        ceil: "BloodMarbleFloorWall_SDXL_012",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        archPanorama: "",
+        skyPanorama: "",
+        start: '[22,7]',
+        lights: '[[1098,1,"Lamp51","standardYellowFaint",["5","10","2"]],[1100,1,"Lamp51","standardYellowFaint",["5","10","2"]],[357,7,"FluxLight109","standard2",["10","10","2"]],[168,5,"DuaLLantern_018","standard2",["9.99","50.0","5.0"]],[756,3,"FluxLight127","standard2",["10","10","1"]],[758,7,"FluxLight127","standard2",["10","10","1"]],[758,5,"DuaLLantern_020","standard2",["10","10","1"]],[756,1,"DuaLLantern_017","standard2",["10","10","1"]]]',
+        gates: '[[7,7,"4.1","2.3","Blue"]]',
+        entities: '[[447,1,"TheReceptionist"]]',
     }
 
 };

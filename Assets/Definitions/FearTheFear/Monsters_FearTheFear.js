@@ -33,7 +33,7 @@ const ORACLE_TYPE = {
         text: `A standard issue princess bed. I have a similar one at Castle Creep. Royal luxury, available in bulk.`,
         interactionCategory: "oracle",
     },
-     TanNylon: {
+    TanNylon: {
         name: "TanNylon",
         sprite: "TanNylon",
         category: 'crest',
@@ -2979,6 +2979,22 @@ const MONSTER_TYPE = {
         material: MATERIAL.greenFluence,
         missile: BouncingMissile,
         missileType: COMMON_ITEM_TYPE.Bounceball,
+    },
+};
+
+const INTERACTION_ENTITY = {
+    TheReceptionist: {
+        name: "TheReceptionist",
+        sprite: "TheReceptionist",
+        category: 'crest',
+        voice: "Female3",
+        wants: ["Banknote10", "Banknote20", "Banknote50", "Banknote100", "Banknote200"],
+        gives: "GoldKey",
+        text: {
+            intro: `Dear Princess, your stay has taken a considerable toll on our food and beer reserves. Your bill is 380 Castle marks. Cash only. Exact change. Royal charm is not legal tender.`,
+            progress: `Thank you. Your bill is smaller, but it still exists. Accounting considers this a problem.`,
+            conclusion: `Your bill is settled. Here's the gold key. You're free to leave the hotel. Safe travels. Our beer reserves could use the break.`,
+        },
     },
 };
 

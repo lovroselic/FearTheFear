@@ -52,7 +52,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 1;
+    GAME.level = 4;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -101,7 +101,7 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-
+        "Banknote10", "Banknote20", "Banknote50", "Banknote100", "Banknote200",
     ];
 
     for (let itm of invItems) {
@@ -109,7 +109,9 @@ DEBUG.checkPoint = function () {
         HERO.inventory.item.push(item);
     }
 
-    let keys = [];
+    let keys = [
+        "Blue",
+    ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
         HERO.inventory.key.push(K);
@@ -185,7 +187,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.12.4",
+    VERSION: "0.12.5",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -259,7 +261,7 @@ const PRG = {
 
         /** dev settings */
         if (DEBUG.VERBOSE) {
-            //WebGL.VERBOSE = true;
+            WebGL.VERBOSE = true;
             //AI.VERBOSE = true;
             //ENGINE.verbose = true;
             MAP_TOOLS.INI.VERBOSE = true;

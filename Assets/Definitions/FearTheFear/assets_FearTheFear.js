@@ -1298,7 +1298,8 @@ LoadSprites = [
     { srcName: "EntityPictures/PrincessHotelBed.webp", name: "PrincessHotelBed" },
     { srcName: "EntityPictures/HotelNews.webp", name: "HotelNews" },
     { srcName: "EntityPictures/TanNylon.webp", name: "TanNylon" },
-     { srcName: "EntityPictures/MetalBlueSitter3.webp", name: "MetalBlueSitter3" },
+    { srcName: "EntityPictures/MetalBlueSitter3.webp", name: "MetalBlueSitter3" },
+    { srcName: "EntityPictures/TheReceptionist.webp", name: "TheReceptionist" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },

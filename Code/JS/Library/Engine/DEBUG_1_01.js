@@ -87,6 +87,10 @@ const DEBUG = {
         ENTITY3D.POOL.clear();
         LAIR.stop();
         MISSILE3D.POOL.clear();
+        SPEECH.silence();
+        SPEECH.silence();
+        SPEECH.silence();
+        SPEECH.silence();
     },
     displayInv() {
         HERO.inventory.scroll.display();
