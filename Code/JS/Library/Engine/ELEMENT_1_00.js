@@ -1018,7 +1018,14 @@ const SHAPE_PATH = (() => {
             ),
             color: "#1beba6",
         },
+        [EXT_MAPDICT.ROUNDWEDGE]: {
+            path: new Path2D(
+                `M 0 0 L ${SIZE} 0 A ${SIZE} ${SIZE} 0 0 1 0 ${SIZE} Z`
+            ),
+            color: "#999",
+        },
     };
+
 
 })();
 

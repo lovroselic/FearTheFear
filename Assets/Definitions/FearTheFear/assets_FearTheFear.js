@@ -19,11 +19,12 @@ ElementsToCompile = [
     { shapeName: "PILLAR3", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "BIGARCH", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "CORNERWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
+    { shapeName: "ROUNDWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "TIT", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
 ];
 
 
-// assets
+// assets 
 LoadFonts = [
     { srcName: "ArcadeClassic.ttf", name: "Arcade" },
     { srcName: "C64_Pro-STYLE.ttf", name: "C64" },
@@ -44,7 +45,7 @@ LoadObjects = [
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
-    "Tit.obj",
+    "Tit.obj", "RoundWedge.obj",
 ];
 
 LoadModels = [
@@ -78,6 +79,25 @@ LoadTextures = [
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },
 
     //wall, floor, ceiling
+    { srcName: "Wall/Wood_726.webp", name: "Wood_726" },
+    { srcName: "Wall/Wood_727.webp", name: "Wood_727" },
+    { srcName: "Wall/Wood_728.webp", name: "Wood_728" },
+    { srcName: "Wall/Wood_729.webp", name: "Wood_729" },
+    { srcName: "Wall/Wood_730.webp", name: "Wood_730" },
+    { srcName: "Wall/Wood_731.webp", name: "Wood_731" },
+    { srcName: "Wall/Wood_732.webp", name: "Wood_732" },
+    { srcName: "Wall/Wood_733.webp", name: "Wood_733" },
+    { srcName: "Wall/Wood_734.webp", name: "Wood_734" },
+    { srcName: "Wall/Wood_735.webp", name: "Wood_735" },
+    { srcName: "Wall/Wood_736.webp", name: "Wood_736" },
+    { srcName: "Wall/Wood_737.webp", name: "Wood_737" },
+    { srcName: "Wall/Wood_738.webp", name: "Wood_738" },
+    { srcName: "Wall/Wood_739.webp", name: "Wood_739" },
+    { srcName: "Wall/Wood_740.webp", name: "Wood_740" },
+    { srcName: "Wall/Wood_741.webp", name: "Wood_741" },
+    { srcName: "Wall/Wood_742.webp", name: "Wood_742" },
+    { srcName: "Wall/Wood_743.webp", name: "Wood_743" },
+    { srcName: "Wall/Wood_744.webp", name: "Wood_744" },
     { srcName: "Wall/BalconyTexture_773.webp", name: "BalconyTexture_773" },
     { srcName: "Wall/BalconyTexture_774.webp", name: "BalconyTexture_774" },
     { srcName: "Wall/BalconyTexture_775.webp", name: "BalconyTexture_775" },

@@ -12,6 +12,7 @@ const MAP_TEXT = {
     3: `What a beautiful view. I'd enjoy it more if my castle weren't under attack. Again. Most inconsiderate.`,
     4: `They expect payment? From me? They should be grateful to host the Princess. My presence is already a generous contribution.`,
     5: `From this terrace, Castle Creep looks reassuringly close. And not remotely ominous. I'll be there in no time. Geography permitting.`,
+    6: ``,
 };
 
 /** Map definitions */
@@ -94,13 +95,13 @@ const MAP = {
     ,
     4: {
         name: "Reception",
-        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BABAA2BB2AA20BB2ABAA2BAA4BÁÁ2AA2BAA12ŁAA13BABB2AA6BAA3BB3AA3ÁBÁÁ2BB2ŁBAA4BB11AÁBB3ABB33ABB28ABB6ÁÁ2BB8ABB9ÁBÁÁ2BAA2BB38ŁŁ2ࡁBB7AÁŁBB13ABB5AA2BB2䁢BB21ABB9䂂ÁBB12ÁBB26ABB124ABB12ÁBB5ÁÁ2BB17$BB3ÁBB3ÁBB5ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB5ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ4BÁÁ6BB4ÁAÁBB5ÁBB76ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB36ÁÁ50BÁࡁBB2ÁÁ13BÁÁ38BÁÁ6BÁÁ3BÁÁ6AÁÁ4BÁÁ20AÁBÁÁ7BB2ÁÁ16AA2ÁÁ10BB3ÁBB2ÁÁ6BÁÁ2BB2ÁÁ23AA2BB4ÁÁ2ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ9BB11AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB5","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
+        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BABAA2BB2AA20BB2ABAA2BAA4BÁÁ2AA2BAA12ŁAA13BABB2AA6BAA3BB4AA3ÁBÁÁ2BB2ŁBB2AA4BB11AÁBB3ABB37ABB18ÁBB11ABB7ÁÁ2BB8ABB10ÁBÁÁ2BAA2BB41ŁŁ2ࡁBB7䁢AÁŁBB14ABB4AA2BB2䁢BB41䂂BB36ÁÁ2BB13ABB82AA2BB12ÁBB5ÁÁ2BB2ABB17$BB3ÁBB3ÁBB6ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB6ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ5BÁÁ4BB4ÁAÁBB6ÁBB76ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB36ÁÁ50BÁࡁBB2ÁÁ14BÁÁ37BÁÁ7BÁÁ3BÁÁ6AÁÁ4BÁÁ19AÁBÁÁ8BB2ÁÁ16AA2ÁÁ5BÁÁ4BB2ÁBB2ÁÁ6BÁÁ3BB2ÁÁ22AA2BB4ÁÁ3ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ8BB3ABB7AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB6","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
         dungeonAmbience: 0.03,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
         killsRequiredToStopSpawning: 12,
-        spawnDelay: 9999,
+        spawnDelay: 19999,
         wall: "KreaWall_531",
         floor: "BloodMarbleFloorWall_SDXL_020",
         ceil: "BloodMarbleFloorWall_SDXL_012",
@@ -110,15 +111,17 @@ const MAP = {
         backPanorama: "",
         archPanorama: "",
         skyPanorama: "",
-        start: '[1082,5]',
+        start: '[71,5]',
         lights: '[[1098,1,"Lamp51","standardYellowFaint",["5","10","2"]],[1100,1,"Lamp51","standardYellowFaint",["5","10","2"]],[357,7,"FluxLight109","standard2",["10","10","2"]],[168,5,"DuaLLantern_018","standard2",["9.99","50.0","5.0"]],[756,1,"DuaLLantern_017","standard2",["5","10","1"]],[756,3,"AlpineLight_159","standard2",["5","10","1"]],[758,5,"Light_648","standard2",["5","10","1"]]]',
-        gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"]]',
+        gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"],[74,3,"4.3","6.1","Closed"]]',
         entities: '[[447,1,"TheReceptionist"]]',
+        lairs: '[[907,7,"Lair11"],[1005,5,"Lair76"]]',
+        monsterList: '["Bat","RedGoldBat","RedGoldBat"]',
     }
     ,
     5: {
         name: "South Terrace",
-        data: '{"width":"9","height":"9","depth":5,"map":"BB7AA11BAA28BABB11AA5BB3ABB9ABB4䁢BÁÁ2BB9ÁBB18ÁBB21ABB71$BB4ÁBB2ÁÁ8BÁÁ6BÁÁ2BB25ÁÁ88BÁÁ36BB21","extendedMap":"AA325⡄$AA72⡄⡄6A"}',
+        data: '{"width":"9","height":"9","depth":5,"map":"BB7AA11BAA28BABB11AA5BB3ABB9ABB4䁢BÁÁ2BB9ÁBB18ÁBB21ABB71$BB4ÁBB2ÁÁ8BÁÁ6BÁÁ2BB25ÁÁ88BÁÁ36BB21","extendedMap":"AA118ᡌᡎAA9ᡎAA72ᡎAA50⡄AA4$AA75ࡌࡎࡎ3AA12ᡎᡎ2AA6ࡎࡎ2AA39⡄⡄6A"}',
         dungeonAmbience: 10,
         sg: 0,
         maxSpawned: 2,
@@ -136,6 +139,29 @@ const MAP = {
         skyPanorama: "",
         start: '[13,7]',
         gates: '[[4,7,"5.1","4.2","Closed"]]',
+    }
+    ,
+    6: {
+        name: "Bar",
+        data: '{"width":"13","height":"13","depth":5,"map":"BB2AB䁢BB2AA2BB2AA16BAA38BEABB3ABB2AA6BAA3BB11ABB2ABB3ABB6AA3BB4ABB3ABB5AA4BB22ABB8ABB62ÁBB477$ABB37ÁÁ7BB25AA2ÁÁ40BÁÁ21BB8","extendedMap":"AA275ࡈ$AA559ࡈAA2ࡈࡈ3Aࡈࡈ2A"}',
+        dungeonAmbience: 0.03,
+        sg: 0,
+        maxSpawned: 2,
+        killCountdown: 3,
+        killsRequiredToStopSpawning: 12,
+        spawnDelay: 19999,
+        wall: "Wood_726",
+        floor: "Wood_729",
+        ceil: "Wood1",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        archPanorama: "",
+        skyPanorama: "",
+        start: '[612,5]',
+        gates: '[[611,5,"6.1","4.3","Closed"]]',
+        doors: '[659]',
     }
 
 };
