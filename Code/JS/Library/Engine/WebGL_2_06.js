@@ -2352,9 +2352,9 @@ const WORLD = {
             switch (value) {
                 case MAPDICT.EMPTY:
                 case MAPDICT.DOOR:
-                case MAPDICT.WALL + MAPDICT.DOOR:                                                                               //adding grids for floor and ceiling
-                    if (grid.z === 0) this.addCube(- 1, grid, "floor");                                                         // bottom flor
-                    if (grid.z === maxDepth && !WebGL.NO_TOP_CEILING) this.addCube(grid.z + 1, grid, "ceil");                                            // top ceiling
+                case MAPDICT.WALL + MAPDICT.DOOR:                                                                               // adding grids for floor and ceiling
+                    if (grid.z === 0) this.addCube(- 1, grid, "floor");                                                         // bottom floor
+                    if (grid.z === maxDepth && !WebGL.NO_TOP_CEILING) this.addCube(grid.z + 1, grid, "ceil");                   // top ceiling
                     break;
                 case MAPDICT.WALL:
                 case MAPDICT.WALL + MAPDICT.STAIR:

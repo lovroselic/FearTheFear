@@ -35,7 +35,8 @@ DEBUG.checkPoint = function () {
      
     area 1: ButtCrack Hotel
 
-    Receptionist wants money (Banknote10, Banknote20, Banknote50, Banknote100, Banknote200) give key to leave (Green Key)
+    Receptionist wants money (Banknote10, Banknote20, Banknote50, Banknote100, Banknote200) give key to leave (Gold Key)
+    BarSeductress wants 
 
 
     Banknote10:
@@ -45,7 +46,7 @@ DEBUG.checkPoint = function () {
     Banknote200:
 
 
-    Green Key: receptionist;
+    Gold Key: receptionist;
     Blue Key: found on Balcony
 
      */
@@ -187,7 +188,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.12.9",
+    VERSION: "0.12.10",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

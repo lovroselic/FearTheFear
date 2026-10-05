@@ -1799,7 +1799,7 @@ const DECAL_CRESTS = [
     "WallSconce_655", "WallSconce_656", "WallSconce_657", "WallSconce_658", "WallSconce_659", "WallSconce_660", "WallSconce_661", "WallSconce_662", "WallSconce_663",
     "FirePit_677", "FirePit_678", "FirePit_679", "FirePit_680", "FirePit_681", "FirePit_682", "FirePit_683", "FirePit_684", "FirePit_685", "FirePit_686", "FirePit_687", "FirePit_688",
     "FirePit_689", "FirePlaceDecal_664", "FirePlaceDecal_665", "FirePlaceDecal_666", "FirePlaceDecal_667", "FirePlaceDecal_668", "FirePlaceDecal_669", "FirePlaceDecal_670", "FirePlaceDecal_671", "FirePlaceDecal_672", "FirePlaceDecal_673", "FirePlaceDecal_674",
-    "FirePlaceDecal_675", "FirePlaceDecal_676",
+    "FirePlaceDecal_675", "FirePlaceDecal_676", "LiquorCabinet_758", "LiquorCabinet_759", "LiquorCabinet_760", "LiquorCabinet_761",
 ].sort();
 
 //lights
@@ -1836,6 +1836,8 @@ const LIGHT_DECALS = [
     "Fireplace_690", "Fireplace_691", "Fireplace_692", "Fireplace_693", "Fireplace_694", "Fireplace_695", "Fireplace_696", "Fireplace_697", "Fireplace_698", "Fireplace_699", "Fireplace_700", "Fireplace_701",
     "Fireplace_702", "Fireplace_703", "Fireplace_704", "Fireplace_705", "Fireplace_706", "Fireplace_707", "Fireplace_708", "Fireplace_709", "Fireplace_710", "Fireplace_711", "Fireplace_712", "Fireplace_713",
     "Fireplace_714", "Fireplace_715", "Fireplace_716", "Fireplace_717", "Fireplace_718", "Fireplace_719", "Fireplace_720", "Fireplace_721", "Fireplace_722", "Fireplace_723", "Fireplace_724", "Fireplace_725",
+    "LightFireplace_745", "LightFireplace_746", "LightFireplace_747", "LightFireplace_748", "LightFireplace_749", "LightFireplace_750", "LightFireplace_751", "LightFireplace_752", "LightFireplace_753", "LightFireplace_754", "LightFireplace_755", "LightFireplace_756",
+    "LightFireplace_757",
 ].sort();
 
 //panorama

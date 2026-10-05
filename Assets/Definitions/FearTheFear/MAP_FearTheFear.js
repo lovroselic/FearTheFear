@@ -12,7 +12,7 @@ const MAP_TEXT = {
     3: `What a beautiful view. I'd enjoy it more if my castle weren't under attack. Again. Most inconsiderate.`,
     4: `They expect payment? From me? They should be grateful to host the Princess. My presence is already a generous contribution.`,
     5: `From this terrace, Castle Creep looks reassuringly close. And not remotely ominous. I'll be there in no time. Geography permitting.`,
-    6: ``,
+    6: `If I need a stiff drink, this is the place. But I am not sure if I can afford it.`,
 };
 
 /** Map definitions */
@@ -143,7 +143,7 @@ const MAP = {
     ,
     6: {
         name: "Bar",
-        data: '{"width":"13","height":"13","depth":5,"map":"BB2AB䁢BB2AA2BB2AA16BAA38BEABB3ABB2AA6BAA3BB11ABB2ABB3ABB6AA3BB4ABB3ABB5AA4BB22ABB8ABB62ÁBB477$ABB37ÁÁ7BB25AA2ÁÁ40BÁÁ21BB8","extendedMap":"AA275ࡈ$AA559ࡈAA2ࡈࡈ3Aࡈࡈ2A"}',
+        data: '{"width":"13","height":"13","depth":5,"map":"BB3AA2䁢BAA2BB2ABAA14BAA14ŁAA26B䁆AA2BB3ABB2AA8BABAÁÁ2BB10ABB2ABB3ABB6AA3BB4ABB2AA2BB5AA3BB33ÁABB39ࡁBB11ÁࡁBB11ࡁBB153$BB32ABB117ÁÁ3BB2ÁÁ2BB2AŁɁɁ2сBB66ABB41AÁÁ7BB54ABB24ÁÁ2BÁBB5ÁÁ7BÁÁ27BÁÁ8BÁÁ21BB9ABB2ŁBɁBсс2BAB","extendedMap":"AA44⡎$AA398⡎AA214ࡈAA154㡎㡎2AA8ࡈAA10ࡈࡈ3Aࡈࡈ2AA5"}',
         dungeonAmbience: 0.03,
         sg: 0,
         maxSpawned: 2,
@@ -160,6 +160,8 @@ const MAP = {
         archPanorama: "",
         skyPanorama: "",
         start: '[612,5]',
+        decals: '[[522,7,"LiquorCabinet_760","crest"],[523,7,"LiquorCabinet_759","crest"],[525,7,"LiquorCabinet_759","crest"],[527,7,"LiquorCabinet_760","crest"],[529,7,"LiquorCabinet_759","crest"],[530,7,"LiquorCabinet_759","crest"],[547,5,"LiquorCabinet_758","crest"],[557,3,"LiquorCabinet_759","crest"]]',
+        lights: '[[513,7,"LightFireplace_749","fireplace",["3.0","10","1.0"]],[597,3,"LightFireplace_752","fireplace",["3.0","10","1.0"]],[585,5,"LightFireplace_746","fireplace",["3.0","10","1.0"]],[811,1,"DuaLLantern_012","standardDimmed",["5","10","1.0"]],[662,3,"SkullLantern51","standardDimmed",["3","5","1.0"]],[495,1,"WallLamp33","standardDimmed",["3","5","1.0"]],[52,5,"DuaLLantern_020","standardDimmed",["3","5","1.0"]]]',
         gates: '[[611,5,"6.1","4.3","Closed"]]',
         doors: '[659]',
     }

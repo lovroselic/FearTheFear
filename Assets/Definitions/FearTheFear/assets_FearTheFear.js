@@ -1322,6 +1322,7 @@ LoadSprites = [
     { srcName: "EntityPictures/TanNylon.webp", name: "TanNylon" },
     { srcName: "EntityPictures/MetalBlueSitter3.webp", name: "MetalBlueSitter3" },
     { srcName: "EntityPictures/TheReceptionist.webp", name: "TheReceptionist" },
+    { srcName: "EntityPictures/BarSeductress.webp", name: "BarSeductress" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1966,6 +1967,19 @@ LoadSprites = [
     { srcName: "Lights/Fireplace_723.webp", name: "Fireplace_723" },
     { srcName: "Lights/Fireplace_724.webp", name: "Fireplace_724" },
     { srcName: "Lights/Fireplace_725.webp", name: "Fireplace_725" },
+    { srcName: "Lights/LightFireplace_745.webp", name: "LightFireplace_745" },
+    { srcName: "Lights/LightFireplace_746.webp", name: "LightFireplace_746" },
+    { srcName: "Lights/LightFireplace_747.webp", name: "LightFireplace_747" },
+    { srcName: "Lights/LightFireplace_748.webp", name: "LightFireplace_748" },
+    { srcName: "Lights/LightFireplace_749.webp", name: "LightFireplace_749" },
+    { srcName: "Lights/LightFireplace_750.webp", name: "LightFireplace_750" },
+    { srcName: "Lights/LightFireplace_751.webp", name: "LightFireplace_751" },
+    { srcName: "Lights/LightFireplace_752.webp", name: "LightFireplace_752" },
+    { srcName: "Lights/LightFireplace_753.webp", name: "LightFireplace_753" },
+    { srcName: "Lights/LightFireplace_754.webp", name: "LightFireplace_754" },
+    { srcName: "Lights/LightFireplace_755.webp", name: "LightFireplace_755" },
+    { srcName: "Lights/LightFireplace_756.webp", name: "LightFireplace_756" },
+    { srcName: "Lights/LightFireplace_757.webp", name: "LightFireplace_757" },
 
     //lair
     { srcName: "Lairs/Lair01.webp", name: "Lair01" },
@@ -2410,6 +2424,10 @@ LoadSprites = [
     { srcName: "ObjDecals/FirePlaceDecal_674.webp", name: "FirePlaceDecal_674" },
     { srcName: "ObjDecals/FirePlaceDecal_675.webp", name: "FirePlaceDecal_675" },
     { srcName: "ObjDecals/FirePlaceDecal_676.webp", name: "FirePlaceDecal_676" },
+    { srcName: "ObjDecals/LiquorCabinet_758.webp", name: "LiquorCabinet_758" },
+    { srcName: "ObjDecals/LiquorCabinet_759.webp", name: "LiquorCabinet_759" },
+    { srcName: "ObjDecals/LiquorCabinet_760.webp", name: "LiquorCabinet_760" },
+    { srcName: "ObjDecals/LiquorCabinet_761.webp", name: "LiquorCabinet_761" },
 
     //pic decals
     { srcName: "PicDecals/1942_200.webp", name: "1942_200" },
