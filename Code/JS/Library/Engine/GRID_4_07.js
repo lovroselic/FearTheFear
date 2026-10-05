@@ -1132,6 +1132,7 @@ const EXT_MAPDICT = {
     EXTRUDEDWEDGE: 9,
     BIGARCH: 10,
     CORNERWEDGE: 11,
+    TIT: 12,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1201,6 +1202,7 @@ const EXT_TO_SHAPE = {
     9: "EXTRUDEDWEDGE",
     10: "BIGARCH",
     11: "CORNERWEDGE",
+    12: "TIT",
 };
 
 const WallSizeToHeight = (value) => {

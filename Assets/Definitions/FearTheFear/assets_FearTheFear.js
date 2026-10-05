@@ -19,7 +19,7 @@ ElementsToCompile = [
     { shapeName: "PILLAR3", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "BIGARCH", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "CORNERWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
-
+    { shapeName: "TIT", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
 ];
 
 
@@ -44,6 +44,7 @@ LoadObjects = [
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
+    "Tit.obj",
 ];
 
 LoadModels = [
@@ -70,6 +71,7 @@ LoadTextures = [
     { srcName: "Shading/fire_noise_512.webp", name: "Fire_noise" },
 
     //panorama
+    { srcName: "Panorama/TerraceView.webp", name: "TerraceView" },
     { srcName: "Panorama/HotelBalconyView.webp", name: "HotelBalconyView" },
 
     //sky

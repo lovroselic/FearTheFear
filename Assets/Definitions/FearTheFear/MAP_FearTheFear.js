@@ -10,7 +10,8 @@ const MAP_TEXT = {
     1: `My bedroom in the Hotel ButtCrack. I will not make the bed. I am the Princess.`,
     2: "My main room in the Hotel ButtCrack. Should I listen to the news? Perhaps?",
     3: `What a beautiful view. I'd enjoy it more if my castle weren't under attack. Again. Most inconsiderate.`,
-    4: ``,
+    4: `They expect payment? From me? They should be grateful to host the Princess. My presence is already a generous contribution.`,
+    5: `From this terrace, Castle Creep looks reassuringly close. And not remotely ominous. I'll be there in no time. Geography permitting.`,
 };
 
 /** Map definitions */
@@ -93,7 +94,7 @@ const MAP = {
     ,
     4: {
         name: "Reception",
-        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BABB2AA3BAA20BB2ABAA2BAA4BÁÁ2AA2BAA12ŁAA13BABB2AA6BAA3BB3AA3BŁBB2AA4BB11AÁBB3ABB31ABB27ABB6ÁÁ2BB7ABB9ÁÁ3BABABB32ABŁŁ2ࡁBB6ÁŁBB11ABB4AA2B䁢BB10AÁBB12ÁBB27ABB60䂂BB82ABB15ÁBB6ÁÁ2BB20$BB3ÁBB2ÁBB7ÁÁ2ABB2AÁBÁÁ2BB2ÁBÁBÁÁ2BB5ÁBB6ÁÁ2BB2ÁBB2ÁÁ3BÁBÁÁ5BÁÁ2BB4ÁAÁBB5ÁBB78ÁÁ3BB2ࡁÁBB2ÁÁ2BB37ÁÁ46BB3ÁÁ10BÁÁ36BÁÁ7BÁÁ11BÁÁ20AÁBÁÁ34BB3ÁBB2ÁBÁÁ5BB2ÁÁ26BÁÁ5ࡁAÁÁ84AÁÁ2BÁÁ8ࡁÁÁ14AÁBB10ÁÁ2ɁÁÁ11BB14ɁɁ2AA2ŁŁ2AA4Bсс2ŁŁ3ࡁࡁ2ɁɁ3сс3BB5","extendedMap":"AA64⡂$AA87⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA43硃AA123⡂⡂2A⡂AA2⡂AA16ᡋAA21⡂AA113ᡅAA61ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
+        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BABAA2BB2AA20BB2ABAA2BAA4BÁÁ2AA2BAA12ŁAA13BABB2AA6BAA3BB3AA3ÁBÁÁ2BB2ŁBAA4BB11AÁBB3ABB33ABB28ABB6ÁÁ2BB8ABB9ÁBÁÁ2BAA2BB38ŁŁ2ࡁBB7AÁŁBB13ABB5AA2BB2䁢BB21ABB9䂂ÁBB12ÁBB26ABB124ABB12ÁBB5ÁÁ2BB17$BB3ÁBB3ÁBB5ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB5ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ4BÁÁ6BB4ÁAÁBB5ÁBB76ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB36ÁÁ50BÁࡁBB2ÁÁ13BÁÁ38BÁÁ6BÁÁ3BÁÁ6AÁÁ4BÁÁ20AÁBÁÁ7BB2ÁÁ16AA2ÁÁ10BB3ÁBB2ÁÁ6BÁÁ2BB2ÁÁ23AA2BB4ÁÁ2ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ9BB11AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB5","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
         dungeonAmbience: 0.03,
         sg: 0,
         maxSpawned: 2,
@@ -109,10 +110,32 @@ const MAP = {
         backPanorama: "",
         archPanorama: "",
         skyPanorama: "",
-        start: '[512,1]',
+        start: '[1082,5]',
         lights: '[[1098,1,"Lamp51","standardYellowFaint",["5","10","2"]],[1100,1,"Lamp51","standardYellowFaint",["5","10","2"]],[357,7,"FluxLight109","standard2",["10","10","2"]],[168,5,"DuaLLantern_018","standard2",["9.99","50.0","5.0"]],[756,1,"DuaLLantern_017","standard2",["5","10","1"]],[756,3,"AlpineLight_159","standard2",["5","10","1"]],[758,5,"Light_648","standard2",["5","10","1"]]]',
-        gates: '[[7,7,"4.1","2.3","Blue"]]',
+        gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"]]',
         entities: '[[447,1,"TheReceptionist"]]',
+    }
+    ,
+    5: {
+        name: "South Terrace",
+        data: '{"width":"9","height":"9","depth":5,"map":"BB7AA11BAA28BABB11AA5BB3ABB9ABB4䁢BÁÁ2BB9ÁBB18ÁBB21ABB71$BB4ÁBB2ÁÁ8BÁÁ6BÁÁ2BB25ÁÁ88BÁÁ36BB21","extendedMap":"AA325⡄$AA72⡄⡄6A"}',
+        dungeonAmbience: 10,
+        sg: 0,
+        maxSpawned: 2,
+        killCountdown: 3,
+        killsRequiredToStopSpawning: 12,
+        spawnDelay: 9999,
+        wall: "KreaWall_517",
+        floor: "Relief06",
+        ceil: "BigStoneWall1",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "TerraceView",
+        backPanorama: "",
+        archPanorama: "",
+        skyPanorama: "",
+        start: '[13,7]',
+        gates: '[[4,7,"5.1","4.2","Closed"]]',
     }
 
 };

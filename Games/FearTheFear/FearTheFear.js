@@ -52,7 +52,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 4;
+    GAME.level = 5;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -187,7 +187,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.12.7",
+    VERSION: "0.12.8",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -904,9 +904,11 @@ const GAME = {
         GAME.drawFirstFrame(level);
         LAIR.start();
         ENGINE.GAME.resume();
+        /* 
         HERO.speak(`My last day of vacation in this beautiful alpine country. Excellent ButtBoarding. Dignity is overrated.
             Time to check out of Hotel ButtCrack and head home to Castle Creep. Even paradise has a checkout time. Surely this game wouldn't kill its leading lady.
             The journey will be peaceful, and all will be well at the castle. I'll wear my deadly heels, just in case. Optimism needs backup.`);
+             */
     },
     setCameraView() {
         WebGL.hero.firstPersonCamera = new $3D_Camera(WebGL.hero.player, DIR_NOWAY, 0.0, new Vector3(0, 0, 0), 0);
