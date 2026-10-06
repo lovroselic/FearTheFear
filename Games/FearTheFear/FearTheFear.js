@@ -36,18 +36,29 @@ DEBUG.checkPoint = function () {
     area 1: ButtCrack Hotel
 
     Receptionist wants money (Banknote10, Banknote20, Banknote50, Banknote100, Banknote200) give key to leave (Gold Key)
-    BarSeductress wants 
+    BarSeductress wants GlassOfWine", "Wine", "WhiskeyShot", "Beer", gives Banknote20
+    BarMaid wants "SmallBarrel", "SmallBarrel", "SmallBarrel" gives  "GlassOfBeer" 
 
 
     Banknote10:
-    Banknote20:
+        DONE: Banknote20: BarSeductress (6-bar)
     Banknote50:
     Banknote100:
     Banknote200:
 
+    "SmallBarrel"
+    "SmallBarrel"
+    "SmallBarrel"
 
-    Gold Key: receptionist;
-    Blue Key: found on Balcony
+    "GlassOfWine"
+    "Wine"
+    "WhiskeyShot"
+    "Beer"
+    "GlassOfBeer" : BarMaid (6-bar)
+
+
+        DONE: Gold Key: receptionist;
+        DONE: Blue Key: found on Balcony
 
      */
 
@@ -102,7 +113,9 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "Banknote10", "Banknote20", "Banknote50", "Banknote100", "Banknote200",
+        //"Banknote10", "Banknote20", "Banknote50", "Banknote100", "Banknote200",
+        "SmallBarrel", "SmallBarrel", "SmallBarrel",
+        //"GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer",
     ];
 
     for (let itm of invItems) {
@@ -188,7 +201,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.12.10",
+    VERSION: "0.12.11",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

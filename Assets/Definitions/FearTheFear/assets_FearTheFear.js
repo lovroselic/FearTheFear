@@ -1580,6 +1580,14 @@ LoadSprites = [
     { srcName: "Items/BluePrincesssMana.webp", name: "BluePrincesssMana" },
     { srcName: "Items/GoldPrincessMana.webp", name: "GoldPrincessMana" },
 
+    //items
+    { srcName: "Items/GlassOfWine.webp", name: "GlassOfWine" },
+    { srcName: "Items/Wine.webp", name: "Wine" },
+    { srcName: "Items/SmallBarrel.webp", name: "SmallBarrel" },
+    { srcName: "Items/WhiskeyShot.webp", name: "WhiskeyShot" },
+    { srcName: "Items/Beer.webp", name: "Beer" },
+    { srcName: "Items/GlassOfBeer.webp", name: "GlassOfBeer" },
+
     //scrolls
     { srcName: "Scrolls/SCR_Cripple2.webp", name: "SCR_Cripple" },
     { srcName: "Scrolls/SCR_Explode2.webp", name: "SCR_Explode" },

@@ -1281,6 +1281,19 @@ const INTERACTION_OBJECT = {
         inventorySprite: "HealthBox",
         text: "A full box of healing. I should save it for dark times."
     },
+
+    //items
+    SmallBarrel: {
+        name: "SmallBarrel",
+        category: "interaction_item",
+        element: "BARREL",
+        scale: 1.75 / 2 ** 3,
+        glueToFloor: true,
+        texture: "Barrel",
+        material: MATERIAL.wood,
+        inventorySprite: "SmallBarrel",
+        text: "Such a small barrel. Not a lot of drink."
+    },
 };
 
 const MOVABLE_INTERACTION_OBJECT = {
@@ -2983,6 +2996,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    BarSeductress: {
+        name: "BarSeductress",
+        sprite: "BarSeductress",
+        category: 'crest',
+        voice: "Female4",
+        wants: ["GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer"],
+        gives: "Banknote20",
+        text: {
+            intro: `I hear there are five kinds of drink here. Be a love and bring me one of each, girl. I prefer my bad decisions well researched.`,
+            progress: `Lovely. There are still drinks I haven't tried. Fortunately, I have more capacity than common sense.`,
+            conclusion: `Good girl. Here's your tip. Twenty Castle marks. At last, someone profits from my lack of restraint.`,
+        },
+    },
     TheReceptionist: {
         name: "TheReceptionist",
         sprite: "TheReceptionist",

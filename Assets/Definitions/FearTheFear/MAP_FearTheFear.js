@@ -164,6 +164,7 @@ const MAP = {
         lights: '[[513,7,"LightFireplace_749","fireplace",["3.0","10","1.0"]],[597,3,"LightFireplace_752","fireplace",["3.0","10","1.0"]],[585,5,"LightFireplace_746","fireplace",["3.0","10","1.0"]],[811,1,"DuaLLantern_012","standardDimmed",["5","10","1.0"]],[662,3,"SkullLantern51","standardDimmed",["3","5","1.0"]],[495,1,"WallLamp33","standardDimmed",["3","5","1.0"]],[52,5,"DuaLLantern_020","standardDimmed",["3","5","1.0"]]]',
         gates: '[[611,5,"6.1","4.3","Closed"]]',
         doors: '[659]',
+        entities: '[[511,7,"BarSeductress"]]',
     }
 
 };
