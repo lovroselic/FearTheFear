@@ -3242,6 +3242,8 @@ const NOISE_FUNCTION = {
     },
 };
 
+const TITLE = {};
+
 $(function () {
     PRG.INIT();
     PRG.setup();
