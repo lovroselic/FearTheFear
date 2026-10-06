@@ -1642,6 +1642,38 @@ const INTERACTION_ITEM = {
         inventorySprite: "Banknote200",
         text: "That is a lot of money. 200 Castle Marks."
     },
+
+    //items
+    GlassOfBeer: {
+        name: "GlassOfBeer",
+        category: "interaction_item",
+        inventorySprite: "GlassOfBeer",
+        text: "Cheers mates. To victory!"
+    },
+    Beer: {
+        name: "Beer",
+        category: "interaction_item",
+        inventorySprite: "Beer",
+        text: "A cold one."
+    },
+    WhiskeyShot: {
+        name: "WhiskeyShot",
+        category: "interaction_item",
+        inventorySprite: "WhiskeyShot",
+        text: "Single malt?"
+    },
+    GlassOfWine: {
+        name: "GlassOfWine",
+        category: "interaction_item",
+        inventorySprite: "GlassOfWine",
+        text: "Great vintage. But I must not indulge."
+    },
+    Wine: {
+        name: "Wine",
+        category: "interaction_item",
+        inventorySprite: "Wine",
+        text: "Red wine. Fancy a sip?"
+    },
 };
 
 const MONSTER_TYPE = {
@@ -2996,6 +3028,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    BarMaid: {
+        name: "BarMaid",
+        sprite: "BarMaid",
+        category: 'crest',
+        voice: "Female5",
+        wants: ["SmallBarrel", "SmallBarrel", "SmallBarrel"],
+        gives: "GlassOfBeer",
+        text: {
+            intro: `Some bitch calling herself the Princess drank all our beer. Royalty, apparently, is measured in pints. Be a darling and fetch some barrels love.`,
+            progress: `Better love, but we're still short. Bring more barrels. Our guests are dangerously close to ordering water.`,
+            conclusion: `Finally, I can serve beer again. Let's hope that bitch stays away. Have one on the house love. Just the one. We've suffered enough.`,
+        },
+    },
     BarSeductress: {
         name: "BarSeductress",
         sprite: "BarSeductress",
@@ -3004,7 +3049,7 @@ const INTERACTION_ENTITY = {
         wants: ["GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer"],
         gives: "Banknote20",
         text: {
-            intro: `I hear there are five kinds of drink here. Be a love and bring me one of each, girl. I prefer my bad decisions well researched.`,
+            intro: `I hear there are five kinds of drink here. Be a love and bring me one of each girl. I prefer my bad decisions well researched.`,
             progress: `Lovely. There are still drinks I haven't tried. Fortunately, I have more capacity than common sense.`,
             conclusion: `Good girl. Here's your tip. Twenty Castle marks. At last, someone profits from my lack of restraint.`,
         },

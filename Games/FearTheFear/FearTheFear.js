@@ -114,7 +114,7 @@ DEBUG.checkPoint = function () {
 
     let invItems = [
         //"Banknote10", "Banknote20", "Banknote50", "Banknote100", "Banknote200",
-        "SmallBarrel", "SmallBarrel", "SmallBarrel",
+        //"SmallBarrel", "SmallBarrel", "SmallBarrel",
         //"GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer",
     ];
 
@@ -201,7 +201,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.12.11",
+    VERSION: "0.12.12",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

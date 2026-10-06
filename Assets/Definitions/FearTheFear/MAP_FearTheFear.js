@@ -143,7 +143,7 @@ const MAP = {
     ,
     6: {
         name: "Bar",
-        data: '{"width":"13","height":"13","depth":5,"map":"BB3AA2䁢BAA2BB2ABAA14BAA14ŁAA26B䁆AA2BB3ABB2AA8BABAÁÁ2BB10ABB2ABB3ABB6AA3BB4ABB2AA2BB5AA3BB33ÁABB39ࡁBB11ÁࡁBB11ࡁBB153$BB32ABB117ÁÁ3BB2ÁÁ2BB2AŁɁɁ2сBB66ABB41AÁÁ7BB54ABB24ÁÁ2BÁBB5ÁÁ7BÁÁ27BÁÁ8BÁÁ21BB9ABB2ŁBɁBсс2BAB","extendedMap":"AA44⡎$AA398⡎AA214ࡈAA154㡎㡎2AA8ࡈAA10ࡈࡈ3Aࡈࡈ2AA5"}',
+        data: '{"width":"13","height":"13","depth":5,"map":"BB3AA2䁢BAA2BB2ABAA14BAA14ŁAA26B䁆AA2BB3ABB2AA8BABAÁÁ2BB10ABB2ABB3ABB6AA3BB4ABB2AA2BB5AA3BB20䂂BB9ÁABB31ÁࡁBB11ࡁBB153$BB32ABB81ࡁBB45ÁÁ3BB2ÁÁ2BB2AŁɁɁ2сBB71ABB44AÁÁ7BB56ABB26ÁÁ2BÁBB5ÁÁ7BÁÁ27BÁÁ8BÁÁ21BB9ABB2ŁBB2ɁсBсABB2","extendedMap":"AA44⡎$AA398⡎AA214ࡈAA154㡎㡎2AA8ࡈAA10ࡈࡈ3Aࡈࡈ2AA5"}',
         dungeonAmbience: 0.03,
         sg: 0,
         maxSpawned: 2,
@@ -161,10 +161,10 @@ const MAP = {
         skyPanorama: "",
         start: '[612,5]',
         decals: '[[522,7,"LiquorCabinet_760","crest"],[523,7,"LiquorCabinet_759","crest"],[525,7,"LiquorCabinet_759","crest"],[527,7,"LiquorCabinet_760","crest"],[529,7,"LiquorCabinet_759","crest"],[530,7,"LiquorCabinet_759","crest"],[547,5,"LiquorCabinet_758","crest"],[557,3,"LiquorCabinet_759","crest"]]',
-        lights: '[[513,7,"LightFireplace_749","fireplace",["3.0","10","1.0"]],[597,3,"LightFireplace_752","fireplace",["3.0","10","1.0"]],[585,5,"LightFireplace_746","fireplace",["3.0","10","1.0"]],[811,1,"DuaLLantern_012","standardDimmed",["5","10","1.0"]],[662,3,"SkullLantern51","standardDimmed",["3","5","1.0"]],[495,1,"WallLamp33","standardDimmed",["3","5","1.0"]],[52,5,"DuaLLantern_020","standardDimmed",["3","5","1.0"]]]',
+        lights: '[[513,7,"LightFireplace_749","fireplace",["3.0","10","1.0"]],[597,3,"LightFireplace_752","fireplace",["3.0","10","1.0"]],[585,5,"LightFireplace_746","fireplace",["3.0","10","1.0"]],[811,1,"DuaLLantern_012","standardDimmed",["5","10","1.0"]],[662,3,"SkullLantern51","standardDimmed",["3","5","1.0"]],[495,1,"WallLamp33","standardDimmed",["3","5","1.0"]],[52,5,"DuaLLantern_020","standardDimmed",["5","10","1.0"]]]',
         gates: '[[611,5,"6.1","4.3","Closed"]]',
         doors: '[659]',
-        entities: '[[511,7,"BarSeductress"]]',
+        entities: '[[511,7,"BarSeductress"],[515,7,"BarMaid"]]',
     }
 
 };
