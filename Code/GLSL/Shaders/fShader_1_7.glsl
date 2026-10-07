@@ -89,11 +89,11 @@ const float IGNORE_ALPHA = 0.1f;
 const int MAX_STEPS = 4096;
 
 const float EPSILON = 0.005f;
-const float PL_AMBIENT_OCCLUSION = 0.01f;                       // Artistic: Directional ambient remaining behind detected obstacles. 0.01
-const float PL_DIFFUSE_OCCLUSION = 0.02f;                       // Artistic: Directional diffuse remaining behind detected obstacles.0.02
+const float PL_AMBIENT_OCCLUSION = 0.02f;                       // Artistic: Directional ambient remaining behind detected obstacles. 0.01
+const float PL_DIFFUSE_OCCLUSION = 0.05f;                       // Artistic: Directional diffuse remaining behind detected obstacles. 0.02
 const float PL_AMBIENT_ILLUMINATION_REDUCTION = 0.02f;          // Weak side-cone ambient, with the local backGlow fade. 0.02
-const float PL_DIFUSSE_ILLUMINATION_REDUCTION = 0.05f;          // Ordinary side-cone diffuse and specular fill.e and specular fill.0.05
-const float PL_DIFUSSE_LIGHT_HALO_REDUCTION = 0.25f;           // Additional nearby side-cone diffuse/specular fill. 0.25
+const float PL_DIFUSSE_ILLUMINATION_REDUCTION = 0.05f;          // Ordinary side-cone diffuse and specular fill. 0.05
+const float PL_DIFUSSE_LIGHT_HALO_REDUCTION = 0.25f;            // Additional nearby side-cone diffuse/specular fill. 0.25
 const float ATTNF = 0.3f;
 const float ATTNF2 = 0.8f;
 const float HATTNF = 1.5f;
@@ -109,7 +109,7 @@ const float BEHIND_LIGHT_FACTOR = 0.02f;                        //0.02
                                                                 // Distances are in world/grid units from the Y-adjusted emitter position.
 const float BACK_GLOW_FADE_START = 0.25f;                       // 0.25
 const float BACK_GLOW_FADE_END = 0.75f;                         // 0.75
-const float DISTANCE_LIGHT = 0.25f;                             //0.25
+const float DISTANCE_LIGHT = 0.25f;                             // 0.25
 const float LIGHT_POS_Y_OFFSET = 0.35f;
 const float HALO_FADE_START = DISTANCE_LIGHT * 0.5f;            // 0.5f
 const float CONE_FADE_HALF_WIDTH = 0.05f;                       // 0.05f
@@ -120,7 +120,7 @@ const float RAY_TARGET_BIAS = 0.01f;
 const float RAY_ORIGIN_BIAS = EPSILON * 5.0f;
 
 const float METALLIC_DIFFUSE_REDUCTION = 0.65f;
-const float VIEW_DIFFUSE_FILL = 0.0f;                          // Camera-facing contribution to diffuse lighting. 5% camera-facing fill, 95% light-facing diffuse. 0.05f
+const float VIEW_DIFFUSE_FILL = 0.05f;                          // Camera-facing contribution to diffuse lighting. 5% camera-facing fill, 95% light-facing diffuse. 0.05f
 
                                                                 // Omnidirectional sources, including fires, should not illuminate fragments through occupied voxels. 
 const float OMNI_AMBIENT_OCCLUSION = 0.000f;                    // Amount of fire ambient retained after the ray detects an obstacle.  0.0001f
@@ -252,8 +252,9 @@ vec3 CalcLight(
 ) {
     specularOut = vec3(0.0f);
 
-    if (inner == 0)
-        lightPosition.y -= LIGHT_POS_Y_OFFSET;
+    if (inner == 0 && !isOmniDirectional(lightDirection)) {
+        lightPosition.y -= LIGHT_POS_Y_OFFSET;                                                                              // Wall-mounted directional lights need the decal-position adjustment.
+    }
 
     float lightPosDistance = distance(lightPosition, FragPos);
     float backGlow = 1.0f - smoothstep(BACK_GLOW_FADE_START, BACK_GLOW_FADE_END, lightPosDistance);         // Radial fade on top of the existing attenuation. Only the directional-light rear/low-illumination ambient paths use it.
