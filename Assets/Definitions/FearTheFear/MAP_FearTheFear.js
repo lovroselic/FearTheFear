@@ -14,6 +14,7 @@ const MAP_TEXT = {
     5: `From this terrace, Castle Creep looks reassuringly close. And not remotely ominous. I'll be there in no time. Geography permitting.`,
     6: `If I need a stiff drink, this is the place. But I am not sure if I can afford it.`,
     7: ``,
+    8: ``,
 };
 
 /** Map definitions */
@@ -21,7 +22,7 @@ const MAP = {
     1: {
         name: "Bedroom in the ButtCrack Hotel",
         data: '{"width":"13","height":"13","depth":3,"map":"BB2ABABB4AA23ŁABAA10BAA6BAA4BAA6BAA4BABAA5BB2AA2BB33ABB4ABB2AA4BB2ABB2AA3BABB8ABÁBB11ABB4䂂BB29Á$BB34ABB79䁢BB39ÁBB3ÁBÁÁ7BABB2ÁBB41ÁÁ32BÁÁ2BÁÁ31BÁÁ17BB9ɁсࡁBAB","extendedMap":"AA42㡋$AA38ᡂAA181ᡂAA187ࡂࡂ2AA2㡆AA22ᡆAA21㡋㡋6A"}',
-        dungeonAmbience: 0.03,
+        dungeonAmbience: 0.0,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
@@ -49,7 +50,7 @@ const MAP = {
     2: {
         name: "Room in the ButtCrack Hotel",
         data: '{"width":"15","height":"15","depth":3,"map":"BB3ABABABAA3BB2AA21䁢AA7BAA19BB2AA9ÁAA7BB2ÁAÁAÁAA17BAA2BAA4BAA8BB2AA8BB13AA2BB7ABB9ABB2AA2BB2ABB5AA3BB2AA2BB5ABB10сɁBB4䁢BB46ÁBB60$ŁBB47䁢BB51ABB25ࡁBB2AA2ÁÁ2AÁÁ8BB26䂂BB12ÁÁ2BB4ÁÁ2BB14ÁÁ39BÁBÁÁ28BB4ÁÁ23BB2ÁÁ12BB2ÁÁ27BB9AA4BB3A","extendedMap":"AA42㡌$AA404ࡌAA46ࡆAA120⡆AA59"}',
-        dungeonAmbience: 0.03,
+        dungeonAmbience: 0.0,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
@@ -97,7 +98,7 @@ const MAP = {
     4: {
         name: "Reception",
         data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BABAA2BB2AA20BB2ABAA2BAA4BÁÁ2AA2BAA12ŁAA13BABB2AA6BAA3BB4AA3ÁBÁÁ2BB2ŁBB2AA4BB11AÁBB3ABB37ABB18ÁBB11ABB7ÁÁ2BB8ABB10ÁBÁÁ2BAA2BB41ŁŁ2ࡁBB7䁢AÁŁBB14ABB4AA2BB2䁢BB41䂂BB36ÁÁ2BB13ABB82AA2BB12ÁBB5ÁÁ2BB2ABB17$BB3ÁBB3ÁBB6ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB6ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ5BÁÁ4BB4ÁAÁBB6ÁBB76ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB36ÁÁ50BÁࡁBB2ÁÁ14BÁÁ37BÁÁ7BÁÁ3BÁÁ6AÁÁ4BÁÁ19AÁBÁÁ8BB2ÁÁ16AA2ÁÁ5BÁÁ4BB2ÁBB2ÁÁ6BÁÁ3BB2ÁÁ22AA2BB4ÁÁ3ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ8BB3ABB7AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB6","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
-        dungeonAmbience: 0.03,
+        dungeonAmbience: 0.0,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
@@ -145,7 +146,7 @@ const MAP = {
     6: {
         name: "Bar",
         data: '{"width":"13","height":"13","depth":5,"map":"BB3AA2䁢BAA2BB2ABAA14BAA14ŁAA26B䁆AA2BB3ABB2AA8BABAÁÁ2BB10ABB2ABB3ABB6AA3BB4ABB2AA2BB5AA3BB4䂂BB21ÁABB31ÁࡁBB11ࡁBB153$BB32ABB81ࡁBB45ÁÁ3BB2ÁÁ2BB2AŁɁɁ2сBB71ABB44AÁÁ7BB32䂂BB24ABB28ÁÁ2BÁBB5ÁÁ7BÁÁ27BÁÁ8BÁÁ21BB9ABB2ŁBB2ɁсBсABB3","extendedMap":"AA44⡎$AA398⡎AA214ࡈAA154㡎㡎2AA8ࡈAA10ࡈࡈ3Aࡈࡈ2AA5"}',
-        dungeonAmbience: 0.03,
+        dungeonAmbience: 0.0,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
@@ -170,8 +171,8 @@ const MAP = {
     ,
     7: {
         name: "The Cellar",
-        data: '{"width":15,"height":15,"depth":3,"map":"BB7AA26BABAA27Ł䁢AA9BABB2ABB2ABAA6BB2ABABB27ABB7ABB17ABAA7BB2AA4BB18AA2BB77ABB194Á$BB193ABB16ÁÁ4AɁсࡁBB2","extendedMap":"AA273ࡆ$AA236ࡆࡅAA29⡆⡆2AA23⡆AA2⡆AࡆAA33ࡆAA4ࡆAA2ࡅA⡆Aࡅࡅ6AA2ࡆࡆ9Aࡆࡆ6AA2ࡆࡆ2Aࡆࡆ3A⡆⡆9A⡆⡆4AA2⡆⡆4A⡆⡆3A"}',
-        dungeonAmbience: 0.03,
+        data: '{"width":"15","height":"15","depth":3,"map":"BB2ABB5AA28BABAA25ŁA䁢BB2AA3BAA4BB2AA3BAA3BB2AA8BB2AA2BB30ABABB4ABB3AA2BB6ABB5AA6BB2ABAA2BB17ABABB65䁢BB200Á$BB193ABB16ÁÁ4AɁсࡁBB2A","extendedMap":"AA273ࡆ$AA236ࡆࡅAA29⡆⡆2AA23⡆AA2⡆AࡆAA33ࡆAA4ࡆAA2ࡅA⡆Aࡅࡅ6AA2ࡆࡆ9Aࡆࡆ6AA2ࡆࡆ2Aࡆࡆ3A⡆⡆9A⡆⡆4AA2⡆⡆4A⡆⡆3A"}',
+        dungeonAmbience: 0.0,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
@@ -186,9 +187,35 @@ const MAP = {
         backPanorama: "",
         archPanorama: "",
         skyPanorama: "",
-        start: '[421,5]',
-        lights: '[[242,7,"Lamp46","standardDimmed",["3.0","15","1.0"]],[417,1,"FluxLight115","standardDimmed",["3.0","15","1.0"]],[432,3,"DuaLLantern_010","standardDimmed",["3.0","15","1.0"]],[358,3,"Candelabra16","standardDimmed",["3.0","15","1.0"]],[301,5,"SkullLantern58","standardDimmed",["3.0","15","1.0"]]]',
-        gates: '[[420,5,"7.1","6.2","Closed"]]',
+        start: '[206,5]',
+        lights: '[[242,7,"Lamp46","standardDimmed",["3.0","15","1.0"]],[417,1,"FluxLight115","standardDimmed",["3.0","15","1.0"]],[432,3,"DuaLLantern_010","standardDimmed",["3.0","15","1.0"]]]',
+        gates: '[[420,5,"7.1","6.2","Closed"],[209,3,"7.2","8.1","Green"]]',
+        objects: '[[322,"SmallBarrel"]]',
+    }
+    ,
+    8: {
+        name: "The Old Dungeon",
+        data: '{"width":"19","height":"19","depth":2,"map":"BB2AA5BAA4BAA10BB3ABB2AA6䁆AA8BB3ABABB6ABB2AA2BABAA7BAA7䁢AA8BAA2BB4AA2BABB2ABABAA2BB3ABB3ABABB3ABB3ABABB4ABABABABB2AA2BB12ABB7AA2BB6AA12BB3ABB3AA2BAA2BB2ABB2AA4BABAA4BB3ABB2AA2BABABB8ABB6AA2BB4AA4BB2AA4BB3AA3BB5ABB4ABB2ABABB2ABB7ABB2AA4BAA3BB2AA7BB3AA2BB2ABB2AA3BB2AA2䁆ABB272ÁABB43$BB4ÁÁ2BB61ABÁÁ6BB3ABB2","extendedMap":"AA278⡊ᡅAA260$AA14ᡊAA45ᡊAA10⡊AA11ࡅAA82ࡊࡊ2㡊㡊2AA12"}',
+        dungeonAmbience: 0,
+        sg: 0,
+        maxSpawned: 2,
+        killCountdown: 3,
+        killsRequiredToStopSpawning: 12,
+        spawnDelay: 19999,
+        wall: "JuggernautDarkwalls_0902",
+        floor: "FloorTiles_SDXL_006",
+        ceil: "Relief19",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        archPanorama: "",
+        skyPanorama: "",
+        start: '[62,5]',
+        lights: '[[461,1,"Light_623","standard",["3.0","10.0","1.0"]]]',
+        gates: '[[19,5,"8.1","7.2","Green"]]',
+        doors: '[60,119]',
+        triggers: '[[8,7,"SmoothWallButton",1,65]]',
     }
 
 };

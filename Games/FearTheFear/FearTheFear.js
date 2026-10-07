@@ -46,7 +46,7 @@ DEBUG.checkPoint = function () {
     Banknote100:
     Banknote200:
 
-    "SmallBarrel"
+        DONE: "SmallBarrel" 7-cellear
     "SmallBarrel"
     "SmallBarrel"
 
@@ -54,17 +54,18 @@ DEBUG.checkPoint = function () {
     "Wine"
     "WhiskeyShot"
     "Beer"
-    "GlassOfBeer" : BarMaid (6-bar)
+        DONE: "GlassOfBeer" : BarMaid (6-bar)
 
 
         DONE: Gold Key: receptionist;
         DONE: Blue Key: found on Balcony
+    Green Key
 
      */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 7;
+    GAME.level = 8;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -124,7 +125,7 @@ DEBUG.checkPoint = function () {
     }
 
     let keys = [
-        "Blue",
+        "Blue", "Green",
     ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
@@ -193,15 +194,15 @@ const INI = {
     WINDOW_SCALE: 0.90,
     HELP_PRICE: 10,
     BURNING_TIME: 1500,
-    DARK_DUNGEON_AMBIENCE: 0.05,
+    DARK_DUNGEON_AMBIENCE: 0.0,
     LIGHT_DIFFUSE: 50.0,
-    NORMAL_DIFFUSE: 8.0,
+    NORMAL_DIFFUSE: 2.5,
 };
 
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.12.14",
+    VERSION: "0.12.15",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
