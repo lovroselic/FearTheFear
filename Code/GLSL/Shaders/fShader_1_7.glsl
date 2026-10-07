@@ -79,7 +79,7 @@ in vec3 v_normal;                                               // WORLD space
 in vec2 vTextureCoord;
 
 const vec3 innerLightColor = vec3(1.0f, 1.0f, 1.0f);
-const vec3 GLOBAL_AMBIENT = vec3(0.05f);
+const vec3 GLOBAL_AMBIENT = vec3(0.0f);                    // vec3(0.05f);
 const float DEFAULT_ROUGHNESS = 0.65f;
 const float MIN_ROUGHNESS = 0.04f;
 const float IGNORE_ALPHA = 0.1f;
@@ -89,30 +89,30 @@ const float IGNORE_ALPHA = 0.1f;
 const int MAX_STEPS = 4096;
 
 const float EPSILON = 0.005f;
-const float PL_AMBIENT_OCCLUSION = 0.10f;
-const float PL_DIFFUSE_OCCLUSION = 0.02f; //0.10
-const float PL_AMBIENT_ILLUMINATION_REDUCTION = 0.02f;
-const float PL_DIFUSSE_ILLUMINATION_REDUCTION = 0.05f;
-const float PL_DIFUSSE_LIGHT_HALO_REDUCTION = 0.25f;
+const float PL_AMBIENT_OCCLUSION = 0.01f;                       // Artistic: Directional ambient remaining behind detected obstacles. 0.01
+const float PL_DIFFUSE_OCCLUSION = 0.02f;                       // Artistic: Directional diffuse remaining behind detected obstacles.0.02
+const float PL_AMBIENT_ILLUMINATION_REDUCTION = 0.02f;          // Weak side-cone ambient, with the local backGlow fade. 0.02
+const float PL_DIFUSSE_ILLUMINATION_REDUCTION = 0.05f;          // Ordinary side-cone diffuse and specular fill.e and specular fill.0.05
+const float PL_DIFUSSE_LIGHT_HALO_REDUCTION = 0.25f;           // Additional nearby side-cone diffuse/specular fill. 0.25
 const float ATTNF = 0.3f;
 const float ATTNF2 = 0.8f;
 const float HATTNF = 1.5f;
 const float HATTNF2 = 6.0f;
 const float MAXLIGHT = 0.999f;
 const float IGNORED_ATTN_DISTANCE = 0.012f;
-const float ILLUMINATION_CUTOFF = 0.10f;
-const float BEHIND_LIGHT_FACTOR = 0.02f;
+const float ILLUMINATION_CUTOFF = 0.01f;                        //0.1
+const float BEHIND_LIGHT_FACTOR = 0.02f;                        //0.02
 
                                                                 // Additional distance fade for the existing weak rear/side ambient.
                                                                 // The fade multiplier is 1 at/below START and 0 at/above END.
                                                                 // Existing distance attenuation is still applied separately.
                                                                 // Distances are in world/grid units from the Y-adjusted emitter position.
-const float BACK_GLOW_FADE_START = 0.25f;
-const float BACK_GLOW_FADE_END = 0.75f;
-const float DISTANCE_LIGHT = 0.25f;
+const float BACK_GLOW_FADE_START = 0.25f;                       // 0.25
+const float BACK_GLOW_FADE_END = 0.75f;                         // 0.75
+const float DISTANCE_LIGHT = 0.25f;                             //0.25
 const float LIGHT_POS_Y_OFFSET = 0.35f;
-const float HALO_FADE_START = DISTANCE_LIGHT * 0.5f;
-const float CONE_FADE_HALF_WIDTH = 0.05f;
+const float HALO_FADE_START = DISTANCE_LIGHT * 0.5f;            // 0.5f
+const float CONE_FADE_HALF_WIDTH = 0.05f;                       // 0.05f
 
                                                                 // Replaces INTO_WALL; the endpoint now moves OUT of the surface.
                                                                 // Small world-space offset along the outward receiving normal.
@@ -120,7 +120,11 @@ const float RAY_TARGET_BIAS = 0.01f;
 const float RAY_ORIGIN_BIAS = EPSILON * 5.0f;
 
 const float METALLIC_DIFFUSE_REDUCTION = 0.65f;
-const float VIEW_DIFFUSE_FILL = 0.05f;                          // 5% camera-facing fill, 95% light-facing diffuse.
+const float VIEW_DIFFUSE_FILL = 0.0f;                          // Camera-facing contribution to diffuse lighting. 5% camera-facing fill, 95% light-facing diffuse. 0.05f
+
+                                                                // Omnidirectional sources, including fires, should not illuminate fragments through occupied voxels. 
+const float OMNI_AMBIENT_OCCLUSION = 0.000f;                    // Amount of fire ambient retained after the ray detects an obstacle.  0.0001f
+const float OMNI_DIFFUSE_OCCLUSION = 0.000f;                    // Amount of fire diffuse retained after detecting an obstacle  0.0001f
 
 out vec4 fragColor;
 
@@ -255,7 +259,7 @@ vec3 CalcLight(
     float backGlow = 1.0f - smoothstep(BACK_GLOW_FADE_START, BACK_GLOW_FADE_END, lightPosDistance);         // Radial fade on top of the existing attenuation. Only the directional-light rear/low-illumination ambient paths use it.
     vec3 lightToFrag = normalize(FragPos - lightPosition);                                                               // light -> fragment
     vec3 fragToLight = -lightToFrag;                                                                                       // fragment -> light
-    vec3 dirLight = normalize(lightDirection   );
+    vec3 dirLight = normalize(lightDirection);
     float invDistance = 1.0f / (lightPosDistance + EPSILON);
     float attenuation = invDistance / (ATTNF + ATTNF2 * lightPosDistance);
 
@@ -277,7 +281,6 @@ vec3 CalcLight(
         return ambientLight;
     }
 
-    
     bool occluded = false;                                                                                                 // Occlusion only meaningful for non-inner light.
 
     if (inner == 0) {
@@ -368,8 +371,12 @@ vec3 CalcLight(
     ambientLight *= ambientFactor;
 
                                                                                     // Apply occlusion independently, after all distance/angular reductions.
+                                                                                    // Blocks firelight through walls while preserving artistic shadow settings for directional lights.
     if (occluded && inner == 0) {
-        return PL_AMBIENT_OCCLUSION * ambientLight + PL_DIFFUSE_OCCLUSION * diffuselight;
+        bool omni = isOmniDirectional(lightDirection);
+        float ambientOcclusion = omni ? OMNI_AMBIENT_OCCLUSION : PL_AMBIENT_OCCLUSION;
+        float diffuseOcclusion = omni ? OMNI_DIFFUSE_OCCLUSION : PL_DIFFUSE_OCCLUSION;
+        return ambientOcclusion * ambientLight + diffuseOcclusion * diffuselight;
     }
 
     specularOut = clamp(specularLight, 0.0f, MAXLIGHT);            // specular color return

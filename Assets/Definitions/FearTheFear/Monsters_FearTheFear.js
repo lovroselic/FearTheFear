@@ -3094,6 +3094,9 @@ const FIRE_TYPES = {
         warp: 0.072,
         gate: 1.0,
         texture_name: "FireTexture2",
+        ambientStrength: 1.0,
+        diffuseStrength: 25.0,
+        specularStrength: 1.0,
     },
     Bonfire: {
         lightColor: LIGHT_COLORS.fireSubtle,
@@ -3106,6 +3109,9 @@ const FIRE_TYPES = {
         warp: 0.042,
         gate: 0.8,
         texture_name: "FireTexture2",
+        ambientStrength: 1.0,
+        diffuseStrength: 30.0,
+        specularStrength: 1.0,
     },
     RedBonfire: {
         lightColor: LIGHT_COLORS.fireSubtleRed,
@@ -3118,6 +3124,9 @@ const FIRE_TYPES = {
         warp: 0.045,
         gate: 0.825,
         texture_name: "RedFireTexture",
+        ambientStrength: 1.0,
+        diffuseStrength: 30.0,
+        specularStrength: 1.0,
     },
     Fireplace: {
         lightColor: LIGHT_COLORS.fireSubtle,
@@ -3132,6 +3141,9 @@ const FIRE_TYPES = {
         warp: 0.045,
         gate: 0.92,
         texture_name: "FireTexture2",
+        ambientStrength: 0.1,
+        diffuseStrength: 25.0,
+        specularStrength: 2.0,
     },
     GreenBonfire: {
         lightColor: LIGHT_COLORS.fireSoftGreen,
@@ -3144,6 +3156,9 @@ const FIRE_TYPES = {
         warp: 0.045,
         gate: 0.825,
         texture_name: "FireTexture2_Green",
+        ambientStrength: 1.0,
+        diffuseStrength: 30.0,
+        specularStrength: 1.0,
     },
     BlueBonfire: {
         lightColor: LIGHT_COLORS.fireSoftBlue,
@@ -3156,6 +3171,9 @@ const FIRE_TYPES = {
         warp: 0.045,
         gate: 0.825,
         texture_name: "FireTexture2_Blue",
+        ambientStrength: 1.0,
+        diffuseStrength: 30.0,
+        specularStrength: 1.0,
     },
     Torch: {
         lightColor: LIGHT_COLORS.fireSoftSubtle,
@@ -3168,5 +3186,8 @@ const FIRE_TYPES = {
         warp: 0.07,
         gate: 0.99,
         texture_name: "FireTexture2",
+        ambientStrength: 0.01,
+        diffuseStrength: 15.0,
+        specularStrength: 1.0,
     },
 };

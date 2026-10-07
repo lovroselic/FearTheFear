@@ -15,6 +15,7 @@ const MAP_TEXT = {
     6: `If I need a stiff drink, this is the place. But I am not sure if I can afford it.`,
     7: ``,
     8: ``,
+    9: ``,
 };
 
 /** Map definitions */
@@ -97,8 +98,8 @@ const MAP = {
     ,
     4: {
         name: "Reception",
-        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BABAA2BB2AA20BB2ABAA2BAA4BÁÁ2AA2BAA12ŁAA13BABB2AA6BAA3BB4AA3ÁBÁÁ2BB2ŁBB2AA4BB11AÁBB3ABB37ABB18ÁBB11ABB7ÁÁ2BB8ABB10ÁBÁÁ2BAA2BB41ŁŁ2ࡁBB7䁢AÁŁBB14ABB4AA2BB2䁢BB41䂂BB36ÁÁ2BB13ABB82AA2BB12ÁBB5ÁÁ2BB2ABB17$BB3ÁBB3ÁBB6ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB6ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ5BÁÁ4BB4ÁAÁBB6ÁBB76ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB36ÁÁ50BÁࡁBB2ÁÁ14BÁÁ37BÁÁ7BÁÁ3BÁÁ6AÁÁ4BÁÁ19AÁBÁÁ8BB2ÁÁ16AA2ÁÁ5BÁÁ4BB2ÁBB2ÁÁ6BÁÁ3BB2ÁÁ22AA2BB4ÁÁ3ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ8BB3ABB7AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB6","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
-        dungeonAmbience: 0.0,
+        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BB2AA2BB2AA20BB2ABAA2BAA4BÁÁ2AA3BAA11ŁAA13BABABAA5BAA3BB4AA3ÁBÁÁ2BB2ŁBB2AA4BB2ABB9AÁBB3ABB37ABB7䁢BB10ÁBB18ÁÁ2BB8ABB10ÁBÁÁ2BAA2BB41ŁŁ2ࡁBB7䁢AÁŁBB14ABB4AA2BB2䁢BB41䂂BB36ÁÁ2BB13ABB82AA2BB12ÁBB5ÁÁ2BB2ABB17$BB3ÁBB3ÁBB6ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB6ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ5BÁÁ4BB4ÁAÁBB6ÁBB76ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB36ÁÁ50BÁࡁBB2ÁÁ14BÁÁ37BÁÁ7BÁÁ3BÁÁ6AÁÁ4BÁÁ19AÁBÁÁ8BB2ÁÁ16AA2ÁÁ5BÁÁ4BB2ÁBB2ÁÁ6BÁÁ3BB2ÁÁ22AA2BB4ÁÁ3ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ8BB3ABB7AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB3ABB3","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
+        dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
@@ -113,9 +114,9 @@ const MAP = {
         backPanorama: "",
         archPanorama: "",
         skyPanorama: "",
-        start: '[71,5]',
+        start: '[64,3]',
         lights: '[[1098,1,"Lamp51","standardYellowFaint",["5","10","2"]],[1100,1,"Lamp51","standardYellowFaint",["5","10","2"]],[357,7,"FluxLight109","standard2",["10","10","2"]],[168,5,"DuaLLantern_018","standard2",["9.99","50.0","5.0"]],[756,1,"DuaLLantern_017","standard2",["5","10","1"]],[756,3,"AlpineLight_159","standard2",["5","10","1"]],[758,5,"Light_648","standard2",["5","10","1"]]]',
-        gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"],[74,3,"4.3","6.1","Closed"]]',
+        gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"],[74,3,"4.3","6.1","Closed"],[60,5,"4.4","9.1","Closed"]]',
         entities: '[[447,1,"TheReceptionist"]]',
         lairs: '[[907,7,"Lair11"],[1005,5,"Lair76"]]',
         monsterList: '["Bat","RedGoldBat","RedGoldBat"]',
@@ -216,6 +217,30 @@ const MAP = {
         gates: '[[19,5,"8.1","7.2","Green"]]',
         doors: '[60,119]',
         triggers: '[[8,7,"SmoothWallButton",1,65]]',
+    }
+    ,
+    9: {
+        name: "Hotel Kitchen",
+        data: '{"width":15,"height":15,"depth":2,"map":"BB4AA4BAA13BB3AA5BB2AA9BABB2ABAA2BB2ABAA10BAA8BAA4BB2AA8BB2AA10BAA10BAA5BABB7ABB2ABB4AA3BB2ABB11ABB6䁢BB3ABB3ABB3ABB2ABAA2BB2ABB3ABAA2BB2ABAA2BAA3BB22$BB32ÁABB63ÁBÁÁ6BB2ÁBB19ÁÁ3BB27ÁÁ2BB6ÁÁ32BB2ÁBÁBB3ÁÁ5BÁBB3ÁÁ8BÁBÁÁ3BB2A","extendedMap":"AA450$"}',
+        dungeonAmbience: 0,
+        sg: 0,
+        maxSpawned: 2,
+        killCountdown: 3,
+        killsRequiredToStopSpawning: 12,
+        spawnDelay: 19999,
+        wall: "KreaWall_539",
+        floor: "Wood4",
+        ceil: "DARKBricks107",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        archPanorama: "",
+        skyPanorama: "",
+        start: '[178,3]',
+        decals: '[[112,3,"FirePlaceDecal_664","crest"],[112,5,"FirePlaceDecal_673","crest"],[111,4,"Firepit2","crest"],[113,4,"FirePit_677","crest"]]',
+        gates: '[[179,3,"9.1","4.4","Closed"]]',
+        fires: '[[111,4,"Fireplace"],[113,4,"Fireplace"]]',
     }
 
 };

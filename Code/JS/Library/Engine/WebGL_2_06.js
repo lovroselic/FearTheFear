@@ -57,9 +57,9 @@ const WebGL = {
     CAMERA_SAFETY_WITH_ZMAP: false,                     // use zMap to determine the safety of 3rd person camera
     CAMERA_SAFETY_WITH_GA: true,                        // use grid array (GA) to determine the safety of 3rd person camera
 
-    DEFAULT_AMBIENT_STRENGTH: 9.99,
-    DEFAULT_DIFFUSE_STRENGTH: 50.0,
-    DEFAULT_SPECULAR_STRENGTH: 5.0,
+    DEFAULT_AMBIENT_STRENGTH: 2.0,                      // keep those sane, any light source without own def defaults to this
+    DEFAULT_DIFFUSE_STRENGTH: 10.0,
+    DEFAULT_SPECULAR_STRENGTH: 1.0,
 
     INI: {
         SCALE_DECAL: 1.0,                               // change/adapt decal scale for skewed surface based rendering
@@ -1112,6 +1112,7 @@ const WebGL = {
                 dynLights.push(...light.pos.array);
                 dynLightColors.push(...light.lightColor);
                 dynLightDirs.push(0, 0, 0); // No specific direction
+
                 dynLightAmbient.push(light.ambientStrength ?? WebGL.DEFAULT_AMBIENT_STRENGTH);
                 dynLightDiffuse.push(light.diffuseStrength ?? WebGL.DEFAULT_DIFFUSE_STRENGTH);
                 dynLightSpecular.push(light.specularStrength ?? WebGL.DEFAULT_SPECULAR_STRENGTH);
