@@ -38,6 +38,7 @@ DEBUG.checkPoint = function () {
     Receptionist wants money (Banknote10, Banknote20, Banknote50, Banknote100, Banknote200) give key to leave (Gold Key)
     BarSeductress wants GlassOfWine", "Wine", "WhiskeyShot", "Beer", gives Banknote20
     BarMaid wants "SmallBarrel", "SmallBarrel", "SmallBarrel" gives  "GlassOfBeer" 
+    GrilGirl wants "Chicken", "LittlePiggy", "BabySheep" givesBanknote100
 
 
     Banknote10:
@@ -55,6 +56,9 @@ DEBUG.checkPoint = function () {
     "WhiskeyShot"
     "Beer"
         DONE: "GlassOfBeer" : BarMaid (6-bar)
+        DONE "Chicken",  7-cellar
+        DONE "LittlePiggy", 4-reception
+        DONE "BabySheep" 8-dungeon
 
 
         DONE: Gold Key: receptionist;
@@ -65,7 +69,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 9;
+    GAME.level = 4;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -117,6 +121,7 @@ DEBUG.checkPoint = function () {
         //"Banknote10", "Banknote20", "Banknote50", "Banknote100", "Banknote200",
         //"SmallBarrel", "SmallBarrel", "SmallBarrel",
         //"GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer",
+        "Chicken", "LittlePiggy", "BabySheep",
     ];
 
     for (let itm of invItems) {
@@ -202,7 +207,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.13.1",
+    VERSION: "0.13.2",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

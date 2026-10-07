@@ -1331,6 +1331,7 @@ LoadSprites = [
     { srcName: "ActionMovables/RedSpider.webp", name: "RedSpider" },
     { srcName: "ActionMovables/Sheep.webp", name: "BabySheep" },
     { srcName: "ActionMovables/LittlePiggy.webp", name: "LittlePiggy" },
+    { srcName: "Items/Chicken.webp", name: "Chicken" },
 
     //triggers
     { srcName: "Triggers/MarbleTriggerButton.webp", name: "MarbleTriggerButton" },
@@ -2437,6 +2438,16 @@ LoadSprites = [
     { srcName: "ObjDecals/LiquorCabinet_759.webp", name: "LiquorCabinet_759" },
     { srcName: "ObjDecals/LiquorCabinet_760.webp", name: "LiquorCabinet_760" },
     { srcName: "ObjDecals/LiquorCabinet_761.webp", name: "LiquorCabinet_761" },
+    { srcName: "ObjDecals/BarrelWallDecal_762.webp", name: "BarrelWallDecal_762" },
+    { srcName: "ObjDecals/BarrelWallDecal_763.webp", name: "BarrelWallDecal_763" },
+    { srcName: "ObjDecals/BarrelWallDecal_764.webp", name: "BarrelWallDecal_764" },
+    { srcName: "ObjDecals/BarrelWallDecal_765.webp", name: "BarrelWallDecal_765" },
+    { srcName: "ObjDecals/BarrelWallDecal_766.webp", name: "BarrelWallDecal_766" },
+    { srcName: "ObjDecals/BarrelWallDecal_767.webp", name: "BarrelWallDecal_767" },
+    { srcName: "ObjDecals/BarrelWallDecal_768.webp", name: "BarrelWallDecal_768" },
+    { srcName: "ObjDecals/BarrelWallDecal_769.webp", name: "BarrelWallDecal_769" },
+    { srcName: "ObjDecals/BarrelWallDecal_770.webp", name: "BarrelWallDecal_770" },
+    { srcName: "ObjDecals/BarrelWallDecal_771.webp", name: "BarrelWallDecal_771" },
 
     //pic decals
     { srcName: "PicDecals/1942_200.webp", name: "1942_200" },

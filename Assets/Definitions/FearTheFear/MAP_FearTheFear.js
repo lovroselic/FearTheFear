@@ -98,7 +98,7 @@ const MAP = {
     ,
     4: {
         name: "Reception",
-        data: '{"width":"15","height":"15","depth":5,"map":"BB2AA2BB2AA2BB2AA20BB2ABAA2BAA4BÁÁ2AA3BAA11ŁAA13BABABAA5BAA3BB4AA3ÁBÁÁ2BB2ŁBB2AA4BB2ABB9AÁBB3ABB37ABB7䁢BB10ÁBB18ÁÁ2BB8ABB10ÁBÁÁ2BAA2BB41ŁŁ2ࡁBB7䁢AÁŁBB14ABB4AA2BB2䁢BB41䂂BB36ÁÁ2BB13ABB82AA2BB12ÁBB5ÁÁ2BB2ABB17$BB3ÁBB3ÁBB6ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB6ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ5BÁÁ4BB4ÁAÁBB6ÁBB76ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB36ÁÁ50BÁࡁBB2ÁÁ14BÁÁ37BÁÁ7BÁÁ3BÁÁ6AÁÁ4BÁÁ19AÁBÁÁ8BB2ÁÁ16AA2ÁÁ5BÁÁ4BB2ÁBB2ÁÁ6BÁÁ3BB2ÁÁ22AA2BB4ÁÁ3ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ8BB3ABB7AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB3ABB3","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
+        data: '{"width":"15","height":"15","depth":5,"map":"B䁢AA2BB2ABB2AA20BB2AA2BABAA4BÁÁ2AA4BAA11ŁAA13BABABAA4BAA3BB4AA4ÁBÁÁ2BB2ŁBB2AA4BB2ABB8AÁBB3ABB43䁢BB10ÁBB18ÁÁ2BB7ABB11ÁBÁÁ2BAA2BB41ŁŁ2ࡁBB7䁢AÁŁBB14ABB4AA2BB2䁢BB41䂂BB36ÁÁ2BB13ABB82AA2BB12ÁBB5ÁÁ2BB2ABB17$BB3ÁBB3ÁBB6ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB6ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ5BÁÁ4BB4ÁAÁBB6ÁBB73ABB3ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB37ÁÁ50BÁࡁBB2ÁÁ14BÁÁ37BÁÁ7BÁÁ3BÁÁ6AÁÁ4BÁÁ19AÁBÁÁ8BB2ÁÁ16AA2ÁÁ5BÁÁ4BB2ÁBB2ÁÁ6BÁÁ3BB2ÁÁ22AA2BB4ÁÁ3ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ8BB3ABB7AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB4ABB3","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 2,
@@ -118,6 +118,7 @@ const MAP = {
         lights: '[[1098,1,"Lamp51","standardYellowFaint",["5","10","2"]],[1100,1,"Lamp51","standardYellowFaint",["5","10","2"]],[357,7,"FluxLight109","standard2",["10","10","2"]],[168,5,"DuaLLantern_018","standard2",["9.99","50.0","5.0"]],[756,1,"DuaLLantern_017","standard2",["5","10","1"]],[756,3,"AlpineLight_159","standard2",["5","10","1"]],[758,5,"Light_648","standard2",["5","10","1"]]]',
         gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"],[74,3,"4.3","6.1","Closed"],[60,5,"4.4","9.1","Closed"]]',
         entities: '[[447,1,"TheReceptionist"]]',
+        movables: '[[82,"LittlePiggy"]]',
         lairs: '[[907,7,"Lair11"],[1005,5,"Lair76"]]',
         monsterList: '["Bat","RedGoldBat","RedGoldBat"]',
     }
@@ -172,8 +173,8 @@ const MAP = {
     ,
     7: {
         name: "The Cellar",
-        data: '{"width":"15","height":"15","depth":3,"map":"BB2ABB5AA28BABAA25ŁA䁢BB2AA3BAA4BB2AA3BAA3BB2AA8BB2AA2BB30ABABB4ABB3AA2BB6ABB5AA6BB2ABAA2BB17ABABB65䁢BB200Á$BB193ABB16ÁÁ4AɁсࡁBB2A","extendedMap":"AA273ࡆ$AA236ࡆࡅAA29⡆⡆2AA23⡆AA2⡆AࡆAA33ࡆAA4ࡆAA2ࡅA⡆Aࡅࡅ6AA2ࡆࡆ9Aࡆࡆ6AA2ࡆࡆ2Aࡆࡆ3A⡆⡆9A⡆⡆4AA2⡆⡆4A⡆⡆3A"}',
-        dungeonAmbience: 0.0,
+        data: '{"width":"15","height":"15","depth":3,"map":"BB2ABB5AA28BABAA25ŁA䁢BB2AA3BAA4BB2AA3BAA3BB2AA8BB2AA2BB30ABABB4ABB3AA2BB6ABB5AA6BB2ABAA2BB17ABABB65䁢BB200Á$BB193ABB16ÁÁ4AɁсࡁBB2A","extendedMap":"AA273ࡆ$AA236ࡆࡅAA29⡆⡆2AA23⡆AA2⡆ࡆAA31⡆⡆2AA2⡆A⡆ࡆAA4ࡆAA7ࡅAࡅࡅ6AA2ࡆࡆ9Aࡆࡆ6AA2ࡆࡆ2Aࡆࡆ3A⡆AA2⡆A⡆A⡆⡆7AA4"}',
+        dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
@@ -188,10 +189,13 @@ const MAP = {
         backPanorama: "",
         archPanorama: "",
         skyPanorama: "",
-        start: '[206,5]',
+        start: '[407,1]',
+        decals: '[[365,7,"BarrelWallDecal_764","crest"],[292,7,"BarrelWallDecal_769","crest"],[286,5,"BarrelWallDecal_770","crest"],[271,5,"BarrelWallDecal_766","crest"],[391,5,"BarrelWallDecal_767","crest"],[346,5,"BarrelWallDecal_769","crest"],[321,5,"BarrelWallDecal_767","crest"],[388,3,"BarrelWallDecal_768","crest"],[343,3,"BarrelWallDecal_771","crest"],[283,3,"BarrelWallDecal_765","crest"],[246,7,"BarrelWallDecal_762","crest"],[247,7,"BarrelWallDecal_766","crest"],[319,7,"BarrelWallDecal_771","crest"],[320,7,"BarrelWallDecal_763","crest"],[369,7,"BarrelWallDecal_764","crest"],[370,7,"BarrelWallDecal_764","crest"],[364,7,"BarrelWallDecal_769","crest"],[338,3,"WallSconce_662","crest"]]',
         lights: '[[242,7,"Lamp46","standardDimmed",["3.0","15","1.0"]],[417,1,"FluxLight115","standardDimmed",["3.0","15","1.0"]],[432,3,"DuaLLantern_010","standardDimmed",["3.0","15","1.0"]]]',
         gates: '[[420,5,"7.1","6.2","Closed"],[209,3,"7.2","8.1","Green"]]',
         objects: '[[322,"SmallBarrel"]]',
+        movables: '[[312,"Chicken"]]',
+        fires: '[[337,5,"Torch"]]',
     }
     ,
     8: {
@@ -217,6 +221,7 @@ const MAP = {
         gates: '[[19,5,"8.1","7.2","Green"]]',
         doors: '[60,119]',
         triggers: '[[8,7,"SmoothWallButton",1,65]]',
+        movables: '[[338,"BabySheep"]]',
     }
     ,
     9: {
@@ -238,10 +243,10 @@ const MAP = {
         archPanorama: "",
         skyPanorama: "",
         start: '[178,3]',
-        decals: '[[112,3,"FirePlaceDecal_664","crest"],[112,5,"FirePlaceDecal_673","crest"],[111,4,"Firepit2","crest"],[113,4,"FirePit_677","crest"]]',
+        decals: '[[112,3,"FirePlaceDecal_664","crest"],[112,5,"FirePlaceDecal_673","crest"],[111,4,"Firepit2","crest"],[113,4,"FirePit_677","crest"],[198,3,"Sconce_8","crest"]]',
         lights: '[[307,1,"SkullLantern52","standard2",["2.5","25","2"]],[217,1,"Fireplace_697","fireplace",["2.5","25","2"]],[105,5,"Fireplace205","fireplace",["2.5","25","2"]]]',
         gates: '[[179,3,"9.1","4.4","Closed"]]',
-        fires: '[[111,4,"Fireplace"],[113,4,"Fireplace"]]',
+        fires: '[[111,4,"Fireplace"],[113,4,"Fireplace"],[197,5,"Torch"]]',
     }
 
 };
