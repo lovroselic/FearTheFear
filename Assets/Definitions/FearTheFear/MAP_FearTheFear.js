@@ -13,9 +13,9 @@ const MAP_TEXT = {
     4: `They expect payment? From me? They should be grateful to host the Princess. My presence is already a generous contribution.`,
     5: `From this terrace, Castle Creep looks reassuringly close. And not remotely ominous. I'll be there in no time. Geography permitting.`,
     6: `If I need a stiff drink, this is the place. But I am not sure if I can afford it.`,
-    7: ``,
-    8: ``,
-    9: ``,
+    7: `The cellar. Whee all the alcohol is stored. Might find something usefull here.`,
+    8: `Seems like old abandoned dubgeon. But is abandoned also by monsters?`,
+    9: `Smells like teen chickens.`,
 };
 
 /** Map definitions */
@@ -143,6 +143,7 @@ const MAP = {
         skyPanorama: "",
         start: '[13,7]',
         gates: '[[4,7,"5.1","4.2","Closed"]]',
+        keys: '[[64,3]]',
     }
     ,
     6: {

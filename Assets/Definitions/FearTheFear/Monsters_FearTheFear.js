@@ -1294,6 +1294,17 @@ const INTERACTION_OBJECT = {
         inventorySprite: "SmallBarrel",
         text: "Such a small barrel. Not a lot of drink."
     },
+    Skull: {
+        name: "Skull",
+        category: "interaction_item",
+        element: "SKULL",
+        scale: 1 / 2 ** 1,
+        glueToFloor: true,
+        texture: "Skull_texture",
+        inventorySprite: "Skull",
+        material: MATERIAL.standard,
+        text: "Creeepy?"
+    },
 };
 
 const MOVABLE_INTERACTION_OBJECT = {

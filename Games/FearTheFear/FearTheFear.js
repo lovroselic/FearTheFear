@@ -39,6 +39,7 @@ DEBUG.checkPoint = function () {
     BarSeductress wants GlassOfWine", "Wine", "WhiskeyShot", "Beer", gives Banknote20
     BarMaid wants "SmallBarrel", "SmallBarrel", "SmallBarrel" gives  "GlassOfBeer" 
     GrilGirl wants "Chicken", "LittlePiggy", "BabySheep" gives Banknote100
+     #### wants  "Skull", "Skull", "Skull", "Skull", "Skull", gives 
 
 
     Banknote10:
@@ -69,7 +70,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 9;
+    GAME.level = 4;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -121,7 +122,8 @@ DEBUG.checkPoint = function () {
         //"Banknote10", "Banknote20", "Banknote50", "Banknote100", "Banknote200",
         //"SmallBarrel", "SmallBarrel", "SmallBarrel",
         //"GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer",
-        "Chicken", "LittlePiggy", "BabySheep",
+        //"Chicken", "LittlePiggy", "BabySheep",
+        "Skull", "Skull", "Skull", "Skull", "Skull",
     ];
 
     for (let itm of invItems) {
@@ -207,7 +209,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.13.3",
+    VERSION: "0.13.4",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

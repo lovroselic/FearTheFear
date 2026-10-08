@@ -1590,6 +1590,7 @@ LoadSprites = [
     { srcName: "Items/WhiskeyShot.webp", name: "WhiskeyShot" },
     { srcName: "Items/Beer.webp", name: "Beer" },
     { srcName: "Items/GlassOfBeer.webp", name: "GlassOfBeer" },
+    { srcName: "Items/Skull2.webp", name: "Skull" },
 
     //scrolls
     { srcName: "Scrolls/SCR_Cripple2.webp", name: "SCR_Cripple" },
