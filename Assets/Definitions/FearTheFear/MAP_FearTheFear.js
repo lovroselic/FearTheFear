@@ -226,7 +226,7 @@ const MAP = {
     ,
     9: {
         name: "Hotel Kitchen",
-        data: '{"width":15,"height":15,"depth":2,"map":"BB4AA4BAA13BB3AA5BB2AA9BABB2ABAA2BB2ABAA10BAA8BAA4BB2AA8BB2AA10BAA10BAA5BABB7ABB2ABB4AA3BB2ABB11ABB6䁢BB3ABB3ABB3ABB2ABAA2BB2ABB3ABAA2BB2ABAA2BAA3BB22$BB32ÁABB63ÁBÁÁ6BB2ÁBB19ÁÁ3BB27ÁÁ2BB6ÁÁ32BB2ÁBÁBB3ÁÁ5BÁBB3ÁÁ8BÁBÁÁ3BB2A","extendedMap":"AA450$"}',
+        data: '{"width":"15","height":"15","depth":2,"map":"BB4AA4BAA13BB3AA5BB2AA9BABB2ABAA2BB2ABAA10BAA8BAA4BB2AA8BB2AA10BAA10BAA5BABB7ABB2ABB4AA3BB2ABB11ABB6䁢BB3ABB3ABB3ABB2ABAA2BB2ABB3ABAA2BB2ABAA2BAA3BB22$BB32ÁABB63ÁBÁÁ6BB2ÁBB19ÁÁ3BB27ÁÁ2BB6ÁÁ32BB2ÁBÁBB3ÁÁ5BÁBB3ÁÁ8BÁBÁÁ3BB2A","extendedMap":"AA450$"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 2,
@@ -246,6 +246,7 @@ const MAP = {
         decals: '[[112,3,"FirePlaceDecal_664","crest"],[112,5,"FirePlaceDecal_673","crest"],[111,4,"Firepit2","crest"],[113,4,"FirePit_677","crest"],[198,3,"Sconce_8","crest"]]',
         lights: '[[307,1,"SkullLantern52","standard2",["2.5","25","2"]],[217,1,"Fireplace_697","fireplace",["2.5","25","2"]],[105,5,"Fireplace205","fireplace",["2.5","25","2"]]]',
         gates: '[[179,3,"9.1","4.4","Closed"]]',
+        entities: '[[7,7,"GrillGirl"]]',
         fires: '[[111,4,"Fireplace"],[113,4,"Fireplace"],[197,5,"Torch"]]',
     }
 

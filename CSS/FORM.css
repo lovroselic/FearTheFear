@@ -50,7 +50,7 @@ hr {
 #FORM h1 {
     text-align: center;
     font-size: 16px;
-    color: #999;
+    color: #999 !important;
     text-shadow: 1px 1px #666;
     margin: 0px;
     padding-top: 6px;
@@ -59,7 +59,7 @@ hr {
 #FORM h2 {
     text-align: left;
     font-size: 16px;
-    color: #999;
+    color: #999 !important;
     text-shadow: 1px 1px #666;
     margin-left: 20px;
 }
@@ -67,6 +67,6 @@ hr {
 #FORM p {
     text-align: left;
     font-size: 14px;
-    color: #999;
+    color: #999 !important;
     margin-left: 32px;
 }

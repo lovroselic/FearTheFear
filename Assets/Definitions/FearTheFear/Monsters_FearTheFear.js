@@ -3028,6 +3028,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    GrillGirl: {
+        name: "GrillGirl",
+        sprite: "GrillGirl",
+        category: 'crest',
+        voice: "Female6",
+        wants: ["Chicken", "LittlePiggy", "BabySheep"],
+        gives: "Banknote100",
+        text: {
+            intro: `Some bitch ate all our barbecue. Be a doll and hunt down some fresh grill candidates. Preferably vegetarians. A healthy diet should benefit someone.`,
+            progress: `More, doll. The guests are still hungry. Apparently, the smell doesn't count as a meal.`,
+            conclusion: `Finally, meat for the other guests. Here's a hundred Castle marks. You've saved dinner. The ingredients may be less grateful.`,
+        },
+    },
     BarMaid: {
         name: "BarMaid",
         sprite: "BarMaid",

@@ -38,13 +38,13 @@ DEBUG.checkPoint = function () {
     Receptionist wants money (Banknote10, Banknote20, Banknote50, Banknote100, Banknote200) give key to leave (Gold Key)
     BarSeductress wants GlassOfWine", "Wine", "WhiskeyShot", "Beer", gives Banknote20
     BarMaid wants "SmallBarrel", "SmallBarrel", "SmallBarrel" gives  "GlassOfBeer" 
-    GrilGirl wants "Chicken", "LittlePiggy", "BabySheep" givesBanknote100
+    GrilGirl wants "Chicken", "LittlePiggy", "BabySheep" gives Banknote100
 
 
     Banknote10:
         DONE: Banknote20: BarSeductress (6-bar)
     Banknote50:
-    Banknote100:
+        DONE: Banknote100: - GrillGirl (9-kitchen)
     Banknote200:
 
         DONE: "SmallBarrel" 7-cellear
@@ -69,7 +69,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 4;
+    GAME.level = 9;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -207,7 +207,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.13.2",
+    VERSION: "0.13.3",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
