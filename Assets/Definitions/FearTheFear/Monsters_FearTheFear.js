@@ -17,6 +17,14 @@ for (let [index, key] of KEY_TYPES.entries()) {
 }
 
 const ORACLE_TYPE = {
+    BossyHotelManager: {
+        name: "BossyHotelManager",
+        sprite: "BossyHotelManager",
+        category: 'crest',
+        voice: "Female3",
+        text: `You're free to ask for help: what you've missed in the dungeon, what someone wants from you. Free to ask. Answers sold separately.`,
+        interactionCategory: "oracle",
+    },
     MetalBlueSitter3: {
         name: "MetalBlueSitter3",
         sprite: "MetalBlueSitter3",

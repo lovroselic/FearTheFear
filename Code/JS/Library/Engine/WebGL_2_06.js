@@ -6667,6 +6667,8 @@ class $3D_Entity {
     }
     makeMove() {
         this.moveState.next(this.dirStack.shift());
+        //this.moveState.heightAdjusted = false;
+       // this.moveState.heightDelta = 0;
     }
     setDistanceFromNodeMap(nodemap, prop = "distance") {
         let gridPosition = Grid3D.toClass(this.moveState.grid);
@@ -6813,8 +6815,41 @@ class $3D_Entity {
     drawVector2D() {
         ENGINE.VECTOR2D.drawBlock(this);
     }
-    update(date) {
+    updateHeight(nodemap) {
+        console.info("\nupdateHeight", this.name, this.id, "!nodemap", !nodemap, " this.fly > 0", this.fly > 0);
+        if (!nodemap || this.fly > 0) return;
+
+        const state = this.moveState;
+        console.log(".", "state.heightAdjusted", state.heightAdjusted, "!state.startGrid", !state.startGrid, "state", state);
+        if (state.heightAdjusted || !state.startGrid) return;
+
+        const startGrid = state.startGrid;
+        const currentGrid = Vector3.to_Grid3D(state.pos);
+
+        console.log("..", "currentGrid.x === startGrid.x", currentGrid.x === startGrid.x, "currentGrid.y === startGrid.", currentGrid.y === startGrid.y);
+        if (currentGrid.x === startGrid.x && currentGrid.y === startGrid.y) return;                 // Still inside the starting cell.
+        currentGrid.z = startGrid.z + (state.dir.z || 0);                                           // Ground translation has not yet changed the physical elevation.
+
+        const currentNode = nodemap[currentGrid.x]?.[currentGrid.y]?.[currentGrid.z];
+        const startNode = nodemap[startGrid.x]?.[startGrid.y]?.[startGrid.z];
+        console.log("...", "currentNode", currentNode, "startNode", startNode);
+        if (!currentNode || !startNode) return;
+
+        const currentHeight = currentGrid.z + (currentNode.height ?? 0);
+        const startHeight = startGrid.z + (startNode.height ?? 0);
+        const delta = currentHeight - startHeight;
+        console.log("....", "delta", delta);
+        if (delta === 0) return;
+
+        state.pos = state.pos.translate(DOWN3, delta);
+        state.heightDelta = delta;
+        state.heightAdjusted = true;
+        state.endPos.z = state.pos.y;                                                               // next() inherits this endpoint as its next startPos.
+        console.warn("------>", this.name, this.id, "currentGrid", currentGrid, "startGrid", startGrid, "delta", delta);
+    }
+    update(date, nodemap) {
         if (!this.petrified) {
+            this.updateHeight(nodemap);
             this.moveState.update();
             this.actor.animate(date);
         }

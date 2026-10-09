@@ -117,6 +117,7 @@ const MAP = {
         start: '[64,3]',
         lights: '[[1098,1,"Lamp51","standardYellowFaint",["5","10","2"]],[1100,1,"Lamp51","standardYellowFaint",["5","10","2"]],[357,7,"FluxLight109","standard2",["10","10","2"]],[168,5,"DuaLLantern_018","standard2",["9.99","50.0","5.0"]],[756,1,"DuaLLantern_017","standard2",["5","10","1"]],[756,3,"AlpineLight_159","standard2",["5","10","1"]],[758,5,"Light_648","standard2",["5","10","1"]]]',
         gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"],[74,3,"4.3","6.1","Closed"],[60,5,"4.4","9.1","Closed"]]',
+        monsters: '[[158,"Spider",1]]',
         entities: '[[447,1,"TheReceptionist"]]',
         movables: '[[82,"LittlePiggy"]]',
         lairs: '[[907,7,"Lair11"],[1005,5,"Lair76"]]',

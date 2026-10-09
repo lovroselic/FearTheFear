@@ -4268,7 +4268,14 @@ class $3D_MoveState {
         this.update();
         this.startPos = Vector3.to_FP_Grid3D(this.pos);           //FPGrid3D
         this.endPos = this.startPos;
+        this.startGrid = this.getFeetGrid();
         this.resetView();
+        this.heightAdjusted = false;
+        this.heightDelta = 0;
+    }
+    getFeetGrid() {
+        const feetY = this.pos.y - this.parent.minY;
+        return new Grid3D(this.pos.x, this.pos.z, feetY + $3D_MoveState.E);
     }
     resetView() {
         this.lookDir = null;
@@ -4286,6 +4293,11 @@ class $3D_MoveState {
     next(dir) {
         if (!dir) throw new Error(`Direction ${dir} not defined error. Stopping execution!`);
         if (GRID.same3D(dir, NOWAY3)) return;
+
+        this.startGrid = this.getFeetGrid();
+        this.heightAdjusted = false;
+        this.heightDelta = 0;
+
         this.startPos = this.endPos;
         this.dir = dir;
         this.endPos = this.startPos.add(this.dir);
@@ -4324,9 +4336,9 @@ class $3D_MoveState {
     }
     setGrid() {
         this.grid = Vector3.to_FP_Grid3D(this.pos);
-        this.grid.z -= this.parent.minY;                                                                 //adjusted for minY because some of them are negative and can leak from grid boundaries
+        this.grid.z -= this.parent.minY;                                                                 // adjusted for minY because some of them are negative and can leak from grid boundaries
         this.grid.z += this.parent.heigth + $3D_MoveState.E;                                             // adjusted to height + small E   
-        this.referencePos = Vector3.from_grid3D(this.grid);                                              //to display coordinates; which are used for fast collision detection between HERO and Enemies
+        this.referencePos = Vector3.from_grid3D(this.grid);                                              // to display coordinates; which are used for fast collision detection between HERO and Enemies
         this.absoluteBoundingBox = this.rotatedBoundingBox.setAbsoluteBoundingBox(this.pos);
     }
 }

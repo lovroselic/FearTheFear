@@ -310,8 +310,10 @@ const SPAWN_TOOLS = {
             const grid = Grid3D.toCenter2D(GA.indexToGrid(M[0]));
             const type = MONSTER_TYPE[M[1]];
             let dir = UP3;
+            let dirIndex = M[2];
             if (M.length > 2) {
-                dir = Vector3D.fromVector2D(Vector.fromInt(M[2]), 0);
+                if (dirIndex === 4) dirIndex = 1; //NOWAY to UP
+                dir = Vector3D.fromVector2D(Vector.fromInt(dirIndex), 0);
             }
             ENTITY3D.add(new $3D_Entity(grid, type, dir));
         }

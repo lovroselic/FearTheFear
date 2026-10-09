@@ -1019,11 +1019,12 @@ class Animated_3d_entity extends IAM {
         const GA = this.map.GA;
         this.setup();
 
-        const heroRefGrid = Vector3.to_Grid3D(this.hero.player.pos);
-        if (GA.isOutOfBounds(heroRefGrid)) return;                                                  // nothing to do if hero is OOB
+        const heroRefGrid = Vector3.to_Grid3D(this.hero.player.pos);                                                // body
+        const heroGroundGrid = new Grid3D(heroRefGrid.x, heroRefGrid.y, this.hero.player.depth);                    // feet
+        if (GA.isOutOfBounds(heroRefGrid) || GA.isOutOfBounds(heroGroundGrid)) return;                              // nothing to do if hero is OOB
 
-        GRID.calcDistancesBFS_A_3D(heroRefGrid, map, false, GROUND_MOVE_GRID_EXCLUSION);            //ground exlusion 3d on xy plane, this needs to be separate because of hunting on exact position!
-        GRID.calcDistancesBFS_A_3D(heroRefGrid, map, true, AIR_MOVE_GRID_EXCLUSION, "airNodeMap");  //air exclusion fully 3d
+        GRID.calcDistancesBFS_A_3D(heroGroundGrid, map);                                                            // ground exlusion 3d allows movement on staircase
+        GRID.calcDistancesBFS_A_3D(heroRefGrid, map, true, AIR_MOVE_GRID_EXCLUSION, "airNodeMap", "exclude");       // air exclusion fully 3d, no stairs considered
 
         for (const entity of this.POOL) {
             if (entity) {
@@ -1089,7 +1090,7 @@ class Animated_3d_entity extends IAM {
                 if (entity.moveState.moving) {
                     if (this.hero.dead) lapsedTime = IndexArrayManagers.DEAD_LAPSED_TIME;
                     GRID.translatePosition3D(entity, lapsedTime);
-                    entity.update(date);
+                    entity.update(date, GA.nodeMap);
                     entity.proximityDistance = null;
                     continue;
                 }

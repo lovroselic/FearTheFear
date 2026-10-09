@@ -244,13 +244,22 @@ const GRID = {
         return;
     },
     translatePosition3D(entity, lapsedTime) {
+        const state = entity.moveState;
         const length = (lapsedTime / 1000) * entity.moveSpeed;
-        const realDir = Vector3.from_3D_dir(entity.moveState.realDir); //3D to 3D , swap yz
-        entity.moveState.pos = entity.moveState.pos.translate(realDir, length);
+        let realDir = Vector3.from_3D_dir(state.realDir);
 
-        const overallDistance = Vector3.to_FP_Grid3D(entity.moveState.pos).EuclidianDistance(entity.moveState.startPos);
+        if (!(entity.fly > 0)) {
+            const horizontalLength = Math.hypot(realDir.x, realDir.z) || 1;
+            realDir = new Vector3(realDir.x / horizontalLength, 0, realDir.z / horizontalLength);
+        }
+
+        state.pos = state.pos.translate(realDir, length);
+        const currentPos = Vector3.to_FP_Grid3D(state.pos);                     // Compensate only the temporary position used to measure progress.
+        if (state.heightAdjusted) currentPos.z -= state.heightDelta;
+        const overallDistance = currentPos.EuclidianDistance(state.startPos);
+
         if (overallDistance > 1.0) {
-            entity.moveState.moving = false;
+            state.moving = false;
         }
     },
     translatePosition(entity, lapsedTime) {
@@ -747,53 +756,37 @@ const GRID = {
             }
         }
     },
-    calcDistancesBFS_A_3D(start, dungeon, _3D = false, mode = GROUND_MOVE_GRID_EXCLUSION, nodeMap = "nodeMap") {
-        dungeon.GA.setNodeMap(nodeMap, mode, "exclude");
+    calcDistancesBFS_A_3D(start, dungeon, _3D = false, mode = PATH_GRIDS, nodeMap = "nodeMap", type = "value") {
 
-        let startNode = dungeon.GA[nodeMap][start.x][start.y][start.z];
-        let exclusionNode = false;
-
-        if (!startNode) {
-            startNode = new PathNode3D(start.x, start.y, start.z, true);
-            exclusionNode = true;
-        }
+        const GA = dungeon.GA;
+        const nodes = GA.setNodeMap(nodeMap, mode, type);
+        const startNode = nodes[start.x][start.y][start.z] || new PathNode3D(start.x, start.y, start.z, true);
 
         let Q = new NodeQ("distance");
         startNode.distance = 0;
         startNode.goto = NOWAY3;
         Q.queueSimple(startNode);
 
-        const DIR = _3D ? [...ENGINE.directions3D] : [...ENGINE.directions3D_XY_plane];
-
         while (Q.size() > 0) {
             let node = Q.dequeue();
+            if (node.directions === null) node.directions = GA.getDirectionsFromNodeMap(node.grid, nodes, _3D);         //if 3D
+            const DIR = node.directions;
 
-            for (let D = 0; D < DIR.length; D++) {
+            for (let D of DIR) {
+                const nextGrid = node.grid.add(D);
+                if (GA.isOutOfBounds(nextGrid)) continue;
+                const nextNode = nodes[nextGrid.x][nextGrid.y][nextGrid.z];
 
-                let x = (node.grid.x + DIR[D].x);
-                let y = (node.grid.y + DIR[D].y);
-                let z = (node.grid.z + DIR[D].z);
+                if (!nextNode) continue;
+                if (nextNode.distance <= node.distance + 1) continue;
 
-                if (x < 0 || y < 0 || z < 0) continue;
-                if (x >= dungeon.width) continue;
-                if (y >= dungeon.height) continue;
-                if (z >= dungeon.depth) continue;
+                nextNode.distance = node.distance + 1;
+                nextNode.prev = node.grid;
+                nextNode.goto = node.exclusion ? NOWAY3 : D.mirror();                 // Preserve combined horizontal/vertical stair directions.
 
-                let nextNode = dungeon.GA[nodeMap][x][y][z];
-
-                if (nextNode) {
-                    if (nextNode.distance > node.distance + 1) {
-                        nextNode.distance = node.distance + 1;
-                        nextNode.prev = node.grid;
-                        node.exclusion ? nextNode.goto = NOWAY3 : nextNode.goto = DIR[D].mirror(); //this prevents moving in exlusion zone using goto, but still provides  distance;
-
-                        Q.queueSimple(nextNode);
-                    }
-                }
+                Q.queueSimple(nextNode);
             }
         }
-
-        if (exclusionNode) startNode = null;
     },
     pathFromNodeMap(origin, nodeMap) {
         let path = [origin];
@@ -927,6 +920,8 @@ class PathNode3D {
         this.grid = new Grid3D(x, y, z);
         this.visited = false;
         this.exclusion = exclusion;
+        this.directions = null;
+        this.height = 0;                        // offset in grid unit, EMPTY = 0
     }
     setPriority() {
         this.priority = this.path + this.distance;
@@ -1223,6 +1218,7 @@ const reverseDictionary = (dict) => {
 const REVERSED_MAPDICT = reverseDictionary(MAPDICT);
 const STAIRCASE_GRIDS = [MAPDICT.WALL2, MAPDICT.WALL4, MAPDICT.WALL6, MAPDICT.WALL8];
 const GROUND_MOVE_GRID_EXCLUSION = [MAPDICT.WALL, MAPDICT.HOLE, MAPDICT.BLOCKWALL, ...STAIRCASE_GRIDS, MAPDICT.PILLAR];
+const GROUND_MOVE_GRID_EXCLUSION3D = [MAPDICT.WALL, MAPDICT.HOLE, MAPDICT.BLOCKWALL, MAPDICT.PILLAR];
 const CAMERA_EXCLUSION = [MAPDICT.WALL, MAPDICT.BLOCKWALL, ...STAIRCASE_GRIDS, MAPDICT.PILLAR];
 const HERO_GROUND_MOVE_GRID_EXCLUSION = [MAPDICT.WALL, MAPDICT.HOLE, MAPDICT.BLOCKWALL, MAPDICT.PILLAR];
 const NO_FLY = [MAPDICT.WALL8, MAPDICT.WALL6];
@@ -2889,9 +2885,10 @@ class ExtendedGridArray3D extends GridArray3D {
             Array.from({ length: this.height }, (_, y) =>
                 Array.from({ length: this.depth }, (_, z) => {
                     const grid = new Grid3D(x, y, z);
+                    const value = this.map[this.gridToIndex(grid)];
 
                     const carveTypes = {
-                        value: path.includes(this.map[this.gridToIndex(grid)]),
+                        value: path.includes(value) || STAIRCASE_GRIDS.includes(value),
                         exclude: !this.check(grid, pathSum),
                         include: this.check(grid, pathSum)
                     };
@@ -2915,10 +2912,56 @@ class ExtendedGridArray3D extends GridArray3D {
             }
         }
 
+        map.staircase = type === "value";
         this[where] = map;
         return map;
     }
+    getDirectionsFromNodeMap(grid, nodeMap, fly, leaveOut = null) {
+        if (fly > 0.0 || !nodeMap.staircase) return super.getDirectionsFromNodeMap(grid, nodeMap, fly, leaveOut, false);  // Using inherited traversal for flying entities and other map types.
 
+        const node = nodeMap[grid.x]?.[grid.y]?.[grid.z];
+        if (Array.isArray(node?.directions)) {
+            return node.directions.filter(dir => leaveOut === null || !leaveOut.same(dir));                     // Ground directions already computed and cached by BFS.
+        }
+
+        const directions = [];
+        const value = this.getValue(grid);
+        const height = STAIRCASE_GRIDS.indexOf(value) + 1;                                                      // EMPTY = 0; WALL2/4/6/8 = 1/2/3/4.
+        if (node) node.height = height / (STAIRCASE_GRIDS.length + 1);                                          // cache offset
+
+        let levels;
+        if (value === MAPDICT.WALL8) {
+            levels = [0, 1];                                // WALL8 can reach the next floor.
+        } else if (value === MAPDICT.EMPTY) {
+            levels = [0, -1];                               // EMPTY can descend onto WALL8 on the previous floor.
+        } else {
+            levels = [0];                                   // Other stair heights connect within their current floor.
+        }
+
+        for (const dir of ENGINE.directions3D_XY_plane) {
+            for (const dz of levels) {
+                const move = new Vector3D(dir.x, dir.y, dz);
+                if (leaveOut !== null && leaveOut.same(move)) continue;
+                const nextGrid = grid.add(move);
+
+                if (nextGrid.z < 0 || nextGrid.z >= this.depth) continue;
+                if (this.isOutOfBounds(nextGrid)) continue;
+                if (!nodeMap[nextGrid.x][nextGrid.y][nextGrid.z]) continue;     // Null nodes include walls, explicit blocks and impassable EGA shapes.
+
+                const nextValue = this.getValue(nextGrid);
+
+                if (dz === 1 && nextValue !== MAPDICT.EMPTY) continue;          // Cross-floor connections must use the correct landing.
+                if (dz === -1 && nextValue !== MAPDICT.WALL8) continue;
+
+                const nextHeight = STAIRCASE_GRIDS.indexOf(nextValue) + 1;
+                if (Math.abs(dz * 5 + nextHeight - height) > 1) continue;   // Permit equal-height surfaces or one 0.2-height step. dz * 5 accounts for the change of grid level.
+
+                directions.push(move);
+            }
+        }
+
+        return directions;
+    }
 }
 
 class IndexArray3D extends Classes([ArrayBasedDataStructure3D, IA_Dimension_Agnostic_Methods]) {
