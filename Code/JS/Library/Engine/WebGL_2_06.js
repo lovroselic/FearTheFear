@@ -6668,9 +6668,9 @@ class $3D_Entity {
     makeMove() {
         this.moveState.next(this.dirStack.shift());
         //this.moveState.heightAdjusted = false;
-       // this.moveState.heightDelta = 0;
+        // this.moveState.heightDelta = 0;
     }
-    setDistanceFromNodeMap(nodemap, prop = "distance") {
+    /* setDistanceFromNodeMap(nodemap, prop = "distance") {
         let gridPosition = Grid3D.toClass(this.moveState.grid);
 
         if (!nodemap[gridPosition.x][gridPosition.y][gridPosition.z]) {
@@ -6683,6 +6683,23 @@ class $3D_Entity {
         if (distance >= 0 && distance < Infinity) {
             this[prop] = distance;
         } else this[prop] = null;
+    } */
+    setDistanceFromNodeMap(nodemap, prop = "distance") {
+        const groundMap = nodemap === this.parent.map.GA.nodeMap;
+        const grid = groundMap && !(this.fly > 0)
+            ? this.moveState.getFeetGrid()
+            : Grid3D.toClass(this.moveState.grid);
+        const node = nodemap[grid.x]?.[grid.y]?.[grid.z];
+
+        if (!node) {
+            this[prop] = null;
+            if (groundMap && !(this.fly > 0)) return this.die("magic", 0);
+            return;
+        }
+
+        this[prop] = Number.isFinite(node.distance) && node.distance >= 0
+            ? node.distance
+            : null;
     }
     hasStack() {
         return this.dirStack.length > 0;

@@ -1098,11 +1098,9 @@ class Animated_3d_entity extends IAM {
                 //set behaviour and move
                 let passiveFlag = flagArray.includes(true);
                 let distance = entity.distance;
-                if (entity.caster || entity.flier) {
-                    distance = entity.airDistance;
-                }
-
+                if (entity.caster || entity.flier) distance = entity.airDistance;
                 entity.behaviour.manage(entity, distance, passiveFlag);
+                
                 if (!entity.hasStack()) {
 
                     let ARG = {

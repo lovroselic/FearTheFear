@@ -2695,6 +2695,8 @@ class ExtendedGridArray3D extends GridArray3D {
         if (this.isOutOfBounds(grid)) return 0;                 // politely ignores everything
         return this.extendedMap[this.gridToIndex(grid)];
     }
+
+    //
     forwardPositionNotInShape(pos, dir, r, depth, height, resolution = GRID.SETTING.FORWARD_CIRCLE_RESOLUTION) {
         const points = this.forwardPointsFrontEntity(pos, dir, r, resolution);
         for (const point2D of points) {
@@ -2857,27 +2859,9 @@ class ExtendedGridArray3D extends GridArray3D {
 
         return pixelData;
     }
-    getDirectionsIfNot(grid, value, fly = false, leaveOut = null) {
-        const directions = [];
-        const DIR = fly > 0.0 ? [...ENGINE.directions3D] : [...ENGINE.directions3D_XY_plane];
-
-        for (let D = 0; D < DIR.length; D++) {
-            if (leaveOut !== null && leaveOut.same(DIR[D])) continue;
-            let newGrid = grid.add(DIR[D]);
-            if (this.isOutOfBounds(newGrid)) continue;
-            if (this.just_check(newGrid, value)) continue;
-
-            if (this.extendedColliders) {
-                const index = this.gridToIndex(newGrid);
-                const placedElement = this.extendedColliders[index];
-
-                if (placedElement?.element.passable === false) continue;
-            }
-
-            directions.push(DIR[D]);
-        }
-
-        return directions;
+    getDirectionsIfNot(grid, fly = false, leaveOut = null) {
+        const nodeMap = fly > 0 ? this.airNodeMap : this.nodeMap;
+        return this.getDirectionsFromNodeMap(grid, nodeMap, fly, leaveOut);
     }
     setNodeMap(where = "nodeMap", path = [0], type = "value", block = [], cls = PathNode3D) {
         const pathSum = path.sum();
@@ -2954,13 +2938,98 @@ class ExtendedGridArray3D extends GridArray3D {
                 if (dz === -1 && nextValue !== MAPDICT.WALL8) continue;
 
                 const nextHeight = STAIRCASE_GRIDS.indexOf(nextValue) + 1;
-                if (Math.abs(dz * 5 + nextHeight - height) > 1) continue;   // Permit equal-height surfaces or one 0.2-height step. dz * 5 accounts for the change of grid level.
+                if (Math.abs(dz * 5 + nextHeight - height) > 1) continue;       // Permit equal-height surfaces or one 0.2-height step. dz * 5 accounts for the change of grid level.
 
                 directions.push(move);
             }
         }
 
         return directions;
+    }
+    findNextCrossroad(start, dir, fly = false) {
+        let lastDir = dir;
+
+        while (!this.isOutOfBounds(start)) {
+            const directions = this.getDirectionsIfNot(start, fly, lastDir.mirror());
+            if (!directions.length) return [null, null];
+            if (directions.length > 1) return [start, lastDir];
+
+            lastDir = directions[0];
+            start = start.add(lastDir);
+        }
+
+        return [null, null];
+    }
+    findPath_AStar_nodeMap(start, finish, nodeMap, fly = false, block = []) {
+        const is3D = start.z !== undefined;
+        const copyNode = (node, x, y, z) => {
+            if (!node) return null;
+            const copy = is3D
+                ? new PathNode3D(x, y, z, node.exclusion)
+                : new PathNode(x, y, node.exclusion);
+            copy.height = node.height ?? 0;
+            return copy;
+        };
+
+        const searchMap = nodeMap.map((column, x) =>
+            column.map((cell, y) => is3D
+                ? cell.map((node, z) => copyNode(node, x, y, z))
+                : copyNode(cell, x, y))
+        );
+        searchMap.staircase = nodeMap.staircase;
+
+        const getNode = grid => is3D
+            ? searchMap[grid.x]?.[grid.y]?.[grid.z]
+            : searchMap[grid.x]?.[grid.y];
+
+        for (const grid of block) {
+            if (!searchMap[grid.x]) continue;
+            if (is3D) {
+                if (searchMap[grid.x][grid.y]) searchMap[grid.x][grid.y][grid.z] = null;
+            } else {
+                searchMap[grid.x][grid.y] = null;
+            }
+        }
+
+        const startNode = getNode(start);
+        const finishNode = getNode(finish);
+        if (!startNode || !finishNode) return null;
+        if (start.same(finish)) return 0;
+
+        // A unit move can change more than one axis, including a stair landing.
+        const distanceToFinish = grid => Math.max(
+            Math.abs(grid.x - finish.x),
+            Math.abs(grid.y - finish.y),
+            is3D ? Math.abs(grid.z - finish.z) : 0
+        );
+
+        const Q = new NodeQ("priority");
+        startNode.path = 0;
+        startNode.distance = distanceToFinish(start);
+        startNode.setPriority();
+        Q.queueSimple(startNode);
+
+        while (Q.size() > 0) {
+            const node = Q.dequeue();
+            if (node === finishNode) return searchMap;
+
+            const directions = is3D
+                ? this.getDirectionsFromNodeMap(node.grid, searchMap, fly)
+                : this.getDirectionsFromNodeMap(node.grid, searchMap);
+
+            for (const dir of directions) {
+                const next = getNode(node.grid.add(dir));
+                if (!next || next.path <= node.path + 1) continue;
+
+                next.path = node.path + 1;
+                next.prev = node.grid;
+                next.distance = distanceToFinish(next.grid);
+                next.setPriority();
+                Q.queueSimple(next);
+            }
+        }
+
+        return null;
     }
 }
 

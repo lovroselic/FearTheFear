@@ -26,7 +26,7 @@ knownBugs:
 /////////////////////////////////////////
 
 const AI = {
-    VERSION: "3.04",
+    VERSION: "4.00",
     CSS: "color: silver",
     VERBOSE: false,
     INI: {
@@ -53,32 +53,43 @@ const AI = {
             default: return enemy.moveState.pos;
         }
     },
-    getGridValue(enemy) {
-        let gridValue = GROUND_MOVE_GRID_EXCLUSION;
-        if (enemy.fly > 0.0) {
-            gridValue = AIR_MOVE_GRID_EXCLUSION;
+    getNodeMap(enemy) {
+        const GA = enemy.parent.map.GA;
+        return enemy.fly > 0 ? GA.airNodeMap : GA.nodeMap;
+    },
+    getMoveGrid(enemy) {
+        if (this.setting === "3D3" && !(enemy.fly > 0)) {
+            return enemy.moveState.getFeetGrid();
         }
-        return gridValue;
+        return this.getPosition(enemy);
+    },
+    getNode(nodeMap, grid) {
+        return this.setting === "3D3"
+            ? nodeMap[grid.x]?.[grid.y]?.[grid.z]
+            : nodeMap[grid.x]?.[grid.y];
+    },
+    getDirections(enemy, leaveOut = null, grid = this.getMoveGrid(enemy)) {
+        const GA = enemy.parent.map.GA;
+        return this.setting === "3D3"
+            ? GA.getDirectionsIfNot(grid, enemy.fly, leaveOut)
+            : GA.getDirectionsFromNodeMap(grid, this.getNodeMap(enemy), leaveOut);
+    },
+    findPath(enemy, goal, block = []) {
+        return enemy.parent.map.GA.findPath_AStar_nodeMap(
+            this.getMoveGrid(enemy), goal, this.getNodeMap(enemy), enemy.fly, block
+        );
+    },
+    getPathDirections(goal, nodeMap, cut = false) {
+        const path = this.setting === "3D3"
+            ? GRID.pathFromNodeMap3D(goal, nodeMap)
+            : GRID.pathFromNodeMap(goal, nodeMap);
+        return GRID.directionsFromPath(path, cut);
     },
     wanderer(enemy) {
-        /**
-         * works for 2D and 3D
-         */
-        let gridValue = this.getGridValue(enemy);
-        gridValue = gridValue.sum();
-        const enemyGrid = this.getPosition(enemy);
-        const directions = enemy.parent.map.GA.getDirectionsIfNot(enemyGrid, gridValue, enemy.fly, enemy.moveState.dir.mirror());
-        //if (AI.VERBOSE) console.info(enemy.name, enemy.id, "WANDERER", enemy.moveState.pos, "gridValue", gridValue, "dirs", directions, "this.getPosition(enemy)", this.getPosition(enemy));
-        if (directions.length) {
-            const randomDir = directions.chooseRandom();
-            if (randomDir.constructor.name !== "Vector3D" && randomDir.constructor.name !== "Vector") throw new Error("WTF!");
-            return [randomDir];
-        } else {
-            const fallBackDir = enemy.moveState.dir.mirror();
-            const newGrid = enemyGrid.add(fallBackDir);
-            if (enemy.parent.map.GA.check(newGrid, gridValue)) return this.immobile(enemy, true);
-            return [fallBackDir];
-        }
+        let directions = this.getDirections(enemy, enemy.moveState.dir.mirror());
+        if (!directions.length) directions = this.getDirections(enemy);
+        if (!directions.length) return this.immobile(enemy, true);
+        return [directions.chooseRandom()];
     },
     wanderer1D(enemy, ARG) {
         //ARG not used
@@ -117,14 +128,12 @@ const AI = {
 
         let _goto;
         let playerPosition = Grid3D.toClass(ARG.playerPosition);                                    // grid coordinates
-        let grid = this.getPosition(enemy);                                                         //grid coordinates
+        let grid = this.getPosition(enemy);                                                         // grid coordinates
         if (grid.x <= playerPosition.x) {
-            //console.error("interceptor early exit", enemy.id, enemy.name);
-            return [LEFT3];     //creep forward, no shooting anymore
+            return [LEFT3];                                                                         // creep forward, no shooting anymore
         }
 
         if (probable(enemy.huntProbability)) {
-            //console.log("interceptor hunting", enemy.id, enemy.name);
             const GA = enemy.parent.map.GA;
             const path = GRID.pathFromNodeMap3D(grid, GA.airNodeMap);
             const dirs = GRID.directionsFromPath(path);
@@ -138,21 +147,16 @@ const AI = {
                 if (!GA.airNodeMap[nextGrid.x][nextGrid.y][nextGrid.z]) _goto.z = 0;
             }
         } else {
-            //console.info("interceptor creeping", enemy.id, enemy.name);
             _goto = LEFT3;
         }
 
         //if (this.VERBOSE) console.info(`...${enemy.name}-${enemy.id} interceptor -> _goto:`, JSON.stringify(_goto), "strategy", enemy.behaviour.strategy, "_goto cons", _goto.constructor.name);
-
         this.shootBullet(enemy, playerPosition, grid);
-
         return [_goto];
 
     },
     shootBullet(enemy, playerPosition, grid) {
         const dX = grid.x - playerPosition.x;
-
-        //console.warn("can enemy shoots?, dX", dX, dX <= enemy.shootDistance);
 
         if (dX > enemy.shootDistance) {
             enemy.canShoot = false;
@@ -165,92 +169,73 @@ const AI = {
         /** only if the creep direction is clear, no friendly fire allowed */
         if (IA.emptyGrids(sourceIndex - dX, dX)) {
             enemy.canShoot = true;
-            //console.warn("shootBullet from", grid, "to", playerPosition);
             return;
         }
         enemy.canShoot = false;
     },
     hunt(enemy, exactPosition) {
-        if (this.VERBOSE) console.warn("...hunt", enemy.name, enemy.id, "exactPosition", exactPosition);
-        if (exactPosition.hasOwnProperty("exactPlayerPosition")) exactPosition = exactPosition.exactPlayerPosition;
-        let nodeMap = enemy.parent.map.GA.nodeMap;
-        let grid = this.getPosition(enemy);
-        if (this.VERBOSE) console.log(".....enemy position grid", grid);
-        let _goto = nodeMap[grid.x][grid.y][grid.z]?._goto || NOWAY3;
-        if (this.VERBOSE) console.info(`...${enemy.name}-${enemy.id} hunting -> _goto:`, _goto, "strategy", enemy.behaviour.strategy, "node", JSON.stringify(nodeMap[grid.x][grid.y][grid.z]));
-        if (GRID.same3D(_goto, NOWAY3) && (this.setting === "3D" || this.setting === "3D3")) return this.hunt_FP(enemy, exactPosition);
-        return [_goto];
+        exactPosition = exactPosition?.exactPlayerPosition ?? exactPosition;
+        const nodeMap = this.getNodeMap(enemy);
+        const node = this.getNode(nodeMap, this.getMoveGrid(enemy));
+        const dir = node?.goto ?? NOWAY3;
+
+        if (GRID.same3D(dir, NOWAY3) && (this.setting === "3D" || this.setting === "3D3")) {
+            return this.hunt_FP(enemy, exactPosition);
+        }
+        return [dir];
     },
     hunt_FP(enemy, exactPosition) {
-        if (this.VERBOSE) console.error(enemy.name, enemy.id, "..hunt_FP: exactPosition", exactPosition, "distance:", enemy.distance, "enemy.moveState.pos", enemy.moveState.pos);
-        if (!enemy.distance) {
-            if (this.VERBOSE) console.warn("..terminating hunt - null distance");
-            return this.immobile(enemy);
+        const node = this.getNode(this.getNodeMap(enemy), this.getMoveGrid(enemy));
+        if (!exactPosition || !Number.isFinite(node?.distance)) return this.immobile(enemy);
+
+
+        if (enemy.fly > 0 && this.setting === "3D3") {
+            const directions = this.getDirections(enemy);
+            const current = Vector3.to_FP_Grid3D(enemy.moveState.pos);
+            const target = Vector3.to_FP_Grid3D(exactPosition);
+            let best = null;
+            let bestScore = 0;
+
+            for (const dir of directions) {
+                const score = dir.x * (target.x - current.x)
+                    + dir.y * (target.y - current.y)
+                    + dir.z * (target.z - current.z);
+                if (score > bestScore) {
+                    bestScore = score;
+                    best = dir;
+                }
+            }
+            return best ? [best] : this.immobile(enemy);
         }
 
-        const enemyPos = this.getPosition(enemy);
-        const player3DGrid = Vector3.to_Grid3D(exactPosition);
-        if (!GRID.sameFloor(enemyPos, player3DGrid)) return this.immobile(enemy);
-
-        /** this is still 2D plane , only works if they are on the same plane */
-        const pPos = Vector3.to_FP_Grid(exactPosition);
-        const ePos = Vector3.to_FP_Grid(enemy.moveState.pos);
-        const direction = ePos.direction(pPos);
-        let orto = direction.ortoAlign();
-        orto = orto.toVector3D();                                               // adding z=0 for 3D compatibility, but this still only works on the plane!!!
-        const landingGrid = Grid3D.toClass(enemy.moveState.endPos.add(orto));   //move was just completed, so endPos!!
-        const GA = enemy.parent.map.GA;
-        const nextGridBlocked = GA.check(landingGrid, GROUND_MOVE_GRID_EXCLUSION.sum());
-        if (nextGridBlocked) return this.immobile(enemy);
-
-        if (this.VERBOSE) console.log("pPos", pPos, "ePos", ePos, "direction", direction, "enemy.distance", enemy.distance, "enemy.moveState.startPos", enemy.moveState.startPos, "orto", orto, "landingGrid", landingGrid, "nextGridBlocked", nextGridBlocked);
-        if (this.VERBOSE) console.info(`${enemy.name}-${enemy.id} FP hunt`, orto, "strategy", enemy.behaviour.strategy);
-
-        return [orto];
+        const current = Vector3.to_FP_Grid(enemy.moveState.pos);
+        const target = Vector3.to_FP_Grid(exactPosition);
+        if (current.same(target)) return [NOWAY3];
+        return [current.direction(target).ortoAlign().toVector3D()];
     },
     hunt2D(enemy, player) {
-        if (this.VERBOSE) console.warn("...hunt", enemy.name, enemy.id, "player", player);
-        const nodeMap = enemy.parent.map.GA.nodeMap;
-        let grid = this.getPosition(enemy);
-        if (this.VERBOSE) console.log(".....enemy position grid", grid);
-        let _goto = nodeMap[grid.x][grid.y]?.goto || NOWAY;
-        if (this.VERBOSE) console.info(`...${enemy.name}-${enemy.id} hunting2D -> _goto:`, _goto, "strategy", enemy.behaviour.strategy, "node", JSON.stringify(nodeMap[grid.x][grid.y]));
-        return [_goto];
+        const node = this.getNode(this.getNodeMap(enemy), this.getMoveGrid(enemy));
+        return [node?.goto ?? NOWAY];
     },
     crossroader(enemy, playerPosition, dir, block, exactPosition) {
         playerPosition = Grid3D.toClass(playerPosition);
-        if (this.VERBOSE) console.log("\n------------------------------");
-        if (this.VERBOSE) console.info(`Crossroader analysis for ${enemy.name}-${enemy.id}, player position: ${JSON.stringify(playerPosition)}, enemy.ms.endPos: ${JSON.stringify(enemy.moveState.endPos)}`);
+        const GA = enemy.parent.map.GA;
+        const [goal] = GA.findNextCrossroad(playerPosition, dir, enemy.fly);
+        if (!goal || GA.isOutOfBounds(goal)) return this.hunt(enemy, exactPosition);
 
-        let goal, _;
-        [goal, _] = enemy.parent.map.GA.findNextCrossroad(playerPosition, dir, enemy.fly);
-        if (this.VERBOSE) console.log(`.. ${enemy.name}-${enemy.id} goal`, goal, "strategy", enemy.behaviour.strategy);
-
-        if (goal === null || enemy.parent.map.GA.isOutOfBounds(goal)) {
-            return this.hunt(enemy, exactPosition);
-        }
-
-        const goalNode = enemy.parent.map.GA.nodeMap[goal.x][goal.y][goal.z];
+        const nodeMap = this.getNodeMap(enemy);
+        const goalNode = this.getNode(nodeMap, goal);
         if (!goalNode) return this.hunt(enemy, exactPosition);
 
-        /** what if goal takes you further away - advancer! */
-        const new_distance = goalNode.distance;
-        if (this.VERBOSE) console.warn(`.. ${enemy.name}-${enemy.id} new_distance  from goal`, new_distance, "current distance", enemy.distance);
-        if (enemy.distance < this.INI.CHANGE_ADVANCER_TO_HUNT_MIN_DISTANCE && new_distance > enemy.distance) {
-            if (this.VERBOSE) console.warn("... overriding behavior -> hunt");
+        const distance = this.getNode(nodeMap, this.getMoveGrid(enemy))?.distance;
+        if (distance < this.INI.CHANGE_ADVANCER_TO_HUNT_MIN_DISTANCE && goalNode.distance > distance) {
             return this.hunt(enemy, exactPosition);
         }
 
-        const gridValue = this.getGridValue(enemy);
-        const Astar = enemy.parent.map.GA.findPath_AStar_fast(this.getPosition(enemy), goal, gridValue, "exclude", enemy.fly, block);
-        if (this.VERBOSE) console.log(`.. ${enemy.name}-${enemy.id} Astar`, Astar);
-
+        const Astar = this.findPath(enemy, goal, block);
         if (Astar === null) return this.immobile(enemy);
         if (Astar === 0) return this.hunt(enemy, exactPosition);
-
-        let path = GRID.pathFromNodeMap3D(goal, Astar);
-        let directions = GRID.directionsFromPath(path, 1);
-        return directions;
+        return this.getPathDirections(goal, Astar, 1);
     },
     hunter(enemy, ARG) {
         return this.hunt(enemy, ARG.exactPlayerPosition);
@@ -265,42 +250,40 @@ const AI = {
         return this.crossroader(enemy, ARG.playerPosition, ARG.currentPlayerDir, ARG.block, ARG.exactPlayerPosition);
     },
     runAway(enemy) {
-        console.error("running away - untested", enemy);
-        let nodeMap = enemy.parent.map.GA.nodeMap;
-        let grid = this.getPosition(enemy);
-        let directions = enemy.parent.map.GA.getDirectionsFromNodeMap(grid, nodeMap, enemy.fly, nodeMap[grid.x][grid.y][grid.z]._goto);
-        directions.push(NOWAY3);
-        let distances = [];
-        for (const dir of directions) {
-            let nextGrid = grid.add(dir);
-            distances.push(nodeMap[nextGrid.x][nextGrid.y][nextGrid.z].distance);
-        }
-        let maxDistance = Math.max(...distances);
-        return [directions[distances.indexOf(maxDistance)]];
-    },
-    _goto(enemy) {
-        const gridValue = this.getGridValue(enemy);
-        const goal = enemy.guardPosition; // should be set in SPAWN!
-        const Astar = enemy.parent.map.GA.findPath_AStar_fast(this.getPosition(enemy), goal, gridValue, "exclude", enemy.fly);
+        const nodeMap = this.getNodeMap(enemy);
+        const grid = this.getMoveGrid(enemy);
+        const node = this.getNode(nodeMap, grid);
+        if (!node) return this.immobile(enemy);
 
-        if (Astar === null) {
-            return this.immobile(enemy);
+        const directions = this.getDirections(enemy, node.goto ?? null);
+        directions.push(this.setting === "3D3" ? NOWAY3 : NOWAY);
+        let best = directions[0];
+        let maxDistance = -Infinity;
+
+        for (const dir of directions) {
+            const distance = this.getNode(nodeMap, grid.add(dir))?.distance;
+            if (distance > maxDistance) {
+                maxDistance = distance;
+                best = dir;
+            }
         }
+        return [best];
+    },
+    _goto(enemy, ARG) {
+        const goal = enemy.guardPosition;
+        const Astar = this.findPath(enemy, goal);
+        if (Astar === null) return this.immobile(enemy);
+
         if (Astar === 0) {
             if (enemy.behaviour.complex("passive")) {
                 enemy.behaviour.cycle("passive");
                 enemy.behaviour.strategy = enemy.behaviour.getPassive();
                 return this.immobile(enemy);
-            } else {
-                //should be obsolete
-                console.error("This should have never happened to", enemy);
-                return this.hunt(enemy);
             }
+            return this.hunt(enemy, ARG?.exactPlayerPosition);
         }
 
-        let path = GRID.pathFromNodeMap3D(goal, Astar);
-        let directions = GRID.directionsFromPath(path);
-        return directions;
+        return this.getPathDirections(goal, Astar);
     },
     circler(enemy) {
         /** not updated to 3D !!!! */
@@ -350,34 +333,32 @@ const AI = {
         }
     },
     keepTheDistance(enemy, ARG) {
-        //console.info("############# KEEPING THE DISTANCE ##############");
-        const map = enemy.parent.map;
-        const grid = this.getPosition(enemy);
+        const grid = this.getMoveGrid(enemy);
         const playerGrid = Grid3D.toClass(ARG.playerPosition);
-        const directions = map.GA.getDirectionsFromNodeMap(grid, map.GA.nodeMap, enemy.fly);
-        let possible = [];
-        let max = [];
-        let curMax = 0;
-        for (let i = 0; i < directions.length; i++) {
-            const test = grid.add(directions[i]);
-            const distance = test.distanceDiagonal(playerGrid);
-            if (distance === enemy.stalkDistance) possible.push(directions[i]);
-            if (distance > curMax) {
-                max.clear();
-                curMax = distance;
-                max.push(directions[i]);
-            } else if (distance === curMax) max.push(directions[i]);
+        const directions = this.getDirections(enemy);
+        const possible = [];
+        let furthest = [];
+        let maxDistance = -Infinity;
+
+        for (const dir of directions) {
+            const distance = grid.add(dir).distanceDiagonal(playerGrid);
+            if (distance === enemy.stalkDistance) possible.push(dir);
+            if (distance > maxDistance) {
+                maxDistance = distance;
+                furthest = [dir];
+            } else if (distance === maxDistance) {
+                furthest.push(dir);
+            }
         }
-        if (possible.length > 0) {
-            return [possible.chooseRandom()];
-        } else if (max.length > 0) {
-            return [max.chooseRandom()];
-        } else return this.immobile(enemy);
+
+        if (possible.length) return [possible.chooseRandom()];
+        if (furthest.length) return [furthest.chooseRandom()];
+        return this.immobile(enemy);
     },
+
     shadower(enemy, ARG) {
-        /** not updated to 3D !!!! */
-        let gridValue = this.getGridValue(enemy);
-        const directions = enemy.parent.map.GA.getDirectionsIfNot(this.getPosition(enemy), gridValue, enemy.moveState.dir.mirror());
+        const directions = this.getDirections(enemy, enemy.moveState.dir.mirror());
+        if (!directions.length) return this.immobile(enemy, true);
         if (directions.length === 1) return [directions[0]];
         if (enemy.moveState.goingAway(ARG.MS) || enemy.moveState.towards(ARG.MS, enemy.tolerance)) {
             //if going away or not coming towards, take HERo's dir if possible
@@ -406,37 +387,36 @@ const AI = {
         }
     },
     prophet(enemy, ARG) {
-        /** not updated to 3D !!!! */
-        let firstCR, lastDir;
-        [firstCR, lastDir] = enemy.parent.map.GA.findNextCrossroad(ARG.playerPosition, ARG.currentPlayerDir, enemy.fly);
-        let directions = enemy.parent.map.GA.getDirectionsIfNot(firstCR, MAPDICT.WALL, enemy.fly, lastDir.mirror());
-        let crossroads = [];
-        let secondCR, _;
-        for (let dir of directions) {
-            [secondCR, _] = enemy.parent.map.GA.findNextCrossroad(firstCR.add(dir), dir, enemy.fly);
-            crossroads.push(secondCR);
-        }
-        let distances = [];
-        let paths = [];
-        let gridValue = this.getGridValue(enemy);
-        for (let cross of crossroads) {
-            const Astar = enemy.parent.map.GA.findPath_AStar_fast(this.getPosition(enemy), cross, gridValue, "exclude", enemy.fly, ARG.block);
+        const GA = enemy.parent.map.GA;
+        const [firstCR, lastDir] = GA.findNextCrossroad(
+            ARG.playerPosition, ARG.currentPlayerDir, enemy.fly
+        );
+        if (!firstCR) return this.hunt(enemy, ARG.exactPlayerPosition);
 
-            if (Astar === null) {
-                return this.immobile(enemy);
+        const directions = this.getDirections(enemy, lastDir.mirror(), firstCR);
+        let bestGoal = null;
+        let bestPath = null;
+        let bestLength = Infinity;
+
+        for (const dir of directions) {
+            const [goal] = GA.findNextCrossroad(firstCR.add(dir), dir, enemy.fly);
+            if (!goal) continue;
+
+            const Astar = this.findPath(enemy, goal, ARG.block);
+            if (Astar === 0) return this.hunt(enemy, ARG.exactPlayerPosition);
+            if (Astar === null) continue;
+
+            const length = this.getNode(Astar, goal).path;
+            if (length < bestLength) {
+                bestLength = length;
+                bestGoal = goal;
+                bestPath = Astar;
             }
-            if (Astar === 0) {
-                return this.hunt(enemy, ARG.exactPlayerPosition);
-            }
-
-            distances.push(Astar[cross.x][cross.y].path);
-            paths.push(Astar);
         }
 
-        let minIndex = distances.indexOf(Math.min(...distances));
-        let path = GRID.pathFromNodeMap(crossroads[minIndex], paths[minIndex]);
-        let finalDirections = GRID.directionsFromPath(path, 1);
-        return finalDirections;
+        return bestPath
+            ? this.getPathDirections(bestGoal, bestPath, 1)
+            : this.immobile(enemy);
     },
 };
 
