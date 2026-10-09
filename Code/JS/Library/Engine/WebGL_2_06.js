@@ -6667,23 +6667,7 @@ class $3D_Entity {
     }
     makeMove() {
         this.moveState.next(this.dirStack.shift());
-        //this.moveState.heightAdjusted = false;
-        // this.moveState.heightDelta = 0;
     }
-    /* setDistanceFromNodeMap(nodemap, prop = "distance") {
-        let gridPosition = Grid3D.toClass(this.moveState.grid);
-
-        if (!nodemap[gridPosition.x][gridPosition.y][gridPosition.z]) {
-            this.distance = null;
-            if (this.fly) return;
-            return this.die("magic", 0);
-        }
-
-        let distance = nodemap[gridPosition.x][gridPosition.y][gridPosition.z].distance;
-        if (distance >= 0 && distance < Infinity) {
-            this[prop] = distance;
-        } else this[prop] = null;
-    } */
     setDistanceFromNodeMap(nodemap, prop = "distance") {
         const groundMap = nodemap === this.parent.map.GA.nodeMap;
         const grid = groundMap && !(this.fly > 0)
@@ -7015,8 +6999,9 @@ class $Movable_Interactive_entity extends $3D_Entity {
             if (this.IAM.hero.dead) {
                 lapsedTime = IndexArrayManagers.DEAD_LAPSED_TIME;
             }
+            const nodemap = (this.fly > 0) ? this.parent.map.GA.airNodeMap : this.parent.map.GA.nodeMap;
             GRID.translatePosition3D(this, lapsedTime);
-            this.update(date);
+            this.update(date, nodemap);
             return;
         }
 
