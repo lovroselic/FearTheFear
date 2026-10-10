@@ -5363,7 +5363,7 @@ class GeneralMissile extends Drawable_object {
         this.active = true;
         this.pos = position;
         this.dir = direction;
-        this.bounce3D = true;
+        //this.bounce3D = true;
 
         ImportTypeToConstructor(this, type);
         this.texture = WebGL.createTexture(TEXTURE[this.texture]);
@@ -5440,26 +5440,34 @@ class Missile extends GeneralMissile {
     setDepth() {
         this.depth = Math.floor(this.pos.y);
     }
+    /*  move(lapsedTime, GA) {
+         if (!this.IAM.exists(this.id)) return;
+ 
+         let length = (lapsedTime / 1000) * this.moveSpeed;
+         const pos = this.pos.translate(this.dir, length);
+         const F = this.r / 4;                                       // pre bounce offset
+ 
+         if (lapsedTime < 0.01) return this.explode(this.IAM);
+         if (GA.isWall(Grid3D.toClass(Vector3.to_Grid3D(pos)))) return this.move(lapsedTime / 2, GA);
+         if (pos.y < F && this.dir.y < 0) {
+             //console.warn("FLOOR bounce ", this.id, pos, "F", F, "this.pos", this.pos, "this.dir", this.dir);
+             this.hitWall(this.IAM, pos, GA, DIR_UP);
+             return this.move(lapsedTime, GA);
+         } else if (pos.y > this.IAM.map.maxZ - F && this.dir.y > 0) {
+             //console.warn("CEIL bounce ?", this.id, pos, "F", F, "this.pos", this.pos, "this.dir", this.dir);
+             this.hitWall(this.IAM, pos, GA, DIR_DOWN);
+             return this.move(lapsedTime, GA);
+         }
+ 
+         this.pos = pos;
+         this.setDepth();
+         this.distance = glMatrix.vec3.distance(this.IAM.hero.player.pos.array, this.pos.array);
+         this.pos_to_translation();
+     } */
     move(lapsedTime, GA) {
         if (!this.IAM.exists(this.id)) return;
-
-        let length = (lapsedTime / 1000) * this.moveSpeed;
-        const pos = this.pos.translate(this.dir, length);
-        const F = this.r / 4;                                       // pre bounce offset
-
-        if (lapsedTime < 0.01) return this.explode(this.IAM);
-        if (GA.isWall(Grid3D.toClass(Vector3.to_Grid3D(pos)))) return this.move(lapsedTime / 2, GA);
-        if (pos.y < F && this.dir.y < 0) {
-            //console.warn("FLOOR bounce ", this.id, pos, "F", F, "this.pos", this.pos, "this.dir", this.dir);
-            this.hitWall(this.IAM, pos, GA, DIR_UP);
-            return this.move(lapsedTime, GA);
-        } else if (pos.y > this.IAM.map.maxZ - F && this.dir.y > 0) {
-            //console.warn("CEIL bounce ?", this.id, pos, "F", F, "this.pos", this.pos, "this.dir", this.dir);
-            this.hitWall(this.IAM, pos, GA, DIR_DOWN);
-            return this.move(lapsedTime, GA);
-        }
-
-        this.pos = pos;
+        const length = (lapsedTime / 1000) * this.moveSpeed;
+        this.pos = this.pos.translate(this.dir, length);
         this.setDepth();
         this.distance = glMatrix.vec3.distance(this.IAM.hero.player.pos.array, this.pos.array);
         this.pos_to_translation();
@@ -5506,38 +5514,54 @@ class BouncingMissile extends Missile {
     calcPower(magic) {
         return Math.max(1, Math.round((0.9 * magic)) + RND(-3, 3));
     }
-    rebound(innerPoint, GA, normal, IAM, penetration = 0) {
-        console.log("rebound", innerPoint, normal, penetration);
-        if (normal) {
-            const direction = this.dir.array;
-            const surfaceNormal = normal.array;
-            const dot = glMatrix.vec3.dot(direction, surfaceNormal);
+    /*    rebound(innerPoint, GA, normal, IAM, penetration = 0) {
+           console.log("rebound", innerPoint, normal, penetration);
+           if (normal) {
+               const direction = this.dir.array;
+               const surfaceNormal = normal.array;
+               const dot = glMatrix.vec3.dot(direction, surfaceNormal);
+   
+               if (dot < 0) {
+                   const reflected = glMatrix.vec3.create();                                   // With outward-facing normals, dot < 0 means the missile is moving into the surface.
+                   glMatrix.vec3.scaleAndAdd(reflected, direction, surfaceNormal, -2 * dot);
+                   glMatrix.vec3.normalize(reflected, reflected);
+                   this.dir = Vector3.from_array(reflected);
+               }
+   
+               this.pos = this.pos.translate(normal, penetration + 1E-4);                      // use penetration to move missile back from the collision prison
+               this.bounceCount++;
+               return;
+           }
+   
+         
+           const pos2D = Vector3.to_FP_Grid(this.pos);
+           const dir2D = Vector3.to_FP_Vector(this.dir);
+           const reboundDir = GRID.getReboundDir(innerPoint, pos2D, dir2D, GA, this.depth);
+           console.warn("reboundDir", reboundDir);
+   
+           if (!reboundDir) return this.explode(IAM);
+           this.dir = Vector3.from_2D_dir(reboundDir);
+           this.bounceCount++;
+       } */
+    rebound(normal, penetration = 0) {
+        const n = glMatrix.vec3.create();
+        glMatrix.vec3.normalize(n, normal.array);
+        const reflected = glMatrix.vec3.create();
+        glMatrix.vec3.normalize(reflected, this.dir.array);
+        const dot = glMatrix.vec3.dot(reflected, n);
+        const bounced = dot < -1E-6;
 
-            if (dot < 0) {
-                const reflected = glMatrix.vec3.create();                                   // With outward-facing normals, dot < 0 means the missile is moving into the surface.
-                glMatrix.vec3.scaleAndAdd(reflected, direction, surfaceNormal, -2 * dot);
-                glMatrix.vec3.normalize(reflected, reflected);
-                this.dir = Vector3.from_array(reflected);
-            }
-
-            this.pos = this.pos.translate(normal, penetration + 1E-4);                      // use penetration to move missile back from the collision prison
-            this.bounceCount++;
-            return;
-        }
-
-        /*
-         * Legacy cubic-grid rebound.
-         */
-        const pos2D = Vector3.to_FP_Grid(this.pos);
-        const dir2D = Vector3.to_FP_Vector(this.dir);
-        const reboundDir = GRID.getReboundDir(innerPoint, pos2D, dir2D, GA, this.depth);
-        console.warn("reboundDir", reboundDir);
-
-        if (!reboundDir) return this.explode(IAM);
-        this.dir = Vector3.from_2D_dir(reboundDir);
-        this.bounceCount++;
+        if (bounced) glMatrix.vec3.scaleAndAdd(reflected, reflected, n, -2 * dot);
+        glMatrix.vec3.normalize(reflected, reflected);
+        this.dir = Vector3.from_array(reflected);
+        this.pos = this.pos.translate(Vector3.from_array(n), penetration + 1E-4);
+        this.setDepth();
+        this.distance = glMatrix.vec3.distance(this.IAM.hero.player.pos.array, this.pos.array);
+        this.pos_to_translation();
+        if (bounced) this.bounceCount++;
+        return bounced;
     }
-    hitWall(IAM, point, GA, normal, penetration = 0) {
+    /* hitWall(IAM, point, GA, normal, penetration = 0) {
         console.log("hitWall", point, normal, penetration);
         if (this.power > this.minPower) {
             this.rebound(point, GA, normal, IAM, penetration);
@@ -5555,12 +5579,35 @@ class BouncingMissile extends Missile {
         } else {
             this.explode(IAM);
         };
+    } */
+    hitWall(IAM, point, GA, normal, penetration = 0) {
+        const normalLength = normal ? glMatrix.vec3.length(normal.array) : 0;
+        if (!Number.isFinite(normalLength) || normalLength <= 1E-8 || !Number.isFinite(penetration) || penetration < 0) {
+            this.explode(IAM);
+            return;
+        }
+
+        if (!this.rebound(normal, penetration)) return;
+
+        if (this.power <= this.minPower) {
+            if (this.collectible) this.drop(GA);
+            this.explode(IAM);
+            return;
+        }
+
+        AUDIO.Buzz.volume = RAY.volume(this.distance);
+        AUDIO.Buzz.play();
+        this.power--;
+        glMatrix.vec3.scale(this.scale, this.originalScale, this.power / this.maxPower);
+        const mScaleMatrix = glMatrix.mat4.create();
+        glMatrix.mat4.fromScaling(mScaleMatrix, this.scale);
+        this.mScaleMatrix = mScaleMatrix;
     }
     drop(GA) {
         if (!GA) GA = this.IAM.map.GA;
 
         const placementPosition = GA.findSolidFloor(this.pos);
-        if (!placementPosition) return;                                                 //console.error("orb cannot be placed at", placementPosition, "orb is lost!");
+        if (!placementPosition) return;
         placementPosition.adjuctCirclePos(this.r);
 
         const dropped = new AirItem3D(Vector3.to_FP_Grid3D(this.pos), this.collectibleType, placementPosition);
@@ -5571,15 +5618,10 @@ class BouncingMissile extends Missile {
 
 class Blue3D_Bouncer extends BouncingMissile {
     constructor(position, direction, type, magic, explosionType = null, friendly = false, collectibleType = null) {
-        super(position, direction, type, magic);
+        super(position, direction, type, magic, explosionType, friendly, collectibleType);
         this.name = "Blue3D_Bouncer";
     }
-    rebound(inner, GA, normal = null) {
-        let faceNormal = normal || Vector3.getFaceNormal(this.pos.sub(inner));
-        let reflectedDir = this.dir.reflect(faceNormal);
-        this.dir = reflectedDir;
-        this.bounceCount++;
-    }
+
 }
 
 class WallFeature3D {
@@ -6927,7 +6969,7 @@ class $3D_Entity {
         const manaCost = this.missile.calcMana(this.magic);
         const missile = new this.missile(position, dir, this.missileType, this.magic);
 
-        if (GA.isWall(Vector3.to_Grid3D(missile.pos))) return;                                //missile could be created in wall
+        if (GA.sphereInWallPoint(missile.pos, missile.dir, missile.r)[0] || GA.missileInShapePoint(missile)[0]) return; //missile could be created in wallor in shape
 
         this.canShoot = false;
         this.caster = false;

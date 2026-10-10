@@ -759,24 +759,16 @@ class Missile3D extends IAM {
             if (obj) {
                 obj.move(lapsedTime, GA);
 
-                const pos = Vector3.to_FP_Grid(obj.pos);                                                                    //check wall hit
-                let [wallHit, point] = obj.bounce3D ?
-                    GA.sphereInWallPoint(obj.pos, obj.dir, obj.r) :
-                    GA.entityInWallPoint(pos, Vector3.to_FP_Vector(obj.dir), obj.r, obj.depth);    //point is returned in different formats!! Vector3 or FP_Grid respectively
+                const samples = obj.collisionSamples ??= new Float64Array(27);                                              // Allocate once per missile, then reuse every frame.
+                GA.missileSphereSamples(obj.pos, obj.dir, obj.r, samples);
 
-                console.log("..IAM", obj.id, "wallHit", wallHit, point,
-                    "\nobj.bounce3D", obj.bounce3D,
-                    "\nGA.sphereInWallPoint(obj.pos, obj.dir, obj.r)", GA.sphereInWallPoint(obj.pos, obj.dir, obj.r),
-                    "\nGA.entityInWallPoint(pos, Vector3.to_FP_Vector(obj.dir), obj.r, obj.depth)", GA.entityInWallPoint(pos, Vector3.to_FP_Vector(obj.dir), obj.r, obj.depth)
-                );
-
+                const [wallHit, point, normal, penetration] = GA.sphereInWallPoint(obj.pos, obj.dir, obj.r, samples);
                 if (wallHit) {
-                    obj.hitWall(this, point, GA);
+                    obj.hitWall(this, point, GA, normal, penetration);
                     continue;
                 }
 
-                // Check EGA shape collision
-                const [shapeHit, shapePoint, shapeNormal, shapePenetration] = GA.missileInShapePoint(obj);
+                const [shapeHit, shapePoint, shapeNormal, shapePenetration] = GA.missileInShapePoint(obj, samples);         // Check EGA shape collision
                 if (shapeHit) {
                     obj.hitWall(this, shapePoint, GA, shapeNormal, shapePenetration);
                     continue;

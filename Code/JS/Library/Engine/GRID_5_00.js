@@ -17,7 +17,7 @@ known bugs:
 */
 
 const GRID = {
-    VERSION: "4.07",
+    VERSION: "5.00",
     CSS: "color: #0AA",
     VERBOSE: false,
     SETTING: {
@@ -830,42 +830,6 @@ const GRID = {
 
         return new Vector3D(-x, -y, -z);
     },
-    getReboundDir(innerPoint, outerPoint, dir, GA, depth) {
-        const inner = Grid3D.addDepth(innerPoint, depth);
-        const outer = Grid3D.addDepth(outerPoint, depth);
-
-        if (GA.isWall(outer)) {
-            console.error("Missile position in wall. This should never have happened! But it is handled.", outer, GA.isWall(outer));
-            console.info("innerPoint", innerPoint, "outerPoint", outerPoint);
-            return null;
-        }
-        let faceNormal = outer.sub(inner);
-        let newDir;
-        let reverseDir = dir.mirror();
-        faceNormal = Vector.toClass(faceNormal);
-
-        if (!faceNormal.isOrto()) {
-            faceNormal = GRID.resolveCornerBlock(faceNormal, inner, GA);
-        }
-
-        if (!faceNormal.isOrto()) {
-            newDir = FP_Vector.toClass(faceNormal).normalize();
-        } else if (GRID.same(faceNormal, NOWAY)) {
-            newDir = outerPoint.direction(innerPoint);
-        } else {
-            let angle = FP_Vector.toClass(faceNormal).radAngleBetweenVectorsSharp(reverseDir);
-            newDir = faceNormal.rotate(-angle);
-        }
-
-        return newDir;
-    },
-    resolveCornerBlock(faceNormal, innerGrid, GA) {
-        const clone = faceNormal.clone();
-        if (GA.isWall(innerGrid.add(new Vector(faceNormal.x, 0)))) faceNormal.x = 0;
-        if (GA.isWall(innerGrid.add(new Vector(0, faceNormal.y)))) faceNormal.y = 0;
-        if (faceNormal.isNull()) return clone;
-        return faceNormal;
-    },
 
     /**
     * Processes an input map object by verifying its dimensions and converting each row of the map's grid 
@@ -1223,6 +1187,8 @@ const CAMERA_EXCLUSION = [MAPDICT.WALL, MAPDICT.BLOCKWALL, ...STAIRCASE_GRIDS, M
 const HERO_GROUND_MOVE_GRID_EXCLUSION = [MAPDICT.WALL, MAPDICT.HOLE, MAPDICT.BLOCKWALL, MAPDICT.PILLAR];
 const NO_FLY = [MAPDICT.WALL8, MAPDICT.WALL6];
 const AIR_MOVE_GRID_EXCLUSION = [MAPDICT.WALL, MAPDICT.BLOCKWALL, ...NO_FLY, MAPDICT.PILLAR];
+const MISSILE_WALL_MASK = AIR_MOVE_GRID_EXCLUSION.sum();
+const MISSILE_NO_HIT = Object.freeze([false, null, null, 0]);
 const EXPLOADABLES = [MAPDICT.BLOCKWALL, MAPDICT.DOOR];
 const ITEM_DROP_EXCLUSION = [MAPDICT.WALL, MAPDICT.BLOCKWALL, MAPDICT.PILLAR];
 const JUMP_MOVE = [MAPDICT.EMPTY, MAPDICT.HOLE, ...STAIRCASE_GRIDS];
@@ -1982,14 +1948,15 @@ class GridArray extends Classes([ArrayBasedDataStructure, GA_Dimension_Agnostic_
         }
         return [start, lastDir];
     }
-    entityInWallPoint(pos, dir, r, resolution = 8) {
+    /* entityInWallPoint(pos, dir, r, resolution = 8) {
+        // waiting for deprecation
         let checks = this.pointsAroundEntity(pos, dir, r, resolution);
         for (const point of checks) {
             let isWall = !this.positionIsNotWall(point);
             if (isWall) return [true, point];
         }
         return [false, null];
-    }
+    } */
     gridsAroundEntity(pos, dir, r, resolution = 4) {
         let checks = this.pointsAroundEntity(pos, dir, r, resolution);
         checks = checks.filter(this.positionIsNotWall, this);
@@ -2439,71 +2406,118 @@ class GridArray3D extends Classes([ArrayBasedDataStructure3D, GA_Dimension_Agnos
         }
         return directions;
     }
-    entityInWallPoint(pos, dir, r, depth, resolution = 8) {
-        let checks = this.pointsAroundEntity(pos, dir, r, resolution);
-        for (const point of checks) {
-            let isWall = !this.positionIsNotWall(point, depth);
-            if (isWall) return [true, point];
+    /*  entityInWallPoint(pos, dir, r, depth, resolution = 8) {
+         // waiting for deprecation
+         let checks = this.pointsAroundEntity(pos, dir, r, resolution);
+         for (const point of checks) {
+             let isWall = !this.positionIsNotWall(point, depth);
+             if (isWall) return [true, point];
+         }
+         return [false, null];
+     } */
+    sphereInWallPoint(pos, dir, r, samples = null) {
+        const width = this.width;
+        const height = this.height;
+        const depth = this.depth;
+        const layerSize = width * height;
+
+        // WebGL dimensions: world X = width, world Y = depth, world Z = height.
+        if (r * 2 > Math.min(width, depth, height)) return [true, new Vector3(pos.x, pos.y, pos.z), null, 0];       // The sphere cannot fit inside this map.
+
+
+        // Cheap analytic correction for all six map boundaries.
+        const dx = Math.max(r, Math.min(width - r, pos.x)) - pos.x;
+        const dy = Math.max(r, Math.min(depth - r, pos.y)) - pos.y;
+        const dz = Math.max(r, Math.min(height - r, pos.z)) - pos.z;
+
+        if (dx !== 0 || dy !== 0 || dz !== 0) {
+            const penetration = Math.hypot(dx, dy, dz);
+            const normal = new Vector3(dx / penetration, dy / penetration, dz / penetration);
+
+            // At corners, this represents the combined boundary correction.
+            const point = new Vector3(dx === 0 ? pos.x : dx > 0 ? 0 : width, dy === 0 ? pos.y : dy > 0 ? 0 : depth, dz === 0 ? pos.z : dz > 0 ? 0 : height);
+            return [true, point, normal, penetration];
         }
-        return [false, null];
-    }
-    spherePointsAroundCenter(pos, dir, r) {
-        pos = pos.array;
-        dir = dir.array;
-        const points = [];
 
-        const forwardPoint = glMatrix.vec3.create();
-        glMatrix.vec3.scaleAndAdd(forwardPoint, pos, dir, r);                                       // First point directly ahead
-        points.push(forwardPoint);
+        samples ??= this.missileSphereSamples(pos, dir, r);
 
-        let up = [0, 1, 0];                                                                         // Find orthogonal vectors to create a hemisphere around the direction vector
-        let orthogonalVec1 = glMatrix.vec3.create();
-        glMatrix.vec3.cross(orthogonalVec1, dir, up);
+        const map = this.map;
 
-        if (glMatrix.vec3.length(orthogonalVec1) < 0.001) {
-            up = [1, 0, 0];                                                                         // Handle the case when direction is (almost) parallel to 'up' vector
-            glMatrix.vec3.cross(orthogonalVec1, dir, up);
-        }
+        for (let offset = 0; offset < samples.length; offset += 3) {
+            const x = Math.floor(samples[offset]);
+            const y = Math.floor(samples[offset + 1]);
+            const z = Math.floor(samples[offset + 2]);
 
-        glMatrix.vec3.normalize(orthogonalVec1, orthogonalVec1);
+            if (x < 0 || x >= width || y < 0 || y >= depth || z < 0 || z >= height) continue;
+            const index = x + z * width + y * layerSize;                                            // Grid3D order: world X, world Z, world Y.
 
-        const orthogonalVec2 = glMatrix.vec3.create();                                              // Second orthogonal vector
-        glMatrix.vec3.cross(orthogonalVec2, dir, orthogonalVec1);
-        glMatrix.vec3.normalize(orthogonalVec2, orthogonalVec2);
+            if (!(map[index] & MISSILE_WALL_MASK)) continue;
 
-        const angles = [Math.PI / 2, Math.PI / 4];                                                  // Choose angles defining hemisphere coverage 
+            let nearest = Infinity;
+            let hitAxis = -1;
+            let hitSide = 0;
+            let hitPlane = 0;
 
-        for (let angle of angles) {                                                                 // Generate hemisphere points
-            const cosAngle = Math.cos(angle);
-            const sinAngle = Math.sin(angle);
+            // Face resolution is needed only after detecting a solid cell.
+            for (let axis = 0; axis < 3; axis++) {
+                const cell = axis === 0 ? x : axis === 1 ? y : z;
+                const limit = axis === 0 ? width : axis === 1 ? depth : height;
+                const stride = axis === 0 ? 1 : axis === 1 ? layerSize : width;
+                const center = axis === 0 ? pos.x : axis === 1 ? pos.y : pos.z;
 
-            for (let rad of [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2]) {                         // Points around the circle at each angle
+                for (let side = -1; side <= 1; side += 2) {
+                    const neighbour = cell + side;
 
-                const sideVec = glMatrix.vec3.create();                                             // Rotate around 'dir' vector
-                glMatrix.vec3.scale(sideVec, orthogonalVec1, Math.cos(rad));                        // sideVec = orthogonalVec1 * cos(t) + orthogonalVec2 * sin(t)
-                glMatrix.vec3.scaleAndAdd(sideVec, sideVec, orthogonalVec2, Math.sin(rad));
+                    if (neighbour < 0 || neighbour >= limit) continue;
+                    if (map[index + side * stride] & MISSILE_WALL_MASK) continue;       // Solid neighbour means this face is internal.
 
-                const hemispherePoint = glMatrix.vec3.create();                                     // hemispherePoint = pos + dir * radius * cos(angle) + sideVec * radius * sin(angle)
-                const forwardComponent = glMatrix.vec3.create();
-                glMatrix.vec3.scale(forwardComponent, dir, r * cosAngle);
-                glMatrix.vec3.scale(sideVec, sideVec, r * sinAngle);
-                glMatrix.vec3.add(hemispherePoint, pos, forwardComponent);
-                glMatrix.vec3.add(hemispherePoint, hemispherePoint, sideVec);
-                points.push(hemispherePoint);
+                    const plane = cell + (side > 0 ? 1 : 0);
+                    const penetration = r - side * (center - plane);                    // Displacement needed to clear the whole sphere past this face.
+                    if (penetration >= nearest) continue;
+
+                    nearest = penetration;
+                    hitAxis = axis;
+                    hitSide = side;
+                    hitPlane = plane;
+                }
             }
+
+            if (hitAxis >= 0 && nearest <= 0) continue;                                 // Tangency or a sphere entirely outside this exposed face.
+            if (hitAxis < 0) {
+                const centerInside =
+                    pos.x >= x && pos.x < x + 1 &&
+                    pos.y >= y && pos.y < y + 1 &&
+                    pos.z >= z && pos.z < z + 1;
+
+                if (centerInside) {
+                    return [true, new Vector3(samples[offset], samples[offset + 1], samples[offset + 2]), null, 0];     // Embedded in a solid cluster, with no local exposed exit.
+                }
+
+                continue;
+            }
+
+            const normal = new Vector3(
+                hitAxis === 0 ? hitSide : 0,
+                hitAxis === 1 ? hitSide : 0,
+                hitAxis === 2 ? hitSide : 0
+            );
+
+            const point = new Vector3(
+                hitAxis === 0
+                    ? hitPlane
+                    : Math.max(x, Math.min(x + 1, pos.x)),
+                hitAxis === 1
+                    ? hitPlane
+                    : Math.max(y, Math.min(y + 1, pos.y)),
+                hitAxis === 2
+                    ? hitPlane
+                    : Math.max(z, Math.min(z + 1, pos.z))
+            );
+
+            return [true, point, normal, nearest];
         }
 
-        return points;
-    }
-    sphereInWallPoint(pos, dir, r) {
-        let checks = this.spherePointsAroundCenter(pos, dir, r);
-        for (const point of checks) {
-            const grid3d = new Grid3D(point[0], point[2], point[1]);
-            const check = this.check(grid3d, AIR_MOVE_GRID_EXCLUSION.sum());                          //if > 0  then hit, if false then in was OOB
-            if (check === false || check > 0) return [true, Vector3.from_array(point)];
-        }
-
-        return [false, null];
+        return MISSILE_NO_HIT;
     }
     getDirectionsFromNodeMap(grid, nodeMap, fly, leaveOut = null, allowCross = false) {
         const directions = [];
@@ -2649,6 +2663,36 @@ class GridArray3D extends Classes([ArrayBasedDataStructure3D, GA_Dimension_Agnos
     isTopGrid(grid) {
         return grid.z === this.depth - 1;
     }
+    missileSphereSamples(pos, dir, r, samples = new Float64Array(27)) {
+        // Forward.
+        samples[0] = pos.x + dir.x * r;
+        samples[1] = pos.y + dir.y * r;
+        samples[2] = pos.z + dir.z * r;
+
+        // Backward.
+        samples[3] = pos.x - dir.x * r;
+        samples[4] = pos.y - dir.y * r;
+        samples[5] = pos.z - dir.z * r;
+
+        // Centre: also detects an embedded missile.
+        samples[6] = pos.x;
+        samples[7] = pos.y;
+        samples[8] = pos.z;
+
+        // Positive and negative world X, Y, Z.
+        for (let axis = 0; axis < 3; axis++) {
+            const offset = 9 + axis * 6;
+
+            samples[offset] = samples[offset + 3] = pos.x;
+            samples[offset + 1] = samples[offset + 4] = pos.y;
+            samples[offset + 2] = samples[offset + 5] = pos.z;
+
+            samples[offset + axis] += r;
+            samples[offset + 3 + axis] -= r;
+        }
+
+        return samples;
+    }
 }
 
 /**
@@ -2696,7 +2740,6 @@ class ExtendedGridArray3D extends GridArray3D {
         return this.extendedMap[this.gridToIndex(grid)];
     }
 
-    //
     forwardPositionNotInShape(pos, dir, r, depth, height, resolution = GRID.SETTING.FORWARD_CIRCLE_RESOLUTION) {
         const points = this.forwardPointsFrontEntity(pos, dir, r, resolution);
         for (const point2D of points) {
@@ -2740,95 +2783,65 @@ class ExtendedGridArray3D extends GridArray3D {
             }
         }
 
-        return {
-            plane: closestPlane,
-
-            /*
-             * Inside distance is negative, so penetration
-             * becomes positive.
-             */
-            penetration: -closestDistance,
-        };
+        return { plane: closestPlane };
     }
-    boundaryCollision(point) {
-        // point is in WebGL order: x, y (height), z.
-        // The normal points from outside the map back into it.
-        let nx = 0;
-        let ny = 0;
-        let nz = 0;
-        let deepest = 0;
+    missileInShapePoint(obj, samples = null) {
+        if (!this.extendedColliders) return MISSILE_NO_HIT;
 
-        if (point.x < 0) {
-            nx = 1;
-            deepest = Math.max(deepest, -point.x);
-        } else if (point.x >= this.width) {
-            nx = -1;
-            deepest = Math.max(deepest, point.x - this.width);
-        }
+        const { pos, dir, r } = obj;
+        samples ??= this.missileSphereSamples(pos, dir, r);
 
-        if (point.y < 0) {
-            ny = 1;
-            deepest = Math.max(deepest, -point.y);
-        } else if (point.y >= this.depth) {
-            ny = -1;
-            deepest = Math.max(deepest, point.y - this.depth);
-        }
+        const width = this.width;
+        const height = this.height;
+        const depth = this.depth;
+        const layerSize = width * height;
 
-        if (point.z < 0) {
-            nz = 1;
-            deepest = Math.max(deepest, -point.z);
-        } else if (point.z >= this.height) {
-            nz = -1;
-            deepest = Math.max(deepest, point.z - this.height);
-        }
+        const testPoint = this._missileShapeTestPoint ??= { x: 0, y: 0, z: 0 };                     // Scratch object: used synchronously and never returned.
 
-        const length = Math.hypot(nx, ny, nz);
+        for (let offset = 0; offset < samples.length; offset += 3) {
+            const px = samples[offset];
+            const py = samples[offset + 1];
+            const pz = samples[offset + 2];
 
-        return {
-            normal: new Vector3(nx / length, ny / length, nz / length),
-            penetration: deepest * length,
-        };
-    }
-    missileInShapePoint(obj, resolution = 8) {
-        let checks;
+            const x = Math.floor(px);
+            const y = Math.floor(py);
+            const z = Math.floor(pz);
 
-        if (obj.bounce3D) {
-            checks = this.spherePointsAroundCenter(obj.pos, obj.dir, obj.r);                // Returns arrays in WebGL order: [worldX, worldY, worldZ]
-        } else {
-            const pos2D = Vector3.to_FP_Grid(obj.pos);
-            const dir2D = Vector3.to_FP_Vector(obj.dir);
-            checks = this.pointsAroundEntity(pos2D, dir2D, obj.r, resolution);              // Returns FP_Grid-style points: x = world X, y = world Z
-        }
+            if (x < 0 || x >= width || y < 0 || y >= depth || z < 0 || z >= height) continue;   // The preceding wall query owns map-boundary collisions.
 
-        for (const check of checks) {
-            let point;
-
-            if (obj.bounce3D) {
-                point = Vector3.from_array(check);
-            } else {
-                point = new Vector3(check.x, obj.pos.y, check.y);
-            }
-
-            const grid = new Grid3D(point.x, point.z, point.y);                             // Convert WebGL coordinates into Grid3D order
-
-            if (this.isOutOfBounds(grid)) {
-                const hit = this.boundaryCollision(point);
-                return [true, point, hit.normal, hit.penetration];
-            }
-
-            const index = this.gridToIndex(grid);
+            const index = x + z * width + y * layerSize;
             const placedElement = this.extendedColliders[index];
-            if (!placedElement) continue;
 
-            const collision = this.pointInsideElementPlane(point, placedElement);
-            if (!collision) continue;
+            if (!placedElement?.planes?.length) continue;
 
-            const normal = new Vector3(collision.plane.normal.x, collision.plane.normal.y, collision.plane.normal.z);          // Return consistent Vector3 values for both missile collision modes.
+            testPoint.x = px;
+            testPoint.y = py;
+            testPoint.z = pz;
 
-            return [true, point, normal, collision.penetration];
+            const collision = this.pointInsideElementPlane(testPoint, placedElement);
+
+            if (!collision?.plane) continue;
+
+            const plane = collision.plane;
+            const n = plane.normal;
+            const normalLength = Math.hypot(n.x, n.y, n.z);
+
+            if (!(normalLength > 0)) continue;
+
+            const signedDistance = (
+                n.x * pos.x +
+                n.y * pos.y +
+                n.z * pos.z -
+                plane.d
+            ) / normalLength;
+
+            const penetration = r - signedDistance;                                             // Clear the whole sphere, rather than only the sampled point.
+            if (penetration <= 0) continue;
+
+            return [true, new Vector3(px, py, pz), new Vector3(n.x / normalLength, n.y / normalLength, n.z / normalLength), penetration];
         }
 
-        return [false, null, null, 0];
+        return MISSILE_NO_HIT;
     }
     shapeBlocksLight(index) {
         const placedElement = this.extendedColliders[index];

@@ -209,7 +209,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.14.3",
+    VERSION: "0.15.0",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -424,7 +424,7 @@ const HERO = {
         const position = HERO.player.pos.translate(HERO.player.dir, HERO.player.r);
         const dir = WebGL.CONFIG.cameraType === "first_person" ? WebGL.camera.dir : HERO.player.dir;
         const missile = new BouncingMissile(position, dir, COMMON_ITEM_TYPE.Orb, HERO.magic, ParticleExplosion, true, INTERACTION_OBJECT.Orb);
-        console.warn("hero shoots", missile, "camera", WebGL.camera.dir, "HERO.player.dir", HERO.player.dir);
+        //console.warn("hero shoots", missile, "camera", WebGL.camera.dir, "HERO.player.dir", HERO.player.dir);
         MISSILE3D.add(missile);
         setTimeout(() => (HERO.canShoot = true), INI.HERO_SHOOT_TIMEOUT);
         return;
