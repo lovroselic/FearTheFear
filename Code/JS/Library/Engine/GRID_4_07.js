@@ -2499,7 +2499,7 @@ class GridArray3D extends Classes([ArrayBasedDataStructure3D, GA_Dimension_Agnos
         let checks = this.spherePointsAroundCenter(pos, dir, r);
         for (const point of checks) {
             const grid3d = new Grid3D(point[0], point[2], point[1]);
-            const check = this.check(grid3d, AIR_MOVE_GRID_EXCLUSION.sum());                          //if >0  then hit, if false the in was OOB
+            const check = this.check(grid3d, AIR_MOVE_GRID_EXCLUSION.sum());                          //if > 0  then hit, if false then in was OOB
             if (check === false || check > 0) return [true, Vector3.from_array(point)];
         }
 

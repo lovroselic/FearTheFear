@@ -1611,8 +1611,7 @@ const WebGL = {
                     const obj = GLOBAL_ID_MANAGER.getObject(id);
                     if (!obj) return;
                     if (!obj.interactive) return;
-                    if (WebGL.VERBOSE) console.info("Object clicked:", obj, "globalID", id);
-                    //console.info("Object clicked:", obj, "globalID", id);
+                    //if (WebGL.VERBOSE) console.info("Object clicked:", obj, "globalID", id);
 
                     let itemGrid = obj.grid;
                     if (obj.moveState) {
@@ -1624,8 +1623,7 @@ const WebGL = {
                     }
 
                     let distance = hero.player.pos.EuclidianDistance(Vector3.from_grid3D(itemGrid));
-                    if (WebGL.VERBOSE) console.info("Object distance:", distance);
-                    //console.info("Object distance:", distance, "WebGL.INI.INTERACT_DISTANCE", WebGL.INI.INTERACT_DISTANCE, "itemGrid", itemGrid, "HERO", HERO.player.pos.array);
+                    //if (WebGL.VERBOSE) console.info("Object distance:", distance);
                     if (distance < WebGL.INI.INTERACT_DISTANCE) {
                         /** 
                          * GA
@@ -5365,6 +5363,7 @@ class GeneralMissile extends Drawable_object {
         this.active = true;
         this.pos = position;
         this.dir = direction;
+        this.bounce3D = true;
 
         ImportTypeToConstructor(this, type);
         this.texture = WebGL.createTexture(TEXTURE[this.texture]);
@@ -5424,7 +5423,7 @@ class Missile extends GeneralMissile {
         this.setDepth();
         this.magic = magic;
         this.distance = null;
-        this.bounce3D = false;
+        //this.bounce3D = false;
         this.friendly = friendly;
         this.explosionType = explosionType;
         this.power = this.calcPower(magic);
@@ -5508,6 +5507,7 @@ class BouncingMissile extends Missile {
         return Math.max(1, Math.round((0.9 * magic)) + RND(-3, 3));
     }
     rebound(innerPoint, GA, normal, IAM, penetration = 0) {
+        console.log("rebound", innerPoint, normal, penetration);
         if (normal) {
             const direction = this.dir.array;
             const surfaceNormal = normal.array;
@@ -5531,12 +5531,14 @@ class BouncingMissile extends Missile {
         const pos2D = Vector3.to_FP_Grid(this.pos);
         const dir2D = Vector3.to_FP_Vector(this.dir);
         const reboundDir = GRID.getReboundDir(innerPoint, pos2D, dir2D, GA, this.depth);
+        console.warn("reboundDir", reboundDir);
 
         if (!reboundDir) return this.explode(IAM);
         this.dir = Vector3.from_2D_dir(reboundDir);
         this.bounceCount++;
     }
     hitWall(IAM, point, GA, normal, penetration = 0) {
+        console.log("hitWall", point, normal, penetration);
         if (this.power > this.minPower) {
             this.rebound(point, GA, normal, IAM, penetration);
             AUDIO.Buzz.volume = RAY.volume(this.distance);
@@ -6817,36 +6819,36 @@ class $3D_Entity {
         ENGINE.VECTOR2D.drawBlock(this);
     }
     updateHeight(nodemap) {
-        console.info("\nupdateHeight", this.name, this.id, "!nodemap", !nodemap, " this.fly > 0", this.fly > 0);
+        //console.info("\nupdateHeight", this.name, this.id, "!nodemap", !nodemap, " this.fly > 0", this.fly > 0);
         if (!nodemap || this.fly > 0) return;
 
         const state = this.moveState;
-        console.log(".", "state.heightAdjusted", state.heightAdjusted, "!state.startGrid", !state.startGrid, "state", state);
+        //console.log(".", "state.heightAdjusted", state.heightAdjusted, "!state.startGrid", !state.startGrid, "state", state);
         if (state.heightAdjusted || !state.startGrid) return;
 
         const startGrid = state.startGrid;
         const currentGrid = Vector3.to_Grid3D(state.pos);
 
-        console.log("..", "currentGrid.x === startGrid.x", currentGrid.x === startGrid.x, "currentGrid.y === startGrid.", currentGrid.y === startGrid.y);
+        //console.log("..", "currentGrid.x === startGrid.x", currentGrid.x === startGrid.x, "currentGrid.y === startGrid.", currentGrid.y === startGrid.y);
         if (currentGrid.x === startGrid.x && currentGrid.y === startGrid.y) return;                 // Still inside the starting cell.
         currentGrid.z = startGrid.z + (state.dir.z || 0);                                           // Ground translation has not yet changed the physical elevation.
 
         const currentNode = nodemap[currentGrid.x]?.[currentGrid.y]?.[currentGrid.z];
         const startNode = nodemap[startGrid.x]?.[startGrid.y]?.[startGrid.z];
-        console.log("...", "currentNode", currentNode, "startNode", startNode);
+        //console.log("...", "currentNode", currentNode, "startNode", startNode);
         if (!currentNode || !startNode) return;
 
         const currentHeight = currentGrid.z + (currentNode.height ?? 0);
         const startHeight = startGrid.z + (startNode.height ?? 0);
         const delta = currentHeight - startHeight;
-        console.log("....", "delta", delta);
+        //console.log("....", "delta", delta);
         if (delta === 0) return;
 
         state.pos = state.pos.translate(DOWN3, delta);
         state.heightDelta = delta;
         state.heightAdjusted = true;
         state.endPos.z = state.pos.y;                                                               // next() inherits this endpoint as its next startPos.
-        console.warn("------>", this.name, this.id, "currentGrid", currentGrid, "startGrid", startGrid, "delta", delta);
+        //console.warn("------>", this.name, this.id, "currentGrid", currentGrid, "startGrid", startGrid, "delta", delta);
     }
     update(date, nodemap) {
         if (!this.petrified) {
@@ -6989,7 +6991,7 @@ class $3D_Entity {
 
 class $Movable_Interactive_entity extends $3D_Entity {
     constructor(grid, type, dir = UP3) {
-        super(grid, type, dir = UP3);
+        super(grid, type, dir);
         this.excludeFromInventory = false;
         this.interactive = true;
     }

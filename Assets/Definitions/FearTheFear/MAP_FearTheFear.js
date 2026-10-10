@@ -16,14 +16,15 @@ const MAP_TEXT = {
     7: `The cellar. Whee all the alcohol is stored. Might find something usefull here.`,
     8: `Seems like old abandoned dubgeon. But is abandoned also by monsters?`,
     9: `Smells like teen chickens.`,
+    10: ``,
 };
 
 /** Map definitions */
 const MAP = {
     1: {
         name: "Bedroom in the ButtCrack Hotel",
-        data: '{"width":"13","height":"13","depth":3,"map":"BB2ABABB4AA23ŁABAA10BAA6BAA4BAA6BAA4BABAA5BB2AA2BB33ABB4ABB2AA4BB2ABB2AA3BABB8ABÁBB11ABB4䂂BB29Á$BB34ABB79䁢BB39ÁBB3ÁBÁÁ7BABB2ÁBB41ÁÁ32BÁÁ2BÁÁ31BÁÁ17BB9ɁсࡁBAB","extendedMap":"AA42㡋$AA38ᡂAA181ᡂAA187ࡂࡂ2AA2㡆AA22ᡆAA21㡋㡋6A"}',
-        dungeonAmbience: 0.0,
+        data: '{"width":"13","height":"13","depth":3,"map":"BB2ABABB3AA15BAA2ŁAA3BAA11BAA5BAA4BAA6BB2AA4BB2ABAA5BB2AA2BB6ABB6ABB21ABB2ABB3AA3BABB2ABB2AA2BAA2BB8ABB9ÁBB5ABB4䂂BB29Á$BB34ABB79䁢BB36ÁBB4ÁBB3ÁBB2ÁÁ6ABB3ÁBB41ÁÁ33BÁBÁÁ10BÁÁ18BÁÁ16BB8ɁсࡁBAB","extendedMap":"AA42㡋$AA38ᡂAA181ᡂAA187ࡂࡂ2AA2㡆AA22ᡆAA21㡋㡋6A"}',
+        dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 2,
         killCountdown: 3,
@@ -40,7 +41,7 @@ const MAP = {
         skyPanorama: "",
         start: '[201,1]',
         decals: '[[221,5,"FirePlaceDecal_675","crest"],[233,3,"FirePlaceDecal_675","crest"],[222,4,"FirePit_681","crest"],[232,4,"FirePit_677","crest"],[188,4,"BearRug02","crest"],[199,4,"BearRug02","crest"],[200,4,"BearRug02","crest"],[201,4,"BearRug02","crest"],[202,4,"BearRug02","crest"],[203,4,"BearRug02","crest"]]',
-        lights: '[[162,1,"Fireplace_716","fireplace",["9.99","50.0","5.0"]],[422,1,"DuaLLantern_017","standard",["1","10","5.0"]]]',
+        lights: '[[162,1,"Fireplace_716","fireplace",["9.99","50.0","5.0"]],[422,1,"DuaLLantern_017","standard",["1","10","5.0"]],[422,7,"Light_642","standardDimmed",["4.0","15","2"]]]',
         gates: '[[155,3,"1.1","2.1","Closed"]]',
         oracles: '[[175,7,"PrincessHotelBed"]]',
         lairs: '[[329,1,"Lair78"],[333,1,"Lair_606"]]',
@@ -98,7 +99,7 @@ const MAP = {
     ,
     4: {
         name: "Reception",
-        data: '{"width":"15","height":"15","depth":5,"map":"B䁢AA2BB2ABB2AA20BB2AA2BABAA4BÁÁ2AA4BAA11ŁAA13BABABABAA3BAA3BB4AA4ÁBÁÁ2BB2ŁBB2AA4BB2ABB8AÁBB3ABB2ABB41䁢BB10ÁBB18ÁÁ2BB7ABB11ÁBÁÁ2BAA2BB40ŁBŁࡁBB7䁢AÁŁBB6ABB6ABB4ABB2䁢BB41䂂BB36ÁÁ2BB13ABB82AA2BB12ÁBB5ÁÁ2BB2ABB17$BB3ÁBB3ÁBB6ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB6ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ5BÁÁ4BB4ÁAÁBB6ÁBB73ABB3ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB37ÁÁ50BÁࡁBB2ÁÁ14BÁÁ37BÁÁ7BÁÁ3BÁÁ6AÁÁ4BÁÁ19AÁBÁÁ8BB2ÁÁ16AA2ÁÁ5BÁÁ4BB2ÁBB2ÁÁ6BÁÁ3BB2ÁÁ22AA2BB4ÁÁ3ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ8BB3ABB7AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB4ABB3","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
+        data: '{"width":"15","height":"15","depth":5,"map":"B䁢AA2BB2ABB2AA20BB2AA2BABAA4BÁÁ2AA4BAA11ŁAA13BABABABAA3BAA3BB4AA4ÁBÁÁ2BB2ŁBB2AA4BB2ABB8AÁBB3ABB4ABB39䁢BB10ÁBB18ÁÁ2BB7ABB11ÁBÁÁ2BAA2BB40ŁBŁࡁBB7䁢AÁŁBB6ABB6ABB4ABB2䁢BB41䂂BB36ÁÁ2BB26䂂BB56AA2BB8ABB5ÁBB6ÁÁ2BB2ABB19$BB4ÁBB3ÁBB7ÁÁ2ABB2ABÁBÁÁ2BÁÁ2BÁÁ2BB7ÁBB5ÁÁ2BB3ÁÁ2BB3ÁÁ5BÁÁ4BB4ÁAÁBB7ÁBB74ABB4ÁÁ3BB2ÁࡁÁBÁÁ2BÁÁ2BB38ÁÁ50BÁࡁBB2ÁÁ14BÁÁ37BÁÁ7BÁÁ3BÁÁ6AÁÁ4BÁÁ19AÁBÁÁ8BB2ÁÁ16AA2ÁÁ5BÁÁ4BB2ÁBB2ÁÁ6BÁÁ3BB2ÁÁ22AA2BB4ÁÁ3ࡁAÁÁ69BB2ÁÁ6ࡁÁÁ12BB8ÁÁ2ɁÁÁ8BB3ABB7AɁɁ3AA2ŁŁ2AA4BÁсс2ŁŁ3ࡁࡁ2ɁɁ3сс2ÁсBB4ABB4","extendedMap":"AA64⡂$AA64⡂AA204㡆AA34㡋AA5㡋AA104塃塃2AA205硃AA5ᡋࡅAA44硃AA44ࡍAA85⡂⡂2A⡂AA2⡂AA17ᡋAA23⡂AA119ᡅAA42ࡍAA24ᡋᡋ2AA8ᡆA㡋㡋2AA5"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 2,
@@ -116,7 +117,7 @@ const MAP = {
         skyPanorama: "",
         start: '[64,3]',
         lights: '[[1098,1,"Lamp51","standardYellowFaint",["5","10","2"]],[1100,1,"Lamp51","standardYellowFaint",["5","10","2"]],[357,7,"FluxLight109","standard2",["10","10","2"]],[168,5,"DuaLLantern_018","standard2",["9.99","50.0","5.0"]],[756,1,"DuaLLantern_017","standard2",["5","10","1"]],[756,3,"AlpineLight_159","standard2",["5","10","1"]],[758,5,"Light_648","standard2",["5","10","1"]]]',
-        gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"],[74,3,"4.3","6.1","Closed"],[60,5,"4.4","9.1","Closed"]]',
+        gates: '[[7,7,"4.1","2.3","Blue"],[1114,1,"4.2","5.1","Closed"],[74,3,"4.3","6.1","Closed"],[60,5,"4.4","9.1","Closed"],[217,1,"4.5","10.1","Gold"]]',
         monsters: '[[143,"Spider",1]]',
         entities: '[[447,1,"TheReceptionist"]]',
         oracles: '[[215,1,"BossyHotelManager"]]',
@@ -252,5 +253,8 @@ const MAP = {
         entities: '[[7,7,"GrillGirl"]]',
         fires: '[[111,4,"Fireplace"],[113,4,"Fireplace"],[197,5,"Torch"]]',
     }
+    ,
+    10: {}
+    ,
 
 };

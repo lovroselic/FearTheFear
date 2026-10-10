@@ -70,7 +70,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 4;
+    GAME.level = 1;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -132,7 +132,7 @@ DEBUG.checkPoint = function () {
     }
 
     let keys = [
-        "Blue", "Green",
+        "Blue", "Green", "Gold",
     ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
@@ -209,7 +209,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.14.2",
+    VERSION: "0.14.3",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -422,8 +422,9 @@ const HERO = {
 
         HERO.canShoot = false;
         const position = HERO.player.pos.translate(HERO.player.dir, HERO.player.r);
-        const missile = new BouncingMissile(position, HERO.player.dir, COMMON_ITEM_TYPE.Orb, HERO.magic, ParticleExplosion, true, INTERACTION_OBJECT.Orb);
-        //console.warn("hero shoots", missile);
+        const dir = WebGL.CONFIG.cameraType === "first_person" ? WebGL.camera.dir : HERO.player.dir;
+        const missile = new BouncingMissile(position, dir, COMMON_ITEM_TYPE.Orb, HERO.magic, ParticleExplosion, true, INTERACTION_OBJECT.Orb);
+        console.warn("hero shoots", missile, "camera", WebGL.camera.dir, "HERO.player.dir", HERO.player.dir);
         MISSILE3D.add(missile);
         setTimeout(() => (HERO.canShoot = true), INI.HERO_SHOOT_TIMEOUT);
         return;

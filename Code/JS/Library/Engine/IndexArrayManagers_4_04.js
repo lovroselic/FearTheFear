@@ -760,8 +760,15 @@ class Missile3D extends IAM {
                 obj.move(lapsedTime, GA);
 
                 const pos = Vector3.to_FP_Grid(obj.pos);                                                                    //check wall hit
-                let [wallHit, point] = obj.bounce3D ? GA.sphereInWallPoint(obj.pos, obj.dir, obj.r) : GA.entityInWallPoint(pos, Vector3.to_FP_Vector(obj.dir), obj.r, obj.depth);    //point is returned in different formats!! Vector3 or FP_Grid respectively
-                //console.log(obj.id, "wallHit", wallHit, point);
+                let [wallHit, point] = obj.bounce3D ?
+                    GA.sphereInWallPoint(obj.pos, obj.dir, obj.r) :
+                    GA.entityInWallPoint(pos, Vector3.to_FP_Vector(obj.dir), obj.r, obj.depth);    //point is returned in different formats!! Vector3 or FP_Grid respectively
+
+                console.log("..IAM", obj.id, "wallHit", wallHit, point,
+                    "\nobj.bounce3D", obj.bounce3D,
+                    "\nGA.sphereInWallPoint(obj.pos, obj.dir, obj.r)", GA.sphereInWallPoint(obj.pos, obj.dir, obj.r),
+                    "\nGA.entityInWallPoint(pos, Vector3.to_FP_Vector(obj.dir), obj.r, obj.depth)", GA.entityInWallPoint(pos, Vector3.to_FP_Vector(obj.dir), obj.r, obj.depth)
+                );
 
                 if (wallHit) {
                     obj.hitWall(this, point, GA);
@@ -1100,7 +1107,7 @@ class Animated_3d_entity extends IAM {
                 let distance = entity.distance;
                 if (entity.caster || entity.flier) distance = entity.airDistance;
                 entity.behaviour.manage(entity, distance, passiveFlag);
-                
+
                 if (!entity.hasStack()) {
 
                     let ARG = {
