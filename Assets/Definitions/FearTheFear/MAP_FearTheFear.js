@@ -204,7 +204,7 @@ const MAP = {
     ,
     8: {
         name: "The Old Dungeon",
-        data: '{"width":"19","height":"19","depth":2,"map":"BB2AA5BAA4BAA10BB3ABB2AA6䁆AA8BB3ABABB6ABB2AA2BABAA7BAA7䁢AA8BAA2BB4AA2BABB2ABABAA2BB3ABB3ABABB3ABB3ABABB4ABABABABB2AA2BB12ABB7AA2BB6AA12BB3ABB3AA2BAA2BB2ABB2AA4BABAA4BB3ABB2AA2BABABB8ABB6AA2BB4AA4BB2AA4BB3AA3BB5ABB4ABB2ABABB2ABB7ABB2AA4BAA3BB2AA7BB3AA2BB2ABB2AA3BB2AA2䁆ABB272ÁABB43$BB4ÁÁ2BB61ABÁÁ6BB3ABB2","extendedMap":"AA278⡊ᡅAA260$AA14ᡊAA45ᡊAA10⡊AA11ࡅAA82ࡊࡊ2㡊㡊2AA12"}',
+        data: '{"width":"19","height":"19","depth":2,"map":"BB2AA5BAA4BAA10BB3ABB2AA6䁆AA8BB3ABABB6ABB2AA2BABAA7BAA7䁢AA8BAA2BB4AA2BABB2ABABAA2BB3ABB3ABABB3ABB3ABABB4ABABABABB2AA2BB12ABB7AA2BB6AA12BB3ABB3AA2BAA2BB2ABB2AA4BABAA4BB3ABB2AA2BABABB8ABB6AA2BB4AA4BB2AA4BB3AA3BB5ABB4ABB2ABABB2ABB7ABB2AA4BAA3BB2AA7BB3AA2BB2ABB2AA3BB2AA2䁆ABB272ÁABB45ÁÁ2BB10䂂BB32$BB18ABB2ÁÁ6BB3ABB3","extendedMap":"AA278⡊ᡅAA260$AA14ᡊAA45ᡊAA10⡊AA11ࡅAA82ࡊࡊ2㡊㡊2AA12"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 2,
@@ -221,10 +221,13 @@ const MAP = {
         archPanorama: "",
         skyPanorama: "",
         start: '[62,5]',
-        lights: '[[461,1,"Light_623","standard",["3.0","10.0","1.0"]]]',
+        lights: '[[461,1,"Light_623","standard",["3.0","10.0","1.0"]],[198,3,"Candelabra09","standardDimmed",["3.0","15.0","1.0"]],[156,3,"Candelabra09","standardDimmed",["3.0","15.0","1.0"]],[278,3,"Light_633","standardDimmed",["3.0","15.0","1.0"]],[247,5,"Lamp44","standardSoft",["3.0","15.0","1.0"]],[133,5,"WallLamp16","standardSoft",["3.0","15.0","1.0"]],[311,5,"Candelabra15","standardSoft",["3.0","15.0","1.0"]],[240,5,"WallLamp31","standardSoft",["3.0","15.0","1.0"]],[11,7,"DuaLLantern_015","standardSoft",["3.0","15.0","1.0"]],[168,7,"Light_637","standardSoft",["3.0","15.0","1.0"]],[90,7,"Candle68","standardSoft",["3.0","15.0","1.0"]],[123,7,"WallLamp35","standardSoft",["3.0","15.0","1.0"]]]',
         gates: '[[19,5,"8.1","7.2","Green"]]',
         doors: '[60,119]',
         triggers: '[[8,7,"SmoothWallButton",1,65]]',
+        entities: '[[5,7,"Skully"]]',
+        objects: '[[153,"Skull"],[68,"Skull"],[224,"Skull"],[300,"Skull"],[254,"Skull"],[140,"SmallBarrel"]]',
+        oracles: '[[15,7,"CircularCut"]]',
         movables: '[[338,"BabySheep"]]',
     }
     ,

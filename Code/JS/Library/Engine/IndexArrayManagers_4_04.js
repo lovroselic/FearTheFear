@@ -704,6 +704,15 @@ class Decal3D extends IAM {
     }
     manage(lapsedTime, date) {
         this.reIndex();
+        const map = this.map;
+        const GA = this.map.GA;
+        if (!GA.nodeMap || !GA.airNodeMap) {
+            const heroRefGrid = Vector3.to_Grid3D(this.hero.player.pos);                                                // body
+            const heroGroundGrid = new Grid3D(heroRefGrid.x, heroRefGrid.y, this.hero.player.depth);                    // feet
+            if (!GA.nodeMap) GRID.calcDistancesBFS_A_3D(heroGroundGrid, map);
+            if (!GA.airNodeMap) GRID.calcDistancesBFS_A_3D(heroRefGrid, map, true, AIR_MOVE_GRID_EXCLUSION, "airNodeMap", "exclude");
+        }
+
         for (const item of this.POOL) {
             if (item) {
                 item.manage(lapsedTime, date);

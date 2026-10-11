@@ -1326,6 +1326,8 @@ LoadSprites = [
     { srcName: "EntityPictures/BarMaid3.webp", name: "BarMaid" },
     { srcName: "EntityPictures/GrillGirl.webp", name: "GrillGirl" },
     { srcName: "EntityPictures/BossyHotelManager.webp", name: "BossyHotelManager" },
+    { srcName: "EntityPictures/Skully.webp", name: "Skully" },
+    { srcName: "EntityPictures/CircularCut.webp", name: "CircularCut" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },

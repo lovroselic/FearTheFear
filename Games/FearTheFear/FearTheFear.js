@@ -39,17 +39,17 @@ DEBUG.checkPoint = function () {
     BarSeductress wants GlassOfWine", "Wine", "WhiskeyShot", "Beer", gives Banknote20
     BarMaid wants "SmallBarrel", "SmallBarrel", "SmallBarrel" gives  "GlassOfBeer" 
     GrilGirl wants "Chicken", "LittlePiggy", "BabySheep" gives Banknote100
-     #### wants  "Skull", "Skull", "Skull", "Skull", "Skull", gives 
+    Skully wants  "Skull", "Skull", "Skull", "Skull", "Skull", gives Banknote200
 
 
     Banknote10:
         DONE: Banknote20: BarSeductress (6-bar)
     Banknote50:
         DONE: Banknote100: - GrillGirl (9-kitchen)
-    Banknote200:
+        DONE Banknote200: Skully - old dungeon8
 
         DONE: "SmallBarrel" 7-cellear
-    "SmallBarrel"
+        DONE "SmallBarrel" 8 old dungeon
     "SmallBarrel"
 
     "GlassOfWine"
@@ -61,16 +61,17 @@ DEBUG.checkPoint = function () {
         DONE "LittlePiggy", 4-reception
         DONE "BabySheep" 8-dungeon
 
-
+        DONE "Skull", "Skull", "Skull", "Skull", "Skull" 8 old dungeon
+    
         DONE: Gold Key: receptionist;
         DONE: Blue Key: found on Balcony
-    Green Key
+     DONE: Green Key: sout terrace
 
      */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 1;
+    GAME.level = 8;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -123,7 +124,7 @@ DEBUG.checkPoint = function () {
         //"SmallBarrel", "SmallBarrel", "SmallBarrel",
         //"GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer",
         //"Chicken", "LittlePiggy", "BabySheep",
-        "Skull", "Skull", "Skull", "Skull", "Skull",
+        //"Skull", "Skull", "Skull", "Skull", "Skull",
     ];
 
     for (let itm of invItems) {
@@ -209,7 +210,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.15.0",
+    VERSION: "0.15.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -1025,7 +1026,7 @@ const GAME = {
     },
     buildWorld(level) {
         if (DEBUG.VERBOSE) console.info(" ******** building world, room/dungeon/level:", level, "ressurection", HERO.ressurection, "restart", GAME.restarted);
-        WebGL.init_required_IAM(MAP[level].map, HERO);
+        WebGL.init_required_IAM(MAP[level].map, HERO, GAME);
 
         if (HERO.ressurection) {
             GAME.reloadIAM(level);

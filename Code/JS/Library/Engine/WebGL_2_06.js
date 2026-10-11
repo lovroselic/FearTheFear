@@ -436,23 +436,23 @@ const WebGL = {
     },
     init_required_IAM(map, hero, game) {
         //3D
-        DECAL3D.init(map);
-        LIGHTS3D.init(map);
-        SUN3D.init(map);
-        GATE3D.init(map);
-        VANISHING3D.init(map);
+        DECAL3D.init(map, hero);
+        LIGHTS3D.init(map, hero);
+        SUN3D.init(map, hero);
+        GATE3D.init(map, hero);
+        VANISHING3D.init(map, hero);
         ITEM3D.init(map, hero);
         DYNAMIC_ITEM3D.init(map, hero);
         MISSILE3D.init(map, hero);
         BULLET3D.init(map, hero, game);
         FIRE3D.init(map, hero);
-        INTERACTIVE_DECAL3D.init(map);
-        INTERACTIVE_BUMP3D.init(map);
+        INTERACTIVE_DECAL3D.init(map, hero);
+        INTERACTIVE_BUMP3D.init(map, hero);
         ENTITY3D.init(map, hero);
-        INTERFACE3D.init(map);
+        INTERFACE3D.init(map, hero);
         EXPLOSION3D.init(map, hero);
         LAIR.init(map, hero);
-        ITEM_DROPPER3D.init(map);
+        ITEM_DROPPER3D.init(map, hero);
         //2D
         PLANE_GRID1D.init(map, hero);
         ENEMY2D.init(map, hero);
@@ -5493,7 +5493,6 @@ class Missile extends GeneralMissile {
             AUDIO.Explosion.play();
         }
     }
-
 }
 
 class BouncingMissile extends Missile {
@@ -5514,35 +5513,6 @@ class BouncingMissile extends Missile {
     calcPower(magic) {
         return Math.max(1, Math.round((0.9 * magic)) + RND(-3, 3));
     }
-    /*    rebound(innerPoint, GA, normal, IAM, penetration = 0) {
-           console.log("rebound", innerPoint, normal, penetration);
-           if (normal) {
-               const direction = this.dir.array;
-               const surfaceNormal = normal.array;
-               const dot = glMatrix.vec3.dot(direction, surfaceNormal);
-   
-               if (dot < 0) {
-                   const reflected = glMatrix.vec3.create();                                   // With outward-facing normals, dot < 0 means the missile is moving into the surface.
-                   glMatrix.vec3.scaleAndAdd(reflected, direction, surfaceNormal, -2 * dot);
-                   glMatrix.vec3.normalize(reflected, reflected);
-                   this.dir = Vector3.from_array(reflected);
-               }
-   
-               this.pos = this.pos.translate(normal, penetration + 1E-4);                      // use penetration to move missile back from the collision prison
-               this.bounceCount++;
-               return;
-           }
-   
-         
-           const pos2D = Vector3.to_FP_Grid(this.pos);
-           const dir2D = Vector3.to_FP_Vector(this.dir);
-           const reboundDir = GRID.getReboundDir(innerPoint, pos2D, dir2D, GA, this.depth);
-           console.warn("reboundDir", reboundDir);
-   
-           if (!reboundDir) return this.explode(IAM);
-           this.dir = Vector3.from_2D_dir(reboundDir);
-           this.bounceCount++;
-       } */
     rebound(normal, penetration = 0) {
         const n = glMatrix.vec3.create();
         glMatrix.vec3.normalize(n, normal.array);
@@ -5561,25 +5531,6 @@ class BouncingMissile extends Missile {
         if (bounced) this.bounceCount++;
         return bounced;
     }
-    /* hitWall(IAM, point, GA, normal, penetration = 0) {
-        console.log("hitWall", point, normal, penetration);
-        if (this.power > this.minPower) {
-            this.rebound(point, GA, normal, IAM, penetration);
-            AUDIO.Buzz.volume = RAY.volume(this.distance);
-            AUDIO.Buzz.play();
-            this.power--;
-            const scaleFactor = this.power / this.maxPower;
-            glMatrix.vec3.scale(this.scale, this.originalScale, scaleFactor);
-            const mScaleMatrix = glMatrix.mat4.create();
-            glMatrix.mat4.fromScaling(mScaleMatrix, this.scale);
-            this.mScaleMatrix = mScaleMatrix;
-        } else if (this.collectible) {
-            this.drop(GA);
-            this.explode(IAM);
-        } else {
-            this.explode(IAM);
-        };
-    } */
     hitWall(IAM, point, GA, normal, penetration = 0) {
         const normalLength = normal ? glMatrix.vec3.length(normal.array) : 0;
         if (!Number.isFinite(normalLength) || normalLength <= 1E-8 || !Number.isFinite(penetration) || penetration < 0) {

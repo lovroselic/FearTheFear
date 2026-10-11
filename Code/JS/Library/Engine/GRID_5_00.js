@@ -1948,15 +1948,6 @@ class GridArray extends Classes([ArrayBasedDataStructure, GA_Dimension_Agnostic_
         }
         return [start, lastDir];
     }
-    /* entityInWallPoint(pos, dir, r, resolution = 8) {
-        // waiting for deprecation
-        let checks = this.pointsAroundEntity(pos, dir, r, resolution);
-        for (const point of checks) {
-            let isWall = !this.positionIsNotWall(point);
-            if (isWall) return [true, point];
-        }
-        return [false, null];
-    } */
     gridsAroundEntity(pos, dir, r, resolution = 4) {
         let checks = this.pointsAroundEntity(pos, dir, r, resolution);
         checks = checks.filter(this.positionIsNotWall, this);
@@ -2406,15 +2397,6 @@ class GridArray3D extends Classes([ArrayBasedDataStructure3D, GA_Dimension_Agnos
         }
         return directions;
     }
-    /*  entityInWallPoint(pos, dir, r, depth, resolution = 8) {
-         // waiting for deprecation
-         let checks = this.pointsAroundEntity(pos, dir, r, resolution);
-         for (const point of checks) {
-             let isWall = !this.positionIsNotWall(point, depth);
-             if (isWall) return [true, point];
-         }
-         return [false, null];
-     } */
     sphereInWallPoint(pos, dir, r, samples = null) {
         const width = this.width;
         const height = this.height;

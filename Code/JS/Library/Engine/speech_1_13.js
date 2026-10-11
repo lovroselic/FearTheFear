@@ -395,4 +395,5 @@ const VOICE = {
     setting: new VoiceSetting(1.75, 1.3, 1.0)
   },
 };
+
 console.log(`%cSPEECH ${SPEECH.VERSION} loaded.`, SPEECH.CSS);

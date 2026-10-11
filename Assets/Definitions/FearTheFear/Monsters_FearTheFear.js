@@ -17,6 +17,14 @@ for (let [index, key] of KEY_TYPES.entries()) {
 }
 
 const ORACLE_TYPE = {
+    CircularCut: {
+        name: "CircularCut",
+        sprite: "CircularCut",
+        category: 'crest',
+        voice: "Female4",
+        text: `Radar scroll is best used to find little critters roaming around the maze.`,
+        interactionCategory: "oracle",
+    },
     BossyHotelManager: {
         name: "BossyHotelManager",
         sprite: "BossyHotelManager",
@@ -3043,6 +3051,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+   Skully: {
+    name: "Skully",
+    sprite: "Skully",
+    category: 'crest',
+    voice: "FemaleHigh",
+    wants: ["Skull", "Skull", "Skull", "Skull", "Skull"],
+    gives: "Banknote200",
+    text: {
+        intro: `I'm learning to juggle. Five skulls, please. Balls lack personality. I'll pay handsomely. You look like you could use a job.`,
+        progress: `We're still short of skulls. Do finish the job. My payment is generous. My patience has a smaller budget.`,
+        conclusion: `Perfect. Here are two hundred Castle marks. Now stand back. I'm still learning, and I have no use for a sixth skull.`,
+    },
+},
     GrillGirl: {
         name: "GrillGirl",
         sprite: "GrillGirl",
