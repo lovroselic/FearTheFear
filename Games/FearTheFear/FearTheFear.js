@@ -210,7 +210,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.15.1",
+    VERSION: "0.15.2",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -906,9 +906,9 @@ const GAME = {
         WebGL.GAME.setViewButtons();
 
         //inner
-        WebGL.ambient_light_strength = INI.DARK_DUNGEON_AMBIENCE;        // 0.3
-        WebGL.diffuse_light_strength = INI.NORMAL_DIFFUSE;         // 8
-        WebGL.specular_light_strength = 0.6;        // 1.5
+        WebGL.ambient_light_strength = INI.DARK_DUNGEON_AMBIENCE;        
+        WebGL.diffuse_light_strength = INI.NORMAL_DIFFUSE;        
+        WebGL.specular_light_strength = 0.25;       
 
         // element compilations
         ELEMENT._bb_for_internal_elements();

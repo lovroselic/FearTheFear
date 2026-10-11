@@ -130,6 +130,15 @@ const MATERIAL = {
         0.0,                // metallic
         0.03                // fresnelStrength
     ),
+    metal: new Material(
+        [0.20, 0.20, 0.20], // ambientColor
+        [0.55, 0.55, 0.55], // diffuseColor: neutral grey
+        [0.90, 0.90, 0.90], // specularColor: strong, neutral
+        0.60,               // shininess: becomes 76.8
+        0.30,               // roughness
+        1.0,                // metallic
+        0.50                // fresnelStrength
+    ),
 };
 
 console.log(`%cMATERIAL v${MATERIAL.VERSION} loaded.`, "color: #888");

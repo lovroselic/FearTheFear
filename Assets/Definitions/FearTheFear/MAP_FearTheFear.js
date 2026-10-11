@@ -223,6 +223,8 @@ const MAP = {
         start: '[62,5]',
         lights: '[[461,1,"Light_623","standard",["3.0","10.0","1.0"]],[198,3,"Candelabra09","standardDimmed",["3.0","15.0","1.0"]],[156,3,"Candelabra09","standardDimmed",["3.0","15.0","1.0"]],[278,3,"Light_633","standardDimmed",["3.0","15.0","1.0"]],[247,5,"Lamp44","standardSoft",["3.0","15.0","1.0"]],[133,5,"WallLamp16","standardSoft",["3.0","15.0","1.0"]],[311,5,"Candelabra15","standardSoft",["3.0","15.0","1.0"]],[240,5,"WallLamp31","standardSoft",["3.0","15.0","1.0"]],[11,7,"DuaLLantern_015","standardSoft",["3.0","15.0","1.0"]],[168,7,"Light_637","standardSoft",["3.0","15.0","1.0"]],[90,7,"Candle68","standardSoft",["3.0","15.0","1.0"]],[123,7,"WallLamp35","standardSoft",["3.0","15.0","1.0"]]]',
         gates: '[[19,5,"8.1","7.2","Green"]]',
+        scrolls: '[[34,13]]',
+        containers: '[[82,"Barrel_461","GOLD_ITEM_TYPE.SilverBar",1]]',
         doors: '[60,119]',
         triggers: '[[8,7,"SmoothWallButton",1,65]]',
         entities: '[[5,7,"Skully"]]',

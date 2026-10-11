@@ -249,7 +249,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.23 / 2 ** 2,
         glueToFloor: true,
         texture: "Wardrobe",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
     Barrel: {
@@ -269,7 +269,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.9 / 2 ** 3,
         glueToFloor: true,
         texture: "BarrelMedieval",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0,
     },
     Barrel_459: {
@@ -279,7 +279,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.04 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_459",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_460: {
@@ -289,7 +289,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.01 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_460",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_461: {
@@ -299,7 +299,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.89 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_461",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_462: {
@@ -309,7 +309,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.15 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_462",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_463: {
@@ -319,7 +319,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.0 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_463",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_464: {
@@ -329,7 +329,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.08 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_464",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_465: {
@@ -339,7 +339,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.03 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_465",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_466: {
@@ -349,7 +349,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.02 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_466",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_467: {
@@ -359,7 +359,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.04 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_467",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_468: {
@@ -369,7 +369,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.18 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_468",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_469: {
@@ -379,7 +379,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.06 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_469",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_470: {
@@ -389,7 +389,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.17 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_470",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_471: {
@@ -399,7 +399,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.05 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_471",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_472: {
@@ -409,7 +409,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.07 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_472",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_473: {
@@ -419,7 +419,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.8 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_473",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_474: {
@@ -429,7 +429,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.0 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_474",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_475: {
@@ -439,7 +439,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.95 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_475",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_476: {
@@ -449,7 +449,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.89 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_476",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_477: {
@@ -459,7 +459,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.15 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_477",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_478: {
@@ -469,7 +469,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.03 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_478",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_479: {
@@ -479,7 +479,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.89 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_479",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_480: {
@@ -489,7 +489,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.0 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_480",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_481: {
@@ -499,7 +499,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.16 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_481",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_482: {
@@ -509,7 +509,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.86 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_482",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_483: {
@@ -519,7 +519,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.06 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_483",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_484: {
@@ -529,7 +529,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.09 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_484",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_485: {
@@ -539,7 +539,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.86 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_485",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel_486: {
@@ -549,7 +549,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 0.8 / (2 ** 1),
         glueToFloor: true,
         texture: "BarrelTexture_486",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Barrel2: {
@@ -559,7 +559,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.8 / 2 ** 4,
         glueToFloor: true,
         texture: "Barell2",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0,
     },
     Barell3: {
@@ -569,7 +569,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.0 / 2 ** 8,
         glueToFloor: true,
         texture: "Barell3",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0,
     },
     Crate: {
@@ -579,7 +579,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.25 / 2 ** 3,
         glueToFloor: true,
         texture: "Crate",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0,
     },
     Crate3: {
@@ -589,7 +589,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.45 / 2 ** 4,
         glueToFloor: true,
         texture: "Crate3",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0,
     },
     Closet: {
@@ -599,7 +599,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.75 / 2 ** 1,
         glueToFloor: true,
         texture: "closet_BaseColor",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
     BookShelf: {
@@ -609,7 +609,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.4 / 2 ** 5,
         glueToFloor: true,
         texture: "BookShelf_baseColor",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0,
     },
     PirateChest: {
@@ -629,7 +629,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.2 / 2 ** 2,
         glueToFloor: true,
         texture: "Closet4_baseColor",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0,
     },
     IronChest: {
@@ -639,7 +639,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.2 / 2 ** 2,
         glueToFloor: true,
         texture: "IronChest_base",
-        material: MATERIAL.standard,
+        material: MATERIAL.metal,
         rotateToNorth: Math.PI,
     },
     MetalCrate50: {
@@ -649,7 +649,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.25 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture50",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     MetalCrate51: {
@@ -659,7 +659,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.13 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture51",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     MetalCrate52: {
@@ -669,7 +669,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.3 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture52",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     MetalCrate53: {
@@ -679,7 +679,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.15 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture53",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     MetalCrate54: {
@@ -689,7 +689,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.29 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture54",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     WoodenCrate50: {
@@ -699,7 +699,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.05 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture50",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate51: {
@@ -709,7 +709,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.22 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture51",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate52: {
@@ -719,7 +719,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.48 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture52",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate53: {
@@ -729,7 +729,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.18 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture53",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate54: {
@@ -739,7 +739,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.22 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture54",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate55: {
@@ -749,7 +749,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.25 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture55",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate56: {
@@ -759,7 +759,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.25 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture56",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate57: {
@@ -769,7 +769,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.26 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture57",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate58: {
@@ -779,7 +779,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.18 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture58",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate59: {
@@ -789,7 +789,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.37 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture59",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate60: {
@@ -799,7 +799,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.36 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture60",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate61: {
@@ -809,7 +809,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.05 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture61",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     MetalCrate421: {
@@ -819,7 +819,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.34 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture421",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     MetalCrate422: {
@@ -829,7 +829,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.42 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture422",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     MetalCrate423: {
@@ -839,7 +839,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.47 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture423",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     MetalCrate424: {
@@ -849,7 +849,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.39 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture424",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     MetalCrate425: {
@@ -859,7 +859,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.03 / (2 ** 4),
         glueToFloor: true,
         texture: "MetalCrateTexture425",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.metal,
         rotateToNorth: 0
     },
     WoodenCrate426: {
@@ -869,7 +869,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.12 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture426",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate427: {
@@ -879,7 +879,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.28 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture427",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate428: {
@@ -889,7 +889,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.16 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture428",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate429: {
@@ -899,7 +899,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.3 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture429",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate430: {
@@ -909,7 +909,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.04 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture430",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate431: {
@@ -919,7 +919,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.2 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture431",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate432: {
@@ -929,7 +929,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.29 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture432",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate433: {
@@ -939,7 +939,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.14 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture433",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate434: {
@@ -949,7 +949,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.23 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture434",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate435: {
@@ -959,7 +959,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.0 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture435",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate436: {
@@ -969,7 +969,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.12 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture436",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate437: {
@@ -979,7 +979,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.33 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture437",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate438: {
@@ -989,7 +989,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.15 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture438",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate439: {
@@ -999,7 +999,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.13 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture439",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate440: {
@@ -1009,7 +1009,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.04 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture440",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate441: {
@@ -1019,7 +1019,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.07 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture441",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     WoodenCrate442: {
@@ -1029,7 +1029,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.48 / (2 ** 4),
         glueToFloor: true,
         texture: "WoodenCrateTexture442",
-        material: MATERIAL.standardShine,
+        material: MATERIAL.wood,
         rotateToNorth: 0
     },
     Chest10: {
@@ -1039,7 +1039,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.0 / 2 ** 2,
         glueToFloor: true,
         texture: "Chest10",
-        material: MATERIAL.standard,
+        material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
     BarrelX: {
@@ -1049,7 +1049,7 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.7 / 2 ** 2,
         glueToFloor: true,
         texture: "x_barrel_BaseColor",
-        material: MATERIAL.standard,
+        material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
 
@@ -3051,19 +3051,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
-   Skully: {
-    name: "Skully",
-    sprite: "Skully",
-    category: 'crest',
-    voice: "FemaleHigh",
-    wants: ["Skull", "Skull", "Skull", "Skull", "Skull"],
-    gives: "Banknote200",
-    text: {
-        intro: `I'm learning to juggle. Five skulls, please. Balls lack personality. I'll pay handsomely. You look like you could use a job.`,
-        progress: `We're still short of skulls. Do finish the job. My payment is generous. My patience has a smaller budget.`,
-        conclusion: `Perfect. Here are two hundred Castle marks. Now stand back. I'm still learning, and I have no use for a sixth skull.`,
+    Skully: {
+        name: "Skully",
+        sprite: "Skully",
+        category: 'crest',
+        voice: "FemaleHigh",
+        wants: ["Skull", "Skull", "Skull", "Skull", "Skull"],
+        gives: "Banknote200",
+        text: {
+            intro: `I'm learning to juggle. Five skulls, please. Balls lack personality. I'll pay handsomely. You look like you could use a job.`,
+            progress: `We're still short of skulls. Do finish the job. My payment is generous. My patience has a smaller budget.`,
+            conclusion: `Perfect. Here are two hundred Castle marks. Now stand back. I'm still learning, and I have no use for a sixth skull.`,
+        },
     },
-},
     GrillGirl: {
         name: "GrillGirl",
         sprite: "GrillGirl",
