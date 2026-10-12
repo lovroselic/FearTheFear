@@ -40,38 +40,40 @@ DEBUG.checkPoint = function () {
     BarMaid wants "SmallBarrel", "SmallBarrel", "SmallBarrel" gives  "GlassOfBeer" 
     GrilGirl wants "Chicken", "LittlePiggy", "BabySheep" gives Banknote100
     Skully wants  "Skull", "Skull", "Skull", "Skull", "Skull", gives Banknote200
+    Cookie wants "Milk", "Egg" gives Banknote50
 
 
-    Banknote10:
+        DONE Banknote10: 4-reception
         DONE: Banknote20: BarSeductress (6-bar)
-    Banknote50:
+        DONE Banknote50: Cookie 9 kitchen
         DONE: Banknote100: - GrillGirl (9-kitchen)
         DONE Banknote200: Skully - old dungeon8
 
         DONE: "SmallBarrel" 7-cellear
         DONE "SmallBarrel" 8 old dungeon
-    "SmallBarrel"
+        DONE "SmallBarrel"9 kitchen
 
-    "GlassOfWine"
-    "Wine"
-    "WhiskeyShot"
-    "Beer"
+        DONE "GlassOfWine" 2 room
+        DONE "Wine" 6-bar
+        DONE "WhiskeyShot" 1-room
+        DONE "Milk", 2-ro0m
+        DONE "Egg" 4-reception
+        DONE "Beer" 9 kitchen
         DONE: "GlassOfBeer" : BarMaid (6-bar)
         DONE "Chicken",  7-cellar
         DONE "LittlePiggy", 4-reception
         DONE "BabySheep" 8-dungeon
-
         DONE "Skull", "Skull", "Skull", "Skull", "Skull" 8 old dungeon
     
         DONE: Gold Key: receptionist;
         DONE: Blue Key: found on Balcony
-     DONE: Green Key: sout terrace
+        DONE: Green Key: sout terrace
 
      */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 8;
+    GAME.level = 9;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -125,6 +127,7 @@ DEBUG.checkPoint = function () {
         //"GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer",
         //"Chicken", "LittlePiggy", "BabySheep",
         //"Skull", "Skull", "Skull", "Skull", "Skull",
+        //"Milk", "Egg",
     ];
 
     for (let itm of invItems) {
@@ -133,7 +136,7 @@ DEBUG.checkPoint = function () {
     }
 
     let keys = [
-        "Blue", "Green", "Gold",
+        //"Blue", "Green", "Gold",
     ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
@@ -210,7 +213,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.15.2",
+    VERSION: "0.15.3",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -906,9 +909,9 @@ const GAME = {
         WebGL.GAME.setViewButtons();
 
         //inner
-        WebGL.ambient_light_strength = INI.DARK_DUNGEON_AMBIENCE;        
-        WebGL.diffuse_light_strength = INI.NORMAL_DIFFUSE;        
-        WebGL.specular_light_strength = 0.25;       
+        WebGL.ambient_light_strength = INI.DARK_DUNGEON_AMBIENCE;
+        WebGL.diffuse_light_strength = INI.NORMAL_DIFFUSE;
+        WebGL.specular_light_strength = 0.25;
 
         // element compilations
         ELEMENT._bb_for_internal_elements();

@@ -2872,7 +2872,10 @@ class ExtendedGridArray3D extends GridArray3D {
                         include: this.check(grid, pathSum)
                     };
 
-                    return carveTypes[type] ? new cls(x, y, z) : null;
+                    if (!carveTypes[type]) return null;
+                    const node = new cls(x, y, z);
+                    if (type === "value") node.height = (STAIRCASE_GRIDS.indexOf(value) + 1) / (STAIRCASE_GRIDS.length + 1);
+                    return node;
                 })
             )
         );

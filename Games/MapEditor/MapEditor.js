@@ -94,7 +94,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.25.4",
+    VERSION: "0.25.5",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -1037,6 +1037,8 @@ const GAME = {
             });
         };
 
+        $('#searchItems').on('keyup', () => filterOptions("#content_type", "#searchItems"));
+        $('#searchContainers').on('keyup', () => filterOptions("#container_type", "#searchContainers"));
         $('#searchDecalTexture').on('keyup', () => filterOptions("#texture_decal", "#searchDecalTexture"));
         $('#searchDecals').on('keyup', () => filterOptions("#crest_decal", "#searchDecals"));
         $('#searchPics').on('keyup', () => filterOptions("#picture_decal", "#searchPics"));
@@ -3248,4 +3250,5 @@ $(function () {
     PRG.INIT();
     PRG.setup();
     ENGINE.LOAD.preload();
+    UNIFORM.setup();
 });

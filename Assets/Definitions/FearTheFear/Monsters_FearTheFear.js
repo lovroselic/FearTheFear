@@ -17,6 +17,14 @@ for (let [index, key] of KEY_TYPES.entries()) {
 }
 
 const ORACLE_TYPE = {
+    Shooter: {
+        name: "Shooter",
+        sprite: "Shooter",
+        category: 'crest',
+        voice: "FemaleLow2",
+        text: `Bullet from a gun cannot bounce around the corner. Your orb can. Use that property wisely. Life saving stuff.`,
+        interactionCategory: "oracle",
+    },
     CircularCut: {
         name: "CircularCut",
         sprite: "CircularCut",
@@ -1317,6 +1325,17 @@ const INTERACTION_OBJECT = {
         material: MATERIAL.standard,
         text: "Creeepy?"
     },
+    Beer: {
+        name: "Beer",
+        category: "interaction_item",
+        element: "CAN",
+        scale: 1.1 / 2 ** 3,
+        glueToFloor: true,
+        texture: "LaskoCanTexture",
+        material: MATERIAL.metal,
+        inventorySprite: "Beer",
+        text: "A cold one. I drank that one in Slovenia."
+    },
 };
 
 const MOVABLE_INTERACTION_OBJECT = {
@@ -1696,6 +1715,18 @@ const INTERACTION_ITEM = {
         category: "interaction_item",
         inventorySprite: "Wine",
         text: "Red wine. Fancy a sip?"
+    },
+    Milk: {
+        name: "Milk",
+        category: "interaction_item",
+        inventorySprite: "Milk",
+        text: "I hope it's not yet spoilt.",
+    },
+    Egg: {
+        name: "Egg",
+        category: "interaction_item",
+        inventorySprite: "Egg",
+        text: "An unborn chick.",
     },
 };
 
@@ -3051,6 +3082,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    Cookie: {
+        name: "Cookie",
+        sprite: "Cookie",
+        category: 'crest',
+        voice: "FemaleLow3",
+        wants: ["Milk", "Egg"],
+        gives: "Banknote50",
+        text: {
+            intro: `I'm making pancakes. Bring me milk and an egg, dear. I'll pay you. A little honest work might do wonders for your hotel bill.`,
+            progress: `We're still missing ingredients, dear. Pancakes made from wishful thinking are terribly thin.`,
+            conclusion: `Perfect. Now I can make pancakes. Here are fifty Castle marks. Put them towards your hotel bill. Try earning faster than you eat.`,
+        },
+    },
     Skully: {
         name: "Skully",
         sprite: "Skully",
