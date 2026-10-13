@@ -21,8 +21,8 @@ ElementsToCompile = [
     { shapeName: "CORNERWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "ROUNDWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "TIT", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
+    { shapeName: "TOPHORIZONTALWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
 ];
-
 
 // assets 
 LoadFonts = [
@@ -45,7 +45,7 @@ LoadObjects = [
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
-    "Tit.obj", "RoundWedge.obj",
+    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj",
 ];
 
 LoadModels = [

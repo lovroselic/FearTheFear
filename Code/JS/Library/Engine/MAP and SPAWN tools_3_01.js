@@ -349,8 +349,9 @@ const SPAWN_TOOLS = {
                     rotation = UP.radAngleBetweenVectors(dir) + type.rotateToNorth;
                     const element = ELEMENT[type.element];
                     const SP = ELEMENT.getSurfaceProjection(element, type.scale);
-                    grid.y = (grid.y >>> 0) + ((1 - dir.y) / 2) + (dir.y * SP.H / 2);
-                    grid.x = (grid.x >>> 0) + ((1 - dir.x) / 2) + (dir.x * SP.H / 2);
+                    const divisor = 2.0;
+                    grid.y = (grid.y >>> 0) + ((1 - dir.y) / 2) + (dir.y * SP.H / divisor);
+                    grid.x = (grid.x >>> 0) + ((1 - dir.x) / 2) + (dir.x * SP.W / divisor);
                 };
             }
             ITEM3D.add(new FloorItem3D(grid, type, C[2], rotation));

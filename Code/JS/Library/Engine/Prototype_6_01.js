@@ -288,7 +288,6 @@ changelog:
         );
     }
     );
-
     defineExtension(console, "console", "title", function title(text) {
         console.proto(text, "#EEE", "bold", "18px");
     });

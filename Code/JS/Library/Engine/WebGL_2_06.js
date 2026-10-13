@@ -5280,8 +5280,12 @@ class FloorItem3D extends Drawable_object {
 
         if (typeof (this.scale) === "number") this.scale = new Float32Array([this.scale, this.scale, this.scale]);
 
-        this.element.boundingBox.scale(this.scale);
-        this.absoluteBoundingBox = this.element.boundingBox.setAbsoluteBoundingBox(Vector3.from_grid3D(this.grid));
+        this.boundingBox = ELEMENT.getBoundingBox(this.element);
+
+        //this.element.boundingBox.scale(this.scale);
+        this.boundingBox.scale(this.scale);
+        this.absoluteBoundingBox = this.boundingBox.setAbsoluteBoundingBox(Vector3.from_grid3D(this.grid));
+        //this.absoluteBoundingBox = this.element.boundingBox.setAbsoluteBoundingBox(Vector3.from_grid3D(this.grid));
     }
     setTexture() {
         this.texture = WebGL.createTexture(this.texture);
@@ -5909,6 +5913,22 @@ class BoundingBox {
         if (scale) this.scale(scale);
         if (createCache) this._buildRotYCache();
 
+    }
+    copy() {
+        const copy = new BoundingBox(
+            [this.max.x, this.max.y, this.max.z],
+            [this.min.x, this.min.y, this.min.z],
+            null,   // bounds already include any scaling
+            false   // build cache after restoring state
+        );
+
+        copy.scaled = this.scaled;
+
+        if (this._rotY !== null) {
+            copy._buildRotYCache();
+        }
+
+        return copy;
     }
     scale(scale) {
         if (this.scaled) return;

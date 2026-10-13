@@ -15,7 +15,7 @@ const MAP_TEXT = {
     6: `If I need a stiff drink, this is the place. But I am not sure if I can afford it.`,
     7: `The cellar. Whee all the alcohol is stored. Might find something usefull here.`,
     8: `Seems like old abandoned dubgeon. But is abandoned also by monsters?`,
-    9: `Smells like teen chickens.`,
+    9: `Smells like teen chicken.`,
     10: ``,
 };
 
@@ -23,7 +23,7 @@ const MAP_TEXT = {
 const MAP = {
     1: {
         name: "Bedroom in the ButtCrack Hotel",
-        data: '{"width":"13","height":"13","depth":3,"map":"BB2ABABB3AA15BAA2ŁAA3BAA11BAA5BAA4BAA6BB2AA4BB2ABAA5BB2AA2BB6ABB6ABB21ABB2ABB3AA3BABB2ABB2AA2BAA2BB8ABB9ÁBB5ABB4䂂BB29Á$BB34ABB79䁢BB36ÁBB4ÁBB3ÁBB2ÁÁ6ABB3ÁBB41ÁÁ33BÁBÁÁ10BÁÁ18BÁÁ16BB8ɁсࡁBAB","extendedMap":"AA42㡋$AA38ᡂAA181ᡂAA187ࡂࡂ2AA2㡆AA22ᡆAA21㡋㡋6A"}',
+        data: '{"width":"13","height":"13","depth":3,"map":"BB2ABABB3AA15BAA2ŁAA3BAA11BAA5BAA4BAA6BB2AA4BB2ABAA5BB2AA2BB6ABB6ABB21ABB2ABB3AA3BABB2ABB2AA2BAA2BB8ABB9ÁBB5ABB4䂂BB29Á$BB34ABB79䁢BB36ÁBB4ÁBB3ÁBB2ÁÁ6ABB3ÁBB41ÁÁ33BÁBÁÁ10BÁÁ18BÁÁ16BB8ɁсࡁBAB","extendedMap":"AA42㡋$AA126⡏AA5ᡂAA3ᡂAA245ࡂࡂ2A㡌⡌AA3㡆AA32ᡆAA28⡏⡏2AA2㡋㡋6AA2"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 2,
@@ -40,14 +40,14 @@ const MAP = {
         archPanorama: "",
         skyPanorama: "",
         start: '[201,1]',
-        decals: '[[221,5,"FirePlaceDecal_675","crest"],[233,3,"FirePlaceDecal_675","crest"],[222,4,"FirePit_681","crest"],[232,4,"FirePit_677","crest"],[188,4,"BearRug02","crest"],[199,4,"BearRug02","crest"],[200,4,"BearRug02","crest"],[201,4,"BearRug02","crest"],[202,4,"BearRug02","crest"],[203,4,"BearRug02","crest"]]',
+        decals: '[[221,5,"FirePlaceDecal_675","crest"],[233,3,"FirePlaceDecal_675","crest"],[222,4,"FirePit_681","crest"],[232,4,"FirePit_677","crest"],[188,4,"BearRug02","crest"],[199,4,"BearRug02","crest"],[200,4,"BearRug02","crest"],[201,4,"BearRug02","crest"],[202,4,"BearRug02","crest"],[203,4,"BearRug02","crest"],[146,3,"Sconce_7","crest"]]',
         lights: '[[162,1,"Fireplace_716","fireplace",["9.99","50.0","5.0"]],[422,1,"DuaLLantern_017","standard",["1","10","5.0"]],[422,7,"Light_642","standardDimmed",["4.0","15","2"]]]',
         gates: '[[155,3,"1.1","2.1","Closed"]]',
-        containers: '[[144,"Barrel_468","INTERACTION_ITEM.WhiskeyShot",5]]',
+        containers: '[[144,"Barrel_468","INTERACTION_ITEM.WhiskeyShot",5],[99,"WoodenCrate436","GOLD_ITEM_TYPE.SilverBar",7],[134,"Barrel","GOLD_ITEM_TYPE.SilverBar",1],[200,"Wardrobe","GOLD_ITEM_TYPE.SilverBar",7],[217,"BarrelMedieval","GOLD_ITEM_TYPE.SilverBar",7],[138,"WoodenCrate54","GOLD_ITEM_TYPE.SilverBar",1],[257,"Barell3","GOLD_ITEM_TYPE.SilverBar",3],[211,"WoodenCrate438","GOLD_ITEM_TYPE.GoldCube",7],[240,"WoodenCrate436","GOLD_ITEM_TYPE.GoldCube",1]]',
         oracles: '[[175,7,"PrincessHotelBed"]]',
         lairs: '[[329,1,"Lair78"],[333,1,"Lair_606"]]',
-        fires: '[[222,4,"Fireplace"],[232,4,"Fireplace"]]',
-        monsterList: '["Bat"]',
+        fires: '[[222,4,"Fireplace"],[232,4,"Fireplace"],[145,5,"Torch"]]',
+        //monsterList: '["Bat"]',
     }
     ,
     2: {

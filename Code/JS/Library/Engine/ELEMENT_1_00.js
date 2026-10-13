@@ -87,7 +87,6 @@ const ELEMENT = {
         const max = { x: 1, y: 1, z: 1 };
         return this.compileBoxPlanes(min, max, shapeName, COLLISION_MODE.CELL);
     },
-
     compileBoundsPlanes(element, shapeName) {
         const boundingBox = this.getBoundingBox(element);
         return this.compileBoxPlanes(boundingBox.min, boundingBox.max, shapeName, COLLISION_MODE.BOUNDS);
@@ -124,7 +123,6 @@ const ELEMENT = {
             }
         }
     },
-
     readElementVertex(positions, index) {
         const offset = index * 3;
         const x = positions[offset];
@@ -166,7 +164,6 @@ const ELEMENT = {
 
         return sameNormal && sameDistance;
     },
-
     compileElementPlanes(element, shapeName = "UNKNOWN") {
         const MAX_PLANES = 24;
         //const CONVEXITY_EPSILON = 1E-5;
@@ -259,7 +256,6 @@ const ELEMENT = {
         };
     },
 
-
     getMinY(element) {
         let minY = Infinity;
         for (let i = 0; i < element.positions.length; i += 3) {
@@ -302,6 +298,7 @@ const ELEMENT = {
         return extremity;
     },
     getBoundingBox(element) {
+        if (element.boundingBox) return element.boundingBox.copy();
         const max = Array(-Infinity, -Infinity, -Infinity);
         const min = Array(Infinity, Infinity, Infinity);
         for (let i = 0; i < element.positions.length; i += 3) {
@@ -1023,6 +1020,12 @@ const SHAPE_PATH = (() => {
                 `M 0 0 L ${SIZE} 0 A ${SIZE} ${SIZE} 0 0 1 0 ${SIZE} Z`
             ),
             color: "#999",
+        },
+        [EXT_MAPDICT.TOPHORIZONTALWEDGE]: {
+            path: new Path2D(
+                `M 0 0 L ${SIZE} 0 L ${SIZE} ${OFF} L 0 ${OFF} Z`
+            ),
+            color: "#1beba6",
         },
     };
 
