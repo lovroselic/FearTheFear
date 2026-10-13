@@ -28,7 +28,7 @@ DEBUG.INF_LIVES = false;
 DEBUG.keys = true;
 DEBUG.max17 = false;
 DEBUG.STAY_ALIVE = false;
-DEBUG.INF_MANA = true;
+DEBUG.INF_MANA = false;
 
 DEBUG.checkPoint = function () {
     /**
@@ -73,7 +73,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 1;
+    GAME.level = 4;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -213,7 +213,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.15.4",
+    VERSION: "0.15.5",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

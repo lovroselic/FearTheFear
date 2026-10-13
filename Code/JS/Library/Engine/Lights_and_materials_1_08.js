@@ -121,15 +121,15 @@ const MATERIAL = {
     princess: new Material(LIGHT_COLORS.standard, LIGHT_COLORS.standard, LIGHT_COLORS.standard, 0.15, 0.10, 0, 0.3),
 
     // other
-    wood: new Material(
+     wood: new Material(
         [0.20, 0.12, 0.06], // ambientColor
-        [0.55, 0.35, 0.18], // diffuseColor
+        [0.45, 0.35, 0.18], // diffuseColor
         [0.10, 0.10, 0.10], // specularColor: weak, neutral
         0.10,               // shininess: becomes 12.8
         0.85,               // roughness
         0.0,                // metallic
         0.03                // fresnelStrength
-    ),
+    ), 
     metal: new Material(
         [0.20, 0.20, 0.20], // ambientColor
         [0.55, 0.55, 0.55], // diffuseColor: neutral grey

@@ -392,7 +392,7 @@ const VOICE = {
   'News': {
     source: ["Zira"],
     voice: 0,
-    setting: new VoiceSetting(1.75, 1.3, 1.0)
+    setting: new VoiceSetting(1.65, 1.3, 1.0)
   },
 };
 
