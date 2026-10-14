@@ -144,18 +144,18 @@ changelog:
             }
             return low;
         }
-        function binarySearchClosestLowFloat(arr, target, delta) {
+        function binarySearchClosestLowFloat(arr, target) {
             let low = 0;
             let high = arr.length;
             while (low < high) {
-                let mid = (low + high) >>> 1;
-                if (arr[mid] > target - delta) {
+                const mid = low + ((high - low) >>> 1);
+                if (arr[mid] > target) {
                     high = mid;
                 } else {
                     low = mid + 1;
                 }
             }
-            return low;
+            return Math.max(0, low - 1);
         }
         function listObjectKeys(obj) {
             const list = [];

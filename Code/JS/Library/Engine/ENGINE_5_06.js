@@ -2306,7 +2306,8 @@ const ENGINE = {
                                     samples.push({
                                         time: timeData.data[i],
                                         value: animData.data.slice(ii, ii + dataLength),
-                                        max: timeData.max[0],
+                                        //max: timeData.max[0],
+                                        max: timeData.data[timeData.data.length - 1],
                                     });
                                 }
                             }
@@ -4206,6 +4207,7 @@ class $3D_ACTOR {
 
         for (let nodeIndex in A.nodes) {
             const node = A.nodes[nodeIndex];
+            const lastIndex = node.time.length - 1;
 
             /** 
              * perform binary search only for the first node, 
@@ -4215,20 +4217,24 @@ class $3D_ACTOR {
 
             if (!(keyFrameIndex >= 0 && samplingPeriod && keyFrameTime === node.time[keyFrameIndex])) {
                 samplingPeriod = node.time[1] - node.time[0];
-                keyFrameIndex = binarySearchClosestLowFloat(node.time, delta, samplingPeriod);
+                keyFrameIndex = binarySearchClosestLowFloat(node.time, delta);
                 keyFrameTime = node.time[keyFrameIndex];
             }
 
-            const nextKeyFrameTime = node.time[keyFrameIndex + 1];
-            const timeScale = (delta - keyFrameTime) / (nextKeyFrameTime - keyFrameTime);
+            const nextKeyFrameIndex = Math.min(keyFrameIndex + 1, lastIndex);
+            const nextKeyFrameTime = node.time[nextKeyFrameIndex];
+            const interval = nextKeyFrameTime - keyFrameTime;
+            let timeScale = 0;
+            if (interval > 0) timeScale = Math.max(0, Math.min(1, (delta - keyFrameTime) / interval));
+
             const translation = glMatrix.vec3.create();
-            glMatrix.vec3.lerp(translation, node.translation[keyFrameIndex], node.translation[keyFrameIndex + 1], timeScale);
+            glMatrix.vec3.lerp(translation, node.translation[keyFrameIndex], node.translation[nextKeyFrameIndex], timeScale);
 
             const rotation = glMatrix.quat.create();
-            glMatrix.quat.slerp(rotation, node.rotation[keyFrameIndex], node.rotation[keyFrameIndex + 1], timeScale);
+            glMatrix.quat.slerp(rotation, node.rotation[keyFrameIndex], node.rotation[nextKeyFrameIndex], timeScale);
 
             const scale = glMatrix.vec3.create();
-            glMatrix.vec3.lerp(scale, node.scale[keyFrameIndex], node.scale[keyFrameIndex + 1], timeScale);
+            glMatrix.vec3.lerp(scale, node.scale[keyFrameIndex], node.scale[nextKeyFrameIndex], timeScale);
 
             const TRS = glMatrix.mat4.create();
             glMatrix.mat4.fromRotationTranslationScale(TRS, rotation, translation, scale);

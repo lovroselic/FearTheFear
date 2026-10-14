@@ -5281,11 +5281,8 @@ class FloorItem3D extends Drawable_object {
         if (typeof (this.scale) === "number") this.scale = new Float32Array([this.scale, this.scale, this.scale]);
 
         this.boundingBox = ELEMENT.getBoundingBox(this.element);
-
-        //this.element.boundingBox.scale(this.scale);
         this.boundingBox.scale(this.scale);
         this.absoluteBoundingBox = this.boundingBox.setAbsoluteBoundingBox(Vector3.from_grid3D(this.grid));
-        //this.absoluteBoundingBox = this.element.boundingBox.setAbsoluteBoundingBox(Vector3.from_grid3D(this.grid));
     }
     setTexture() {
         this.texture = WebGL.createTexture(this.texture);
@@ -5367,7 +5364,6 @@ class GeneralMissile extends Drawable_object {
         this.active = true;
         this.pos = position;
         this.dir = direction;
-        //this.bounce3D = true;
 
         ImportTypeToConstructor(this, type);
         this.texture = WebGL.createTexture(TEXTURE[this.texture]);
@@ -5427,7 +5423,6 @@ class Missile extends GeneralMissile {
         this.setDepth();
         this.magic = magic;
         this.distance = null;
-        //this.bounce3D = false;
         this.friendly = friendly;
         this.explosionType = explosionType;
         this.power = this.calcPower(magic);
@@ -5444,30 +5439,6 @@ class Missile extends GeneralMissile {
     setDepth() {
         this.depth = Math.floor(this.pos.y);
     }
-    /*  move(lapsedTime, GA) {
-         if (!this.IAM.exists(this.id)) return;
- 
-         let length = (lapsedTime / 1000) * this.moveSpeed;
-         const pos = this.pos.translate(this.dir, length);
-         const F = this.r / 4;                                       // pre bounce offset
- 
-         if (lapsedTime < 0.01) return this.explode(this.IAM);
-         if (GA.isWall(Grid3D.toClass(Vector3.to_Grid3D(pos)))) return this.move(lapsedTime / 2, GA);
-         if (pos.y < F && this.dir.y < 0) {
-             //console.warn("FLOOR bounce ", this.id, pos, "F", F, "this.pos", this.pos, "this.dir", this.dir);
-             this.hitWall(this.IAM, pos, GA, DIR_UP);
-             return this.move(lapsedTime, GA);
-         } else if (pos.y > this.IAM.map.maxZ - F && this.dir.y > 0) {
-             //console.warn("CEIL bounce ?", this.id, pos, "F", F, "this.pos", this.pos, "this.dir", this.dir);
-             this.hitWall(this.IAM, pos, GA, DIR_DOWN);
-             return this.move(lapsedTime, GA);
-         }
- 
-         this.pos = pos;
-         this.setDepth();
-         this.distance = glMatrix.vec3.distance(this.IAM.hero.player.pos.array, this.pos.array);
-         this.pos_to_translation();
-     } */
     move(lapsedTime, GA) {
         if (!this.IAM.exists(this.id)) return;
         const length = (lapsedTime / 1000) * this.moveSpeed;

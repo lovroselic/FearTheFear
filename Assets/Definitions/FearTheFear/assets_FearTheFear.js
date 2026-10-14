@@ -57,6 +57,7 @@ LoadModels = [
     "Wolf.gltf", "ButterFly.gltf", "Cat.gltf", "Goblin.gltf", "SkeleDwarf.gltf",
     "Astro.gltf", "Basilisk.gltf", "Raptor.gltf", "DinoAir.gltf", "Hulk.gltf", "GhostFace.gltf",
     "Rex.gltf", "Drax.gltf", "MissWhite.gltf", "Skeleton.gltf", "Devilla.gltf",
+    "Rat.gltf",
 ];
 
 LoadTextures = [
@@ -1300,6 +1301,8 @@ LoadAudio = [
     { srcName: "PigSqueal.mp3", name: "PigSqueal" },
     { srcName: "PigAttack.mp3", name: "PigAttack" },
     { srcName: "DragonRoar.mp3", name: "DragonRoar" },
+    { srcName: "RatHurt.mp3", name: "RatHurt" },
+    { srcName: "RatAttack.mp3", name: "RatAttack" },
 ];
 
 LoadShaders = [
@@ -1339,6 +1342,26 @@ LoadSprites = [
     { srcName: "ActionMovables/Sheep.webp", name: "BabySheep" },
     { srcName: "ActionMovables/LittlePiggy.webp", name: "LittlePiggy" },
     { srcName: "Items/Chicken.webp", name: "Chicken" },
+    { srcName: "Items/Butterfly.webp", name: "Butterfly" },
+    //health items
+    { srcName: "Items/BeerHealth.webp", name: "BeerHealth" },
+    { srcName: "Items/Cake.webp", name: "Cake" },
+    { srcName: "Items/Champagne.webp", name: "Champagne" },
+    { srcName: "Items/HealthBox.webp", name: "HealthBox" },
+    { srcName: "Items/Steak.webp", name: "Steak" },
+    { srcName: "Items/RoastChicken.webp", name: "RoastChicken" },
+    { srcName: "Items/RoastPig.webp", name: "RoastPig" },
+    //mana items
+    { srcName: "Items/Amanita.webp", name: "Amanita" },
+    { srcName: "Items/Snail.webp", name: "Snail" },
+    { srcName: "Items/ManaFrog.webp", name: "ManaFrog" },
+    { srcName: "Items/RedButterfly.webp", name: "RedButterfly" },
+    { srcName: "Items/ManaGoat.webp", name: "ManaGoat" },
+    { srcName: "Items/Owl.webp", name: "Owl" },
+    { srcName: "Items/GreenManaDragon.webp", name: "GreenManaDragon" },
+    { srcName: "Items/BluePrincesssMana.webp", name: "BluePrincesssMana" },
+    { srcName: "Items/GoldPrincessMana.webp", name: "GoldPrincessMana" },
+    { srcName: "Items/GreenBat.webp", name: "GreenBat" },
 
     //triggers
     { srcName: "Triggers/MarbleTriggerButton.webp", name: "MarbleTriggerButton" },
@@ -1568,26 +1591,6 @@ LoadSprites = [
     { srcName: "Status/Radar2.webp", name: "Radar" },
     { srcName: "Status/GoldClover.webp", name: "GoldClover" },
     { srcName: "Status/Light48.webp", name: "Light" },
-
-    //health items
-    { srcName: "Items/BeerHealth.webp", name: "BeerHealth" },
-    { srcName: "Items/Cake.webp", name: "Cake" },
-    { srcName: "Items/Champagne.webp", name: "Champagne" },
-    { srcName: "Items/HealthBox.webp", name: "HealthBox" },
-    { srcName: "Items/Steak.webp", name: "Steak" },
-    { srcName: "Items/RoastChicken.webp", name: "RoastChicken" },
-    { srcName: "Items/RoastPig.webp", name: "RoastPig" },
-
-    //mana items
-    { srcName: "Items/Amanita.webp", name: "Amanita" },
-    { srcName: "Items/Snail.webp", name: "Snail" },
-    { srcName: "Items/ManaFrog.webp", name: "ManaFrog" },
-    { srcName: "Items/RedButterfly.webp", name: "RedButterfly" },
-    { srcName: "Items/ManaGoat.webp", name: "ManaGoat" },
-    { srcName: "Items/Owl.webp", name: "Owl" },
-    { srcName: "Items/GreenManaDragon.webp", name: "GreenManaDragon" },
-    { srcName: "Items/BluePrincesssMana.webp", name: "BluePrincesssMana" },
-    { srcName: "Items/GoldPrincessMana.webp", name: "GoldPrincessMana" },
 
     //items
     { srcName: "Items/GlassOfWine.webp", name: "GlassOfWine" },

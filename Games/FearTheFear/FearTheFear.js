@@ -73,7 +73,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 5;
+    GAME.level = 9;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -213,7 +213,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.15.6",
+    VERSION: "0.15.7",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -287,11 +287,11 @@ const PRG = {
 
         /** dev settings */
         if (DEBUG.VERBOSE) {
-            WebGL.VERBOSE = true;
-            //AI.VERBOSE = true;
-            //ENGINE.verbose = true;
-            MAP_TOOLS.INI.VERBOSE = true;
-            WebGL.DEBUG = true;
+            WebGL.VERBOSE = false;
+            AI.VERBOSE = false;
+            ENGINE.verbose = false;
+            MAP_TOOLS.INI.VERBOSE = false;
+            WebGL.DEBUG = false;
             //MINIMAP.verbose();
         }
     },
