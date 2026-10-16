@@ -1900,7 +1900,7 @@ const MONSTER_TYPE = {
         directMagicDamage: false,
         attackSound: "MonsterAttack1",
         hurtSound: "MonsterHurt",
-        behaviourArguments: [10, ["wanderer"], 7, ["shoot"]],
+        behaviourArguments: [10, ["wanderer"], 7, ["shoot"]], 
         moveSpeed: 1.0,
         shootDistance: 7,
         stalkDistance: 6,

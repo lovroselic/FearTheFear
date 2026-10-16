@@ -5577,7 +5577,6 @@ class Blue3D_Bouncer extends BouncingMissile {
         super(position, direction, type, magic, explosionType, friendly, collectibleType);
         this.name = "Blue3D_Bouncer";
     }
-
 }
 
 class WallFeature3D {
@@ -6939,7 +6938,7 @@ class $3D_Entity {
         let position = this.moveState.pos.translate(dir, this.r);
         position.add_y(0.5);
         const manaCost = this.missile.calcMana(this.magic);
-        const missile = new this.missile(position, dir, this.missileType, this.magic);
+        const missile = new this.missile(position, dir, this.missileType, this.magic, this.missileType.explosionType);
 
         if (GA.sphereInWallPoint(missile.pos, missile.dir, missile.r)[0] || GA.missileInShapePoint(missile)[0]) return; //missile could be created in wallor in shape
 
