@@ -1172,22 +1172,22 @@
                 <div class="setup_container section">
                     <fieldset>
                         <legend>
-                            Arch panorama
+                            Bottom panorama
                         </legend>
                         <div>
                             <div class="d-flex justify-content-center align-items-center">
-                                <input type="text" id="searchArchPanorama" class="w-75"
-                                    placeholder="... search arch panorama">
+                                <input type="text" id="searchBottomPanorama" class="w-75"
+                                    placeholder="... search bottom panorama">
                             </div>
                             <div class="d-flex align-items-center">
-                                <input type="button" id="randArchPanorama" value="Random" />
-                                <select id="archPanorama" class="ms-3"></select>
+                                <input type="button" id="randBottomPanorama" value="Random" />
+                                <select id="bottomPanorama" class="ms-3"></select>
                             </div>
                             <div class="m-3">
-                                <canvas id="archPanoramaCanvas" width="320" height="320"></canvas>
+                                <canvas id="bottomPanoramaCanvas" width="320" height="320"></canvas>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <p id="archPanorama_resolution"></p>
+                                <p id="bottomPanorama_resolution"></p>
                             </div>
                         </div>
                     </fieldset>
@@ -1229,41 +1229,27 @@
                         Export:
                     </legend>
                     <textarea id="exp" style="width: 1200px; height: 256px;">
-8 : {
-name: "The Old Dungeon",
-data: '{"width":"19","height":"19","depth":2,"map":"B䂂AA5BAA4BAA10BB3ABB2AA6䁆AA8BB3ABABB6ABB2AA2BABAA7BAA7䁢AA8BAA2BB4AA2BABB2ABABAA2BB3ABB3ABABB3ABB2ABABB4ABABABABB2AA2BB12ABB7AA2BB6AA12BB3ABB3AA2BAA2BB2ABB2AA4BABAA4BB2ABB2AA2BABABB7ABB7AA2BB5AA3BB2AA4BB3AA3BB4ABB3ABB2ABABB2ABB9ABB2AA3BAA3BAA6BABB3AA3BB2ABB2AA3BB2AA2䁆ABB272ÁABB45ÁÁ2BB22䂂BB15$BB9䂂BB11ABABB2ÁÁ6BB3ABB5","extendedMap":"AA278⡊ᡅAA260$AA14ᡊAA45ᡊAA10⡊AA11ࡅAA82ࡊࡊ2㡊㡊2AA12"}',
-dungeonAmbience: 0,
+10 : {
+name: "Abyss",
+data: '{"width":"25","height":"19","depth":7,"map":"BB2AA2ÁAA4BAA2ÁAA6ÁABAA3BB2ABAA9BB2AA5BABABAA2ÁAA14ÁAA3BAA8BAA2BÁAA5ÁBAA2BAA2BB11ABB2AA2BB8AA2BB4AA3BB57ABB67ÁÁ3BB11$BB48ÁBB91ÁÁ2BB15ABB54ÁBB9ÁBB24ÁBB31ÁBB14ÁÁ2BB13ÁABB2䁢BB2ÁBÁBÁBB6ÁBB11ÁÁ2BB2ÁBB8ÁÁ93BB3ÁÁ3BB11ÁÁ3BÁBB2ÁBB2ÁBB104ÁÁ6BÁÁ12AÁÁ98BÁÁ8BÁAÁÁ7BÁÁ116AÁÁ5BÁÁ3BÁÁ112AA2ÁÁ8BÁÁ4BÁÁ100BÁÁ9BÁBB2ÁÁ101BÁÁ9BÁÁ102BÁÁ110AÁÁ8BB3ÁÁ96BÁÁ208BÁÁ617BÁÁ500BÁBÁÁ107BB101","extendedMap":"AA2276ᡎᡎ3AA752$AA294"}',
+dungeonAmbience: 10,
 sg: 0,
 maxSpawned: 4,
 killCountdown: 4,
 killsRequiredToStopSpawning: 25,
 spawnDelay: 15999,
-wall: "JuggernautDarkwalls_0902",
-floor: "FloorTiles_SDXL_006",
+wall: "MountainWall_102",
+floor: "AlpineGround",
 ceil: "Relief19",
 frontPanorama: "",
-leftPanorama: "",
+leftPanorama: "TerraceView",
 rightPanorama: "",
 backPanorama: "",
-archPanorama: "",
-skyPanorama: "",
-start: '[20,5]',
-decals: '[[2,7,"FemDommes_20461","picture"],[9,7,"FemDommes_8300","picture"],[17,7,"FemDommes_25005","picture"],[98,7,"FemDommes_27170","picture"],[87,7,"FemDommes_22946","picture"],[91,7,"FemDommes_13196","picture"],[127,7,"FemDommes_22146","picture"],[172,7,"PrincessDragonDomme_098","picture"],[159,7,"FemDommes_27244","picture"],[195,7,"NewDommes_3605","picture"],[269,7,"NewDommes_1230","picture"],[274,7,"NewDommes_2500","picture"],[163,7,"LeisureSuitLarry75","picture"],[203,7,"FemDommes_18102","picture"],[167,7,"FemDommes_21502","picture"],[279,7,"Apparitias_035","picture"],[345,1,"FemDommes_18807","picture"],[350,1,"FemDommes_27120","picture"],[355,1,"Princess408","picture"],[359,1,"ZX_Games_3032","picture"],[315,1,"FluxDommes4043","picture"],[305,1,"NewDommes_4064","picture"],[309,1,"UnusedEntities2004","picture"],[231,1,"NewDommes_728","picture"],[172,1,"NewDommes_3040","picture"],[195,1,"GirlOnStairs102","picture"],[235,1,"FemDommes_25114","picture"],[275,1,"FemDommes_16328","picture"],[279,1,"FemDommes_21024","picture"],[239,1,"NewDommes_3462","picture"],[203,1,"FemDommes_9003","picture"],[243,1,"NewDommes_2959","picture"],[167,1,"GameDommes_008","picture"],[163,1,"FemDommes_23158","picture"],[123,1,"FemDommes_21022","picture"],[87,1,"FemDommes_28005","picture"],[91,1,"NewDommes_2339","picture"],[58,5,"FemDommes_6287","picture"],[114,5,"GemDommes_047","picture"],[190,5,"FemDommes_14023","picture"],[285,5,"NewDommes_724","picture"],[213,5,"FemDommes_23526","picture"],[175,5,"NewDommes_3812","picture"],[253,5,"FemDommes_25139","picture"],[198,5,"FemDommes_23467","picture"],[139,5,"NewDommes_727","picture"],[181,5,"FemDommes_26535","picture"],[219,5,"GameDommes_110","picture"],[185,5,"FluxDommes2201","picture"],[259,5,"NewDommes_224","picture"],[297,5,"FemDommes_28067","picture"],[145,5,"ShinyBlackRuberella105","picture"],[105,5,"FemDommes_20597","picture"],[102,5,"FemDommes_26716","picture"],[128,5,"FemDommes_17754","picture"],[46,5,"FemDommes_21481","picture"],[78,1,"FemDommes_21200","picture"],[22,3,"NewDommes_1911","picture"],[118,3,"EyeOfTheBeholder110","picture"],[194,3,"FemDommes_25150","picture"],[253,3,"FemDommes_27187","picture"],[341,3,"NewDommes_3722","picture"],[297,3,"FemDommes_4211","picture"],[259,3,"FemDommes_22129","picture"],[301,3,"FemDommes_21145","picture"],[217,3,"FemDommes_24362","picture"],[179,3,"CrawlMaster2","picture"],[202,3,"FemDommes_21102","picture"],[223,3,"FemDommes_25053","picture"],[185,3,"FemDommes_9052","picture"],[265,3,"FemDommes_12098","picture"],[189,3,"FemDommes_8159","picture"],[132,3,"FemDommes_19557","picture"],[111,3,"FemDommes_24296","picture"],[56,3,"NewDommes_2247","picture"],[67,3,"FemDommes_22465","picture"],[62,4,"RustyFloorGrille_02","crest"],[26,5,"NewDommes_1617","picture"],[149,3,"FemDommes_18158","picture"]]',
-lights: '[[461,1,"Light_623","standard",["3.0","10.0","1.0"]],[198,3,"Candelabra09","standardDimmed",["3.0","15.0","1.0"]],[156,3,"Candelabra09","standardDimmed",["3.0","15.0","1.0"]],[278,3,"Light_633","standardDimmed",["3.0","15.0","1.0"]],[247,5,"Lamp44","standardSoft",["3.0","15.0","1.0"]],[133,5,"WallLamp16","standardSoft",["3.0","15.0","1.0"]],[311,5,"Candelabra15","standardSoft",["3.0","15.0","1.0"]],[240,5,"WallLamp31","standardSoft",["3.0","15.0","1.0"]],[11,7,"DuaLLantern_015","standardSoft",["3.0","15.0","1.0"]],[168,7,"Light_637","standardSoft",["3.0","15.0","1.0"]],[90,7,"Candle68","standardSoft",["3.0","15.0","1.0"]],[123,7,"WallLamp35","standardSoft",["3.0","15.0","1.0"]]]',
-gates: '[[19,5,"8.1","7.2","Green"]]',
-monsters: '[[197,"SpiderRed",1],[193,"SpiderRed",1],[292,"SpiderRed",1],[143,"SpiderRed",1],[241,"SpiderRed",1],[332,"Rat",1],[226,"Rat",1],[85,"MadHandy",1]]',
-scrolls: '[[34,13]]',
-gold: '[[40,"GoldCube"],[115,"GoldCube"],[192,"GoldCube"],[249,"GoldCube"],[214,"GoldCube"],[178,"GoldCube"],[271,"GoldCube"],[307,"GoldCube"],[312,"GoldCube"],[256,"GoldCube"],[161,"GoldCube"],[201,"GoldCube"],[146,"GoldCube"],[317,"GoldCube"],[321,"GoldCube"],[333,"GoldCube"],[262,"GoldCube"],[207,"GoldCube"],[130,"GoldCube"],[74,"GoldCube"],[52,"GoldCube"],[48,"GoldCube"],[106,"GoldCube"]]',
-skills: '[[103,"Magic"],[212,"Attack"],[36,"Defense"]]',
-containers: '[[82,"Barrel_461","GOLD_ITEM_TYPE.SilverBar",1],[72,"WoodenCrate436","GOLD_ITEM_TYPE.GoldBar",1],[42,"Barrel_481","GOLD_ITEM_TYPE.GoldCube",7]]',
-doors: '[60,119]',
-triggers: '[[8,7,"SmoothWallButton",1,65]]',
-entities: '[[5,7,"Skully"]]',
-objects: '[[153,"Skull"],[68,"Skull"],[224,"Skull"],[300,"Skull"],[254,"Skull"],[140,"SmallBarrel"],[96,"Cake"],[32,"Cake"],[200,"Cake"]]',
-oracles: '[[15,7,"CircularCut"],[323,5,"Shooter"]]',
-movables: '[[338,"BabySheep"],[43,"GreenBat"],[252,"GreenBat"],[335,"GreenBat"],[261,"GreenBat"],[108,"GreenBat"]]',
-lairs: '[[13,7,"Lair60"],[77,7,"Lair66"]]',
-monsterList: '["SpiderRed","SpiderGreen","Rat","Rat"]',
+bottomPanorama: "ValleyBottom",
+skyPanorama: "Sky_204",
+start: '[2821,1]',
+decals: '[[2822,1,"IvyWall_521","texture"],[2798,1,"IvyWall_521","texture"],[2794,1,"IvyWall_521","texture"],[2794,5,"IvyWall_521","texture"],[2798,3,"IvyWall_521","texture"],[2822,3,"IvyWall_521","texture"],[2820,5,"IvyWall_521","texture"],[3269,1,"IvyWall_521","texture"],[3271,1,"IvyWall_521","texture"],[3272,1,"IvyWall_521","texture"],[3273,1,"IvyWall_521","texture"],[3270,1,"IvyWall_521","texture"],[2820,1,"ButtCrackTexture","texture"],[520,7,"CreepyForest_1154","texture"],[522,7,"CreepyForest_1154","texture"],[544,5,"CreepyForest_1154","texture"],[522,3,"CreepyForest_1154","texture"],[520,5,"CreepyForest_1154","texture"],[496,7,"CreepyForest_1154","texture"]]',
+gates: '[[2846,1,"10.1","4.5","Gold"]]',
 }
 
         </textarea>

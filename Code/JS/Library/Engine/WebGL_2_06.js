@@ -1366,7 +1366,6 @@ const WebGL = {
         }
 
         //panorama
-        this.drawTexturedRange("archPanorama", this.texture.archPanorama, unlit);
         this.drawTexturedRange("frontPanorama", this.texture.frontPanorama, true);
         this.drawTexturedRange("leftPanorama", this.texture.leftPanorama, true);
         this.drawTexturedRange("rightPanorama", this.texture.rightPanorama, true);
@@ -1795,8 +1794,8 @@ const WORLD = {
     GA: null,                                                                                                           //reference
     bufferTypes: ["positions", 'indices', "textureCoordinates", "vertexNormals"],
     objectTypes: ["wall", "floor", "ceil", "decal",
-        "frontPanorama", "leftPanorama", "rightPanorama", "backPanorama", "skyPanorama", "archPanorama",
-        "floorPanorama"
+        "frontPanorama", "leftPanorama", "rightPanorama", "backPanorama",
+        "skyPanorama", "floorPanorama"
     ],
     cubeFaces: ["BACK_FACE", "RIGHT_FACE", "FRONT_FACE", "LEFT_FACE", "BOTTOM_FACE", "TOP_FACE"],                       //corresponds to directions3D: [UP3, RIGHT3, DOWN3, LEFT3, BELOW3, ABOVE3],
     faceTypes: ["wall", "wall", "wall", "wall", "ceil", "floor"],
@@ -2521,7 +2520,7 @@ const WORLD = {
         const maxH = GA.depth - 0.15;   // grid z -> world y (height), offset so it doesn't class with ceiling
 
         const minLat = 0;
-        const maxLat = GA.height; // grid y -> world z (lateral)
+        const maxLat = GA.height;       // grid y -> world z (lateral)
 
         // FRONT, x = 0
         this.addTexturedQuad(
@@ -2586,6 +2585,19 @@ const WORLD = {
             "skyPanorama",
             null,
             new Vector3(0, -1, 0)
+        );
+
+        // Floor/bottom, world y = minH
+        this.addTexturedQuad(
+            [
+                new Vector3(minX, minH, minLat),
+                new Vector3(maxX, minH, minLat),
+                new Vector3(maxX, minH, maxLat),
+                new Vector3(minX, minH, maxLat),
+            ],
+            "floorPanorama",
+            null,
+            new Vector3(0, 1, 0)
         );
     },
     addBackgroundBox(bounds) {
@@ -3963,14 +3975,32 @@ class $3D_player {
         }
 
         //GA check
+        const upperGrid = feetGrid3D.add(ABOVE3);
         const gridType = REVERSED_MAPDICT[this.GA.getValue(feetGrid3D)];
+        const upperGridType = REVERSED_MAPDICT[this.GA.getValue(upperGrid)];
+        //console.warn("checkLanding", gridType, "feetPos3.y", feetPos3.y, "feetGrid3D", feetGrid3D, "upperGrid", upperGrid, "upperGridType", upperGridType);
         switch (gridType) {
             case undefined:
-                if (feetPos3.y < 0.0) {
-                    this.resetToGround(nextPos3);
-                    return true;
+
+                switch (upperGridType) {
+                    case "EMPTY":
+                        if (feetPos3.y < 0.0) {
+                            this.resetToGround(nextPos3);
+                            return true;
+                        }
+                        return false;
+
+                    case "HOLE":
+                        if (feetPos3.y < 0) {
+                            console.error("DONE FALLING into HOLE", "feetPos3.y", feetPos3.y, "this.velocity_Z", this.velocity_Z, "nextPos3", nextPos3);
+                            this.velocity_Z = -9999999.99;
+                            nextPos3.set_y(0);
+                            this.setPos(nextPos3);
+                            return true;
+                        }
+                        return false;
                 }
-                return false;
+
             case "HOLE":
                 if (feetPos3.y < -0.9) {
                     console.error("DONE FALLING into HOLE", "feetPos3.y", feetPos3.y, "this.velocity_Z", this.velocity_Z, "nextPos3", nextPos3);
@@ -7161,7 +7191,10 @@ const FaceToDirection = function (face) {
 };
 
 const Direction3DToFace = function (dir) {
-    return DirectionToFace(Vector3.toVector(dir));
+    if (dir.z === -1) return "BOTTOM";
+    if (dir.z === 1) return "TOP";
+
+    return DirectionToFace(new Vector(dir.x, dir.y));
 };
 
 const DirectionToFace = function (dir) {

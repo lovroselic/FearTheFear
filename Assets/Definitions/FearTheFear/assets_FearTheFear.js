@@ -76,8 +76,9 @@ LoadTextures = [
     { srcName: "Panorama/TerraceView.webp", name: "TerraceView" },
     { srcName: "Panorama/HotelBalconyView.webp", name: "HotelBalconyView" },
 
-    //sky
+    //sky, bottom
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },
+    { srcName: "Sky/ValleyBottom.webp", name: "ValleyBottom" },
 
     //wall, floor, ceiling
     { srcName: "Wall/Wood_726.webp", name: "Wood_726" },
@@ -1043,6 +1044,10 @@ LoadTextures = [
     { srcName: "Wall/KreaWall_574.webp", name: "KreaWall_574" },
     { srcName: "Wall/KreaWall_575.webp", name: "KreaWall_575" },
     { srcName: "Wall/KreaWall_576.webp", name: "KreaWall_576" },
+    { srcName: "Wall/AlpineFloor2.webp", name: "AlpineFloor2" },
+    { srcName: "Wall/AlpineGround.webp", name: "AlpineGround" },
+    { srcName: "Wall/ButtCrackTexture.webp", name: "ButtCrackTexture" },
+    { srcName: "Wall/OchreSlabs.webp", name: "OchreSlabs" },
 
     //decal-gates
     { srcName: "Gates/WoodenGate2.webp", name: "WoodenGate1" },

@@ -88,7 +88,7 @@ const TEXTURE_LIST = [
     "JuggWall_554", "JuggWall_555", "JuggWall_556", "JuggWall_557", "JuggWall_558", "JuggWall_559", "JuggWall_560", "JuggWall_561", "JuggWall_562", "JuggWall_563", "KreaWall_564", "KreaWall_565",
     "KreaWall_566", "KreaWall_567", "KreaWall_568", "KreaWall_569", "KreaWall_570", "KreaWall_571", "KreaWall_572", "KreaWall_573", "KreaWall_574", "KreaWall_575", "KreaWall_576",
     "Wood_726", "Wood_727", "Wood_728", "Wood_729", "Wood_730", "Wood_731", "Wood_732", "Wood_733", "Wood_734", "Wood_735", "Wood_736", "Wood_737",
-    "Wood_738", "Wood_739", "Wood_740", "Wood_741", "Wood_742", "Wood_743", "Wood_744"
+    "Wood_738", "Wood_739", "Wood_740", "Wood_741", "Wood_742", "Wood_743", "Wood_744", "AlpineFloor2", "AlpineGround", "ButtCrackTexture", "OchreSlabs",
 ].sort();
 
 /** Decals */
@@ -1943,9 +1943,9 @@ const PANORAMA_DECALS = [
     "HotelBalconyView", "TerraceView",
 ].sort();
 
-//arch
-const ARCH_DECALS = [
-
+//bottom
+const BOTTOM_DECALS = [
+    "ValleyBottom",
 ].sort();;
 
 //sky

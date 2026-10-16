@@ -33,47 +33,15 @@ DEBUG.INF_MANA = false;
 DEBUG.checkPoint = function () {
     /**
      
-    area 1: ButtCrack Hotel
+    area 2: 
 
-    Receptionist wants money (Banknote10, Banknote20, Banknote50, Banknote100, Banknote200) give key to leave (Gold Key)
-    BarSeductress wants GlassOfWine", "Wine", "WhiskeyShot", "Beer", gives Banknote20
-    BarMaid wants "SmallBarrel", "SmallBarrel", "SmallBarrel" gives  "GlassOfBeer" 
-    GrilGirl wants "Chicken", "LittlePiggy", "BabySheep" gives Banknote100
-    Skully wants  "Skull", "Skull", "Skull", "Skull", "Skull", gives Banknote200
-    Cookie wants "Milk", "Egg" gives Banknote50
-
-
-        DONE Banknote10: 4-reception
-        DONE: Banknote20: BarSeductress (6-bar)
-        DONE Banknote50: Cookie 9 kitchen
-        DONE: Banknote100: - GrillGirl (9-kitchen)
-        DONE Banknote200: Skully - old dungeon8
-
-        DONE: "SmallBarrel" 7-cellear
-        DONE "SmallBarrel" 8 old dungeon
-        DONE "SmallBarrel"9 kitchen
-
-        DONE "GlassOfWine" 2 room
-        DONE "Wine" 6-bar
-        DONE "WhiskeyShot" 1-room
-        DONE "Milk", 2-ro0m
-        DONE "Egg" 4-reception
-        DONE "Beer" 9 kitchen
-        DONE: "GlassOfBeer" : BarMaid (6-bar)
-        DONE "Chicken",  7-cellar
-        DONE "LittlePiggy", 4-reception
-        DONE "BabySheep" 8-dungeon
-        DONE "Skull", "Skull", "Skull", "Skull", "Skull" 8 old dungeon
-    
-        DONE: Gold Key: receptionist;
-        DONE: Blue Key: found on Balcony
-        DONE: Green Key: sout terrace
+   
 
      */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 8;
+    GAME.level = 10;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -213,7 +181,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.16.0",
+    VERSION: "0.16.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -504,6 +472,8 @@ const HERO = {
         TITLE.lives();
 
         const heroRefGrid = Vector3.to_Grid3D(HERO.player.pos.translate(UP3, HERO.player.heigth));
+        console.warn("heroRefGrid", heroRefGrid);
+        heroRefGrid.z = Math.max(heroRefGrid.z, 0);                                                     //solve deep holes
         const gridValue = REVERSED_MAPDICT[HERO.player.map.GA.getValue(heroRefGrid)];
         const heightOffset = parseInt(gridValue[4], 10) / 10 || 0;
         const depth = Math.max(0, HERO.player.depth);
@@ -1012,6 +982,7 @@ const GAME = {
             rightPanorama: panoramaTexture(map.rightPanorama),
             backPanorama: panoramaTexture(map.backPanorama),
             skyPanorama: panoramaTexture(map.skyPanorama),
+            floorPanorama: panoramaTexture(map.bottomPanorama),
         };
 
         const DungeonAmbience = parseFloat(map.dungeonAmbience || INI.DARK_DUNGEON_AMBIENCE);
