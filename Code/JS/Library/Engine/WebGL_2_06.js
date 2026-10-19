@@ -3902,7 +3902,7 @@ class $3D_player {
 
         const headPos = nextPos3.translate(DOWN3, 0.15);
         const headGrid = Vector3.to_Grid3D(headPos);
-        if (this.GA.isOutOfBounds(headGrid)) true;
+        if (this.GA.isOutOfBounds(headGrid)) return true;
 
         // Original GA check: head only.
         const gridType = REVERSED_MAPDICT[this.GA.getValue(headGrid)];
@@ -3924,7 +3924,7 @@ class $3D_player {
         // EGA check: both ends of the player's vertical span.
         const feetPos = nextPos3.translate(UP3, this.heigth);
         const feetGrid = Vector3.to_Grid3D(feetPos);
-        if (this.GA.isOutOfBounds(feetGrid)) true;
+        if (this.GA.isOutOfBounds(feetGrid)) return true;
 
         for (const grid of [headGrid, feetGrid]) {
             const eValue = this.GA.eGetValue(grid);
@@ -3945,17 +3945,36 @@ class $3D_player {
         this.setMode("falling");
     }
     jumpBlockedByShape(nextPos3) {
+        const feetPos3 = nextPos3.translate(UP3, this.heigth);
+        const feetDepth = Vector3.to_Grid3D(feetPos3).z;
+        if (feetDepth < this.GA.minZ) return false;                                         // Below the map: let checkLanding() handle the fall.
+
+        const startDepth = Math.min(feetDepth, this.GA.maxZ);
         const nextPos2D = Vector3.to_FP_Grid(nextPos3);
         const dir2D = Vector3.to_FP_Vector(this.dir);
         const points = this.GA.forwardPointsFrontEntity(nextPos2D, dir2D, this.r);
 
+        const solidMask = MAPDICT.WALL | MAPDICT.BLOCKWALL | MAPDICT.PILLAR;
+
         for (const point of points) {
-            const grid = new Grid3D(point.x, point.y, this.jumpStartDepth);                                         // Deliberately use the layer where the jump started.
-            if (this.GA.isOutOfBounds(grid)) return true;
-            const value = this.GA.eGetValue(grid);
-            if (!EXT_MAPDICT.isUsed(value)) continue;
-            const shape = EXT_TO_SHAPE[EXT_MAPDICT.getShapeIndex(value)];
-            if (EGA_JUMP_BLOCKERS.has(shape) && (this.ascendPhase || !EGA_JUMP_LANDERS.has(shape))) return true;    // Block every jump blocker on ascent; on descent, allow those that support landing.
+            const column = new Grid3D(point.x, point.y, startDepth);
+            if (this.GA.isOutOfBounds(column)) return true;
+
+            // scan downward instead of checking jumpStartDepth only.
+            for (let depth = startDepth; depth >= this.GA.minZ; depth--) {
+                const grid = new Grid3D(column.x, column.y, depth);
+                const eValue = this.GA.eGetValue(grid);
+
+                // Check EGA first, before stopping at underlying GA geometry.
+                if (EXT_MAPDICT.isUsed(eValue)) {
+                    const shape = EXT_TO_SHAPE[EXT_MAPDICT.getShapeIndex(eValue)];
+                    if (EGA_JUMP_BLOCKERS.has(shape) && (this.ascendPhase || !EGA_JUMP_LANDERS.has(shape))) return true;
+                    break;                                                                  // First shape decides this column; inspect the next point.
+                }
+
+                const value = this.GA.getValue(grid);
+                if ((value & solidMask) !== 0 || STAIRCASE_GRIDS.includes(value)) break;    // Stop at solid GA geometry, including staircase support.
+            }
         }
 
         return false;

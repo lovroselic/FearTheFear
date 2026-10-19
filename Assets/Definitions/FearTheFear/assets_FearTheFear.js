@@ -22,6 +22,7 @@ ElementsToCompile = [
     { shapeName: "ROUNDWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
     { shapeName: "TIT", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "TOPHORIZONTALWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
+    { shapeName: "HALFROOF", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
 ];
 
 // assets 
@@ -42,10 +43,10 @@ LoadObjects = [
     "cake.obj", "steak.obj", "can.obj", "wine.obj",
     "Amanita.obj", "Snail.obj", "Frog.obj",
     "apple.obj", "crown.obj", "dagger.obj", "mushroom.obj", "skull.obj", "Candle.obj",
-    "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj",
+    "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj","LongBox.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
-    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj",
+    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj",
 ];
 
 LoadModels = [
@@ -1086,6 +1087,14 @@ LoadTextures = [
     { srcName: "ObjectTextures/MagicFlask.webp", name: "MagicFlask" },
 
     //containers
+    { srcName: "ObjectTextures/Barrel3b.webp", name: "Barrel3b" },
+    { srcName: "ObjectTextures/Wardrobe2.webp", name: "Wardrobe2" },
+    { srcName: "ObjectTextures/Barell2b.webp", name: "Barell2b" },
+    { srcName: "ObjectTextures/BarrelTexture_1001.webp", name: "BarrelTexture_1001" },
+    { srcName: "ObjectTextures/BarrelTexture_1002.webp", name: "BarrelTexture_1002" },
+    { srcName: "ObjectTextures/WoodenCrateTexture1001.webp", name: "WoodenCrateTexture1001" },
+    { srcName: "ObjectTextures/VividBarrel.webp", name: "VividBarrel" },
+    { srcName: "ObjectTextures/WarmWoodChest.webp", name: "WarmWoodChest" },
     { srcName: "ObjectTextures/Barell2.webp", name: "Barell2" },
     { srcName: "ObjectTextures/Barell3.webp", name: "Barell3" },
     { srcName: "ObjectTextures/Barrel.webp", name: "Barrel" },
@@ -1339,6 +1348,7 @@ LoadSprites = [
     { srcName: "EntityPictures/CircularCut.webp", name: "CircularCut" },
     { srcName: "EntityPictures/Shooter.webp", name: "Shooter" },
     { srcName: "EntityPictures/Cookie.webp", name: "Cookie" },
+    { srcName: "EntityPictures/Climber2.webp", name: "Climber2" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -2100,6 +2110,14 @@ LoadSprites = [
     { srcName: "Lairs/Lair80.webp", name: "Lair80" },
     { srcName: "Lairs/Lair81.webp", name: "Lair81" },
     { srcName: "Lairs/Lair82.webp", name: "Lair82" },
+
+
+    //directions, signs
+    { srcName: "ObjDecals/CemaTarry.webp", name: "CemaTarry" },
+    { srcName: "ObjDecals/FookingForest.webp", name: "FookingForest" },
+    { srcName: "ObjDecals/OldeBridge.webp", name: "OldeBridge" },
+    { srcName: "ObjDecals/PraiseButtVillage.webp", name: "PraiseButtVillage" },
+    { srcName: "ObjDecals/Temple.webp", name: "Temple" },
 
     //objdecals
     { srcName: "ObjDecals/BearRug02.jpg", name: "BearRug02" },

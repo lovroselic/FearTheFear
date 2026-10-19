@@ -1094,6 +1094,7 @@ const EXT_MAPDICT = {
     TIT: 12,
     ROUNDWEDGE: 13,
     TOPHORIZONTALWEDGE: 14,
+    HALFROOF: 15,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1166,6 +1167,7 @@ const EXT_TO_SHAPE = {
     12: "TIT",
     13: "ROUNDWEDGE",
     14: "TOPHORIZONTALWEDGE",
+    15: "HALFROOF"
 };
 
 const WallSizeToHeight = (value) => {
@@ -1199,7 +1201,7 @@ const GRID2D_SIDEVIEW = [MAPDICT.WALL];
 const GRID2D_FLOOR_SUPPORT = [MAPDICT.WALL, MAPDICT.STAIR];
 
 //EGA based
-const EGA_JUMP_BLOCKERS = new Set(["BALCONY", "ROUNDBOUND", "CRENNEL"]);
+const EGA_JUMP_BLOCKERS = new Set(["BALCONY", "ROUNDBOUND", "CRENNEL", "HALFROOF", "ROUNDWEDGE", "PILLAR3", "CORNERWEDGE"]);
 const EGA_JUMP_LANDERS = new Set(["BALCONY"]);
 
 

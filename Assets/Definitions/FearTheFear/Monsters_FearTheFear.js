@@ -16,6 +16,22 @@ for (let [index, key] of KEY_TYPES.entries()) {
     KEY_TYPE[key] = new KeyTypeDefinition(key, `${key}Key`, key, KEY_TEXTURES[index], MATERIAL[KEY_MATERIAL[index]]);
 }
 
+const SHRINE_TYPE = {
+    Climber2: {
+        name: "Climber2",
+        sprite: "Climber2",
+        which: "health",
+        category: 'crest',
+        interactionCategory: 'shrine',
+        inventorySprite: "HeartSkill",
+        price: 999,
+        level: 1,
+        text: "Pray to my bum for a better health. Pray and pay, 999 gold.",
+        introduce: true,
+        voice: "FemaleLow2",
+    },
+};
+
 const ORACLE_TYPE = {
     Shooter: {
         name: "Shooter",
@@ -257,6 +273,16 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.23 / 2 ** 2,
         glueToFloor: true,
         texture: "Wardrobe",
+        material: MATERIAL.wood,
+        rotateToNorth: Math.PI,
+    },
+     Wardrobe2: {
+        name: "Wardrobe2",
+        category: "chest",
+        element: "WARDROBE",
+        scale: 1.21 / 2 ** 2,
+        glueToFloor: true,
+        texture: "Wardrobe2",
         material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
@@ -570,6 +596,16 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: 0,
     },
+    Barrel2b: {
+        name: "Barrel2b",
+        category: "chest",
+        element: "BARREL2",
+        scale: 1.8 / 2 ** 4,
+        glueToFloor: true,
+        texture: "Barrel2b",
+        material: MATERIAL.wood,
+        rotateToNorth: 0,
+    },
     Barell3: {
         name: "Barell3",
         category: "chest",
@@ -577,6 +613,16 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.0 / 2 ** 8,
         glueToFloor: true,
         texture: "Barell3",
+        material: MATERIAL.wood,
+        rotateToNorth: 0,
+    },
+    Barell3b: {
+        name: "Barell3b",
+        category: "chest",
+        element: "BARELL3",
+        scale: 1.0 / 2 ** 8,
+        glueToFloor: true,
+        texture: "Barell3b",
         material: MATERIAL.wood,
         rotateToNorth: 0,
     },
@@ -1040,6 +1086,16 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: 0
     },
+    WoodenCrateTexture1001: {
+        name: "WoodenCrateTexture1001",
+        category: "chest",
+        element: "FRAGILE_CRATE",
+        scale: 1.40 / (2 ** 4),
+        glueToFloor: true,
+        texture: "WoodenCrateTexture1001",
+        material: MATERIAL.wood,
+        rotateToNorth: 0
+    },
     Chest10: {
         name: "Chest10",
         category: "chest",
@@ -1047,6 +1103,16 @@ const CONTAINER_ITEM_TYPE = {
         scale: 1.0 / 2 ** 2,
         glueToFloor: true,
         texture: "Chest10",
+        material: MATERIAL.wood,
+        rotateToNorth: Math.PI,
+    },
+    WarmChest: {
+        name: "WarmChest",
+        category: "chest",
+        element: "CHEST10",
+        scale: 1.1 / 2 ** 2,
+        glueToFloor: true,
+        texture: "WarmWoodChest",
         material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
@@ -1059,6 +1125,46 @@ const CONTAINER_ITEM_TYPE = {
         texture: "x_barrel_BaseColor",
         material: MATERIAL.wood,
         rotateToNorth: Math.PI,
+    },
+     VividBarrel: {
+        name: "VividBarrel",
+        category: "chest",
+        element: "BarrelX",
+        scale: 1.7 / 2 ** 2,
+        glueToFloor: true,
+        texture: "VividBarrel",
+        material: MATERIAL.wood,
+        rotateToNorth: Math.PI,
+    },
+     LongBox: {
+        name: "LongBox",
+        category: "chest",
+        element: "LONG_BOX",
+        scale: 1.0 / 2 ** 2,
+        glueToFloor: true,
+        texture: "WoodTexture",
+        material: MATERIAL.wood,
+        rotateToNorth: Math.PI,
+    },
+    BarrelTexture_1001: {
+        name: "BarrelTexture_1001",
+        category: "chest",
+        element: "BARREL",
+        scale: 0.81 / (2 ** 1),
+        glueToFloor: true,
+        texture: "BarrelTexture_1001",
+        material: MATERIAL.wood,
+        rotateToNorth: 0
+    },
+    BarrelTexture_1002: {
+        name: "BarrelTexture_1002",
+        category: "chest",
+        element: "BARREL",
+        scale: 0.82 / (2 ** 1),
+        glueToFloor: true,
+        texture: "BarrelTexture_1002",
+        material: MATERIAL.wood,
+        rotateToNorth: 0
     },
 
 };
@@ -1864,7 +1970,7 @@ const MONSTER_TYPE = {
         name: "Rat",
         model: "Rat",
         scale: 1.9 / 2 ** 3,
-        rotateToNorth: -Math.PI/2,
+        rotateToNorth: -Math.PI / 2,
         midHeight: 0.4,
         deathType: "BloodExplosion",
         inventory: null,
@@ -1900,7 +2006,7 @@ const MONSTER_TYPE = {
         directMagicDamage: false,
         attackSound: "MonsterAttack1",
         hurtSound: "MonsterHurt",
-        behaviourArguments: [10, ["wanderer"], 7, ["shoot"]], 
+        behaviourArguments: [10, ["wanderer"], 7, ["shoot"]],
         moveSpeed: 1.0,
         shootDistance: 7,
         stalkDistance: 6,
