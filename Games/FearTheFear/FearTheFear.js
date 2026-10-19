@@ -42,6 +42,7 @@ DEBUG.checkPoint = function () {
 
    
     keys:
+        DONE Pink 23
     GOld
 
 
@@ -189,7 +190,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.16.4",
+    VERSION: "0.16.5",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

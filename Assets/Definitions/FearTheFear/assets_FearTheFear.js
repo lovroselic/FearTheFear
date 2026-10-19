@@ -43,7 +43,7 @@ LoadObjects = [
     "cake.obj", "steak.obj", "can.obj", "wine.obj",
     "Amanita.obj", "Snail.obj", "Frog.obj",
     "apple.obj", "crown.obj", "dagger.obj", "mushroom.obj", "skull.obj", "Candle.obj",
-    "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj","LongBox.obj",
+    "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj", "LongBox.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
     "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj",
@@ -1087,6 +1087,17 @@ LoadTextures = [
     { srcName: "ObjectTextures/MagicFlask.webp", name: "MagicFlask" },
 
     //containers
+    { srcName: "ObjectTextures/TreasureChest2.webp", name: "TreasureChest2" },
+    { srcName: "ObjectTextures/PirateChest2.webp", name: "PirateChest2" },
+    { srcName: "ObjectTextures/IronChest2.webp", name: "IronChest2" },
+    { srcName: "ObjectTextures/CrateFragile2.webp", name: "CrateFragile2" },
+    { srcName: "ObjectTextures/Crate3b.webp", name: "Crate3b" },
+    { srcName: "ObjectTextures/Crate3b.webp", name: "Crate3b" },
+    { srcName: "ObjectTextures/Crate1b.webp", name: "Crate1b" },
+    { srcName: "ObjectTextures/PlainCloset2.webp", name: "PlainCloset2" },
+    { srcName: "ObjectTextures/Closet1b.webp", name: "Closet1b" },
+    { srcName: "ObjectTextures/BookShelf2.webp", name: "BookShelf2" },
+    { srcName: "ObjectTextures/BarrelMedieval2.webp", name: "BarrelMedieval2" },
     { srcName: "ObjectTextures/Barrel3b.webp", name: "Barrel3b" },
     { srcName: "ObjectTextures/Wardrobe2.webp", name: "Wardrobe2" },
     { srcName: "ObjectTextures/Barell2b.webp", name: "Barell2b" },
@@ -1198,7 +1209,8 @@ LoadTextures = [
     { srcName: "ObjectTextures/HealthBoxtexture.webp", name: "HealthBoxtexture" },
     { srcName: "ObjectTextures/SteakTexture.webp", name: "SteakTexture" },
     { srcName: "ObjectTextures/WineBottle.webp", name: "WineBottle" },
-    { srcName: "ObjectTextures/cake_basecolor.webp", name: "cake_basecolor" },
+    //{ srcName: "ObjectTextures/cake_basecolor.webp", name: "cake_basecolor" },
+    { srcName: "ObjectTextures/CakeBase2.webp", name: "cake_basecolor" },
 
     //mana items
     { srcName: "ObjectTextures/AmanitaBaseColor.webp", name: "AmanitaBaseColor" },
