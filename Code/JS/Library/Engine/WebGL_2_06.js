@@ -2516,7 +2516,7 @@ const WORLD = {
         const minX = 0;
         const maxX = GA.width;
 
-        const minH = 0;
+        const minH = 0 - 0.15;          // set bellow floor, bottom is only visible if there is hole above
         const maxH = GA.depth - 0.15;   // grid z -> world y (height), offset so it doesn't class with ceiling
 
         const minLat = 0;

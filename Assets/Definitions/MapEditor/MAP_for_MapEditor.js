@@ -1941,17 +1941,17 @@ const LIGHT_DECALS = [
 
 //panorama
 const PANORAMA_DECALS = [
-    "HotelBalconyView", "TerraceView",
+    "HotelBalconyView", "TerraceView", "SideDoom1", "SideDoom2", "SideDoom3", "SideDoom4",
 ].sort();
 
 //bottom
 const BOTTOM_DECALS = [
-    "ValleyBottom",
+    "ValleyBottom", "Pit1", "Pit2",
 ].sort();;
 
 //sky
 const SKY_DECALS = [
-    "Sky_204",
+    "Sky_204", "DarkSky1",
 ].sort();
 
 

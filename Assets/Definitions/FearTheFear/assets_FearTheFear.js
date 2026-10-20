@@ -76,10 +76,17 @@ LoadTextures = [
     //panorama
     { srcName: "Panorama/TerraceView.webp", name: "TerraceView" },
     { srcName: "Panorama/HotelBalconyView.webp", name: "HotelBalconyView" },
+    { srcName: "Panorama/SideDoom2.webp", name: "SideDoom2" },
+    { srcName: "Panorama/SideDoom1.webp", name: "SideDoom1" },
+    { srcName: "Panorama/SideDoom3.webp", name: "SideDoom3" },
+    { srcName: "Panorama/SideDoom4.webp", name: "SideDoom4" },
 
     //sky, bottom
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },
     { srcName: "Sky/ValleyBottom.webp", name: "ValleyBottom" },
+    { srcName: "Sky/DarkSky1.webp", name: "DarkSky1" },
+    { srcName: "Sky/Pit2.webp", name: "Pit2" },
+    { srcName: "Sky/Pit1.webp", name: "Pit1" },
 
     //wall, floor, ceiling
     { srcName: "Wall/Wood_726.webp", name: "Wood_726" },
