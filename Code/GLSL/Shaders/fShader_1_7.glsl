@@ -116,8 +116,10 @@ const float CONE_FADE_HALF_WIDTH = 0.05f;                       // 0.05f
 
                                                                 // Replaces INTO_WALL; the endpoint now moves OUT of the surface.
                                                                 // Small world-space offset along the outward receiving normal.
-const float RAY_TARGET_BIAS = 0.01f;
+const float RAY_TARGET_BIAS = 0.01f;                            // how much can we enter into sef shadowing voxel, used for cubic shape
 const float RAY_ORIGIN_BIAS = EPSILON * 5.0f;
+const float RAY_BIAS_FACTOR = 0.25f;                            // Limit each offset to this fraction of the light-to-fragment distance.
+const float RECEIVER_SAMPLE_OFFSET = 0.001f;                    // Tiny inward movement used only to identify the receiving cell. texel units
 
 const float METALLIC_DIFFUSE_REDUCTION = 0.65f;
 const float VIEW_DIFFUSE_FILL = 0.05f;                          // Camera-facing contribution to diffuse lighting. 5% camera-facing fill, 95% light-facing diffuse. 0.05f
@@ -131,6 +133,7 @@ out vec4 fragColor;
 // ----------------------------------------------------------------------------
 // Function prototypes
 // ----------------------------------------------------------------------------
+float getReceiverRayBias(vec3 positionWorld, vec3 surfaceNormal);
 
 float getMaterialRoughness();
 
@@ -139,6 +142,7 @@ vec3 CalcLight(
     vec3 FragPos,
     vec3 viewDir,
     vec3 normal,
+    float receiverRayBias,
     vec3 pointLightColor,
     float shininess,
     vec3 ambientColor,
@@ -156,7 +160,7 @@ vec3 CalcLight(
     out vec3 specularOut
 );
 
-bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, vec3 surfaceNormal);
+bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, vec3 surfaceNormal, float receiverRayBias);
 bool isOmniDirectional(vec3 dir);
 
 ivec3 getOcclusionTextureSize();
@@ -188,12 +192,13 @@ void main(void) {
     float fresnelStrength = uMaterial.fresnelStrength;
 
     vec3 norm = normalize(v_normal);
+    float receiverRayBias = getReceiverRayBias(FragPos, norm);                      // Decode once per fragment; reuse for every light.
     vec3 viewDir = normalize(uCameraPos - FragPos);
     vec3 specularTotal = vec3(0.0f);
     vec3 specularPart = vec3(0.0f);
 
     // Inner light from camera position.
-    vec3 innerLight = CalcLight(uCameraPos, FragPos, viewDir, norm, innerLightColor, shininess, ambientColor, diffuseColor, specularColor, roughness, metallic, fresnelStrength, innerAmbientStrength, innerDiffuseStrength, innerSpecularStrength, 1, viewDir, baseColor, specularPart);
+    vec3 innerLight = CalcLight(uCameraPos, FragPos, viewDir, norm, receiverRayBias, innerLightColor, shininess, ambientColor, diffuseColor, specularColor, roughness, metallic, fresnelStrength, innerAmbientStrength, innerDiffuseStrength, innerSpecularStrength, 1, viewDir, baseColor, specularPart);
 
     specularTotal += specularPart;
 
@@ -203,7 +208,7 @@ void main(void) {
         if (uPointLights[i].x < 0.0f)
             continue;
 
-        PL_output += CalcLight(uPointLights[i], FragPos, viewDir, norm, uLightColors[i], shininess, ambientColor, diffuseColor, specularColor, roughness, metallic, fresnelStrength, uLightAmbientStrength[i], uLightDiffuseStrength[i], uLightSpecularStrength[i], 0, uLightDirections[i], baseColor, specularPart);
+        PL_output += CalcLight(uPointLights[i], FragPos, viewDir, norm, receiverRayBias, uLightColors[i], shininess, ambientColor, diffuseColor, specularColor, roughness, metallic, fresnelStrength, uLightAmbientStrength[i], uLightDiffuseStrength[i], uLightSpecularStrength[i], 0, uLightDirections[i], baseColor, specularPart);
         specularTotal += specularPart;
     }
 
@@ -234,6 +239,7 @@ vec3 CalcLight(
     vec3 FragPos,
     vec3 viewDir,
     vec3 normal,
+    float receiverRayBias,
     vec3 pointLightColor,
     float shininess,
     vec3 ambientColor,
@@ -286,7 +292,9 @@ vec3 CalcLight(
 
     if (inner == 0) {
         // normal is the normalized world-space receiving normal.
-        occluded = Raycast3D(lightPosition, FragPos, normal);
+        //occluded = Raycast3D(lightPosition, FragPos, normal);
+        occluded = Raycast3D(lightPosition, FragPos, normal, receiverRayBias);
+        //occluded = false;
     }
 
     // -------------------- ambient --------------------
@@ -389,7 +397,7 @@ vec3 CalcLight(
 // ----------------------------------------------------------------------------
 
                                                                                     // surfaceNormal must be normalized, outward-facing, and in WORLD space.
-bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, vec3 surfaceNormal) {
+bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, vec3 surfaceNormal, float receiverRayBias) {
     vec3 worldDirection = rayTarget3D - rayOrigin3D;
     float worldDirLen = length(worldDirection);
 
@@ -397,12 +405,11 @@ bool Raycast3D(vec3 rayOrigin3D, vec3 rayTarget3D, vec3 surfaceNormal) {
         return false;
 
     vec3 worldDirNorm = worldDirection / worldDirLen;
-
                                                                                     // Biases are still in WORLD units.
-                                                                                    // Limit both biases to 25% of the original segment length.
+                                                                                    // Limit both biases to 25% (default) of the original segment length.
                                                                                     // A fixed origin bias could overshoot a very close receiving surface.
-    float originBias = min(RAY_ORIGIN_BIAS, worldDirLen * 0.25f);
-    float targetBias = min(RAY_TARGET_BIAS, worldDirLen * 0.25f);
+    float originBias = min(RAY_ORIGIN_BIAS, worldDirLen * RAY_BIAS_FACTOR);
+    float targetBias = min(receiverRayBias, worldDirLen * RAY_BIAS_FACTOR);
 
                                                                                     // Advance slightly from the emitter towards the receiving surface.
     vec3 biasedOriginWorld = rayOrigin3D + worldDirNorm * originBias;
@@ -512,6 +519,25 @@ vec3 worldToOcclusionCoord(vec3 position3D) {
     }
 
     return vec3(texXY.x, texXY.y, texZ);
+}
+
+float getReceiverRayBias(vec3 positionWorld, vec3 surfaceNormal) {
+
+    float sampleOffset = RECEIVER_SAMPLE_OFFSET / max(uOcclusionResolution, 1.0f);              // Sample just inside the receiving surface. This selects the owning cell when a face lies on a grid boundary.
+    vec3 receiverPosition = positionWorld - surfaceNormal * sampleOffset;
+    ivec3 receiverCell = ivec3(floor(worldToOcclusionCoord(receiverPosition)));
+    ivec3 size = getOcclusionTextureSize();
+
+                                                                                                    // Outside the map, use the ordinary small bias.
+    if (any(lessThan(receiverCell, ivec3(0))) || any(greaterThanEqual(receiverCell, size))) {
+        return RAY_TARGET_BIAS;
+    }
+
+    float encoded = texelFetch(uOcclusionMap, receiverCell, 0).r;                    // Recover the original byte from the normalized texture sample.
+    int data = int(round(encoded * 255.0f));
+    float encodedBias = float(data & 127) / 127.0f;                                           // Lower seven bits contain the receiver bias.
+
+    return max(RAY_TARGET_BIAS, encodedBias);                                                  // Zero encoded bias means the ordinary small offset.
 }
 
 bool isOccludedTexel(ivec3 texel) {

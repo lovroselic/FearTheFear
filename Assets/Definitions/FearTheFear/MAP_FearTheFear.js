@@ -53,7 +53,7 @@ const MAP = {
         bottomPanorama: "",
         skyPanorama: "",
         start: '[201,1]',
-        decals: '[[221,5,"FirePlaceDecal_675","crest"],[233,3,"FirePlaceDecal_675","crest"],[222,4,"FirePit_681","crest"],[232,4,"FirePit_677","crest"],[188,4,"BearRug02","crest"],[199,4,"BearRug02","crest"],[200,4,"BearRug02","crest"],[201,4,"BearRug02","crest"],[202,4,"BearRug02","crest"],[203,4,"BearRug02","crest"],[146,3,"Sconce_7","crest"],[189,7,"FemDommes_22487","picture"],[198,7,"FemDommes_22715","picture"],[204,7,"FemDommes_23009","picture"],[85,7,"AtariST_Games_4062","picture"],[88,7,"FemDommes_6121","picture"],[166,1,"FemDommes_13001","picture"],[150,1,"FemDommes_24436","picture"],[139,1,"FemDommes_23272","picture"],[133,1,"FireAnt70","picture"],[252,1,"Apparitia_1051","picture"],[254,1,"GemDommes_083","picture"],[187,7,"FemDommes_20497","picture"],[248,5,"FemDommes_24158","picture"],[254,5,"FemDommes_15190","picture"],[143,5,"FemDommes_19290","picture"],[152,5,"CCC_089","picture"],[133,5,"ApparitiaFrame135","picture"],[118,5,"FemDommes_12245","picture"],[139,3,"FemDommes_23221","picture"],[115,3,"FemDommes_19564","picture"],[252,3,"NewDommes_4029","picture"],[245,3,"OilDommes_1115","picture"]]',
+        decals: '[[221,5,"FirePlaceDecal_675","crest"],[233,3,"FirePlaceDecal_675","crest"],[222,4,"FirePit_681","crest"],[232,4,"FirePit_677","crest"],[188,4,"BearRug02","crest"],[199,4,"BearRug02","crest"],[200,4,"BearRug02","crest"],[201,4,"BearRug02","crest"],[202,4,"BearRug02","crest"],[203,4,"BearRug02","crest"],[146,3,"Sconce_7","crest"],[189,7,"FemDommes_22487","picture"],[198,7,"FemDommes_22715","picture"],[204,7,"FemDommes_23009","picture"],[85,7,"AtariST_Games_4062","picture"],[88,7,"FemDommes_6121","picture"],[166,1,"FemDommes_13001","picture"],[150,1,"FemDommes_24436","picture"],[139,1,"FemDommes_23272","picture"],[133,1,"FireAnt70","picture"],[252,1,"Apparitia_1051","picture"],[254,1,"GemDommes_083","picture"],[187,7,"FemDommes_20497","picture"],[248,5,"FemDommes_24158","picture"],[254,5,"FemDommes_15190","picture"],[143,5,"FemDommes_19290","picture"],[152,5,"CCC_089","picture"],[133,5,"ApparitiaFrame135","picture"],[118,5,"FemDommes_12245","picture"],[139,3,"FemDommes_23221","picture"],[115,3,"FemDommes_19564","picture"],[252,3,"NewDommes_4029","picture"],[245,3,"OilDommes_1115","picture"],[158,1,"Apparitia_1051","picture"]]',
         lights: '[[162,1,"Fireplace_716","fireplace",["9.99","50.0","5.0"]],[422,1,"DuaLLantern_017","standard",["1","10","5.0"]],[422,7,"Light_642","standardDimmed",["4.0","15","2"]]]',
         gates: '[[155,3,"1.1","2.1","Closed"]]',
         gold: '[[229,"Coins"],[122,"Coins"]]',
@@ -457,7 +457,7 @@ const MAP = {
         skyPanorama: "",
         start: '[31,7]',
         decals: '[[130,4,"FirePit_681","crest"],[256,4,"FirePit_680","crest"],[142,4,"FirePit_682","crest"],[268,4,"FirePit_684","crest"],[346,4,"FirePit_685","crest"],[91,4,"Firepit5","crest"],[97,4,"FirePit_686","crest"],[115,4,"FirePit_679","crest"],[301,4,"Firepit6","crest"],[307,4,"FirePit_683","crest"]]',
-        lights: '[[1081,1,"FluxLight109","standardYellow",["3.0","30","1.0"]],[1081,7,"Candelabra14","standardYellow",["3.0","30","1.0"]],[1081,3,"Lights108","standardYellow",["3.0","30","1.0"]],[1081,5,"SkullLantern53","standardYellow",["3.0","30","1.0"]]]',
+        lights: '[[1081,1,"FluxLight109","standardYellow",["1.0","10","1.0"]],[1081,7,"Candelabra14","standardYellow",["1.0","10","1.0"]],[1081,3,"Lights108","standardYellow",["1.0","10","1.0"]],[1081,5,"SkullLantern53","standardYellow",["1.0","10","1.0"]]]',
         gates: '[[10,7,"16.1","14.3","Closed"]]',
         fires: '[[91,4,"Bonfire"],[115,4,"Bonfire"],[97,4,"Bonfire"],[142,4,"Bonfire"],[268,4,"Bonfire"],[307,4,"Bonfire"],[346,4,"Bonfire"],[301,4,"Bonfire"],[256,4,"Bonfire"],[130,4,"Bonfire"]]',
     }
@@ -470,7 +470,25 @@ const MAP = {
     ,
     20: {}
     ,
-    21: {}
+    21: {
+        name: "Maniac's Mansion",
+        data: '{"width":21,"height":21,"depth":7,"map":"AA3087$","extendedMap":"AA3087$"}',
+        dungeonAmbience: 0,
+        sg: 0,
+        maxSpawned: 6,
+        killCountdown: 4,
+        killsRequiredToStopSpawning: 24,
+        spawnDelay: 9999,
+        wall: "OrnateWall2",
+        floor: "MossyFloor212",
+        ceil: "LightWallSDXL316",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        bottomPanorama: "",
+        skyPanorama: "",
+    }
     ,
     22: {
         name: "Stairway to the Roof",

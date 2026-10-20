@@ -2833,16 +2833,22 @@ class ExtendedGridArray3D extends GridArray3D {
         const placedElement = this.extendedColliders[index];
         return (placedElement && placedElement.element.occlusionType === "BLOCK");
     }
+    getRayBias(index) {
+        const placedElement = this.extendedColliders[index];
+        const bias = placedElement?.element.rayTargetBias ?? 0;
+        return Math.max(0, Math.min(1, bias));
+    }
     toTextureMap() {
         /** 
          * 0    - light can pass through 
-         * 255  - light blocked
+         * 128  - light blocked
+         * 129–255  - blocks light; receiver bias encoded in lower seven bits
          **/
 
         const W = this.width;
         const H = this.height;
         const D = this.depth;
-        const pixelData = new Uint8Array(W * H * D).fill(255);
+        const pixelData = new Uint8Array(W * H * D);
 
         for (let z = 0; z < this.depth; z++) {
             for (let y = 0; y < this.height; y++) {
@@ -2851,7 +2857,12 @@ class ExtendedGridArray3D extends GridArray3D {
                     const index = z * W * H + y * W + x;
                     const basicShapeBlocks = !this.notWall(grid) || !this.notBlockWall(grid) || !this.notPillar(grid);
                     const extendedShapeBlocks = this.shapeBlocksLight(index);
-                    pixelData[index] = basicShapeBlocks || extendedShapeBlocks ? 255 : 0;
+
+                    if (basicShapeBlocks) {
+                        pixelData[index] = 128;
+                    } else if (extendedShapeBlocks) {
+                        pixelData[index] = 128 | Math.round(127 * this.getRayBias(index));
+                    }
                 }
             }
         }

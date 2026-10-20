@@ -10,19 +10,19 @@
 ElementsToCompile = [
     { shapeName: "WEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "EXTRUDEDWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
-    { shapeName: "BALCONY", collisionMode: "CONVEX", occlusionType: "BLOCK", passable: false },
-    { shapeName: "CRENNEL", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
+    { shapeName: "BALCONY", collisionMode: "CONVEX", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.15, },
+    { shapeName: "CRENNEL", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.15, },
     { shapeName: "ARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "HALFARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "GRILLE", collisionMode: "CELL", occlusionType: "PASS", passable: false },
-    { shapeName: "ROUNDBOUND", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
-    { shapeName: "PILLAR3", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
-    { shapeName: "BIGARCH", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
-    { shapeName: "CORNERWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
-    { shapeName: "ROUNDWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
+    { shapeName: "ROUNDBOUND", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.25, },
+    { shapeName: "PILLAR3", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
+    { shapeName: "BIGARCH", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
+    { shapeName: "CORNERWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
+    { shapeName: "ROUNDWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.25, },
     { shapeName: "TIT", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "TOPHORIZONTALWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
-    { shapeName: "HALFROOF", collisionMode: "CELL", occlusionType: "BLOCK", passable: false },
+    { shapeName: "HALFROOF", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
 ];
 
 // assets 
