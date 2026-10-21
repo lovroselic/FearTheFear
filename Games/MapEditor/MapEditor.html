@@ -313,103 +313,109 @@
                             <legend>
                                 On click, paint/set:
                             </legend>
-                            <input type="radio" name="painter" value="flip" checked="checked"> Flip (Wall
+                            <input type="radio" name="painter" value="flip" id="flip" checked="checked"> Flip (Wall
                             &lt-&gt Space)<br />
-                            <input type="radio" name="painter" value="wall"> Wall
+                            <input type="radio" name="painter" value="wall" id="wall"> Wall
                             <input type="checkbox" id="ceil_support" value="ceil_support" name="ceil_support"
                                 checked="checked"> Set floor (space) above
                             <br />
-                            <input type="radio" name="painter" value="space"> Space
+                            <input type="radio" name="painter" value="space" id="space"> Space
                             <input type="checkbox" id="floor_support" value="floor_support" name="floor_support"
                                 checked="checked"> Set wall bellow
                             <br />
 
-                            <input type="radio" name="painter" value="trapdoor" disabled> TrapDoor (CCC
+                            <input type="radio" name="painter" value="trapdoor" id="trapdoor" disabled> TrapDoor (CCC
                             disabled)<br />
-                            <input type="radio" name="painter" value="blockwall"> BlockWall<br />
-                            <input type="radio" name="painter" value="pillar"> Pillar<br />
-                            <input type="radio" name="painter" value="hole"> Hole <br />
-                            <input type="radio" name="painter" value="door"> Door <br />
-                            <input type="radio" name="painter" value="mask"> Mask <br />
-                            <input type="radio" name="painter" value="reserve"> Reserve (Goal) <br />
-                            <input type="radio" name="painter" value="stair"> Stair/Ladder <br />
-                            <input type="radio" name="painter" value="water"> Water <br />
+                            <input type="radio" name="painter" value="blockwall" id="blockwall"> BlockWall<br />
+                            <input type="radio" name="painter" value="pillar" id="pillar"> Pillar<br />
+                            <input type="radio" name="painter" value="hole" id="hole"> Hole <br />
+                            <input type="radio" name="painter" value="door" id="door"> Door <br />
+                            <input type="radio" name="painter" value="mask" id="painter_mask"> Mask <br />
+                            <input type="radio" name="painter" value="reserve" id="reserve"> Reserve (Goal) <br />
+                            <input type="radio" name="painter" value="stair" id="stair"> Stair/Ladder <br />
+                            <input type="radio" name="painter" value="water" id="water"> Water <br />
                             <hr>
-                            <input type="radio" name="painter" value="fill"> Fill
+                            <input type="radio" name="painter" value="fill" id="fill"> Fill
                             <select id="fill_value"></select>
                             <br />
                             <hr>
 
                             <div class="use_steps">
-                                <input type="radio" name="painter" value="WALL8"> WALL8 <br />
-                                <input type="radio" name="painter" value="WALL6"> WALL6 <br />
-                                <input type="radio" name="painter" value="WALL4"> WALL4 <br />
-                                <input type="radio" name="painter" value="WALL2"> WALL2 <br />
+                                <input type="radio" name="painter" value="WALL8" id="WALL8"> WALL8 <br />
+                                <input type="radio" name="painter" value="WALL6" id="WALL6"> WALL6 <br />
+                                <input type="radio" name="painter" value="WALL4" id="WALL4"> WALL4 <br />
+                                <input type="radio" name="painter" value="WALL2" id="WALL2"> WALL2 <br />
                                 <hr>
                             </div>
 
                             <div class="use_shapes">
-                                <input type="radio" name="painter" value="shape"> Shape <br />
+                                <input type="radio" name="painter" value="shape" id="shape"> Shape <br />
                                 <hr>
                             </div>
 
 
-                            <div class="use_decals"><input type="radio" name="painter" value="decal"> Decal <br /></div>
-                            <div class="use_lights"><input type="radio" name="painter" value="light"> Light <br /></div>
+                            <div class="use_decals"><input type="radio" name="painter" value="decal" id="decal"> Decal
+                                <br /></div>
+                            <div class="use_lights"><input type="radio" name="painter" value="light" id="light"> Light
+                                <br /></div>
                             <hr>
 
                             <div class="use_entities">
-                                <input type="radio" name="painter" value="gate"> Gate <br />
-                                <input type="radio" name="painter" value="shrine"> Shrine <br />
-                                <input type="radio" name="painter" value="item_shrine"> Trainer <br />
-                                <input type="radio" name="painter" value="oracle"> Oracle <br />
-                                <input type="radio" name="painter" value="lair"> Lair <br />
+                                <input type="radio" name="painter" value="gate" id="gate"> Gate <br />
+                                <input type="radio" name="painter" value="shrine" id="shrine"> Shrine <br />
+                                <input type="radio" name="painter" value="item_shrine" id="item_shrine"> Trainer <br />
+                                <input type="radio" name="painter" value="oracle" id="oracle"> Oracle <br />
+                                <input type="radio" name="painter" value="lair" id="lair"> Lair <br />
                                 <hr>
                             </div>
 
                             <div class="use_items">
-                                <input type="radio" name="painter" value="key"> Key <br />
-                                <input type="radio" name="painter" value="scroll"> Scroll <br />
-                                <input type="radio" name="painter" value="potion" disabled> Potion <br />
-                                <input type="radio" name="painter" value="gold"> <span style="color:gold">Gold</span>
+                                <input type="radio" name="painter" value="key" id="key"> Key <br />
+                                <input type="radio" name="painter" value="scroll" id="scroll"> Scroll <br />
+                                <input type="radio" name="painter" value="potion" id="potion" disabled> Potion <br />
+                                <input type="radio" name="painter" value="gold" id="gold"> <span
+                                    style="color:gold">Gold</span>
                                 <br />
-                                <input type="radio" name="painter" value="skill"> Skill <br />
+                                <input type="radio" name="painter" value="skill" id="skill"> Skill <br />
                                 <hr>
-                                <input type="radio" name="painter" value="container"> Container <br />
+                                <input type="radio" name="painter" value="container" id="container"> Container <br />
                                 <hr>
                                 <!--
-                                <input type="radio" name="painter" value="item"> Item (from contained items) <br />
-                                <hr>
-                                -->
+        <input type="radio" name="painter" value="item" id="item"> Item (from contained items) <br />
+        <hr>
+        -->
                             </div>
 
                             <div class="use_ropes">
-                                <input type="radio" name="painter" value="rope"> Rope <br />
+                                <input type="radio" name="painter" value="rope" id="rope"> Rope <br />
                                 <br />
                                 <hr>
                             </div>
 
 
-                            <div class="use_monsters"><input type="radio" name="painter" value="monster"> Monster
+                            <div class="use_monsters"><input type="radio" name="painter" value="monster" id="monster">
+                                Monster
                                 <br />
                                 <hr>
                             </div>
 
 
-                            <input type="radio" name="painter" value="start"> Start position <br />
+                            <input type="radio" name="painter" value="start" id="start"> Start position <br />
                             <hr>
 
                             <div class="use_masks">
-                                <input type="radio" name="painter" value="maskpaint"> <span style="color: blue;">Mask
+                                <input type="radio" name="painter" value="maskpaint" id="maskpaint"> <span
+                                    style="color: blue;">Mask
                                     paint</span> <br />
-                                <input type="radio" name="painter" value="deletemask"> <span style="color: red;">Delete
+                                <input type="radio" name="painter" value="deletemask" id="deletemask"> <span
+                                    style="color: red;">Delete
                                     mask</span> <br />
                                 <hr>
-                                <input type="radio" name="painter" value="maskdecalpaint"> <span
+                                <input type="radio" name="painter" value="maskdecalpaint" id="maskdecalpaint"> <span
                                     style="color: blue;">Decal
                                     Mask
                                     paint</span> <br />
-                                <input type="radio" name="painter" value="deletemaskdecal"> <span
+                                <input type="radio" name="painter" value="deletemaskdecal" id="deletemaskdecal"> <span
                                     style="color: red;">Delete
                                     mask decal</span> <br />
                                 <hr>
@@ -417,17 +423,17 @@
 
 
                             <div class="use_entities">
-                                <input type="radio" name="painter" value="fire"> Fire <br />
+                                <input type="radio" name="painter" value="fire" id="fire"> Fire <br />
                                 <div class="d-flex justify-content-center">
                                     <select id="fire_type"> </select>
                                 </div>
                                 <hr>
-                                <input type="radio" name="painter" value="trigger"> Trigger <br />
+                                <input type="radio" name="painter" value="trigger" id="trigger"> Trigger <br />
                                 <div class="d-flex justify-content-center">
                                     <select id="trigger_actions"> </select>
                                 </div>
                                 <hr>
-                                <input type="radio" name="painter" value="trap"> Trap <br />
+                                <input type="radio" name="painter" value="trap" id="trap"> Trap <br />
                                 <div>
                                     <p></p>What: <select id="trap_type"> </select></p>
                                 </div>
@@ -436,16 +442,18 @@
                                 </div>
 
                                 <hr>
-                                <input type="radio" name="painter" value="entity"> Entity <br />
+                                <input type="radio" name="painter" value="entity" id="entity"> Entity <br />
                                 <hr>
-                                <input type="radio" name="painter" value="object"> Interaction object <br />
-                                <input type="radio" name="painter" value="movable"> Movable Interaction entity <br />
-                                <input type="radio" name="painter" value="interactor"> Interactor <br />
+                                <input type="radio" name="painter" value="object" id="object"> Interaction object <br />
+                                <input type="radio" name="painter" value="movable" id="movable"> Movable Interaction
+                                entity <br />
+                                <input type="radio" name="painter" value="interactor" id="interactor"> Interactor <br />
 
                             </div>
 
                             <hr>
-                            <input type="radio" name="painter" value="cleargrid"> <span style="color: red;">Clear grid
+                            <input type="radio" name="painter" value="cleargrid" id="cleargrid"> <span
+                                style="color: red;">Clear grid
                             </span><br />
                         </fieldset>
 
@@ -1229,9 +1237,9 @@
                         Export:
                     </legend>
                     <textarea id="exp" style="width: 1200px; height: 256px;">
-20 : {
-name: "Blondie's Tower",
-data: '{"width":"19","height":"19","depth":6,"map":"ÁB$AA141BB2AÁÁ8AA2BB3AA25ÁAÁBAA17BAA4BB2AA24BAA11EBB3AB䁢BAA6BAA15BB3AA8BABAA45ÁAA32BAA2ÁÁ3AŁAA10ÁAA4ÁAA2BB6ABB7AA2BB12AA4BAA2ࡁAA6BB4ŁɁAA2BB8ABB2AA2ÁÁ7BB7ÁÁ2BB6ÁBÁÁ5BB15ÁBB34ÁBB17ÁÁ3BB13ÁBB3ÁÁ3BÁÁ4BB2ÁBÁÁ8BB5ÁBB8ÁBÁBÁBB7ÁBB2ÁࡁBB20ÁɁŁAA3ɁÁÁ3сÁBÁсBB9ÁBB2AÁÁ60BÁÁ3BÁÁ65AÁÁ42BB3ÁÁ19BÁÁ36BÁÁ7BB4ÁÁ7BB2ÁÁ16BB2ÁBÁÁ21BÁÁ26BÁÁ21BB3ÁÁ5BÁÁ18AÁÁ28BB3ÁÁ42AA7ÁÁ2AÁBB8ÁÁ6BB9ÁBÁBÁAÁABÁÁ3BB5ÁÁ354AÁÁ325BB3ÁÁ279ABB3ÁÁ13ɁAÁÁ2ABŁсAࡁࡁ2AсÁBB2A","extendedMap":"AA443ࡄ㡎㡎2AA36ࡎAA3ࡎࡎ2AA405⡑AA117㡎AA117ᡎAA21硏AA62⡎AA150ᡈᡈ2AA12ᡈᡈ10AA26ᡈAA5ᡈAA73ᡈAA49㡄A⡄AA26㡄㡄8AA27ᡎᡎ4AA32ᡄᡄ9⡎⡎4AA174ࡎ㡎AA37ࡅAA31ᡈAA6ᡈAA88ࡅ⡎ᡎAA41ࡄࡄ7AA3ࡑ㡑ࡈࡈ32AA4$AA11ᡑᡈᡈ2Aᡈᡈ6AᡈAᡈᡈ2AA18ࡈ⡄⡄7AA7ࡈAA13ᡈA"}',
+19 : {
+name: "The Olde Bridge",
+data: '{"width":"15","height":"19","depth":7,"map":"BÁAA13BAA27BAA38BABAÁAA10BB2ÁAA2ÁAÁÁ2AA5BB2AA21BAA3ÁABAA2BAA6BB2AA2BAA2BABB3AA6ÁAA3ŁÁAÁAA2ŁAÁBB7AA2BB3AA2BB2ABB5ABB2ABABAA2BB3AA2BB4ABB2EBB7ABB2ࡁBABB16Á$ÁÁ2AÁÁ2BB40䁢BB61ÁÁ2BB4ÁÁ4BÁBB2ÁÁ2BB7ÁBB4ÁBB15ÁÁ2BB40ÁÁ3BB21ÁBB16ࡁBB6ÁBB2ABB40ÁBB8ÁBB44ࡁBB13ÁBB3ÁÁ42BÁÁ6BB4ÁÁ3BB4ÁÁ8AÁÁ44BÁÁ19BÁÁ7BÁŁBB3ÁÁ2AÁÁ13BÁÁ7BÁÁ2AÁAA2ÁÁ4BÁÁ2BB3ÁÁ8AÁÁ108BÁÁ10AÁÁ3AÁÁ41AÁÁ660BÁÁ19BÁÁ19AÁÁ64AÁÁ32BB2ÁÁ174AÁÁ24ɁÁɁAA2сс2ŁÁŁࡁࡁ2ɁɁ3сс3BB3","extendedMap":"AA1457ࡅᡅAA423$AA102ࡅࡅ9AA2"}',
 dungeonAmbience: 0,
 sg: 0,
 maxSpawned: 6,
@@ -1241,18 +1249,18 @@ spawnDelay: 9999,
 wall: "OuterCastleWall_0831",
 floor: "MossyPattern1",
 ceil: "DetailedFloor2",
-frontPanorama: "CreepyForest1",
-leftPanorama: "CreepyForest2",
-rightPanorama: "CreepyForest3",
+frontPanorama: "BrightCreepyForest1",
+leftPanorama: "",
+rightPanorama: "",
 backPanorama: "CreepyForest4",
-bottomPanorama: "",
+bottomPanorama: "Pit1",
 skyPanorama: "DarkSky1",
-start: '[217,3]',
-decals: '[[188,4,"Cobblestone_0823","texture"],[187,4,"Cobblestone_0823","texture"],[186,4,"Cobblestone_0823","texture"],[185,4,"Cobblestone_0823","texture"],[1621,4,"FirePit_683","crest"]]',
-lights: '[[549,3,"Candle62","standard",["1.0","10.0","1.0"]],[1267,5,"Candle71","standard",["1.0","10.0","1.0"]],[1168,1,"Candle60","standard",["1.0","10.0","1.0"]],[1258,3,"Candelabra01","standard",["1.0","10.0","1.0"]],[1357,7,"Lamp51","standard",["1.0","10.0","1.0"]]]',
-gates: '[[189,3,"20.1","17.2","Closed"]]',
-doors: '[183]',
-fires: '[[1621,4,"RedBonfire"]]',
+start: '[1672,1]',
+decals: '[[1686,1,"Sconce_1","crest"],[1688,1,"Sconce_1","crest"]]',
+lights: '[[1732,7,"AlpineLight_153","standard",["2","20","1.0"]],[622,7,"Light_654","standard",["1","10","1.0"]]]',
+gates: '[[1702,1,"19.1","14.6","Closed"]]',
+doors: '[37]',
+fires: '[[1671,7,"Torch"],[1673,7,"Torch"]]',
 }
 
         </textarea>

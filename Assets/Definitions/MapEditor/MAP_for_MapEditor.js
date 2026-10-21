@@ -1942,6 +1942,7 @@ const LIGHT_DECALS = [
 //panorama
 const PANORAMA_DECALS = [
     "HotelBalconyView", "TerraceView", "SideDoom1", "SideDoom2", "SideDoom3", "SideDoom4", "CreepyForest1", "CreepyForest2", "CreepyForest3", "CreepyForest4",
+    "BrightCreepyForest1", "BrightCreepyForest2", "BrightCreepyForest3", "BrightCreepyForest4",
 ].sort();
 
 //bottom

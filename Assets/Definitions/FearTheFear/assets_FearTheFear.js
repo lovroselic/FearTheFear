@@ -85,6 +85,10 @@ LoadTextures = [
     { srcName: "Panorama/CreepyForest2.webp", name: "CreepyForest2" },
     { srcName: "Panorama/CreepyForest3.webp", name: "CreepyForest3" },
     { srcName: "Panorama/CreepyForest4.webp", name: "CreepyForest4" },
+    { srcName: "Panorama/BrightCreepyForest1.webp", name: "BrightCreepyForest1" },
+    { srcName: "Panorama/BrightCreepyForest2.webp", name: "BrightCreepyForest2" },
+    { srcName: "Panorama/BrightCreepyForest3.webp", name: "BrightCreepyForest3" },
+    { srcName: "Panorama/BrightCreepyForest4.webp", name: "BrightCreepyForest4" },
 
     //sky, bottom
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },

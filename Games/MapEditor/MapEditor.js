@@ -94,7 +94,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.26.0",
+    VERSION: "0.27.0",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -1067,6 +1067,48 @@ const GAME = {
         /** shortcuts */
 
         $(document).keydown((event) => {
+            console.warn("key", event.ctrlKey, event.key);
+
+            if (event.ctrlKey) {
+                switch (event.key) {
+                    case '1':
+                        event.preventDefault();
+                        $('#flip').prop('checked', true);
+                        break;
+
+                    case '2':
+                        event.preventDefault();
+                        $('#WALL2').prop('checked', true);
+                        break;
+
+                    case '4':
+                        event.preventDefault();
+                        $('#WALL4').prop('checked', true);
+                        break;
+
+                    case '6':
+                        event.preventDefault();
+                        $('#WALL6').prop('checked', true);
+                        break;
+
+                    case '8':
+                        event.preventDefault();
+                        $('#WALL8').prop('checked', true);
+                        break;
+                    case '0':
+                        event.preventDefault();
+                        $('#space').prop('checked', true);
+                        break;
+                    case '9':
+                        event.preventDefault();
+                        $('#wall').prop('checked', true);
+                        break;
+                }
+                return;
+            }
+
+
+
             switch (event.key) {
                 case 'F7':
                     GAME.random_lair();
@@ -1110,7 +1152,7 @@ const GAME = {
         $(id).val(texture).change();
     },
     randomMaskDecal() {
-        if (!USE_MASK) return;
+        if (!INI.USE_MASK) return;
         const searchMD = $("#searchMasksDecals").val().toLowerCase();
         const filtered_mask_decals = MASK_DECALS.filter(decal => decal.toLowerCase().includes(searchMD));
         const pic = filtered_mask_decals.chooseRandom();
@@ -2257,7 +2299,8 @@ const GAME = {
                     break;
             };
 
-            $MAP.map.GA.fill(MAPDICT.EMPTY);
+            //$MAP.map.GA.fill(MAPDICT.EMPTY);
+            $MAP.map.GA.fill(MAPDICT.HOLE);
             $MAP.init();
 
             if (INI.USE_TERRAIN) {

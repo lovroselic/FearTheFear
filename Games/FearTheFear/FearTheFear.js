@@ -41,6 +41,10 @@ DEBUG.checkPoint = function () {
 
     Coins;
 
+    Entities:
+
+    -Blondie:
+
 
    
     keys:
@@ -52,7 +56,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 20;
+    GAME.level = 19;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -67,8 +71,8 @@ DEBUG.checkPoint = function () {
 
     HERO.mana = 500;
     HERO.maxMana = 500;
-    HERO.health = 199;
-    HERO.maxHealth = 500;
+    HERO.health = 750;
+    HERO.maxHealth = 750;
 
     HERO.attackExp = 18;
     HERO.attackExpGoal = 100;
@@ -192,7 +196,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.16.9",
+    VERSION: "0.16.10",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
