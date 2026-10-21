@@ -1071,6 +1071,11 @@ const GAME = {
 
             if (event.ctrlKey) {
                 switch (event.key) {
+                    case 'h':
+                        event.preventDefault();
+                        $('#hole').prop('checked', true);
+                        break;
+
                     case '1':
                         event.preventDefault();
                         $('#flip').prop('checked', true);

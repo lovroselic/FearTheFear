@@ -88,7 +88,7 @@ const TEXTURE_LIST = [
     "JuggWall_554", "JuggWall_555", "JuggWall_556", "JuggWall_557", "JuggWall_558", "JuggWall_559", "JuggWall_560", "JuggWall_561", "JuggWall_562", "JuggWall_563", "KreaWall_564", "KreaWall_565",
     "KreaWall_566", "KreaWall_567", "KreaWall_568", "KreaWall_569", "KreaWall_570", "KreaWall_571", "KreaWall_572", "KreaWall_573", "KreaWall_574", "KreaWall_575", "KreaWall_576",
     "Wood_726", "Wood_727", "Wood_728", "Wood_729", "Wood_730", "Wood_731", "Wood_732", "Wood_733", "Wood_734", "Wood_735", "Wood_736", "Wood_737",
-    "Wood_738", "Wood_739", "Wood_740", "Wood_741", "Wood_742", "Wood_743", "Wood_744", "AlpineFloor2", "AlpineGround", "ButtCrackTexture", "OchreSlabs",
+    "Wood_738", "Wood_739", "Wood_740", "Wood_741", "Wood_742", "Wood_743", "Wood_744", "AlpineFloor2", "AlpineGround", "ButtCrackTexture", "OchreSlabs", "SnowyAlpineRockTexture",
 ].sort();
 
 /** Decals */
@@ -1861,6 +1861,16 @@ const DECAL_PAINTINGS = [
     "NewDommes_4034", "NewDommes_4035", "NewDommes_4036", "NewDommes_4037", "NewDommes_4038", "NewDommes_4039", "NewDommes_4040", "NewDommes_4041", "NewDommes_4042", "NewDommes_4043", "NewDommes_4044", "NewDommes_4045",
     "NewDommes_4046", "NewDommes_4047", "NewDommes_4048", "NewDommes_4049", "NewDommes_4050", "NewDommes_4051", "NewDommes_4052", "NewDommes_4053", "NewDommes_4054", "NewDommes_4055", "NewDommes_4056", "NewDommes_4057",
     "NewDommes_4058", "NewDommes_4059", "NewDommes_4060", "NewDommes_4061", "NewDommes_4062", "NewDommes_4063", "NewDommes_4064", "NewDommes_4065", "NewDommes_4066", "NewDommes_4067", "NewDommes_4068",
+    "RetroAI_772", "RetroAI_773", "RetroAI_774", "RetroAI_775", "RetroAI_776", "RetroAI_777", "RetroAI_778", "RetroAI_779", "RetroAI_780", "RetroAI_781", "RetroAI_782", "RetroAI_783",
+    "RetroAI_784", "RetroAI_785", "RetroAI_786", "RetroAI_787", "RetroAI_788", "RetroAI_789", "RetroAI_790", "RetroAI_791", "RetroAI_792", "RetroAI_793", "RetroAI_794", "RetroAI_795",
+    "RetroAI_796", "RetroAI_797", "RetroAI_798", "RetroAI_799", "RetroAI_800", "RetroAI_801", "RetroAI_802", "RetroAI_803", "RetroAI_804", "RetroAI_805", "RetroAI_806", "RetroAI_807",
+    "RetroAI_808", "RetroAI_809", "RetroAI_810", "RetroAI_811", "RetroAI_812", "RetroAI_813", "RetroAI_814", "RetroAI_815", "RetroAI_816", "RetroAI_817", "RetroAI_818", "RetroAI_819",
+    "RetroAI_820", "RetroAI_821", "RetroAI_822", "RetroAI_823", "RetroAI_824", "RetroAI_825", "RetroAI_826", "RetroAI_827", "RetroAI_828", "RetroAI_829", "RetroAI_830", "RetroAI_831",
+    "RetroAI_832", "RetroAI_833", "RetroAI_834", "RetroAI_835", "RetroAI_836", "RetroAI_837", "RetroAI_838", "RetroAI_839", "RetroAI_840", "RetroAI_841", "RetroAI_842", "RetroAI_843",
+    "RetroAI_844", "RetroAI_845", "RetroAI_846", "RetroAI_847", "RetroAI_848", "RetroAI_849", "RetroAI_850", "RetroAI_851", "RetroAI_852", "RetroAI_853", "RetroAI_854", "RetroAI_855",
+    "RetroAI_856", "RetroAI_857", "RetroAI_858", "RetroAI_859", "RetroAI_860", "RetroAI_861", "RetroAI_862", "RetroAI_863", "RetroAI_864", "RetroAI_865", "RetroAI_866", "RetroAI_867",
+    "RetroAI_868", "RetroAI_869", "RetroAI_870", "RetroAI_871", "RetroAI_872", "RetroAI_873", "RetroAI_874", "RetroAI_875", "RetroAI_876", "RetroAI_877", "RetroAI_878", "RetroAI_879",
+    "RetroAI_880", "RetroAI_881", "RetroAI_882", "RetroAI_883", "RetroAI_884", "RetroAI_885", "RetroAI_886", "RetroAI_887", "RetroAI_888",
 ].sort();
 
 /** Crests */
@@ -1943,6 +1953,7 @@ const LIGHT_DECALS = [
 const PANORAMA_DECALS = [
     "HotelBalconyView", "TerraceView", "SideDoom1", "SideDoom2", "SideDoom3", "SideDoom4", "CreepyForest1", "CreepyForest2", "CreepyForest3", "CreepyForest4",
     "BrightCreepyForest1", "BrightCreepyForest2", "BrightCreepyForest3", "BrightCreepyForest4",
+    "AlpineSideLakeForest_889", "AlpineSideLakeForest_890", "AlpineSideLakeForest_891", "AlpineSideLakeForest_892", "AlpineSideLakeForest_893", "AlpineSideLakeForest_894",
 ].sort();
 
 //bottom

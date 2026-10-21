@@ -16,7 +16,7 @@ const MAP_TEXT = {
     7: `The cellar. Where all the alcohol is stored. Might find something usefull here.`,
     8: `Seems like old abandoned dubgeon. But is abandoned also by monsters?`,
     9: `Smells like teen chicken.`,
-    10: `Fuck. Just my luck. The abyss betweem me amd Castle Creep. I nee to find the way around.`,
+    10: `Fuck. Just my luck. The abyss betweem me and Castle Creep. I nee to find the way around.`,
     11: ``,
     12: ``,
     13: ``,
@@ -328,7 +328,7 @@ const MAP = {
     ,
     10: {
         name: "Abyss",
-        data: '{"width":"25","height":"19","depth":7,"map":"BB2AA2ÁAA4BB2AA9ÁBAA4BB2ABAA9BB2AA2BAA3BABABAA2ÁAA19BAA2BAA6BABB6ABB5ÁAA2ÁAA2ÁÁ3BAA3ÁAA2BB3ABB18ABB2AA2BB18AA2BB2ÁBB11AA2BABB2AA3BAA3BB41AA2BB10AA2BB85ÁÁ3BB8ÁBB6$BB13ÁBB191ABB26ABB6ÁBB63ÁBB22ÁBB27ÁBB8ÁBB17ÁÁ2BB13AÁÁ2BB2䁢BB2ÁBÁBB5ÁBÁBB14ÁBB3ÁBB3ÁBB6ÁÁ87BÁBB14ÁÁ2BB3ÁÁ7BB99ÁÁ6BÁÁ15ABÁÁ97BÁÁ5BAÁÁ5BÁBÁÁ2BÁÁ104BÁÁ3AÁÁ9BÁÁ105BÁBÁAA2BÁÁ10BÁÁ4BÁÁ93BÁAÁAÁÁ3BB2ÁÁ2BB2ÁÁ100BÁÁ95BB3ÁÁ106BB2ÁÁ1148AÁÁ170BÁÁ5BÁÁ4BÁÁ96BB93","extendedMap":"AA63⡎ᡎAA664㡃AA80ᡎAA139ᡎAA23⡎AA1704$AA214䡌AA161ࡆAA38⡆AA36⡆AA47ࡆAA9ࡆAA15塌AA15ࡅAA3塌AA7⡆AA10ᡂAA7⡆AA14䡌AA12ࡂAA4ࡅAA20ࡆAA18"}',
+        data: '{"width":"25","height":"19","depth":7,"map":"BB2AA2ÁAA4BABAA8ÁBAA3BB2AA2䁢AA9B䁢AA2BAA2BABABAA3ÁAA18BAA3BAA5BB6AA2BB5ÁBAA3ÁAA2ÁÁ3BAA3ÁAA2BABB19AA2BB17AA2BÁBB12ABB3AA3BAA3BABB25䁢BB12AA2BB7AA2BB43ÁÁ2BB8ÁBB6$BB13ÁBB120ÁBB88ABB38ÁBB63ÁBB14ABB8䂂BÁBB33ÁBB10ÁBB19ÁÁ2BB15AÁÁ2BB2䁢BB4ÁBÁBB5ÁBÁBB9ABB7ÁBB3ÁBB3ÁBB6ÁÁ87BÁBB17ÁÁ2BB3ÁÁ7BB98ABB4ÁÁ6BÁÁ15ABÁÁ97BÁÁ5BAÁÁ5BÁBÁBÁÁ105BÁÁ3AÁÁ8BÁÁ106BÁBÁAA2BÁÁ10BÁÁ4BÁÁ93BÁAÁAÁÁ3BB2ÁÁ2BB2ÁÁ100BÁÁ95BB3ÁÁ106BB2ÁÁ1148AÁÁ169BÁÁ5BÁÁ5BÁÁ96BB97","extendedMap":"AA63⡎ᡎAA664㡃AA80ᡎAA139ᡎAA23⡎AA1704$AA214䡌AA161ࡆAA56⡆AA15⡆AA48ࡆAA9ࡆAA15塌AA14ࡅAA4塌AA7⡆AA10ᡂAA7⡆AA14䡌AA12ࡂAA4ࡅAA7㡂AA13ࡆAA19"}',
         dungeonAmbience: 2.5,
         sg: 0,
         maxSpawned: 6,
@@ -346,7 +346,7 @@ const MAP = {
         skyPanorama: "Sky_204",
         start: '[2821,1]',
         decals: '[[2822,1,"IvyWall_521","texture"],[2798,1,"IvyWall_521","texture"],[2794,1,"IvyWall_521","texture"],[2794,5,"IvyWall_521","texture"],[2798,3,"IvyWall_521","texture"],[2822,3,"IvyWall_521","texture"],[2820,5,"IvyWall_521","texture"],[3269,1,"IvyWall_521","texture"],[3271,1,"IvyWall_521","texture"],[3272,1,"IvyWall_521","texture"],[3273,1,"IvyWall_521","texture"],[3270,1,"IvyWall_521","texture"],[2820,1,"ButtCrackTexture","texture"],[520,7,"CreepyForest_1154","texture"],[522,7,"CreepyForest_1154","texture"],[544,5,"CreepyForest_1154","texture"],[522,3,"CreepyForest_1154","texture"],[520,5,"CreepyForest_1154","texture"],[496,7,"CreepyForest_1154","texture"],[516,4,"FirePit_678","crest"],[2740,5,"Skull316","crest"],[2734,5,"Skull_787","crest"],[2778,5,"Skull408","crest"],[529,3,"Skull401","crest"],[511,3,"Skull320","crest"],[517,3,"Skull_816","crest"],[548,3,"Skull_805","crest"]]',
-        gates: '[[2846,1,"10.1","4.5","Gold"],[2750,5,"10.2","11.1","Closed"],[525,5,"10.3","12.1","Closed"],[496,7,"10.4","13.1","Gold"]]',
+        gates: '[[2846,1,"10.1","4.5","Gold"],[2750,5,"10.2","11.1","Closed"],[525,5,"10.3","12.2","Closed"],[496,7,"10.4","13.1","Gold"]]',
         monsters: '[[2781,"MadHandy",1],[2737,"MadHandy",3],[535,"WolfSpider",3],[546,"WolfSpider",3]]',
         gold: '[[2745,"GoldCube"],[2766,"GoldCube"],[2736,"GoldCube"],[2754,"GoldCube"],[2728,"GoldCube"],[553,"GoldCube"],[534,"GoldCube"],[561,"GoldCube"],[514,"GoldCube"],[571,"GoldCube"]]',
         containers: '[[528,"Barrel_473","GOLD_ITEM_TYPE.GoldCube",7],[509,"Barrel_460","GOLD_ITEM_TYPE.GoldCube",7],[513,"WoodenCrate54","GOLD_ITEM_TYPE.GoldCube",7],[2777,"Barrel","GOLD_ITEM_TYPE.GoldCube",1],[2783,"WoodenCrate57","GOLD_ITEM_TYPE.GoldCube",1],[2790,"BarrelMedieval","GOLD_ITEM_TYPE.GoldCube",1],[2748,"MetalCrate421","GOLD_ITEM_TYPE.GoldCube",3]]',
@@ -383,7 +383,27 @@ const MAP = {
         lairs: '[[321,3,"Lair80"],[332,1,"Lair80"]]',
     }
     ,
-    12: {}
+    12: {
+        name: "Hiking Trail",
+        data: '{"width":"21","height":"21","depth":7,"map":"ÁBABABB2AA2BAA2BAA3ŁBAA2BB2AA3BB5ABABÁÁ3AÁÁ7AA2BB2AA3BAA11ÁÁ2AA3ÁAA10BB2AA4BABAA3BB2AA3BB4AA3BB3AA2BB2ABÁBAA5ÁAA2ÁÁ6AA4ÁAÁAA2ÁABABB6ÁBࡁABB8AA2BB3ࡁBB27ŁAA2ŁBABB9ÁBABB7ŁAɁсBŁBB16ŁBB12ABB3сBB2AŁBABABABB10ABB2AA2сBB3ŁɁBABB3ABB5AA2BB18$䁢BB6ABAɁBсABB5ABB13ࡁBB5ABB4ABB10ABB11ɁAсBB15ÁÁ6BÁÁ2ɁBB7ABABABB4ÁBÁBB11AA2BB13AB䁢BÁBB4ÁÁ5BB4ÁBB3ABB2ࡁBB16ࡁBB2ÁÁ4AA2ÁAÁÁ5ABAÁAÁÁ3AÁÁ2BÁBсÁÁ2BB2ÁɁÁÁ4BABсÁÁ15AÁAÁÁ4ࡁŁÁÁ2BB2ÁÁ13AÁÁ5BÁÁ28AÁÁ70ɁÁÁ23AÁÁ7AÁBÁÁ11AÁÁ21AÁÁ3BÁÁ7AA2ÁBÁÁ2AÁÁ3ŁÁÁ7AÁÁ5AÁÁ292AÁÁ24BÁÁ1634ABÁÁ105сÁÁ3ŁÁÁ2BÁÁ3ŁÁÁ2BсÁÁ23BÁÁ9BÁÁ22сࡁÁÁ78AŁÁÁ3ɁɁ2ÁࡁÁBÁÁ7ɁÁÁ2ŁBB7ÁÁ4ŁBÁAA2BB3ŁÁÁ3ɁÁÁ2ɁÁŁBࡁɁɁ2BB2ÁÁ2сÁÁ2сÁBсBB2ࡁBÁBÁBB3A","extendedMap":"AA2228⡋$AA858"}',
+        dungeonAmbience: 0,
+        sg: 0,
+        maxSpawned: 6,
+        killCountdown: 4,
+        killsRequiredToStopSpawning: 24,
+        spawnDelay: 9999,
+        wall: "MountainWall_151",
+        floor: "SnowyAlpineRockTexture",
+        ceil: "DetailedFloor2",
+        frontPanorama: "AlpineSideLakeForest_889",
+        leftPanorama: "AlpineSideLakeForest_890",
+        rightPanorama: "AlpineSideLakeForest_891",
+        backPanorama: "AlpineSideLakeForest_892",
+        bottomPanorama: "Pit1",
+        skyPanorama: "DarkSky1",
+        start: '[415,5]',
+        gates: '[[422,1,"12.1","19.2","Silver"],[419,3,"12.2","10.3","Closed"]]',
+    }
     ,
     13: {}
     ,
@@ -489,7 +509,7 @@ const MAP = {
     ,
     19: {
         name: "The Olde Bridge",
-        data: '{"width":"15","height":"19","depth":7,"map":"BÁAA13BAA27BAA38BABAÁAA10BB2ÁAA2ÁAÁÁ2AA5BB2AA21BAA3ÁABAA2BAA6BB2AA2BAA2BABB3AA6ÁAA3ŁÁAÁAA2ŁAÁBB7AA2BB3AA2BB2ABB5ABB2ABABAA2BB3AA2BB4ABB2EBB7ABB2ࡁBABB16Á$ÁÁ2AÁÁ2BB40䁢BB61ÁÁ2BB4ÁÁ4BÁBB2ÁÁ2BB7ÁBB4ÁBB15ÁÁ2BB40ÁÁ3BB21ÁBB16ࡁBB6ÁBB2ABB40ÁBB8ÁBB44ࡁBB13ÁBB3ÁÁ42BÁÁ6BB4ÁÁ3BB4ÁÁ8AÁÁ44BÁÁ19BÁÁ7BÁŁBB3ÁÁ2AÁÁ13BÁÁ7BÁÁ2AÁAA2ÁÁ4BÁÁ2BB3ÁÁ8AÁÁ108BÁÁ10AÁÁ3AÁÁ41AÁÁ660BÁÁ19BÁÁ19AÁÁ64AÁÁ32BB2ÁÁ174AÁÁ24ɁÁɁAA2сс2ŁÁŁࡁࡁ2ɁɁ3сс3BB3","extendedMap":"AA1457ࡅᡅAA423$AA102ࡅࡅ9AA2"}',
+        data: '{"width":"15","height":"19","depth":7,"map":"BÁAA13BAA27BAA38BABAÁAA10BB2ÁAA2ÁAÁÁ2AA5BB2AA21BAA3ÁABAA2BAA6BB2AA2BAA2BABB3AA6ÁAA3ŁÁAÁAA2ŁAÁBB7AA2BB3AA2BB2ABB5ABB2ABABAA2BB3AA2BB4ABB2䁆BB7ABB2ࡁBABB16Á$ÁÁ2AÁÁ2BB40䁢BB61ÁÁ2BB4ÁÁ4BÁBB2ÁÁ2BB7ÁBB4ÁBB15ÁÁ2BB40ÁÁ3BB21ÁBB16ࡁBB6ÁBB26ABB15ÁBB8ÁBB44ࡁBB13ÁBB3ÁÁ42BÁÁ6BB4ÁÁ3BB4ÁÁ8AÁÁ44BÁÁ19BÁÁ7BÁŁBB3ÁÁ2AÁÁ13BÁÁ7BÁÁ2AÁAA2ÁÁ4BÁÁ2BB3ÁÁ8AÁÁ108BÁÁ10AÁÁ3AÁÁ41AÁÁ660BÁÁ19BÁÁ19AÁÁ64AÁÁ32BB2ÁÁ174AÁÁ24ɁÁɁAA2сс2ŁÁŁࡁࡁ2ɁɁ3сс3BB4","extendedMap":"AA1457ࡅᡅAA423$AA102ࡅࡅ9AA2"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 6,
@@ -508,7 +528,7 @@ const MAP = {
         start: '[1672,1]',
         decals: '[[1686,1,"Sconce_1","crest"],[1688,1,"Sconce_1","crest"]]',
         lights: '[[1732,7,"AlpineLight_153","standard",["2","20","1.0"]],[622,7,"Light_654","standard",["1","10","1.0"]]]',
-        gates: '[[1702,1,"19.1","14.6","Closed"]]',
+        gates: '[[1702,1,"19.1","14.6","Closed"],[1432,7,"19.2","12.1","Silver"]]',
         doors: '[37]',
         fires: '[[1671,7,"Torch"],[1673,7,"Torch"]]',
     }
