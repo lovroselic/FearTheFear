@@ -16,6 +16,7 @@ ElementsToCompile = [
     { shapeName: "HALFARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "GRILLE", collisionMode: "CELL", occlusionType: "PASS", passable: false },
     { shapeName: "ROUNDBOUND", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.25, },
+    { shapeName: "ROUNDBOUNDCORNER", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.25, },
     { shapeName: "PILLAR3", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
     { shapeName: "BIGARCH", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
     { shapeName: "CORNERWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
@@ -46,7 +47,7 @@ LoadObjects = [
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj", "LongBox.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
-    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj",
+    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj",
 ];
 
 LoadModels = [
@@ -80,6 +81,10 @@ LoadTextures = [
     { srcName: "Panorama/SideDoom1.webp", name: "SideDoom1" },
     { srcName: "Panorama/SideDoom3.webp", name: "SideDoom3" },
     { srcName: "Panorama/SideDoom4.webp", name: "SideDoom4" },
+    { srcName: "Panorama/CreepyForest1.webp", name: "CreepyForest1" },
+    { srcName: "Panorama/CreepyForest2.webp", name: "CreepyForest2" },
+    { srcName: "Panorama/CreepyForest3.webp", name: "CreepyForest3" },
+    { srcName: "Panorama/CreepyForest4.webp", name: "CreepyForest4" },
 
     //sky, bottom
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },

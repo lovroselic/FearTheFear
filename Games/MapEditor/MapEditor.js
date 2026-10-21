@@ -2674,6 +2674,7 @@ skyPanorama: "${$("#skyPanorama")[0].value}",
             GA.depth++;
             GA.maxZ++;
             GA.map = GA.map.extend(GA.width * GA.height, MAPDICT.WALL);
+            GA.extendedMap = GA.extendedMap.extend(GA.width * GA.height, 0);
             $MAP.depth = GA.depth;
             console.warn("adding floor", $MAP.map.GA, $MAP);
             $("#depthGrid").val(GA.depth);

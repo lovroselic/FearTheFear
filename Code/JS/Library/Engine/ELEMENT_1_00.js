@@ -1039,6 +1039,15 @@ const SHAPE_PATH = (() => {
             ),
             color: "#999",
         },
+        [EXT_MAPDICT.ROUNDBOUNDCORNER]: {
+            path: new Path2D(
+                `M ${SIZE} ${0} 
+                L ${SIZE} ${SIZE} 
+                L ${0} ${SIZE} 
+                Z`
+            ),
+            color: "#1beba6",
+        },
     };
 
 
