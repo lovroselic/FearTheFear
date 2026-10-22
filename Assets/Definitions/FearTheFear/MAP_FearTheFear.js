@@ -505,7 +505,29 @@ const MAP = {
         gates: '[[45,3,"17.1","14.4","Closed"],[391,5,"17.2","20.1","Closed"]]',
     }
     ,
-    18: {}
+    18: {
+        name: "Cem & Terry’s Last Resort",
+        data: '{"width":"19","height":"19","depth":3,"map":"BB3AA2BAA6BB2AA2BAA12BAA5BABAA4ÁÁ2AA3BB3AA5BB2AA2BAA4BAA7ÁAA7BAA10BB2AA3BB2AA13BB2AA21BAA6BAA2BAA10BAA2BAA8BAA2BB3AA13BAA5BAA3BAA6BB5AA6BB3AA3BAA3BB4ÁBB2ABB2AA2BB4ÁBAA3BB2AA3BB27ABB3ABABB3ABABABB11AA8BABAA2BB5AA2BB6ABB3ABB34䁢BB44ÁBB103ࡁ$BB92䁢BB62AŁɁсBB49ABB22ÁBB7ÁBB7ÁÁ2BÁÁ6BB2ÁÁ4BB7ÁBB5ÁÁ2BB39AA2ÁÁ2BÁÁ2BB3ÁBB2ÁBÁBB5ÁÁ4BÁÁ2BB11AA3BB2ÁÁ9BÁÁ2BÁÁ17BÁÁ9BÁÁ3BÁÁ6BÁÁ2BÁÁ3BÁÁ11BÁÁ5BÁÁ4BÁÁ9BÁÁ9BÁÁ6BÁÁ16BÁBÁBB2ÁÁ5BÁÁ10BÁÁ4BÁÁ4BB2ÁÁ8BÁÁ9BÁÁ3BÁÁ5BÁÁ4BÁÁ3BB9","extendedMap":"AA1083$"}',
+        dungeonAmbience: 0,
+        sg: 0,
+        maxSpawned: 6,
+        killCountdown: 4,
+        killsRequiredToStopSpawning: 24,
+        spawnDelay: 9999,
+        wall: "DarkMarble50",
+        floor: "MarbleFloor102",
+        ceil: "BloodMarbleFloorWall_SDXL_005",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        bottomPanorama: "",
+        skyPanorama: "",
+        start: '[693,1]',
+        lights: '[[902,7,"Candle61","dimRed",["1.0","10.0","1.0"]],[1054,1,"Candle50","dimRed",["1.0","10.0","1.0"]]]',
+        gates: '[[712,1,"18.1","14.5","Closed"],[142,7,"18.2","22.1","Red"]]',
+        movables: '[[674,"TinyRat"]]',
+    }
     ,
     19: {
         name: "The Olde Bridge",

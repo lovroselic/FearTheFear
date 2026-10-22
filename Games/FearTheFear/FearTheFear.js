@@ -43,21 +43,49 @@ DEBUG.checkPoint = function () {
 
     Entities:
 
-    -Blondie:
+    - BlondieLongHair: HairBrush, Comb,  PinkRibbon -> SilverKey
+    - Maniac: "Crown","GoldenScepter", "Document", "BlackLeatherBoots", "Whip", -> GoldKey (symbols of rule)
+    - SquirrelLady: Acorn, Walnut, Chestnut ->
+    - BearaInForest: "HoneyComb", "Cherry", "Pear" ->
+    - HedgehogCorridorLady: "Apple", "GreenApple", "Pear", ->
+    - LibraRian7:
+    - IceIceBaby: "IceCube", "IceCube", "IceCube" ->
 
 
+    items:
+    "Acorn", 
+    "Walnut", 
+    "Chestnut",
+    "Crown",
+    "GoldenScepter", 
+    "Document"
+    "BlackLeatherBoots", 
+    "Whip",
+    HairBrush, 
+    Comb,  
+    PinkRibbon
+    "Apple", 
+    "GreenApple", 
+    "Pear", 
+    "Pear",
+    "HoneyComb", 
+    "Cherry"
+    "IceCube", 
+    "IceCube", 
+    "IceCube"
    
     keys:
         DONE Pink 23
     GOld
     Silver
+    Red
 
 
      */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 12;
+    GAME.level = 18;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -106,12 +134,10 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        //"Banknote10", "Banknote20", "Banknote50", "Banknote100", "Banknote200",
-        //"SmallBarrel", "SmallBarrel", "SmallBarrel",
-        //"GlassOfWine", "Wine", "WhiskeyShot", "Beer", "GlassOfBeer",
-        //"Chicken", "LittlePiggy", "BabySheep",
-        //"Skull", "Skull", "Skull", "Skull", "Skull",
-        //"Milk", "Egg",
+        "Apple", "GreenApple", "Pear", "HoneyComb", "Cherry", "IceCube",
+        //"HairBrush", "Comb", "PinkRibbon",
+        //"Crown","GoldenScepter", "Document","BlackLeatherBoots", "Whip",
+        //"Acorn", "Walnut", "Chestnut",
     ];
 
     for (let itm of invItems) {
@@ -197,7 +223,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.16.11",
+    VERSION: "0.16.12",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

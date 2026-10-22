@@ -103,6 +103,9 @@ LoadTextures = [
     { srcName: "Sky/Pit2.webp", name: "Pit2" },
     { srcName: "Sky/Pit1.webp", name: "Pit1" },
 
+    //
+    { srcName: "Wall/IceTexture.webp", name: "IceTexture" },
+
     //wall, floor, ceiling
     { srcName: "Wall/SnowyAlpineRockTexture.webp", name: "SnowyAlpineRockTexture" },
     { srcName: "Wall/Wood_726.webp", name: "Wood_726" },
@@ -1232,7 +1235,6 @@ LoadTextures = [
     { srcName: "ObjectTextures/HealthBoxtexture.webp", name: "HealthBoxtexture" },
     { srcName: "ObjectTextures/SteakTexture.webp", name: "SteakTexture" },
     { srcName: "ObjectTextures/WineBottle.webp", name: "WineBottle" },
-    //{ srcName: "ObjectTextures/cake_basecolor.webp", name: "cake_basecolor" },
     { srcName: "ObjectTextures/CakeBase2.webp", name: "cake_basecolor" },
 
     //mana items
@@ -1246,8 +1248,9 @@ LoadTextures = [
     { srcName: "ObjectTextures/dragon_greenColor.webp", name: "GreenManaDragon" },
 
     /** other object textures */
-    { srcName: "ObjectTextures/Apple_BaseColor.webp", name: "Apple_BaseColor" },
-    { srcName: "ObjectTextures/Pear_baseColor.webp", name: "Pear_baseColor" },
+    { srcName: "ObjectTextures/Apple_BaseColor2.webp", name: "Apple_BaseColor" },
+    { srcName: "ObjectTextures/GreenApple_BaseColor2.webp", name: "GreenApple_BaseColor" },
+    { srcName: "ObjectTextures/Pear_baseColor2.webp", name: "Pear_baseColor" },
     { srcName: "ObjectTextures/Dagger_Base_Color.webp", name: "Dagger_Base_Color" },
     { srcName: "ObjectTextures/Skull_texture.webp", name: "Skull_texture" },
     { srcName: "ObjectTextures/CandleWax.webp", name: "CandleWax" },
@@ -1384,6 +1387,12 @@ LoadSprites = [
     { srcName: "EntityPictures/Shooter.webp", name: "Shooter" },
     { srcName: "EntityPictures/Cookie.webp", name: "Cookie" },
     { srcName: "EntityPictures/Climber2.webp", name: "Climber2" },
+    { srcName: "EntityPictures/BlondieLongHair.webp", name: "BlondieLongHair" },
+    { srcName: "EntityPictures/BearaInForest.webp", name: "BearaInForest" },
+    { srcName: "EntityPictures/SquirrelLady.webp", name: "SquirrelLady" },
+    { srcName: "EntityPictures/HedgehogCorridorLady.webp", name: "HedgehogCorridorLady" },
+    { srcName: "EntityPictures/LibraRian7.webp", name: "LibraRian7" },
+    { srcName: "EntityPictures/IceIceBaby.webp", name: "IceIceBaby" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1393,6 +1402,14 @@ LoadSprites = [
     { srcName: "ActionMovables/LittlePiggy.webp", name: "LittlePiggy" },
     { srcName: "Items/Chicken.webp", name: "Chicken" },
     { srcName: "Items/Butterfly.webp", name: "Butterfly" },
+    { srcName: "Items/Rat.png", name: "Rat" },
+
+    //other metals
+    { srcName: "Items/IronBar.webp", name: "IronBar" },
+    { srcName: "Items/UraniumBar.webp", name: "UraniumBar" },
+    { srcName: "Items/GoldSteel.webp", name: "GoldSteel" },
+    { srcName: "Items/RedBar.webp", name: "RedBar" },
+
     //health items
     { srcName: "Items/BeerHealth.webp", name: "BeerHealth" },
     { srcName: "Items/Cake.webp", name: "Cake" },
@@ -1401,6 +1418,7 @@ LoadSprites = [
     { srcName: "Items/Steak.webp", name: "Steak" },
     { srcName: "Items/RoastChicken.webp", name: "RoastChicken" },
     { srcName: "Items/RoastPig.webp", name: "RoastPig" },
+
     //mana items
     { srcName: "Items/Amanita.webp", name: "Amanita" },
     { srcName: "Items/Snail.webp", name: "Snail" },
@@ -1652,6 +1670,43 @@ LoadSprites = [
     { srcName: "Items/Skull2.webp", name: "Skull" },
     { srcName: "Items/Egg.png", name: "Egg" },
     { srcName: "Items/Milk.png", name: "Milk" },
+    { srcName: "Items/Acorn.png", name: "Acorn" },
+    { srcName: "Items/Chestnut.png", name: "Chestnut" },
+    { srcName: "Items/Walnut.png", name: "Walnut" },
+    { srcName: "Items/Crown.webp", name: "Crown" },
+    { srcName: "Items/GoldenScepter.webp", name: "GoldenScepter" },
+    { srcName: "Items/Document.webp", name: "Document" },
+    { srcName: "Items/Whip.webp", name: "Whip" },
+    { srcName: "Items/BlackLeatherBoots2.png", name: "BlackLeatherBoots" },
+    { srcName: "Items/Comb.webp", name: "Comb" },
+    { srcName: "Items/HairBrush.webp", name: "HairBrush" },
+    { srcName: "Items/PinkRibbon.webp", name: "PinkRibbon" },
+    { srcName: "Items/IceCube2.webp", name: "IceCube" },
+
+    //fruit
+    { srcName: "Items/Apple.webp", name: "Apple" },
+    { srcName: "Items/Pear.webp", name: "Pear" },
+    { srcName: "Items/Orange.webp", name: "Orange" },
+    { srcName: "Items/GreenApple.png", name: "GreenApple" },
+    { srcName: "Items/Banana2.png", name: "Banana" },
+    { srcName: "Items/HoneyComb.png", name: "HoneyComb" },
+    { srcName: "Items/Cherry.png", name: "Cherry" },
+
+    //books
+    { srcName: "Items/YoniBook.webp", name: "YoniBook" },
+    { srcName: "Items/TaoBook.webp", name: "TaoBook" },
+    { srcName: "Items/YinYangBook.webp", name: "YinYangBook" },
+    { srcName: "Items/PentagramBook.webp", name: "PentagramBook" },
+    { srcName: "Items/HexagramBook.webp", name: "HexagramBook" },
+    { srcName: "Items/TripleMoonBook.webp", name: "TripleMoonBook" },
+    { srcName: "Items/TriquetraBook.webp", name: "TriquetraBook" },
+    { srcName: "Items/VenusBook.webp", name: "VenusBook" },
+    { srcName: "Items/AnkhBook.webp", name: "AnkhBook" },
+    { srcName: "Items/FireballBook.webp", name: "FireballBook" },
+    { srcName: "Items/OwlBook.webp", name: "OwlBook" },
+    { srcName: "Items/PrincessBook.webp", name: "PrincessBook" },
+    { srcName: "Items/RavenBook.webp", name: "RavenBook" },
+    { srcName: "Items/TreeOfLifeBook.webp", name: "TreeOfLifeBook" },
 
     //scrolls
     { srcName: "Scrolls/SCR_Cripple2.webp", name: "SCR_Cripple" },

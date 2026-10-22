@@ -286,7 +286,7 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
-     Wardrobe2: {
+    Wardrobe2: {
         name: "Wardrobe2",
         category: "chest",
         element: "WARDROBE",
@@ -316,7 +316,7 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: 0,
     },
-     BarrelMedieval2: {
+    BarrelMedieval2: {
         name: "Barrel",
         category: "chest",
         element: "BarrelMedieval2",
@@ -766,7 +766,7 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: 0,
     },
-     PlainCloset2: {
+    PlainCloset2: {
         name: "PlainCloset2",
         category: "chest",
         element: "CLOSET4",
@@ -1226,7 +1226,7 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
-     VividBarrel: {
+    VividBarrel: {
         name: "VividBarrel",
         category: "chest",
         element: "BarrelX",
@@ -1236,7 +1236,7 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
-     LongBox: {
+    LongBox: {
         name: "LongBox",
         category: "chest",
         element: "LONG_BOX",
@@ -1542,6 +1542,87 @@ const INTERACTION_OBJECT = {
         inventorySprite: "Beer",
         text: "A cold one. I drank that one in Slovenia."
     },
+    Crown: {
+        name: "Crown",
+        category: "interaction_item",
+        element: "CROWN",
+        scale: 1.7 / 2 ** 2,
+        glueToFloor: true,
+        texture: "Gold",
+        material: MATERIAL.gold,
+        inventorySprite: "Crown",
+        text: "This is my crown. I should not take it with me on adventure. Best someone keeps it safe for me."
+    },
+    IceCube: {
+        name: "IceCube",
+        category: "interaction_item",
+        element: "CUBE_CENTERED",
+        scale: 1.99 / 2 ** 5,
+        glueToFloor: true,
+        texture: "IceTexture",
+        inventorySprite: "IceCube",
+        material: MATERIAL.standardShine,
+        text: "Ice cube. Cold?"
+    },
+
+    //metal
+    IronBar: {
+        name: "IronBar",
+        category: "interaction_item",
+        element: "BAR",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "IronTexture",
+        inventorySprite: "IronBar",
+        material: MATERIAL.standard,
+        text: "Iron? I can make something from it."
+    },
+    RedBar: {
+        name: "RedBar",
+        category: "interaction_item",
+        element: "BAR",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "RedMetal",
+        inventorySprite: "RedBar",
+        material: MATERIAL.standard,
+        text: "Wow. Infernal red metal."
+    },
+
+    //fruit
+    Apple: {
+        name: "Apple",
+        category: "interaction_item",
+        element: "APPLE",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "Apple_BaseColor",
+        material: MATERIAL.standard,
+        inventorySprite: "Apple",
+        text: "Oh, it's an apple."
+    },
+    GreenApple: {
+        name: "GreenApple",
+        category: "interaction_item",
+        element: "APPLE",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "GreenApple_BaseColor",
+        material: MATERIAL.standard,
+        inventorySprite: "GreenApple",
+        text: "Oh, it's an apple. Green one."
+    },
+    Pear: {
+        name: "Pear",
+        category: "interaction_item",
+        element: "PEAR",
+        scale: 1 / 2 ** 7,
+        glueToFloor: true,
+        texture: "Pear_baseColor",
+        material: MATERIAL.standard,
+        inventorySprite: "Pear",
+        text: "Juicy pear? How nice."
+    },
 };
 
 const MOVABLE_INTERACTION_OBJECT = {
@@ -1755,6 +1836,19 @@ const MOVABLE_INTERACTION_OBJECT = {
         inventorySprite: "GoldPrincessMana",
         text: "Little gold me, bursting with magic.",
     },
+    TinyRat: {
+        name: "TinyRat",
+        model: "Rat",
+        category: "interaction_item",
+        scale: 1.0 / 2 ** 5,
+        rotateToNorth: -Math.PI / 2,
+        midHeight: 0.4,
+        behaviourArguments: [Infinity, ["wanderer"], -1],
+        inventorySprite: "Rat",
+        text: "Cute tiny rat.",
+        moveSpeed: 1.6,
+        material: MATERIAL.standard,
+    },
 
 };
 
@@ -1933,6 +2027,237 @@ const INTERACTION_ITEM = {
         inventorySprite: "Egg",
         text: "An unborn chick.",
     },
+    Acorn: {
+        name: "Acorn",
+        category: "interaction_item",
+        inventorySprite: "Acorn",
+        text: "Forest fast food.",
+    },
+    Chestnut: {
+        name: "Chestnut",
+        category: "interaction_item",
+        inventorySprite: "Chestnut",
+        text: "Forest fast food.",
+    },
+    Walnut: {
+        name: "Walnut",
+        category: "interaction_item",
+        inventorySprite: "Walnut",
+        text: "Keep away from squirrels",
+    },
+    Comb: {
+        name: "Comb",
+        category: "interaction_item",
+        inventorySprite: "Comb",
+        text: "A comb for my messy hair."
+    },
+    HairBrush: {
+        name: "HairBrush",
+        category: "interaction_item",
+        inventorySprite: "HairBrush",
+        text: "A hair brush for my messy hair."
+    },
+    PinkRibbon: {
+        name: "PinkRibbon",
+        category: "interaction_item",
+        inventorySprite: "PinkRibbon",
+        text: "A pink bow ribbon. I could have pigtails. No. Absolutely not."
+    },
+
+    //metals
+    GoldBar: {
+        name: "GoldBar",
+        category: "interaction_item",
+        inventorySprite: "GoldBar",
+    },
+    GoldSteel: {
+        name: "GoldSteel",
+        category: "interaction_item",
+        inventorySprite: "GoldSteel",
+    },
+    SilverBar: {
+        name: "SilverBar",
+        category: "interaction_item",
+        inventorySprite: "SilverBar",
+        text: "Silver. Malleable."
+    },
+    UraniumBar: {
+        name: "UraniumBar",
+        category: "interaction_item",
+        inventorySprite: "UraniumBar",
+        text: "Uranium. Active radio, or something like that. Right?."
+    },
+    IronBar: {
+        name: "IronBar",
+        category: "interaction_item",
+        inventorySprite: "IronBar",
+        text: "Iron? I can make something from it."
+    },
+
+    //books
+    YoniBook: {
+        name: "YoniBook",
+        category: "interaction_item",
+        inventorySprite: "YoniBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    TaoBook: {
+        name: "TaoBook",
+        category: "interaction_item",
+        inventorySprite: "TaoBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    YinYangBook: {
+        name: "YinYangBook",
+        category: "interaction_item",
+        inventorySprite: "YinYangBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    PentagramBook: {
+        name: "PentagramBook",
+        category: "interaction_item",
+        inventorySprite: "PentagramBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    HexagramBook: {
+        name: "HexagramBook",
+        category: "interaction_item",
+        inventorySprite: "HexagramBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    TripleMoonBook: {
+        name: "TripleMoonBook",
+        category: "interaction_item",
+        inventorySprite: "TripleMoonBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    TriquetraBook: {
+        name: "TriquetraBook",
+        category: "interaction_item",
+        inventorySprite: "TriquetraBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    VenusBook: {
+        name: "VenusBook",
+        category: "interaction_item",
+        inventorySprite: "VenusBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    AnkhBook: {
+        name: "AnkhBook",
+        category: "interaction_item",
+        inventorySprite: "AnkhBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    FireballBook: {
+        name: "FireballBook",
+        category: "interaction_item",
+        inventorySprite: "FireballBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    OwlBook: {
+        name: "OwlBook",
+        category: "interaction_item",
+        inventorySprite: "OwlBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    PrincessBook: {
+        name: "PrincessBook",
+        category: "interaction_item",
+        inventorySprite: "PrincessBook",
+        text: "Amazing story about my adventures. Everybody should read this."
+    },
+    TreeOfLifeBook: {
+        name: "TreeOfLifeBook",
+        category: "interaction_item",
+        inventorySprite: "TreeOfLifeBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    RavenBook: {
+        name: "RavenBook",
+        category: "interaction_item",
+        inventorySprite: "RavenBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+
+    // royal items
+    Crown: {
+        name: "Crown",
+        category: "interaction_item",
+        inventorySprite: "Crown",
+        text: "This is my crown. My! Crown!",
+    },
+    GoldenScepter: {
+        name: "GoldenScepter",
+        category: "interaction_item",
+        inventorySprite: "GoldenScepter",
+        text: "My specter. A symbol of my power. Or is that the heels?",
+    },
+    Document: {
+        name: "Document",
+        category: "interaction_item",
+        inventorySprite: "Document",
+        text: "This proves I am able.",
+    },
+    BlackLeatherBoots: {
+        name: "BlackLeatherBoots",
+        category: "interaction_item",
+        inventorySprite: "BlackLeatherBoots",
+        text: "This boots look amazing. Did you see those heels?"
+    },
+    Whip: {
+        name: "Whip",
+        category: "interaction_item",
+        inventorySprite: "Whip",
+        text: "I can punish someone."
+    },
+
+    //fruit
+    Apple: {
+        name: "Apple",
+        category: "interaction_item",
+        inventorySprite: "Apple",
+        text: "Oh, it's an apple.",
+    },
+    GreenApple: {
+        name: "GreenApple",
+        category: "interaction_item",
+        inventorySprite: "Apple",
+        text: "Oh, it's an apple. Green one.",
+    },
+    Pear: {
+        name: "Pear",
+        category: "interaction_item",
+        inventorySprite: "Pear",
+        text: "Ripe juicy pear.",
+    },
+    Orange: {
+        name: "Orange",
+        category: "interaction_item",
+        inventorySprite: "Orange",
+        text: "Ripe juicy orange.",
+    },
+    Banana: {
+        name: "Banana",
+        category: "interaction_item",
+        inventorySprite: "Banana",
+        text: "Ripe juicy banana.",
+    },
+    Cherry: {
+        name: "Cherry",
+        category: "interaction_item",
+        inventorySprite: "Cherry",
+        text: "Ripe juicy cherry.",
+    },
+    HoneyComb: {
+        name: "HoneyComb",
+        category: "interaction_item",
+        inventorySprite: "HoneyComb",
+        text: "Sweet Honey. Watch out for the bees.",
+    },
+
+
+
 };
 
 const MONSTER_TYPE = {
