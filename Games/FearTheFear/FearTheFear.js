@@ -49,7 +49,10 @@ DEBUG.checkPoint = function () {
     - BearaInForest: "HoneyComb", "Cherry", "Pear" ->
     - HedgehogCorridorLady: "Apple", "GreenApple", "Pear", ->
     - LibraRian7:
+    - RedLibrarian:
     - IceIceBaby: "IceCube", "IceCube", "IceCube" ->
+    - SnakeSlytheress1: "Rat", "Rat", "Rat" ->
+    - GreenLizardLady "Fly", "Fly", "Fly"
 
 
     items:
@@ -73,6 +76,27 @@ DEBUG.checkPoint = function () {
     "IceCube", 
     "IceCube", 
     "IceCube"
+    "Rat", 
+    "Rat", 
+    "Rat"
+    "Fly", 
+    "Fly", 
+    "Fly"
+
+    "YoniBook",
+    "TaoBook",
+    "YinYangBook",
+    "PentagramBook",
+    "HexagramBook",
+    "TripleMoonBook",
+    "TriquetraBook",
+    "VenusBook",
+    "AnkhBook",
+    "FireballBook",
+    "OwlBook",
+    "PrincessBook",
+    "TreeOfLifeBook",
+    "RavenBook"
    
     keys:
         DONE Pink 23
@@ -85,7 +109,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 18;
+    GAME.level = 24;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -223,7 +247,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.16.12",
+    VERSION: "0.16.13",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

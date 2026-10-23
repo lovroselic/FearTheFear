@@ -1028,6 +1028,12 @@ const SHAPE_PATH = (() => {
             ),
             color: "#1beba6",
         },
+        [EXT_MAPDICT.TOPDOORWEDGE]: {
+            path: new Path2D(
+                `M 0 0 L ${SIZE} 0 L ${SIZE} ${OFF} L 0 ${OFF} Z`
+            ),
+            color: "#32d39d",
+        },
         [EXT_MAPDICT.HALFROOF]: {
             path: new Path2D(
                 `M 0 0 

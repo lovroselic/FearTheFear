@@ -1849,6 +1849,20 @@ const MOVABLE_INTERACTION_OBJECT = {
         moveSpeed: 1.6,
         material: MATERIAL.standard,
     },
+    Fly: {
+        name: "Fly",
+        model: "Fly",
+        category: "interaction_item",
+        scale: 1.6 / 2 ** 4,
+        rotateToNorth: -Math.PI / 2,
+        fly: 0.5,
+        midHeight: 0.0,
+        behaviourArguments: [Infinity, ["wanderer"], -1],
+        inventorySprite: "Fly",
+        text: "Annoying fly.",
+        moveSpeed: 1.3,
+        material: MATERIAL.standard,
+    },
 
 };
 

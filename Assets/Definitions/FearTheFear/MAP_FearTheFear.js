@@ -30,6 +30,7 @@ const MAP_TEXT = {
     21: ``,
     22: ``,
     23: ``,
+    24: ``,
 };
 
 /** Map definitions */
@@ -525,8 +526,7 @@ const MAP = {
         skyPanorama: "",
         start: '[693,1]',
         lights: '[[902,7,"Candle61","dimRed",["1.0","10.0","1.0"]],[1054,1,"Candle50","dimRed",["1.0","10.0","1.0"]]]',
-        gates: '[[712,1,"18.1","14.5","Closed"],[142,7,"18.2","22.1","Red"]]',
-        movables: '[[674,"TinyRat"]]',
+        gates: '[[712,1,"18.1","14.5","Closed"],[142,7,"18.2","24.1","Red"]]',
     }
     ,
     19: {
@@ -655,5 +655,32 @@ const MAP = {
         doors: '[149]',
     }
     ,
+24 : {
+name: "Barathrum Innominatum",
+data: '{"width":"17","height":"17","depth":7,"map":"BB2䁆BABB2AA7BAA3ÁÁ2BABAA4BAA10BAA12BAA4BAA5BAA4BAA13BAA7BABAA8BABAA7ÁŁBB2AA3BAA7BAA14BB4AA5BAA5BB3AA4BABAA3ŁABB9ABAA4ÁÁ2AA3ÁÁ4BB2AA3BB2AA3BB4AA2BABB3ABABB5AA3BB6ÁBB4ABB14ABAA2BB2ABB7ŁBB7ࡁBB5ABB11сBB2ɁBB5AA2ÁABB2ÁÁ4BB3AB䁆ABB5ABB15ABB14ABB9䁆BB16ABB4$BB71ÁBB18ÁÁ2BB33ÁBB4ÁBB30䁢BB62ABB126ÁBB29ÁÁ2BB3ŁBB2ABB60ÁBB2ÁBB4ÁBB33ÁBB2ÁÁ3BÁÁ29BB2ÁÁ4BB54AA2BB6ÁÁ7BB3ABÁBB2ÁBB3ÁBB6ÁBB25AÁBÁBÁÁ5BB24ÁBB126AÁBB4ࡁBÁÁ5BÁBB2ÁBB7ÁBB4ÁÁ3BсɁBÁÁ4ɁBÁBÁÁ2BB3ÁAA2BB25ࡁBB6ÁÁ4BAŁсBB2ABB2ABB2ABB2ABB9ÁÁ8AA2ÁÁ5BÁÁ3BB4ÁBÁÁ3AÁÁ39BB5ÁÁ7BÁBÁÁ7BÁBB2ÁÁ5BB5ÁÁ5BB2ÁÁ23ABÁÁ41BÁÁ4BB2ÁÁ67BÁBÁÁ3BÁÁ4BÁÁ42AÁÁ10BÁBÁÁ8BÁÁ2BB2ÁÁ7AA2ÁÁ11BÁÁ2AÁÁ18AÁÁ7BÁÁ5BÁÁ2BB2ÁÁ47BÁÁ60BÁÁ10ABAÁÁ34BÁÁ2BB2ÁÁ45BÁÁ45BB45ɁɁ2BB6сс2BB3ࡁࡁ2BB5ABB3","extendedMap":"AA54⡂ᡂᡂ5AA145ᡂAA125⡂⡂6AA294㡒AA130ᡂAA268$AA649ᡈAA32ࡂࡂ4A㡂㡂5AA25㡂AA20ᡈAA12ᡑAA66䡃AA3⡋AA28䡃AA25ࡂAA24ࡂAA16桃ᡈAA7ࡋAA8⡑A桃ᡅࡂAA8㡑ࡑࡈࡈ2AA11㡂AA2ࡈAᡈAA4⡒AࡈAA14"}',
+dungeonAmbience: 0,
+sg: 0,
+maxSpawned: 6,
+killCountdown: 4,
+killsRequiredToStopSpawning: 24,
+spawnDelay: 9999,
+wall: "DarkMossy2",
+floor: "MarbleFloor1004",
+ceil: "BloodMarbleFloorWall_SDXL_012",
+frontPanorama: "",
+leftPanorama: "",
+rightPanorama: "",
+backPanorama: "",
+bottomPanorama: "",
+skyPanorama: "",
+start: '[216,1]',
+decals: '[[219,3,"FirePlaceDecal_674","crest"],[218,4,"Firepit5","crest"]]',
+lights: '[[1980,1,"DuaLLantern_023","standard",["1.0","10.0","1.0"]],[1334,1,"FluxLight126","standardYellow",["1.0","10.0","1.0"]],[487,3,"AlpineLight_166","standardYellow",["1.0","10.0","1.0"]],[464,1,"WallLamp33","standardYellow",["1.0","10.0","1.0"]],[379,5,"Light_638","standardYellow",["1.0","10.0","1.0"]],[403,7,"SkullLantern57","standardYellow",["1.0","10.0","1.0"]]]',
+gates: '[[1725,1,"24.1","18.2","Red"]]',
+doors: '[41,138,250]',
+triggers: '[[1718,1,"SmoothWallButton",1,1688],[270,3,"SmoothWallButton",1,184]]',
+lairs: '[[261,1,"Lair_607"],[86,5,"Lair33"]]',
+fires: '[[218,4,"Fireplace"]]',
+}
 
 };

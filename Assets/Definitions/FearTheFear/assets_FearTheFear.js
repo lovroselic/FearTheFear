@@ -15,14 +15,15 @@ ElementsToCompile = [
     { shapeName: "ARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "HALFARCH", collisionMode: "NONE", occlusionType: "PASS", passable: true },
     { shapeName: "GRILLE", collisionMode: "CELL", occlusionType: "PASS", passable: false },
-    { shapeName: "ROUNDBOUND", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.25, },
-    { shapeName: "ROUNDBOUNDCORNER", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.25, },
+    { shapeName: "ROUNDBOUND", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.65, },
+    { shapeName: "ROUNDBOUNDCORNER", collisionMode: "CONVEX", occlusionType: "PASS", passable: true, rayTargetBias: 0.90, },
     { shapeName: "PILLAR3", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
     { shapeName: "BIGARCH", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
     { shapeName: "CORNERWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
     { shapeName: "ROUNDWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.25, },
     { shapeName: "TIT", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "TOPHORIZONTALWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
+    { shapeName: "TOPDOORWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "HALFROOF", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
 ];
 
@@ -47,7 +48,7 @@ LoadObjects = [
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj", "LongBox.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
-    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj",
+    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj","TopDoorWedge.obj"
 ];
 
 LoadModels = [
@@ -59,7 +60,7 @@ LoadModels = [
     "Wolf.gltf", "ButterFly.gltf", "Cat.gltf", "Goblin.gltf", "SkeleDwarf.gltf",
     "Astro.gltf", "Basilisk.gltf", "Raptor.gltf", "DinoAir.gltf", "Hulk.gltf", "GhostFace.gltf",
     "Rex.gltf", "Drax.gltf", "MissWhite.gltf", "Skeleton.gltf", "Devilla.gltf",
-    "Rat.gltf",
+    "Rat.gltf", "Fly.gltf",
 ];
 
 LoadTextures = [
@@ -1393,6 +1394,10 @@ LoadSprites = [
     { srcName: "EntityPictures/HedgehogCorridorLady.webp", name: "HedgehogCorridorLady" },
     { srcName: "EntityPictures/LibraRian7.webp", name: "LibraRian7" },
     { srcName: "EntityPictures/IceIceBaby.webp", name: "IceIceBaby" },
+    { srcName: "EntityPictures/SnakeSlytheress1.webp", name: "SnakeSlytheress1" },
+    { srcName: "EntityPictures/ManiacFromMansion.webp", name: "ManiacFromMansion" },
+    { srcName: "EntityPictures/GreenLizardLady.webp", name: "GreenLizardLady" },
+    { srcName: "EntityPictures/RedLibrarian.webp", name: "RedLibrarian" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1403,6 +1408,7 @@ LoadSprites = [
     { srcName: "Items/Chicken.webp", name: "Chicken" },
     { srcName: "Items/Butterfly.webp", name: "Butterfly" },
     { srcName: "Items/Rat.png", name: "Rat" },
+    { srcName: "Items/Fly.png", name: "Fly" },
 
     //other metals
     { srcName: "Items/IronBar.webp", name: "IronBar" },

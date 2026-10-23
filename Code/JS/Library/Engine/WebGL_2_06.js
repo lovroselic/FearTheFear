@@ -4440,8 +4440,11 @@ class $3D_player {
 
             if (WebGL.CONFIG.prevent_movement_in_exlusion_grids) {
                 check = this.GA.forwardPositionIsEmpty(nextPos, Dir2D, this.r, this.depth);                                         // this is main 3D approach
-                if (check) extendedCheck = this.GA.forwardPositionNotInShape(nextPos, Dir2D, this.r, this.depth, this.heigth);      // this is extended 3D approach
-            } else {
+                if (check) {
+                    extendedCheck = this.GA.forwardPositionNotInShape(nextPos, Dir2D, this.r, this.depth, this.heigth);             // this is extended 3D approach
+                    if (extendedCheck) extendedCheck = this.GA.forwardPositionNotInShape(nextPos, Dir2D, this.r, this.depth, 0.1);  // check feet as well
+                }
+
                 check = this.GA.entityNotInWall(nextPos, Dir2D, this.r, this.depth);                                                // this shouild be now obsolete - it's not
             }
 
