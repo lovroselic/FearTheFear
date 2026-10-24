@@ -47,7 +47,7 @@ LoadObjects = [
     "Amanita.obj", "Snail.obj", "Frog.obj",
     "apple.obj", "crown.obj", "dagger.obj", "mushroom.obj", "skull.obj", "Candle.obj",
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj", "LongBox.obj",
-    "Goat.obj", "Pillar.obj", "owl.obj",
+    "Goat.obj", "Pillar.obj", "owl.obj", "Stiletto.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
     "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj","TopDoorWedge.obj", "TopDoorWedge2.obj",
 ];
@@ -1108,6 +1108,7 @@ LoadTextures = [
 
     //GOld textures (included in keys)
     { srcName: "ObjectTextures/Coins.webp", name: "Coins" },
+
     //Skill textures
     { srcName: "ObjectTextures/Red.webp", name: "Red" },
     { srcName: "ObjectTextures/Red2.webp", name: "Red2" },
@@ -1267,6 +1268,7 @@ LoadTextures = [
     { srcName: "ObjectTextures/BlueLiquid2.webp", name: "BlueLiquid2" },
     { srcName: "ObjectTextures/RedLiquid2.webp", name: "RedLiquid2" },
     { srcName: "ObjectTextures/LaskoCanTexture.webp", name: "LaskoCanTexture" },
+    { srcName: "ObjectTextures/StilettoBase.webp", name: "StilettoBase" },
 
     /** other monster textures */
     { srcName: "ObjectTextures/RedGoldBat.webp", name: "RedGoldBat" },
@@ -1399,6 +1401,7 @@ LoadSprites = [
     { srcName: "EntityPictures/ManiacFromMansion.webp", name: "ManiacFromMansion" },
     { srcName: "EntityPictures/GreenLizardLady.webp", name: "GreenLizardLady" },
     { srcName: "EntityPictures/RedLibrarian.webp", name: "RedLibrarian" },
+    { srcName: "EntityPictures/GreenLibrarian.webp", name: "GreenLibrarian" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1684,11 +1687,22 @@ LoadSprites = [
     { srcName: "Items/GoldenScepter.webp", name: "GoldenScepter" },
     { srcName: "Items/Document.webp", name: "Document" },
     { srcName: "Items/Whip.webp", name: "Whip" },
-    { srcName: "Items/BlackLeatherBoots2.png", name: "BlackLeatherBoots" },
     { srcName: "Items/Comb.webp", name: "Comb" },
     { srcName: "Items/HairBrush.webp", name: "HairBrush" },
     { srcName: "Items/PinkRibbon.webp", name: "PinkRibbon" },
     { srcName: "Items/IceCube2.webp", name: "IceCube" },
+
+    //leather fashion
+    { srcName: "Items/BlackLeatherBoots2.png", name: "BlackLeatherBoots" },
+    { srcName: "Items/BlackPump.webp", name: "BlackPump" },
+    { srcName: "Items/RedPump.webp", name: "RedPump" },
+    { srcName: "Items/BluePump.webp", name: "BluePump" },
+    { srcName: "Items/SilverPump.webp", name: "SilverPump" },
+    { srcName: "Items/GreenPump.webp", name: "GreenPump" },
+    { srcName: "Items/PurplePump.webp", name: "PurplePump" },
+    { srcName: "Items/GoldPump.webp", name: "GoldPump" },
+    { srcName: "Items/LeoPumps.png", name: "LeoPumps" },
+{ srcName: "Items/TigerPump.png", name: "TigerPump" },
 
     //fruit
     { srcName: "Items/Apple.webp", name: "Apple" },

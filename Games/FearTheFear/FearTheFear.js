@@ -43,16 +43,20 @@ DEBUG.checkPoint = function () {
 
     Entities:
 
-    - BlondieLongHair: HairBrush, Comb,  PinkRibbon -> SilverKey
-    - Maniac: "Crown","GoldenScepter", "Document", "BlackLeatherBoots", "Whip", -> GoldKey (symbols of rule)
-    - SquirrelLady: Acorn, Walnut, Chestnut ->
-    - BearaInForest: "HoneyComb", "Cherry", "Pear" ->
-    - HedgehogCorridorLady: "Apple", "GreenApple", "Pear", ->
+            DONE BlondieLongHair: HairBrush, Comb,  PinkRibbon -> SilverKey
+            DONE Maniac: "Crown","GoldenScepter", "Document", "BlackLeatherBoots", "Whip", -> GoldKey (symbols of rule)
+            DONE SquirrelLady: Acorn, Walnut, Chestnut -> HairBrush
+            DONE BearaInForest: "HoneyComb", "Cherry", "Pear" -> PinkRibbon
+            DONE HedgehogCorridorLady: "Apple", "GreenApple", "Pear", -> Comb
+
     - LibraRian7:
     - RedLibrarian:
+    - GreenLibrarian:
+
     - IceIceBaby: "IceCube", "IceCube", "IceCube" ->
     - SnakeSlytheress1: "Rat", "Rat", "Rat" ->
     - GreenLizardLady "Fly", "Fly", "Fly"
+    - Peasant wanst: Stiletto, Stiletto, fetish clothes, give whip
 
 
     items:
@@ -64,9 +68,9 @@ DEBUG.checkPoint = function () {
     "Document"
     "BlackLeatherBoots", 
     "Whip",
-    HairBrush, 
-    Comb,  
-    PinkRibbon
+                    DONE HairBrush, SquirrelLady (17)
+                    DONE Comb,   -> HedgehogCorridorLady (17)
+                    DONE PinkRibbon BearaInForest (17)
     "Apple", 
     "GreenApple", 
     "Pear", 
@@ -100,8 +104,8 @@ DEBUG.checkPoint = function () {
    
     keys:
         DONE Pink 23
-    GOld
-    Silver
+        DONE GOld 21 Maniac
+        DONE Silver 20 Blondie
     Red
 
 
@@ -109,7 +113,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 24;
+    GAME.level = 14;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -158,10 +162,8 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "Apple", "GreenApple", "Pear", "HoneyComb", "Cherry", "IceCube",
-        //"HairBrush", "Comb", "PinkRibbon",
-        //"Crown","GoldenScepter", "Document","BlackLeatherBoots", "Whip",
-        //"Acorn", "Walnut", "Chestnut",
+        "IceCube", "IceCube", "IceCube",
+
     ];
 
     for (let itm of invItems) {
@@ -247,7 +249,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.16.14",
+    VERSION: "0.17.0",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

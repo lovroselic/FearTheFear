@@ -121,7 +121,7 @@ const MATERIAL = {
     princess: new Material(LIGHT_COLORS.standard, LIGHT_COLORS.standard, LIGHT_COLORS.standard, 0.15, 0.10, 0, 0.3),
 
     // other
-     wood: new Material(
+    wood: new Material(
         [0.20, 0.12, 0.06], // ambientColor
         [0.45, 0.35, 0.18], // diffuseColor
         [0.10, 0.10, 0.10], // specularColor: weak, neutral
@@ -129,7 +129,7 @@ const MATERIAL = {
         0.85,               // roughness
         0.0,                // metallic
         0.03                // fresnelStrength
-    ), 
+    ),
     metal: new Material(
         [0.20, 0.20, 0.20], // ambientColor
         [0.55, 0.55, 0.55], // diffuseColor: neutral grey
@@ -138,6 +138,15 @@ const MATERIAL = {
         0.30,               // roughness
         1.0,                // metallic
         0.50                // fresnelStrength
+    ),
+    leather: new Material(
+        [0.02, 0.02, 0.02], // ambientColor
+        [0.05, 0.05, 0.05], // diffuseColor: near black
+        [0.55, 0.55, 0.55], // specularColor: neutral shine
+        0.90,               // shininess: becomes 76.8
+        0.20,               // roughness
+        0.5,                // metallic
+        0.12                // fresnelStrength
     ),
 };
 

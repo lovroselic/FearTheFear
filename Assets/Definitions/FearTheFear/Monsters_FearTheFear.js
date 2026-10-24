@@ -1623,6 +1623,20 @@ const INTERACTION_OBJECT = {
         inventorySprite: "Pear",
         text: "Juicy pear? How nice."
     },
+
+    //fashion
+    Stiletto: {
+        name: "Stiletto",
+        category: "interaction_item",
+        element: "STILETTO",
+        scale: 1.5 / 2 ** 1,
+        glueToFloor: true,
+        texture: "StilettoBase",
+        material: MATERIAL.leather,
+        inventorySprite: "BlackPump",
+        text: "Just one? What am I, a fucking Cinderella?"
+    },
+
 };
 
 const MOVABLE_INTERACTION_OBJECT = {
@@ -2213,12 +2227,7 @@ const INTERACTION_ITEM = {
         inventorySprite: "Document",
         text: "This proves I am able.",
     },
-    BlackLeatherBoots: {
-        name: "BlackLeatherBoots",
-        category: "interaction_item",
-        inventorySprite: "BlackLeatherBoots",
-        text: "This boots look amazing. Did you see those heels?"
-    },
+
     Whip: {
         name: "Whip",
         category: "interaction_item",
@@ -2270,7 +2279,67 @@ const INTERACTION_ITEM = {
         text: "Sweet Honey. Watch out for the bees.",
     },
 
-
+    //fashion
+    BlackLeatherBoots: {
+        name: "BlackLeatherBoots",
+        category: "interaction_item",
+        inventorySprite: "BlackLeatherBoots",
+        text: "This boots look amazing. Did you see those heels?"
+    },
+    LeoPumps: {
+        name: "LeoPumps",
+        category: "interaction_item",
+        inventorySprite: "LeoPumps",
+        text: "Looks like something some wild kitty would wear."
+    },
+RedPump: {
+        name: "RedPump",
+        category: "interaction_item",
+        inventorySprite: "RedPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    BluePump: {
+        name: "BluePump",
+        category: "interaction_item",
+        inventorySprite: "BluePump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    SilverPump: {
+        name: "SilverPump",
+        category: "interaction_item",
+        inventorySprite: "SilverPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    GreenPump: {
+        name: "GreenPump",
+        category: "interaction_item",
+        inventorySprite: "GreenPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    BlackPump: {
+        name: "BlackPump",
+        category: "interaction_item",
+        inventorySprite: "BlackPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    PurplePump: {
+        name: "PurplePump",
+        category: "interaction_item",
+        inventorySprite: "PurplePump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    GoldPump: {
+        name: "GoldPump",
+        category: "interaction_item",
+        inventorySprite: "GoldPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+     TigerPump: {
+        name: "TigerPump",
+        category: "interaction_item",
+        inventorySprite: "TigerPump",
+        text: "Hot tiger sking heels."
+    },
 
 };
 
@@ -3647,19 +3716,71 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
-    BlondieLongHair: {
-    name: "BlondieLongHair",
-    sprite: "BlondieLongHair",
-    category: 'crest',
-    voice: "FemaleLow3",
-    wants: ["HairBrush", "Comb", "PinkRibbon"],
-    gives: "SilverKey",
-    text: {
-        intro: `My hair has declared independence. Fetch me a hairbrush, a comb and a pink ribbon. I'll trade you a silver key. Diplomacy has failed.`,
-        progress: `We're still missing things, darling. Bring the rest. My hair is gaining territory.`,
-        conclusion: `Wonderful. Here's the silver key. It'll open the path to the mountains. Enjoy the wilderness. I've had quite enough of it on my head.`,
+    BearaInForest: {
+        name: "BearaInForest",
+        sprite: "BearaInForest",
+        category: 'crest',
+        voice: "FemaleVeryLow6",
+        wants: ["HoneyComb", "Cherry", "Pear"],
+        gives: "PinkRibbon",
+        text: {
+            intro: `I've outgrown my pink phase. My sweet tooth has declined to evolve. Bring me sticky gold and sweet, juicy fruit, and you might inherit an accessory.`,
+            progress: `A promising bribe. An incomplete one. Fetch the rest. My generosity improves considerably when I'm properly fed.`,
+            conclusion: `Lovely. Here's my old pink ribbon. It belonged to a younger, less discerning me. The one who accessorised before lunch.`,
+        },
     },
-},
+    SquirrelLady: {
+        name: "SquirrelLady",
+        sprite: "SquirrelLady",
+        category: 'crest',
+        voice: "FemaleVeryHigh5",
+        wants: ["Acorn", "Walnut", "Chestnut"],
+        gives: "HairBrush",
+        text: {
+            intro: `I'm nuts about nuts. The edible sort, girl. Bring me an acorn, a walnut and a chestnut, and I'll trade you a hairbrush.`,
+            progress: `Keep foraging, girl. The selection is still incomplete. Your hairbrush is waiting. So am I.`,
+            conclusion: `Lovely. Here's your hairbrush. You get to tame your hair. I get to feed my obsession. A perfectly healthy arrangement.`,
+        },
+    },
+    HedgehogCorridorLady: {
+        name: "HedgehogCorridorLady",
+        sprite: "HedgehogCorridorLady",
+        category: 'crest',
+        voice: "FemaleLow5",
+        wants: ["Apple", "GreenApple", "Pear"],
+        gives: "Comb",
+        text: {
+            intro: `I collect fruit. Briefly. Then I eat it. Bring me a red apple, a green apple and a pear. I'll trade you a comb.`,
+            progress: `The collection is still incomplete. So is lunch. Bring the rest. I'm getting prickly.`,
+            conclusion: `Lovely. Lunch is sorted. Here's the comb. Entirely wasted on me. These spikes are structural.`,
+        },
+    },
+    ManiacFromMansion: {
+        name: "ManiacFromMansion",
+        sprite: "ManiacFromMansion",
+        category: 'crest',
+        voice: "FemaleVeryLow4",
+        wants: ["Crown", "GoldenScepter", "Document", "BlackLeatherBoots", "Whip"],
+        gives: "GoldKey",
+        text: {
+            intro: `This village needs a queen. I have the temperament. Bring me the gilded trimmings, proof that greatness runs in my family, and the means to make an entrance and discourage disagreement.`,
+            progress: `We're still short of majesty. Fetch the rest. The peasants must never suspect I'm improvising.`,
+            conclusion: `Splendid. My birthright is now properly accessorised. Here's the gold key. It'll open the way out. Leave before I invent an exit tax.`,
+        },
+    },
+    BlondieLongHair: {
+        name: "BlondieLongHair",
+        sprite: "BlondieLongHair",
+        category: 'crest',
+        voice: "FemaleLow3",
+        wants: ["HairBrush", "Comb", "PinkRibbon"],
+        gives: "SilverKey",
+        text: {
+            intro: `My hair has declared independence. Fetch me a hairbrush, a comb and a pink ribbon. I'll trade you a silver key. Diplomacy has failed.`,
+            progress: `We're still missing things, darling. Bring the rest. My hair is gaining territory.`,
+            conclusion: `Wonderful. Here's the silver key. It'll open the path to the mountains. Enjoy the wilderness. I've had quite enough of it on my head.`,
+        },
+    },
     Cookie: {
         name: "Cookie",
         sprite: "Cookie",
