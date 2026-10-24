@@ -24,6 +24,7 @@ ElementsToCompile = [
     { shapeName: "TIT", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "TOPHORIZONTALWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "TOPDOORWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
+    { shapeName: "TOPDOOR2", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "HALFROOF", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
 ];
 
@@ -48,7 +49,7 @@ LoadObjects = [
     "HornedHelmet.obj", "flask.obj", "pear.obj", "fish.obj", "ErlenFlask.obj", "LongBox.obj",
     "Goat.obj", "Pillar.obj", "owl.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
-    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj","TopDoorWedge.obj"
+    "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj","TopDoorWedge.obj", "TopDoorWedge2.obj",
 ];
 
 LoadModels = [

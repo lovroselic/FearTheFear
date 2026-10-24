@@ -3647,6 +3647,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    BlondieLongHair: {
+    name: "BlondieLongHair",
+    sprite: "BlondieLongHair",
+    category: 'crest',
+    voice: "FemaleLow3",
+    wants: ["HairBrush", "Comb", "PinkRibbon"],
+    gives: "SilverKey",
+    text: {
+        intro: `My hair has declared independence. Fetch me a hairbrush, a comb and a pink ribbon. I'll trade you a silver key. Diplomacy has failed.`,
+        progress: `We're still missing things, darling. Bring the rest. My hair is gaining territory.`,
+        conclusion: `Wonderful. Here's the silver key. It'll open the path to the mountains. Enjoy the wilderness. I've had quite enough of it on my head.`,
+    },
+},
     Cookie: {
         name: "Cookie",
         sprite: "Cookie",

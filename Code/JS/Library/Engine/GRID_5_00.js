@@ -1095,8 +1095,9 @@ const EXT_MAPDICT = {
     ROUNDWEDGE: 13,
     TOPHORIZONTALWEDGE: 14,
     HALFROOF: 15,
-    ROUNDBOUNDCORNER: 16, 
+    ROUNDBOUNDCORNER: 16,
     TOPDOORWEDGE: 17,
+    TOPDOOR2: 18,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1172,6 +1173,7 @@ const EXT_TO_SHAPE = {
     15: "HALFROOF",
     16: "ROUNDBOUNDCORNER",
     17: "TOPDOORWEDGE",
+    18: "TOPDOOR2",
 };
 
 const WallSizeToHeight = (value) => {
