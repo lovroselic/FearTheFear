@@ -33,6 +33,14 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    FetishBabe3: {
+        name: "FetishBabe3",
+        sprite: "FetishBabe3",
+        category: 'crest',
+        voice: "FemaleLow2",
+        text: `Babes in this village are too obsessed with the books. Knowledge is not everything, how about just being beautiful?`,
+        interactionCategory: "oracle",
+    },
     VillageNews: {
         name: "VillageNews",
         sprite: "VillageNews",

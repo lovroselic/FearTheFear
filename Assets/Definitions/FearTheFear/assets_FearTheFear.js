@@ -1405,6 +1405,7 @@ LoadSprites = [
     { srcName: "EntityPictures/Farmeressa.webp", name: "Farmeressa" },
     { srcName: "EntityPictures/Lacy3.webp", name: "Lacy" },
     { srcName: "EntityPictures/VillageNews.webp", name: "VillageNews" },
+    { srcName: "EntityPictures/FetishBabe3.webp", name: "FetishBabe3" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -2274,6 +2275,7 @@ LoadSprites = [
     { srcName: "ObjDecals/FookingForest.webp", name: "FookingForest" },
     { srcName: "ObjDecals/OldeBridge.webp", name: "OldeBridge" },
     { srcName: "ObjDecals/PraiseButtVillage.webp", name: "PraiseButtVillage" },
+    { srcName: "ObjDecals/ButtCrackTable.webp", name: "ButtCrackTable" },
     { srcName: "ObjDecals/Temple.webp", name: "Temple" },
 
     //objdecals
