@@ -386,7 +386,7 @@ const MAP = {
     ,
     12: {
         name: "Hiking Trail",
-        data: '{"width":"21","height":"21","depth":7,"map":"ÁBABABB2AA2BAA2BAA3ŁBAA2BB2AA3BB5ABABÁÁ3AÁÁ7AA2BB2AA3BAA11ÁÁ2AA3ÁAA10BB2AA4BABAA3BB2AA3BB4AA3BB3AA2BB2ABÁBAA5ÁAA2ÁÁ6AA4ÁAÁAA2ÁABABB6ÁBࡁABB8AA2BB3ࡁBB27ŁAA2ŁBABB9ÁBABB7ŁAɁсBŁBB16ŁBB12ABB3сBB2AŁBABABABB10ABB2AA2сBB3ŁɁBABB3ABB5AA2BB18$䁢BB6ABAɁBсABB5ABB13ࡁBB5ABB4ABB10ABB11ɁAсBB15ÁÁ6BÁÁ2ɁBB7ABABABB4ÁBÁBB11AA2BB13AB䁢BÁBB4ÁÁ5BB4ÁBB3ABB2ࡁBB16ࡁBB2ÁÁ4AA2ÁAÁÁ5ABAÁAÁÁ3AÁÁ2BÁBсÁÁ2BB2ÁɁÁÁ4BABсÁÁ15AÁAÁÁ4ࡁŁÁÁ2BB2ÁÁ13AÁÁ5BÁÁ28AÁÁ70ɁÁÁ23AÁÁ7AÁBÁÁ11AÁÁ21AÁÁ3BÁÁ7AA2ÁBÁÁ2AÁÁ3ŁÁÁ7AÁÁ5AÁÁ292AÁÁ24BÁÁ1634ABÁÁ105сÁÁ3ŁÁÁ2BÁÁ3ŁÁÁ2BсÁÁ23BÁÁ9BÁÁ22сࡁÁÁ78AŁÁÁ3ɁɁ2ÁࡁÁBÁÁ7ɁÁÁ2ŁBB7ÁÁ4ŁBÁAA2BB3ŁÁÁ3ɁÁÁ2ɁÁŁBࡁɁɁ2BB2ÁÁ2сÁÁ2сÁBсBB2ࡁBÁBÁBB3A","extendedMap":"AA2228⡋$AA858"}',
+        data: '{"width":"21","height":"21","depth":7,"map":"ÁBABABB2AA2BAA2BAA3ŁBAA2BB2AA3BB5ABABÁÁ3AÁÁ7AA2BB2AA3BAA11ÁÁ2AA3ÁAA10BB2AA4BABAA3BB2AA3BB4AA3BB3AA2BB2ABÁBAA5ÁAA2ÁÁ6AA4ÁAÁAA2ÁABABB6ÁBࡁABB8AA2BB3ࡁBB27ŁAA2ŁBABB9ÁBABB7ŁAɁсBŁBB16ŁBB12ABB3сBB2AŁBABABABB10ABB2AA2сBB3ŁɁBABB3ABB5AA2BB18$䁢BB6ABAɁBсABB5ABB13ࡁBB5ABB4ABB10ABB11ɁAсBB15ÁÁ6BÁÁ2ɁBB7ABABABB4ÁBÁBB11AA2BB13AB䁢BÁBB4ÁÁ5BB4ÁBB3ABB2ࡁBB16ࡁBB2ÁÁ4AA2ÁAÁÁ5ABAÁAÁÁ3AÁÁ2BÁBсÁÁ2BB2ÁɁÁÁ4BABсÁÁ15AÁAÁÁ4ࡁŁÁÁ2BB2ÁÁ13AÁÁ5BÁÁ28AÁÁ70ɁÁÁ23AÁÁ7AÁBÁÁ11AÁÁ21AÁÁ3BÁÁ7AA2ÁBÁÁ2AÁÁ3ŁÁÁ7AÁÁ5AÁÁ292AÁÁ24BÁÁ1634ABÁÁ107ŁÁBÁÁ2ŁÁсÁBсÁÁ22BÁÁ9BÁÁ23сࡁÁÁ66ɁÁÁ12AŁÁÁ3ɁɁ2ÁࡁÁBÁÁ8ɁÁÁ2ŁBB7ÁÁ4ŁBÁAA2BB3ŁÁÁ4ɁÁÁ2ɁÁŁBࡁɁɁ2BB2ÁÁ2сÁÁ2сÁBсBB2ࡁBÁBÁBB3A","extendedMap":"AA2228⡋$AA858"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 6,
@@ -402,8 +402,10 @@ const MAP = {
         backPanorama: "AlpineSideLakeForest_892",
         bottomPanorama: "Pit1",
         skyPanorama: "DarkSky1",
-        start: '[415,5]',
+        start: '[382,1]',
+        decals: '[[316,4,"Water30","texture"]]',
         gates: '[[422,1,"12.1","19.2","Silver"],[419,3,"12.2","10.3","Closed"]]',
+        entities: '[[315,5,"IceIceBaby"]]',
     }
     ,
     13: {}
@@ -430,6 +432,7 @@ const MAP = {
         decals: '[[118,4,"Cobblestone_0822","texture"],[117,4,"Cobblestone_0822","texture"],[116,4,"Cobblestone_0822","texture"],[115,4,"Cobblestone_0822","texture"],[114,4,"Cobblestone_0822","texture"],[113,4,"Cobblestone_0822","texture"],[98,4,"Cobblestone_0822","texture"],[97,4,"Cobblestone_0822","texture"],[96,4,"Cobblestone_0822","texture"],[111,4,"Cobblestone_0822","texture"],[110,4,"Cobblestone_0822","texture"],[109,4,"Cobblestone_0822","texture"],[108,4,"Cobblestone_0822","texture"],[107,4,"Cobblestone_0822","texture"],[106,4,"Cobblestone_0822","texture"],[126,4,"Cobblestone_0822","texture"],[127,4,"Cobblestone_0822","texture"],[128,4,"Cobblestone_0822","texture"],[143,4,"Cobblestone_0822","texture"],[158,4,"Cobblestone_0822","texture"],[173,4,"Cobblestone_0822","texture"],[174,4,"Cobblestone_0822","texture"],[189,4,"Cobblestone_0822","texture"],[204,4,"Cobblestone_0822","texture"],[172,4,"Cobblestone_0822","texture"],[171,4,"Cobblestone_0822","texture"],[170,4,"Cobblestone_0822","texture"],[185,4,"Cobblestone_0822","texture"],[200,4,"Cobblestone_0822","texture"],[82,4,"Cobblestone_0822","texture"],[67,4,"Cobblestone_0822","texture"],[52,4,"Cobblestone_0822","texture"],[51,4,"Cobblestone_0822","texture"],[50,4,"Cobblestone_0822","texture"],[49,4,"Cobblestone_0822","texture"],[34,4,"Cobblestone_0822","texture"],[19,4,"Cobblestone_0822","texture"],[53,4,"Cobblestone_0822","texture"],[54,4,"Cobblestone_0822","texture"],[55,4,"Cobblestone_0822","texture"],[40,4,"Cobblestone_0822","texture"],[25,4,"Cobblestone_0822","texture"],[205,1,"PraiseButtVillage","crest"],[199,1,"Temple","crest"],[121,5,"FookingForest","crest"],[26,7,"OldeBridge","crest"],[18,7,"CemaTarry","crest"]]',
         lights: '[[112,1,"SettingSun2","sunlightGoldenHour",["3.0","10.0","1.0"]],[112,3,"SettingSun2","sunlightGoldenHour",["3.0","10.0","1.0"]],[112,5,"SettingSun2","sunlightGoldenHour",["3.0","10.0","1.0"]],[112,7,"SettingSun2","sunlightGoldenHour",["3.0","10.0","1.0"]]]',
         gates: '[[119,3,"14.1","11.2","Closed"],[219,1,"14.2","15.1","Closed"],[215,1,"14.3","16.1","Closed"],[105,5,"14.4","17.1","Closed"],[4,7,"14.5","18.1","Closed"],[10,7,"14.6","19.1","Closed"]]',
+        entities: '[[211,1,"Farmeressa"]]',
         lairs: '[[1,7,"Lair_608"],[223,1,"Lair52"]]',
     }
     ,
@@ -451,11 +454,12 @@ const MAP = {
         backPanorama: "",
         bottomPanorama: "",
         skyPanorama: "DarkSky1",
-        start: '[1661,5]',
+        start: '[25,7]',
         decals: '[[25,4,"Cobblestone_0823","texture"],[42,4,"Cobblestone_0823","texture"],[59,4,"Cobblestone_0823","texture"],[76,4,"Cobblestone_0823","texture"],[93,4,"Cobblestone_0823","texture"],[110,4,"Cobblestone_0823","texture"],[127,4,"Cobblestone_0823","texture"],[144,4,"Cobblestone_0823","texture"],[161,4,"Cobblestone_0823","texture"],[178,4,"Cobblestone_0823","texture"],[195,4,"Cobblestone_0823","texture"],[212,4,"Cobblestone_0823","texture"],[229,4,"Cobblestone_0823","texture"],[246,4,"Cobblestone_0823","texture"],[263,4,"Cobblestone_0823","texture"],[280,4,"Cobblestone_0823","texture"],[297,4,"Cobblestone_0823","texture"],[314,4,"Cobblestone_0823","texture"],[331,4,"Cobblestone_0823","texture"],[348,4,"Cobblestone_0823","texture"],[365,4,"Cobblestone_0823","texture"]]',
         lights: '[[2371,7,"SettingSun1","normalSun",["3.0","20","1.0"]],[2711,1,"SettingSun1","normalSun",["3.0","20","1.0"]],[807,7,"DuaLLantern_011","normalSun",["3.0","20","1.0"]],[1147,1,"DuaLLantern_011","normalSun",["3.0","20","1.0"]],[2432,5,"WallLamp31","standardYellow",["1.0","10.0","1.0"]],[2534,5,"FluxLight106","standardYellow",["1.0","10.0","1.0"]],[2636,5,"Candle57","standardYellow",["1.0","10.0","1.0"]],[2446,3,"DuaLLantern_023","standardYellow",["1.0","10.0","1.0"]],[2548,3,"Candle64","standardYellow",["1.0","10.0","1.0"]],[2650,3,"Lamp42","standardYellow",["1.0","10.0","1.0"]],[483,3,"Light_644","standard",["1","10.0","1.0"]],[585,3,"DuaLLantern_029","standard",["1","10.0","1.0"]],[687,3,"Lights107","standard",["1","10.0","1.0"]],[485,5,"Candle65","standard",["1","10.0","1.0"]],[587,5,"Candle56","standard",["1","10.0","1.0"]],[689,5,"DuaLLantern_023","standard",["1","10.0","1.0"]]]',
         gates: '[[8,7,"15.1","14.2","Closed"],[357,5,"15.2","22.1","Closed"],[1649,5,"15.3","22.2","Closed"],[1751,5,"15.4","22.3","Closed"],[1853,5,"15.5","22.4","Closed"],[1665,3,"15.6","23.1","Closed"],[1767,3,"15.7","23.2","Closed"],[1869,3,"15.8","23.3","Closed"],[203,3,"15.9","23.4","Pink"],[382,1,"15.10","21.1","Closed"]]',
         doors: '[92,94,194,196,296,298]',
+        oracles: '[[88,5,"VillageNews"]]',
     }
     ,
     16: {
@@ -526,8 +530,9 @@ const MAP = {
         bottomPanorama: "",
         skyPanorama: "",
         start: '[693,1]',
-        lights: '[[902,7,"Candle61","dimRed",["1.0","10.0","1.0"]],[1054,1,"Candle50","dimRed",["1.0","10.0","1.0"]]]',
+        lights: '[[902,7,"Candle61","dimRed",["1.0","10.0","1.0"]],[1054,1,"Candle50","dimRed",["1.0","10.0","1.0"]],[478,1,"Candle61","dimRed",["1.0","10.0","1.0"]]]',
         gates: '[[712,1,"18.1","14.5","Closed"],[142,7,"18.2","24.1","Red"]]',
+        entities: '[[363,7,"Lacy"]]',
     }
     ,
     19: {

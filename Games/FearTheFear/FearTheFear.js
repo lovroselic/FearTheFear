@@ -53,11 +53,11 @@ DEBUG.checkPoint = function () {
     - RedLibrarian:
     - GreenLibrarian:
 
-    - IceIceBaby: "IceCube", "IceCube", "IceCube" ->
+            DONE IceIceBaby: "IceCube", "IceCube", "IceCube" -> "BlackLeatherBoots"
     - SnakeSlytheress1: "Rat", "Rat", "Rat" ->
     - GreenLizardLady "Fly", "Fly", "Fly"
-    - Peasant wanst: Stiletto, Stiletto, fetish clothes, give whip
-
+            DONE Farmeressa wanst: "Stiletto", "Stiletto", "BlackLatexGloves", "BlackLatexpanties", "BlackLatexBra", --> Whip
+            DONE Lacy -  Candle, RedCandle, BlueCandle -> RedKey
 
     items:
     "Acorn", 
@@ -66,8 +66,8 @@ DEBUG.checkPoint = function () {
     "Crown",
     "GoldenScepter", 
     "Document"
-    "BlackLeatherBoots", 
-    "Whip",
+                    DONE "BlackLeatherBoots", IceIceBaby (12)
+                    DONE "Whip",Farmeressa (14)
                     DONE HairBrush, SquirrelLady (17)
                     DONE Comb,   -> HedgehogCorridorLady (17)
                     DONE PinkRibbon BearaInForest (17)
@@ -86,6 +86,14 @@ DEBUG.checkPoint = function () {
     "Fly", 
     "Fly", 
     "Fly"
+    "Stiletto", 
+    "Stiletto", 
+    "BlackLatexGloves", 
+    "BlackLatexpanties", 
+    "BlackLatexBra",
+    Candle, 
+    RedCandle, 
+    BlueCandle
 
     "YoniBook",
     "TaoBook",
@@ -106,14 +114,14 @@ DEBUG.checkPoint = function () {
         DONE Pink 23
         DONE GOld 21 Maniac
         DONE Silver 20 Blondie
-    Red
+        DONE Red 18 lacy
 
 
      */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 14;
+    GAME.level = 15;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -162,7 +170,7 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "IceCube", "IceCube", "IceCube",
+        //"Candle", "RedCandle", "BlueCandle",
 
     ];
 
@@ -249,7 +257,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.0",
+    VERSION: "0.17.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -2133,6 +2141,7 @@ const TITLE = {
             let x = spread[i % NUM];
             let dy = Math.floor(i / NUM);
             let y = refY + (dy * TITLE.stack.deltaItem);
+            console.log("item.spriteClass", item.spriteClass);
             ENGINE.spriteDraw("keys", x, y, SPRITE[item.spriteClass]);
         }
     },

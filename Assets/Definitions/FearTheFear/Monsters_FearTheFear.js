@@ -33,6 +33,15 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    VillageNews: {
+        name: "VillageNews",
+        sprite: "VillageNews",
+        category: 'crest',
+        voice: "News",
+        text: `Breaking news from Dungeon Network: Castle Creep has been overrun by monsters. The Cousin is missing. Management is unavailable for comment.
+Scholars suspect the return of DeMonique Scariette McFear, the legendary embodiment of evil. Wiser people recommend travelling in the opposite direction.`,
+        interactionCategory: "oracle",
+    },
     Shooter: {
         name: "Shooter",
         sprite: "Shooter",
@@ -1624,6 +1633,41 @@ const INTERACTION_OBJECT = {
         text: "Juicy pear? How nice."
     },
 
+    //candles
+    Candle: {
+        name: "Candle",
+        category: "interaction_item",
+        element: "CANDLE",
+        scale: 1.0 / 2 ** 2,
+        glueToFloor: true,
+        texture: "CandleWax",
+        material: MATERIAL.standard,
+        inventorySprite: "Candle",
+        text: "Simple wax candle. I can light it. Or not."
+    },
+    RedCandle: {
+        name: "RedCandle",
+        category: "interaction_item",
+        element: "CANDLE",
+        scale: 1.0 / 2 ** 2,
+        glueToFloor: true,
+        texture: "RedCandleWax",
+        material: MATERIAL.standard,
+        inventorySprite: "RedCandle",
+        text: "Simple red wax candle. I can light it. Or not."
+    },
+    BlueCandle: {
+        name: "BlueCandle",
+        category: "interaction_item",
+        element: "CANDLE",
+        scale: 1.0 / 2 ** 2,
+        glueToFloor: true,
+        texture: "BlueCandleWax",
+        material: MATERIAL.standard,
+        inventorySprite: "BlueCandle",
+        text: "Simple blue wax candle. I can light it. Or not."
+    },
+
     //fashion
     Stiletto: {
         name: "Stiletto",
@@ -2292,7 +2336,7 @@ const INTERACTION_ITEM = {
         inventorySprite: "LeoPumps",
         text: "Looks like something some wild kitty would wear."
     },
-RedPump: {
+    RedPump: {
         name: "RedPump",
         category: "interaction_item",
         inventorySprite: "RedPump",
@@ -2334,13 +2378,223 @@ RedPump: {
         inventorySprite: "GoldPump",
         text: "Just one of the pair. But with this heel I can stab someone."
     },
-     TigerPump: {
+    TigerPump: {
         name: "TigerPump",
         category: "interaction_item",
         inventorySprite: "TigerPump",
         text: "Hot tiger sking heels."
     },
 
+    BrownLatexBootyShorts: {
+        name: "BrownLatexBootyShorts",
+        category: "interaction_item",
+        inventorySprite: "BrownLatexBootyShorts",
+        text: "My tight shorts.",
+    },
+    BlueLatexTop: {
+        name: "BlueLatexTop",
+        category: "interaction_item",
+        inventorySprite: "BlueLatexTop",
+        text: "I look fabolous in this. As always.",
+    },
+    BlackLatexGloves: {
+        name: "BlackLatexGloves",
+        category: "interaction_item",
+        inventorySprite: "BlackLatexGloves",
+        text: "Sexy gloves.",
+    },
+    BlackLatexpanties: {
+        name: "BlackLatexpanties",
+        category: "interaction_item",
+        inventorySprite: "BlackLatexpanties",
+        text: "Wow, that's hot."
+    },
+    BlackLatexBra: {
+        name: "BlackLatexBra",
+        category: "interaction_item",
+        inventorySprite: "BlackLatexBra",
+        text: "Smouldering hot. Maybe he'll let me wear it in the next game."
+    },
+    WhiteLatexBra: {
+        name: "WhiteLatexBra",
+        category: "interaction_item",
+        inventorySprite: "WhiteLatexBra",
+        text: "Smouldering hot. Maybe he'll let me wear it in the next game."
+    },
+    YellowLatexPanties: {
+        name: "YellowLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "YellowLatexPanties",
+        text: "Wow, that's hot."
+    },
+    WhiteLatexPanties: {
+        name: "WhiteLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "WhiteLatexPanties",
+        text: "Wow, that's hot."
+    },
+    GreyLatexPanties: {
+        name: "GreyLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "GreyLatexPanties",
+        text: "Wow, that's hot."
+    },
+    TransRedLatexPanties: {
+        name: "TransRedLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "TransRedLatexPanties",
+        text: "Wow, that's hot."
+    },
+    TransBlackLatexPanties: {
+        name: "TransBlackLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "TransBlackLatexPanties",
+        text: "Wow, that's hot."
+    },
+    RedLatexBra: {
+        name: "RedLatexBra",
+        category: "interaction_item",
+        inventorySprite: "RedLatexBra",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    RedLatexPanties: {
+        name: "RedLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "RedLatexPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    PurpleLatexBra: {
+        name: "PurpleLatexBra",
+        category: "interaction_item",
+        inventorySprite: "PurpleLatexBra",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    PinkPanties: {
+        name: "PinkPanties",
+        category: "interaction_item",
+        inventorySprite: "PinkPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    GoldPanties: {
+        name: "GoldPanties",
+        category: "interaction_item",
+        inventorySprite: "GoldPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    SilverPanties: {
+        name: "SilverPanties",
+        category: "interaction_item",
+        inventorySprite: "SilverPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    PinkBra: {
+        name: "PinkBra",
+        category: "interaction_item",
+        inventorySprite: "PinkBra",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    YellowLatexThongs: {
+        name: "YellowLatexThongs",
+        category: "interaction_item",
+        inventorySprite: "YellowLatexThongs",
+        text: "Wow, that's hot."
+    },
+    RedLeatherDress: {
+        name: "RedLeatherDress",
+        category: "interaction_item",
+        inventorySprite: "RedLeatherDress",
+        text: "Hot. Can I wear it?"
+    },
+    GreenDress: {
+        name: "GreenDress",
+        category: "interaction_item",
+        inventorySprite: "GreenDress",
+        text: "Wow, that's hot."
+    },
+    WhiteDress: {
+        name: "WhiteDress",
+        category: "interaction_item",
+        inventorySprite: "WhiteDress",
+        text: "Wow, that's hot."
+    },
+    YellowDress: {
+        name: "YellowDress",
+        category: "interaction_item",
+        inventorySprite: "YellowDress",
+        text: "Wow, that's hot."
+    },
+    WhiteBoots: {
+        name: "WhiteBoots",
+        category: "interaction_item",
+        inventorySprite: "WhiteBoots",
+        text: "Wow, that's hot."
+    },
+    GreenBoots: {
+        name: "GreenBoots",
+        category: "interaction_item",
+        inventorySprite: "GreenBoots",
+        text: "Wow, that's hot."
+    },
+    PinkHighBoots: {
+        name: "PinkHighBoots",
+        category: "interaction_item",
+        inventorySprite: "PinkHighBoots",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    OrangeBoots: {
+        name: "OrangeBoots",
+        category: "interaction_item",
+        inventorySprite: "OrangeBoots",
+        text: "Cute stuff. Befitting a princess. But not my style."
+    },
+    RedThighHighBoots: {
+        name: "RedThighHighBoots",
+        category: "interaction_item",
+        inventorySprite: "RedThighHighBoots",
+        text: "This boots are so hot."
+    },
+    RedLeatherBoots: {
+        name: "RedLeatherBoots",
+        category: "interaction_item",
+        inventorySprite: "RedLeatherBoots",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    BlackLeatherBoots: {
+        name: "BlackLeatherBoots",
+        category: "interaction_item",
+        inventorySprite: "BlackLeatherBoots",
+        text: "This boots look amazing. Did you see those heels?"
+    },
+    BrownLeatherBoots: {
+        name: "BrownLeatherBoots",
+        category: "interaction_item",
+        inventorySprite: "BrownLeatherBoots",
+        text: "My boots. Sharp heels.",
+    },
+    PinkBra: {
+        name: "PinkBra",
+        category: "interaction_item",
+        inventorySprite: "PinkBra",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    OrangeBra: {
+        name: "OrangeBra",
+        category: "interaction_item",
+        inventorySprite: "OrangeBra",
+        text: "Cute stuff. Befitting a princess. But not my style."
+    },
+    OrangeThongs: {
+        name: "OrangeThongs",
+        category: "interaction_item",
+        inventorySprite: "OrangeThongs",
+        text: "Cute stuff. Befitting a princess. But not my style."
+    },
+    OrangeLeggings: {
+        name: "OrangeLeggings",
+        category: "interaction_item",
+        inventorySprite: "OrangeLeggings",
+        text: "Cute stuff. Befitting a princess. But not my style."
+    },
 };
 
 const MONSTER_TYPE = {
@@ -3716,6 +3970,45 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    Lacy: {
+        name: "Lacy",
+        sprite: "Lacy",
+        category: 'crest',
+        voice: "FemaleHigh4",
+        wants: ["Candle", "RedCandle", "BlueCandle"],
+        gives: "RedKey",
+        text: {
+            intro: `I keep the tomb below. Bring me candles. Plain, red and blue. Then you get the red key. Candles first. Eternal rest requires flattering lighting.`,
+            progress: `Candles first. I still need more. The residents can wait an eternity. I'd prefer to finish my shift.`,
+            conclusion: `Finally. Here's the red key. Do keep the noise down below. Some people are trying to remain dead.`,
+        },
+    },
+    IceIceBaby: {
+        name: "IceIceBaby",
+        sprite: "IceIceBaby",
+        category: 'crest',
+        voice: "FemaleHigh3",
+        wants: ["IceCube", "IceCube", "IceCube"],
+        gives: "BlackLeatherBoots",
+        text: {
+            intro: `Pussydeep in freezing water and still too hot. Nature is clearly out of its depth. Fetch me something cold enough to put up a fight.`,
+            progress: `Better, but still too hot. Bring the rest, girl. I'd hate to be personally responsible for spring.`,
+            conclusion: `Finally. Take my black leather boots. I'm staying pussydeep in this water. Dry feet would rather defeat the purpose.`,
+        },
+    },
+    Farmeressa: {
+        name: "Farmeressa",
+        sprite: "Farmeressa",
+        category: 'crest',
+        voice: "FemaleHigh2",
+        wants: ["Stiletto", "Stiletto", "BlackLatexGloves", "BlackLatexpanties", "BlackLatexBra"],
+        gives: "Whip",
+        text: {
+            intro: `These wellies have had their day. Bring me a pair of towering heels and some glossy black finery for my hands and figure. I intend to become entirely unsuitable for farm work.`,
+            progress: `The outfit is still incomplete, love. Fetch the rest. I have crops to neglect and standards to raise.`,
+            conclusion: `That'll do nicely. Here's the whip. My husband has become dreadfully well behaved. Such a waste of good equipment.`,
+        },
+    },
     BearaInForest: {
         name: "BearaInForest",
         sprite: "BearaInForest",
