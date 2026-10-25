@@ -1947,6 +1947,9 @@ const LIGHT_DECALS = [
     "Fireplace_714", "Fireplace_715", "Fireplace_716", "Fireplace_717", "Fireplace_718", "Fireplace_719", "Fireplace_720", "Fireplace_721", "Fireplace_722", "Fireplace_723", "Fireplace_724", "Fireplace_725",
     "LightFireplace_745", "LightFireplace_746", "LightFireplace_747", "LightFireplace_748", "LightFireplace_749", "LightFireplace_750", "LightFireplace_751", "LightFireplace_752", "LightFireplace_753", "LightFireplace_754", "LightFireplace_755", "LightFireplace_756",
     "LightFireplace_757",
+    "WallCandle_895", "WallCandle_896", "WallCandle_897", "WallCandle_898", "WallCandle_899", "WallCandle_900", "WallCandle_901", "WallCandle_902", "WallCandle_903", "WallCandle_904", "WallCandle_905", "WallCandle_906",
+    "WallCandle_907", "WallCandle_908", "WallCandle_909", "WallCandle_910", "WallCandle_911", "WallCandle_912", "WallCandle_913", "WallCandle_914", "WallCandle_915", "WallCandle_916", "WallCandle_917", "WallCandle_918",
+    "WallCandle_919", "WallCandle_920",
 ].sort();
 
 //panorama

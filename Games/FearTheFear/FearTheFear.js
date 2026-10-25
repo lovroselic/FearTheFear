@@ -49,13 +49,15 @@ DEBUG.checkPoint = function () {
             DONE BearaInForest: "HoneyComb", "Cherry", "Pear" -> PinkRibbon
             DONE HedgehogCorridorLady: "Apple", "GreenApple", "Pear", -> Comb
 
-    - LibraRian7:
+    - LibraRian7: "YoniBook","VenusBook","PrincessBook",
     - RedLibrarian:
     - GreenLibrarian:
 
             DONE IceIceBaby: "IceCube", "IceCube", "IceCube" -> "BlackLeatherBoots"
+
     - SnakeSlytheress1: "Rat", "Rat", "Rat" ->
     - GreenLizardLady "Fly", "Fly", "Fly"
+
             DONE Farmeressa wanst: "Stiletto", "Stiletto", "BlackLatexGloves", "BlackLatexpanties", "BlackLatexBra", --> Whip
             DONE Lacy -  Candle, RedCandle, BlueCandle -> RedKey
 
@@ -95,18 +97,18 @@ DEBUG.checkPoint = function () {
     RedCandle, 
     BlueCandle
 
-    "YoniBook",
+    "YoniBook",+
     "TaoBook",
     "YinYangBook",
     "PentagramBook",
     "HexagramBook",
     "TripleMoonBook",
     "TriquetraBook",
-    "VenusBook",
+    "VenusBook",+
     "AnkhBook",
     "FireballBook",
     "OwlBook",
-    "PrincessBook",
+    "PrincessBook",+
     "TreeOfLifeBook",
     "RavenBook"
    
@@ -257,7 +259,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.2",
+    VERSION: "0.17.3",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
