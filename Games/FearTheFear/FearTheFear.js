@@ -36,10 +36,16 @@ DEBUG.checkPoint = function () {
     area 2: 
 
     Shrines (1000g):
+        DONE Attack
 
     Trainers:
 
     Coins;
+    - Coin
+    - Coin
+    - Coin
+    - Coin
+    - Coin
 
     Entities:
 
@@ -48,10 +54,12 @@ DEBUG.checkPoint = function () {
             DONE SquirrelLady: Acorn, Walnut, Chestnut -> HairBrush
             DONE BearaInForest: "HoneyComb", "Cherry", "Pear" -> PinkRibbon
             DONE HedgehogCorridorLady: "Apple", "GreenApple", "Pear", -> Comb
-
-    - LibraRian7: "YoniBook","VenusBook","PrincessBook",
-    - RedLibrarian:
-    - GreenLibrarian:
+            DONE LibraRian7: "YoniBook","VenusBook","PrincessBook","TriquetraBook" -> "BlackCertificate",
+            DONE RedLibrarian: "TaoBook", "YinYangBook", "PentagramBook","HexagramBook", -> "RedCertificate",
+            DONE GreenLibrarian: "OwlBook","RavenBook","TripleMoonBook" -> "YellowCertificate",
+            DONE SilverLibrarian "AnkhBook","FireballBook", "TreeOfLifeBook", -> "GreyCertificate",
+            
+    - BeutifulRocrat:  "YellowCertificate","GreyCertificate","BlackCertificate","BlackCertificate","RedCertificate",
 
             DONE IceIceBaby: "IceCube", "IceCube", "IceCube" -> "BlackLeatherBoots"
 
@@ -62,6 +70,12 @@ DEBUG.checkPoint = function () {
             DONE Lacy -  Candle, RedCandle, BlueCandle -> RedKey
 
     items:
+            DONE"YellowCertificate", GreenLibrarian (15)
+            DONE "GreyCertificate", SilverLibrarian (15)
+            DONE "BlackCertificate", LibraRian7(15)
+    "WhiteCertificate", to be picked;
+            DONE "RedCertificate", RedLibrarian (15)
+
     "Acorn", 
     "Walnut", 
     "Chestnut",
@@ -98,19 +112,19 @@ DEBUG.checkPoint = function () {
     BlueCandle
 
     "YoniBook",+
-    "TaoBook",
-    "YinYangBook",
-    "PentagramBook",
-    "HexagramBook",
-    "TripleMoonBook",
-    "TriquetraBook",
+    "TaoBook", +
+    "YinYangBook",+
+    "PentagramBook",+
+    "HexagramBook",+
+    "TripleMoonBook",+
+    "TriquetraBook",+
     "VenusBook",+
-    "AnkhBook",
+    "AnkhBook",+
     "FireballBook",
-    "OwlBook",
+    "OwlBook", +
     "PrincessBook",+
     "TreeOfLifeBook",
-    "RavenBook"
+    "RavenBook" +
    
     keys:
         DONE Pink 23
@@ -172,6 +186,11 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
+        "YoniBook", "VenusBook", "PrincessBook", "TriquetraBook",
+        "TaoBook", "YinYangBook", "PentagramBook", "HexagramBook",
+        "OwlBook", "RavenBook", "TripleMoonBook",
+        "AnkhBook", "FireballBook", "TreeOfLifeBook",
+        //"YellowCertificate", "GreyCertificate", "BlackCertificate", "BlackCertificate", "RedCertificate",
         //"Candle", "RedCandle", "BlueCandle",
 
     ];
@@ -259,7 +278,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.3",
+    VERSION: "0.17.4",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

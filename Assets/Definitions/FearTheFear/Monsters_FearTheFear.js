@@ -17,6 +17,19 @@ for (let [index, key] of KEY_TYPES.entries()) {
 }
 
 const SHRINE_TYPE = {
+    PrincessKickAttackShrine: {
+        name: "PrincessKickAttackShrine",
+        sprite: "PrincessKickAttackShrine",
+        which: "health",
+        category: 'crest',
+        interactionCategory: 'shrine',
+        inventorySprite: "SkillKick",
+        price: 999,
+        level: 1,
+        text: "I can pray to kick harder. Very nice price, 999 gold.",
+        introduce: true,
+        voice: "Princess",
+    },
     Climber2: {
         name: "Climber2",
         sprite: "Climber2",
@@ -2603,6 +2616,33 @@ const INTERACTION_ITEM = {
         inventorySprite: "OrangeLeggings",
         text: "Cute stuff. Befitting a princess. But not my style."
     },
+
+    //certificates
+    YellowCertificate: {
+        name: "YellowCertificate",
+        category: "interaction_item",
+        inventorySprite: "YellowCertificate",
+    },
+    GreyCertificate: {
+        name: "GreyCertificate",
+        category: "interaction_item",
+        inventorySprite: "GreyCertificate",
+    },
+    BlackCertificate: {
+        name: "BlackCertificate",
+        category: "interaction_item",
+        inventorySprite: "BlackCertificate",
+    },
+    WhiteCertificate: {
+        name: "WhiteCertificate",
+        category: "interaction_item",
+        inventorySprite: "WhiteCertificate",
+    },
+    RedCertificate: {
+        name: "RedCertificate",
+        category: "interaction_item",
+        inventorySprite: "RedCertificate",
+    },
 };
 
 const MONSTER_TYPE = {
@@ -3978,6 +4018,60 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    SilverLibrarian: {
+        name: "SilverLibrarian",
+        sprite: "SilverLibrarian",
+        category: 'crest',
+        voice: "Female6",
+        wants: ["AnkhBook", "FireballBook", "TreeOfLifeBook"],
+        gives: "GreyCertificate",
+        text: {
+            intro: `The Ankh, Fireball and Tree of Life books are missing. Bring them back before somebody attempts immortality, arson or ambitious gardening. I'll certify your contribution to the village.`,
+            progress: `Fetch the rest. I'd rather not have to catalogue another apocalypse.`,
+            conclusion: `All accounted for. Here's your grey certificate, naming you a village benefactor. Disaster has been postponed until someone learns to read.`,
+        },
+    },
+    GreenLibrarian: {
+        name: "GreenLibrarian",
+        sprite: "GreenLibrarian",
+        category: 'crest',
+        voice: "Female4",
+        wants: ["OwlBook", "RavenBook", "TripleMoonBook"],
+        gives: "YellowCertificate",
+        text: {
+            intro: `The Owl, Raven and Triple Moon books are missing. Bring them home, and I'll vouch for your service to the village. "Nevermore", incidentally, is an unacceptable return date.`,
+            progress: `The mystery is only partly solved. Fetch the rest. I prefer suspense between covers.`,
+            conclusion: `All home to roost. Here's your yellow certificate, recognising you as a village benefactor. Your reputation is now slightly less ominous than my reading list.`,
+        },
+    },
+    RedLibrarian: {
+        name: "RedLibrarian",
+        sprite: "RedLibrarian",
+        category: 'crest',
+        voice: "Female3",
+        wants: ["TaoBook", "YinYangBook", "PentagramBook", "HexagramBook"],
+        gives: "RedCertificate",
+        text: {
+            intro: `The Tao, Yin Yang, Pentagram and Hexagram books have strayed from their path. Bring them back to my shelves. Enlightenment begins with returning things. A benefactor's certificate awaits.`,
+            progress: `The balance is improving. Fetch the rest before I discover the spiritual benefits of shouting.`,
+            conclusion: `Harmony restored. Here's your red certificate, recognising you as a village benefactor. Enlightenment with supporting paperwork.`,
+        },
+    },
+    LibraRian7: {
+        name: "LibraRian7",
+        sprite: "LibraRian7",
+        category: 'crest',
+        voice: "Female2",
+        wants: ["YoniBook", "VenusBook", "PrincessBook", "TriquetraBook"],
+        gives: "BlackCertificate",
+        text: {
+            intro: `My Yoni, Venus, Princess and Triquetra volumes are missing. Bring them back where they belong. I'll certify you as a village benefactor. Apparently, basic library etiquette now qualifies as public service.`,
+            progress: `The collection is still incomplete. Fetch the rest. I've already alphabetised my disappointment.`,
+            conclusion: `Everything in its proper place. Here's your black certificate. You're officially a village benefactor. At last, I know where to file you.`,
+        },
+    },
+
+
     Lacy: {
         name: "Lacy",
         sprite: "Lacy",

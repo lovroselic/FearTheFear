@@ -1395,17 +1395,22 @@ LoadSprites = [
     { srcName: "EntityPictures/BearaInForest.webp", name: "BearaInForest" },
     { srcName: "EntityPictures/SquirrelLady.webp", name: "SquirrelLady" },
     { srcName: "EntityPictures/HedgehogCorridorLady.webp", name: "HedgehogCorridorLady" },
-    { srcName: "EntityPictures/LibraRian7.webp", name: "LibraRian7" },
+    
     { srcName: "EntityPictures/IceIceBaby.webp", name: "IceIceBaby" },
     { srcName: "EntityPictures/SnakeSlytheress1.webp", name: "SnakeSlytheress1" },
     { srcName: "EntityPictures/ManiacFromMansion.webp", name: "ManiacFromMansion" },
     { srcName: "EntityPictures/GreenLizardLady.webp", name: "GreenLizardLady" },
+    
+    { srcName: "EntityPictures/LibraRian7.webp", name: "LibraRian7" },
     { srcName: "EntityPictures/RedLibrarian.webp", name: "RedLibrarian" },
     { srcName: "EntityPictures/GreenLibrarian.webp", name: "GreenLibrarian" },
+    { srcName: "EntityPictures/SilverLibrarian.webp", name: "SilverLibrarian" },
+
     { srcName: "EntityPictures/Farmeressa.webp", name: "Farmeressa" },
     { srcName: "EntityPictures/Lacy3.webp", name: "Lacy" },
     { srcName: "EntityPictures/VillageNews.webp", name: "VillageNews" },
     { srcName: "EntityPictures/FetishBabe3.webp", name: "FetishBabe3" },
+    { srcName: "EntityPictures/PrincessKickAttackShrine.webp", name: "PrincessKickAttackShrine" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1673,6 +1678,13 @@ LoadSprites = [
     { srcName: "Status/Radar2.webp", name: "Radar" },
     { srcName: "Status/GoldClover.webp", name: "GoldClover" },
     { srcName: "Status/Light48.webp", name: "Light" },
+
+    //certificates
+    { srcName: "Items/YellowCertificate.webp", name: "YellowCertificate" },
+    { srcName: "Items/GreyCertificate.webp", name: "GreyCertificate" },
+    { srcName: "Items/BlackCertificate.webp", name: "BlackCertificate" },
+    { srcName: "Items/WhiteCertificate.webp", name: "BlackCertificate" },
+    { srcName: "Items/RedCertificate.webp", name: "RedCertificate" },
 
     //items
     { srcName: "Items/GlassOfWine.webp", name: "GlassOfWine" },

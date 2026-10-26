@@ -459,13 +459,14 @@ const MAP = {
         lights: '[[2371,7,"SettingSun1","normalSun",["3.0","20","1.0"]],[2711,1,"SettingSun1","normalSun",["3.0","20","1.0"]],[807,7,"DuaLLantern_011","normalSun",["3.0","20","1.0"]],[1147,1,"DuaLLantern_011","normalSun",["3.0","20","1.0"]],[2432,5,"WallLamp31","standardYellow",["1.0","10.0","1.0"]],[2534,5,"FluxLight106","standardYellow",["1.0","10.0","1.0"]],[2636,5,"Candle57","standardYellow",["1.0","10.0","1.0"]],[2446,3,"DuaLLantern_023","standardYellow",["1.0","10.0","1.0"]],[2548,3,"Candle64","standardYellow",["1.0","10.0","1.0"]],[2650,3,"Lamp42","standardYellow",["1.0","10.0","1.0"]],[483,3,"Light_644","standard",["1","10.0","1.0"]],[585,3,"DuaLLantern_029","standard",["1","10.0","1.0"]],[687,3,"Lights107","standard",["1","10.0","1.0"]],[485,5,"Candle65","standard",["1","10.0","1.0"]],[587,5,"Candle56","standard",["1","10.0","1.0"]],[689,5,"DuaLLantern_023","standard",["1","10.0","1.0"]]]',
         gates: '[[8,7,"15.1","14.2","Closed"],[357,5,"15.2","22.1","Closed"],[1649,5,"15.3","22.2","Closed"],[1751,5,"15.4","22.3","Closed"],[1853,5,"15.5","22.4","Closed"],[1665,3,"15.6","23.1","Closed"],[1767,3,"15.7","23.2","Closed"],[1869,3,"15.8","23.3","Closed"],[203,3,"15.9","23.4","Pink"],[382,1,"15.10","21.1","Closed"]]',
         doors: '[92,94,194,196,296,298]',
+        entities: '[[98,3,"SilverLibrarian"],[200,3,"GreenLibrarian"],[190,5,"RedLibrarian"],[292,5,"LibraRian7"]]',
         oracles: '[[88,5,"VillageNews"],[302,3,"FetishBabe3"]]',
         lairs: '[[1,7,"Lair_597"],[389,1,"Lair458"]]',
     }
     ,
     16: {
         name: "Temple of St. Butt",
-        data: '{"width":21,"height":21,"depth":3,"map":"BB3AA2BB2AA2BB4AA31BABAA19BAA23BB2AA5BAA20BABAA32BAA34BAA34BAA2BB15ABB27AA2BB3ABABB13AA3BB4ABB19ABABB29ABB10ABB15ABB8ABB12ABB9AA2BB7ABB23$BB41ÁÁ2BB41ABB123ÁÁ2BB8ÁÁ2BB12ÁBB2ÁBB4ÁBB4ÁBB18ÁBB2ÁÁ2BB24ÁBB16ÁÁ2BB12ÁBB19ÁBB2ÁÁ2BB38ÁÁ2BB2ÁÁ2BB11ÁÁ2BB11ÁÁ2BÁÁ3BÁBB75ÁÁ2BB23ÁÁ64BB2ÁÁ60BB2ÁBÁBÁÁ50BÁÁ3BÁÁ23BÁÁ17BB5ÁÁ36BÁBB2ÁÁ29BÁÁ2BB2ÁÁ22BB2ÁÁ2BB2ÁÁ14BB8","extendedMap":"AA93⡌ࡉAA91$AA23⡌AA195ࡉAA21ᡌAA132ᡌAA174⡌⡌2AA11ᡌAA2ࡌ㡌A⡌AA5ᡌAA6⡌AA11ࡌ㡌㡌2AA9ᡌᡌ2AA9⡌AA15ࡌࡌ2A㡌AA26⡌AA9ᡌᡌ2AA7ࡌࡌ2AA3㡌AA4ࡉAA30⡌AA10ᡌAA6ᡌAA8㡌AA6⡌AA22ࡌAA21ࡉࡉ3AA3ࡉࡉ3ᡌAA7ᡌAA4ࡌAA6㡌AA7⡌⡌2AA15ࡌ㡌AA15ࡉAA15ࡉAA20ࡌAA17ࡌࡌ2AA6ࡉA㡌㡌2AA114㡌㡌2AA82"}',
+        data: '{"width":"21","height":"21","depth":3,"map":"BB3AA2BB2AA2BB4AA31BABAA19BAA23BB2AA5BAA20BABAA32BAA34BAA34BAA2BB15ABB27AA2BB3ABABB13AA3BB4ABB19ABABB29ABB10ABB15ABB8ABB12ABB9AA2BB7AB䁢BB52ÁÁ2BB41ABB123ÁÁ2BB8ÁÁ2BB12ÁBB2ÁBB4ÁBB4ÁBB18ÁBB2ÁÁ2BB24ÁBB2$BB14ÁÁ2BB13ÁBB20ÁBB2ÁÁ2BB40ÁÁ2BB2ÁÁ2BB12ÁÁ2BB11ÁÁ2BÁÁ3BÁBB78ÁÁ2BB24ÁÁ64BB2ÁÁ60BB2ÁBÁBÁÁ50BÁÁ3BÁÁ23BÁÁ17BB5ÁÁ36BÁBB2ÁÁ29BÁÁ2BB2ÁÁ22BB2ÁÁ2BB2ÁÁ14BB9","extendedMap":"AA93⡌ࡉAA91$AA23⡌AA195ࡉAA21ᡌAA132ᡌAA174⡌⡌2AA11ᡌAA2ࡌ㡌A⡌AA5ᡌAA6⡌AA11ࡌ㡌㡌2AA9ᡌᡌ2AA9⡌AA15ࡌࡌ2A㡌AA26⡌AA9ᡌᡌ2AA7ࡌࡌ2AA3㡌AA4ࡉAA30⡌AA10ᡌAA6ᡌAA8㡌AA6⡌AA22ࡌAA21ࡉࡉ3AA3ࡉࡉ3ᡌAA7ᡌAA4ࡌAA6㡌AA7⡌⡌2AA15ࡌ㡌AA15ࡉAA15ࡉAA20ࡌAA17ࡌࡌ2AA6ࡉA㡌㡌2AA114㡌㡌2AA82"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 6,
@@ -485,6 +486,7 @@ const MAP = {
         decals: '[[130,4,"FirePit_681","crest"],[256,4,"FirePit_680","crest"],[142,4,"FirePit_682","crest"],[268,4,"FirePit_684","crest"],[346,4,"FirePit_685","crest"],[91,4,"Firepit5","crest"],[97,4,"FirePit_686","crest"],[115,4,"FirePit_679","crest"],[301,4,"Firepit6","crest"],[307,4,"FirePit_683","crest"]]',
         lights: '[[1081,1,"FluxLight109","standardYellow",["1.0","10","1.0"]],[1081,7,"Candelabra14","standardYellow",["1.0","10","1.0"]],[1081,3,"Lights108","standardYellow",["1.0","10","1.0"]],[1081,5,"SkullLantern53","standardYellow",["1.0","10","1.0"]]]',
         gates: '[[10,7,"16.1","14.3","Closed"]]',
+        shrines: '[[126,5,"PrincessKickAttackShrine"]]',
         fires: '[[91,4,"Bonfire"],[115,4,"Bonfire"],[97,4,"Bonfire"],[142,4,"Bonfire"],[268,4,"Bonfire"],[307,4,"Bonfire"],[346,4,"Bonfire"],[301,4,"Bonfire"],[256,4,"Bonfire"],[130,4,"Bonfire"]]',
     }
     ,
