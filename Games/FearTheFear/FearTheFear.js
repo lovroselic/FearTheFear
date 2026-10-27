@@ -58,7 +58,7 @@ DEBUG.checkPoint = function () {
             DONE RedLibrarian: "TaoBook", "YinYangBook", "PentagramBook","HexagramBook", -> "RedCertificate",
             DONE GreenLibrarian: "OwlBook","RavenBook","TripleMoonBook" -> "YellowCertificate",
             DONE SilverLibrarian "AnkhBook","FireballBook", "TreeOfLifeBook", -> "GreyCertificate",
-            
+
     - BeutifulRocrat:  "YellowCertificate","GreyCertificate","BlackCertificate","BlackCertificate","RedCertificate",
 
             DONE IceIceBaby: "IceCube", "IceCube", "IceCube" -> "BlackLeatherBoots"
@@ -137,7 +137,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 15;
+    GAME.level = 16;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -186,10 +186,10 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "YoniBook", "VenusBook", "PrincessBook", "TriquetraBook",
-        "TaoBook", "YinYangBook", "PentagramBook", "HexagramBook",
-        "OwlBook", "RavenBook", "TripleMoonBook",
-        "AnkhBook", "FireballBook", "TreeOfLifeBook",
+        //"YoniBook", "VenusBook", "PrincessBook", "TriquetraBook",
+        //"TaoBook", "YinYangBook", "PentagramBook", "HexagramBook",
+        // "OwlBook", "RavenBook", "TripleMoonBook",
+        //"AnkhBook", "FireballBook", "TreeOfLifeBook",
         //"YellowCertificate", "GreyCertificate", "BlackCertificate", "BlackCertificate", "RedCertificate",
         //"Candle", "RedCandle", "BlueCandle",
 
@@ -278,7 +278,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.4",
+    VERSION: "0.17.5",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

@@ -1400,7 +1400,7 @@ LoadSprites = [
     { srcName: "EntityPictures/SnakeSlytheress1.webp", name: "SnakeSlytheress1" },
     { srcName: "EntityPictures/ManiacFromMansion.webp", name: "ManiacFromMansion" },
     { srcName: "EntityPictures/GreenLizardLady.webp", name: "GreenLizardLady" },
-    
+
     { srcName: "EntityPictures/LibraRian7.webp", name: "LibraRian7" },
     { srcName: "EntityPictures/RedLibrarian.webp", name: "RedLibrarian" },
     { srcName: "EntityPictures/GreenLibrarian.webp", name: "GreenLibrarian" },
@@ -1411,6 +1411,10 @@ LoadSprites = [
     { srcName: "EntityPictures/VillageNews.webp", name: "VillageNews" },
     { srcName: "EntityPictures/FetishBabe3.webp", name: "FetishBabe3" },
     { srcName: "EntityPictures/PrincessKickAttackShrine.webp", name: "PrincessKickAttackShrine" },
+    { srcName: "EntityPictures/PrincessFireMagicShrine.webp", name: "PrincessFireMagicShrine" },
+    { srcName: "EntityPictures/PrincessHeartShrine.webp", name: "PrincessHeartShrine" },
+    { srcName: "EntityPictures/PrincessManaShrine.webp", name: "PrincessManaShrine" },
+    { srcName: "EntityPictures/PrincessDefenseShrine.webp", name: "PrincessDefenseShrine" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
