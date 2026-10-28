@@ -50,6 +50,7 @@ const LIGHT_COLORS = {
     fullRed: new Float32Array([1.0, 0.0, 0.0]),
     gold: new Float32Array([0.831372, 0.686274, 0.21568627]),
     silver: new Float32Array([0.752941176, 0.752941176, 0.752941176]),
+    copper: new Float32Array([0.776470588, 0.513725490, 0.274509804]),
     green: new Float32Array([0.0, 1.0, 0.0]),
     lightGreen: new Float32Array([0.0, 0.5, 0.0]),
     gray: new Float32Array([0.5, 0.5, 0.5]),
@@ -88,6 +89,11 @@ const LIGHT_COLORS = {
     mediumSun: new Float32Array([40 * 0.85, 40 * 0.78, 40 * 0.65]),
     weakSun: new Float32Array([22 * 0.85, 22 * 0.78, 21 * 0.65]),
 
+    //spec colors
+    weakNeutral: new Float32Array([0.10, 0.10, 0.10]),
+    mediumNeutral: new Float32Array([0.55, 0.55, 0.55]),
+    strongNeutral: new Float32Array([0.90, 0.90, 0.90]),
+
     //
     none: new Float32Array([0.0, 0.0, 0.0]),
 };
@@ -101,8 +107,9 @@ const MATERIAL = {
     standard: new Material(LIGHT_COLORS.standard, LIGHT_COLORS.standard, LIGHT_COLORS.standard, 0.125),
     standardShine: new Material(LIGHT_COLORS.standard, LIGHT_COLORS.standard, LIGHT_COLORS.standard, 0.8),
     paper: new Material(LIGHT_COLORS.standard, LIGHT_COLORS.white, LIGHT_COLORS.white, 0.8),
-    gold: new Material(LIGHT_COLORS.gold, LIGHT_COLORS.gold, LIGHT_COLORS.gold, 0.90, 0.10, 0.99, 0.5),
-    silver: new Material(LIGHT_COLORS.silver, LIGHT_COLORS.silver, LIGHT_COLORS.silver, 0.90, 0.10, 0.99, 0.5),
+    gold: new Material(LIGHT_COLORS.gold, LIGHT_COLORS.mediumNeutral, LIGHT_COLORS.strongNeutral, 0.90, 0.10, 0.99, 0.5),
+    silver: new Material(LIGHT_COLORS.silver, LIGHT_COLORS.mediumNeutral, LIGHT_COLORS.strongNeutral, 0.90, 0.10, 0.99, 0.5),
+    copper: new Material(LIGHT_COLORS.copper, LIGHT_COLORS.mediumNeutral, LIGHT_COLORS.strongNeutral, 0.90, 0.10, 0.99, 0.5),
     redShine: new Material(LIGHT_COLORS.fullRed, LIGHT_COLORS.fullRed, LIGHT_COLORS.fullRed, 0.5, 0.10, 0.99, 0.5),
     blueShine: new Material(LIGHT_COLORS.blue, LIGHT_COLORS.blue, LIGHT_COLORS.blue, 0.5, 0.10, 0.99, 0.5),
     fire: new Material(LIGHT_COLORS.fire, LIGHT_COLORS.fire, LIGHT_COLORS.fire, 0.5),
@@ -124,7 +131,7 @@ const MATERIAL = {
     wood: new Material(
         [0.20, 0.12, 0.06], // ambientColor
         [0.45, 0.35, 0.18], // diffuseColor
-        [0.10, 0.10, 0.10], // specularColor: weak, neutral
+        LIGHT_COLORS.weakNeutral,
         0.10,               // shininess: becomes 12.8
         0.85,               // roughness
         0.0,                // metallic
@@ -132,8 +139,8 @@ const MATERIAL = {
     ),
     metal: new Material(
         [0.20, 0.20, 0.20], // ambientColor
-        [0.55, 0.55, 0.55], // diffuseColor: neutral grey
-        [0.90, 0.90, 0.90], // specularColor: strong, neutral
+        LIGHT_COLORS.mediumNeutral,
+        LIGHT_COLORS.strongNeutral,
         0.60,               // shininess: becomes 76.8
         0.30,               // roughness
         1.0,                // metallic
@@ -142,7 +149,7 @@ const MATERIAL = {
     leather: new Material(
         [0.02, 0.02, 0.02], // ambientColor
         [0.05, 0.05, 0.05], // diffuseColor: near black
-        [0.55, 0.55, 0.55], // specularColor: neutral shine
+        LIGHT_COLORS.mediumNeutral,
         0.90,               // shininess: becomes 76.8
         0.20,               // roughness
         0.5,                // metallic

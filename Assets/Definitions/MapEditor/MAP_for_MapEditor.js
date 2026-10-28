@@ -1909,6 +1909,8 @@ const DECAL_CRESTS = [
     "FirePlaceDecal_675", "FirePlaceDecal_676", "LiquorCabinet_758", "LiquorCabinet_759", "LiquorCabinet_760", "LiquorCabinet_761",
     "BarrelWallDecal_762", "BarrelWallDecal_763", "BarrelWallDecal_764", "BarrelWallDecal_765", "BarrelWallDecal_766", "BarrelWallDecal_767", "BarrelWallDecal_768", "BarrelWallDecal_769", "BarrelWallDecal_770", "BarrelWallDecal_771",
     "CemaTarry", "FookingForest", "OldeBridge", "PraiseButtVillage", "Temple", "ButtCrackTable",
+    "BloodPuddle_929", "BloodPuddle_930", "BloodPuddle_931", "BloodPuddle_932", "BloodPuddle_933", "WaterPuddle_921", "WaterPuddle_922", "WaterPuddle_923", "WaterPuddle_924", "WaterPuddle_925", "WaterPuddle_926", "WaterPuddle_927",
+    "WaterPuddle_928",
 ].sort();
 
 //lights

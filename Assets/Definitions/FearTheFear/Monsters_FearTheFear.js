@@ -98,6 +98,14 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    KleinDomme: {
+        name: "KleinDomme",
+        sprite: "KleinDomme",
+        category: 'crest',
+        voice: "FemaleLow5",
+        text: `What the fuck am I doing here? I was promised to be in some better game!`,
+        interactionCategory: "oracle",
+    },
     FetishBabe3: {
         name: "FetishBabe3",
         sprite: "FetishBabe3",
@@ -1754,6 +1762,41 @@ const INTERACTION_OBJECT = {
         text: "Just one? What am I, a fucking Cinderella?"
     },
 
+    //coins
+    GoldCoin: {
+        name: "GoldCoin",
+        category: "interaction_item",
+        element: "COIN",
+        scale: 1.8 / 2 ** 8,
+        glueToFloor: true,
+        texture: "GoldCoin",
+        inventorySprite: "GoldCoin",
+        material: MATERIAL.gold,
+        text: "Face on the coin looks like my mother."
+    },
+    SilverCoin: {
+        name: "SilverCoin",
+        category: "interaction_item",
+        element: "COIN",
+        scale: 1.8 / 2 ** 8,
+        glueToFloor: true,
+        texture: "SilverCoin",
+        inventorySprite: "SilverCoin",
+        material: MATERIAL.silver,
+        text: "Face on the coin looks like my mother."
+    },
+    CopperCoin: {
+        name: "CopperCoin",
+        category: "interaction_item",
+        element: "COIN",
+        scale: 1.8 / 2 ** 8,
+        glueToFloor: true,
+        texture: "CopperCoin",
+        inventorySprite: "CopperCoin",
+        material: MATERIAL.copper,
+        text: "Face on the coin looks like my mother."
+    },
+
 };
 
 const MOVABLE_INTERACTION_OBJECT = {
@@ -2128,6 +2171,25 @@ const INTERACTION_ITEM = {
         inventorySprite: "Banknote200",
         text: "That is a lot of money. 200 Castle Marks."
     },
+    GoldCoin: {
+        name: "GoldCoin",
+        category: "interaction_item",
+        inventorySprite: "GoldCoin",
+        text: "Face on the coin looks like my mother."
+    },
+    SilverCoin: {
+        name: "SilverCoin",
+        category: "interaction_item",
+        inventorySprite: "SilverCoin",
+        text: "Face on the coin looks like my mother."
+    },
+    CopperCoin: {
+        name: "CopperCoin",
+        category: "interaction_item",
+        inventorySprite: "CopperCoin",
+        text: "Face on the coin looks like my mother."
+    },
+
 
     //items
     GlassOfBeer: {
@@ -2765,6 +2827,7 @@ const MONSTER_TYPE = {
     },
     Spider: {
         name: "Spider",
+        texture: "BrownSpider",
         model: "Spider",
         scale: 1.45 / 2 ** 6,
         rotateToNorth: Math.PI,
@@ -2786,7 +2849,7 @@ const MONSTER_TYPE = {
     },
     SpiderGreen: {
         name: "SpiderGreen",
-        texture: "SpiderGreen",
+        texture: "GreenSpider",
         model: "Spider",
         scale: 1.4 / 2 ** 6,
         rotateToNorth: Math.PI,
@@ -2808,7 +2871,7 @@ const MONSTER_TYPE = {
     },
     SpiderRed: {
         name: "SpiderRed",
-        texture: "SpiderRed",
+        texture: "RedSpider",
         model: "Spider",
         scale: 1.35 / 2 ** 6,
         rotateToNorth: Math.PI,
@@ -4306,6 +4369,79 @@ const INTERACTION_ENTITY = {
             conclusion: `Your bill is settled. Here's the gold key. You're free to leave the hotel. Safe travels. Our beer reserves could use the break.`,
         },
     },
+};
+
+const INTERACTION_SHRINE = {
+    HeartAttack2: {
+        name: "HeartAttack2",
+        sprite: "HeartAttack2",
+        category: 'crest',
+        voice: "FemaleHigh3",
+        wants: ["GoldCoin", "GoldCoin"],
+        gives: "HeartSkill",
+        level: 1,
+        text: {
+            intro: `Heart racing, Princess? I have that effect. For two gold coins, I'll make the extra vitality permanent. Most people only get the palpitations.`,
+            progress: `You're staring again, darling. Fetch the rest of my fee. I charge in gold, not lingering glances.`,
+            conclusion: `There. Your health has permanently increased. Finally, falling for a pretty face has improved your chances of survival.`,
+        },
+    },
+    GunAss: {
+        name: "GunAss",
+        sprite: "GunAss",
+        category: 'crest',
+        voice: "Female6",
+        wants: ["GoldCoin", "SilverCoin"],
+        gives: "Magic",
+        level: 1,
+        text: {
+            intro: `Lead bullet, fireball. Same principle: aim and ruin someone's day. A gold coin and a silver coin, and I'll give your magic more punch. It's all ballistics. Or ball shit, if you miss.`,
+            progress: `The fee is still short. Fetch the rest. Promises have very little stopping power.`,
+            conclusion: `There. Your magic hits harder now. Remember: a warning shot is just an expensive miss.`,
+        },
+    },
+    ManaCookie: {
+        name: "ManaCookie",
+        sprite: "ManaCookie",
+        category: 'crest',
+        voice: "Female4",
+        wants: ["GoldCoin", "CopperCoin"],
+        gives: "ManaSkill",
+        level: 1,
+        text: {
+            intro: `So much royal confidence. Such modest mana reserves. Bring me a gold coin and a copper coin, and I'll teach you to hold more magic.`,
+            progress: `The fee is still incomplete. Bring the rest. I'm expanding your mana capacity, not extending you credit.`,
+            conclusion: `There. You can hold more mana now. More spells before you run dry. Choosing sensible spells remains entirely your responsibility.`,
+        },
+    },
+    OilyBarbarianGirl: {
+        name: "OilyBarbarianGirl",
+        sprite: "OilyBarbarianGirl",
+        category: 'crest',
+        voice: "Female3",
+        wants: ["SilverCoin", "CopperCoin"],
+        gives: "Attack",
+        level: 1,
+        text: {
+            intro: `You hit like you're apologising. Bring me a silver coin and a copper coin. I'll teach you to attack like a barbarian girl. Manners are holding you back.`,
+            progress: `The fee is still incomplete. Fetch the rest. I teach ferocity. Arithmetic is apparently a separate course.`,
+            conclusion: `There. Your attack skill has improved. Go and give your enemies something to complain about. Briefly.`,
+        },
+    },
+    YellowRaincoatDefense: {
+        name: "YellowRaincoatDefense",
+        sprite: "YellowRaincoatDefense",
+        category: 'crest',
+        voice: "FemaleLow",
+        wants: ["GoldCoin"],
+        gives: "Defense",
+        level: 1,
+        text: {
+            intro: `Defense starts with protection agains rain. For a mere gold coin you can learn that too. If you are smart enough.`,
+            progress: null,
+            conclusion: `You get it now, right? Just shake it off.`,
+        }
+    }
 };
 
 //container content

@@ -39,13 +39,20 @@ DEBUG.checkPoint = function () {
         DONE Attack
 
     Trainers:
+            DONE YellowRaincoatDefense 22: Gold coin, Defense (1)
+            DONE OilyBarbarianGirl 23: SilverCoin, CopperCoin, attack (1)
+            DONE MAnaCookie 21: "GoldCoin", "CopperCoin", Mana (1)
+            DONE GunAss 20: "GoldCoin", "SilverCoin", MAgic (1)
+
 
     Coins;
-    - Coin
-    - Coin
-    - Coin
-    - Coin
-    - Coin
+    - GoldCoin
+    -"SilverCoin", 
+    - "CopperCoin"
+    -"GoldCoin", 
+    -"CopperCoin"
+    -"GoldCoin", 
+    -"SilverCoin"
 
     Entities:
 
@@ -137,7 +144,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 16;
+    GAME.level = 19;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -186,6 +193,8 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
+        "GoldCoin", "GoldCoin",
+        "SilverCoin", "CopperCoin",
         //"YoniBook", "VenusBook", "PrincessBook", "TriquetraBook",
         //"TaoBook", "YinYangBook", "PentagramBook", "HexagramBook",
         // "OwlBook", "RavenBook", "TripleMoonBook",
@@ -278,7 +287,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.5",
+    VERSION: "0.17.6",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

@@ -20,7 +20,7 @@ ElementsToCompile = [
     { shapeName: "PILLAR3", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
     { shapeName: "BIGARCH", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
     { shapeName: "CORNERWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
-    { shapeName: "ROUNDWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.25, },
+    { shapeName: "ROUNDWEDGE", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.65, },
     { shapeName: "TIT", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "TOPHORIZONTALWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "TOPDOORWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
@@ -1233,6 +1233,11 @@ LoadTextures = [
     { srcName: "ObjectTextures/BluBallTexture.webp", name: "BluBallTexture" },
     { srcName: "ObjectTextures/Explosion2.webp", name: "Explosion2" },
 
+    //coins
+    { srcName: "ObjectTextures/CopperCoin.webp", name: "CopperCoin" },
+    { srcName: "ObjectTextures/GoldCoin.webp", name: "GoldCoin" },
+    { srcName: "ObjectTextures/SilverCoin.webp", name: "SilverCoin" },
+
     //health items
     { srcName: "ObjectTextures/CanTexture.webp", name: "CanTexture" },
     { srcName: "ObjectTextures/HealthBoxtexture.webp", name: "HealthBoxtexture" },
@@ -1269,6 +1274,7 @@ LoadTextures = [
     { srcName: "ObjectTextures/RedLiquid2.webp", name: "RedLiquid2" },
     { srcName: "ObjectTextures/LaskoCanTexture.webp", name: "LaskoCanTexture" },
     { srcName: "ObjectTextures/StilettoBase.webp", name: "StilettoBase" },
+    { srcName: "ObjectTextures/Copper.webp", name: "Copper" },
 
     /** other monster textures */
     { srcName: "ObjectTextures/RedGoldBat.webp", name: "RedGoldBat" },
@@ -1289,6 +1295,9 @@ LoadTextures = [
     { srcName: "ObjectTextures/GreenishDinoAir.jpg", name: "GreenishDinoAir" },
     { srcName: "ObjectTextures/MissGalaxyGold.jpg", name: "MissGalaxyGold" },
     { srcName: "ObjectTextures/GreenRex.jpg", name: "GreenRex" },
+    { srcName: "ObjectTextures/BrownSpider.webp", name: "BrownSpider" },
+    { srcName: "ObjectTextures/GreenSpider.webp", name: "GreenSpider" },
+    { srcName: "ObjectTextures/RedSpider.webp", name: "RedSpider" },
 ];
 
 LoadAudio = [
@@ -1395,7 +1404,7 @@ LoadSprites = [
     { srcName: "EntityPictures/BearaInForest.webp", name: "BearaInForest" },
     { srcName: "EntityPictures/SquirrelLady.webp", name: "SquirrelLady" },
     { srcName: "EntityPictures/HedgehogCorridorLady.webp", name: "HedgehogCorridorLady" },
-    
+
     { srcName: "EntityPictures/IceIceBaby.webp", name: "IceIceBaby" },
     { srcName: "EntityPictures/SnakeSlytheress1.webp", name: "SnakeSlytheress1" },
     { srcName: "EntityPictures/ManiacFromMansion.webp", name: "ManiacFromMansion" },
@@ -1415,6 +1424,12 @@ LoadSprites = [
     { srcName: "EntityPictures/PrincessHeartShrine.webp", name: "PrincessHeartShrine" },
     { srcName: "EntityPictures/PrincessManaShrine.webp", name: "PrincessManaShrine" },
     { srcName: "EntityPictures/PrincessDefenseShrine.webp", name: "PrincessDefenseShrine" },
+    { srcName: "EntityPictures/YellowRaincoatDefense.webp", name: "YellowRaincoatDefense" },
+    { srcName: "EntityPictures/OilyBarbarianGirl.webp", name: "OilyBarbarianGirl" },
+    { srcName: "EntityPictures/ManaCookie.webp", name: "ManaCookie" },
+    { srcName: "EntityPictures/GunAss.webp", name: "GunAss" },
+    { srcName: "EntityPictures/HeartAttack2.webp", name: "HeartAttack2" },
+    { srcName: "EntityPictures/KleinDomme.webp", name: "KleinDomme" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1691,6 +1706,9 @@ LoadSprites = [
     { srcName: "Items/RedCertificate.webp", name: "RedCertificate" },
 
     //items
+    { srcName: "Items/GoldCoin2.webp", name: "GoldCoin" },
+    { srcName: "Items/SilverCoin.webp", name: "SilverCoin" },
+    { srcName: "Items/CopperCoin.webp", name: "CopperCoin" },
     { srcName: "Items/GlassOfWine.webp", name: "GlassOfWine" },
     { srcName: "Items/Wine.webp", name: "Wine" },
     { srcName: "Items/SmallBarrel.webp", name: "SmallBarrel" },
@@ -2685,6 +2703,19 @@ LoadSprites = [
     { srcName: "ObjDecals/BarrelWallDecal_769.webp", name: "BarrelWallDecal_769" },
     { srcName: "ObjDecals/BarrelWallDecal_770.webp", name: "BarrelWallDecal_770" },
     { srcName: "ObjDecals/BarrelWallDecal_771.webp", name: "BarrelWallDecal_771" },
+    { srcName: "ObjDecals/BloodPuddle_929.webp", name: "BloodPuddle_929" },
+    { srcName: "ObjDecals/BloodPuddle_930.webp", name: "BloodPuddle_930" },
+    { srcName: "ObjDecals/BloodPuddle_931.webp", name: "BloodPuddle_931" },
+    { srcName: "ObjDecals/BloodPuddle_932.webp", name: "BloodPuddle_932" },
+    { srcName: "ObjDecals/BloodPuddle_933.webp", name: "BloodPuddle_933" },
+    { srcName: "ObjDecals/WaterPuddle_921.webp", name: "WaterPuddle_921" },
+    { srcName: "ObjDecals/WaterPuddle_922.webp", name: "WaterPuddle_922" },
+    { srcName: "ObjDecals/WaterPuddle_923.webp", name: "WaterPuddle_923" },
+    { srcName: "ObjDecals/WaterPuddle_924.webp", name: "WaterPuddle_924" },
+    { srcName: "ObjDecals/WaterPuddle_925.webp", name: "WaterPuddle_925" },
+    { srcName: "ObjDecals/WaterPuddle_926.webp", name: "WaterPuddle_926" },
+    { srcName: "ObjDecals/WaterPuddle_927.webp", name: "WaterPuddle_927" },
+    { srcName: "ObjDecals/WaterPuddle_928.webp", name: "WaterPuddle_928" },
 
     //pic decals
     { srcName: "PicDecals/1942_200.webp", name: "1942_200" },
