@@ -138,13 +138,14 @@ DEBUG.checkPoint = function () {
         DONE GOld 21 Maniac
         DONE Silver 20 Blondie
         DONE Red 18 lacy
+        DONE Blue 17 floor
 
 
      */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 19;
+    GAME.level = 25;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -210,7 +211,7 @@ DEBUG.checkPoint = function () {
     }
 
     let keys = [
-        //"Blue", "Green", "Gold",
+        "Blue", "Green", "Gold",
     ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
@@ -287,7 +288,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.6",
+    VERSION: "0.17.7",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

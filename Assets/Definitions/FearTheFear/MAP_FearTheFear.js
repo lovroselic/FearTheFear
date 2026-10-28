@@ -31,6 +31,7 @@ const MAP_TEXT = {
     22: ``,
     23: ``,
     24: ``,
+    25: ``,
 };
 
 /** Map definitions */
@@ -492,7 +493,7 @@ const MAP = {
     ,
     17: {
         name: "Fooking Dangerous Forest",
-        data: '{"width":"23","height":"19","depth":1,"map":"BB2AA3BB6䁢AA5BABAA3BABB3ABB3ABABABABABB5AA2BB2AA2BB4AA6BAA10BB2AA9BAA8BABAA2BAA3BB3ABAA3BABB2AA3BB3AA2BB2AA2BB2ABAA2BB5ABB6AA2BB5AA6BB7ABB10AA2BB10ABB2ABB2AA2BABAA7BAA4BB2ABAA2BB2AA5BB4AA2BAA2BA䂂BAA2BB2ABB2ABB2AA2BB2AA4B䁢BABB3AA4BABB2ABAA2BAA2BABABAA2BABAA2BB3ABAA3BAA3BB2AA3BB3ABABB3AA2BAA2BB3ABB4ABB4ABB7AA4BABB2ABABABB2ABABABABABB2ABABABB3ABABB6ABABB7AA2BB2AA3䂂BB16$ABB13ABB2AA2B","extendedMap":"AA437$"}',
+        data: '{"width":"23","height":"19","depth":1,"map":"BB2AA3BB6A䁢AA4BABAA2䂂AA2BB3ABB3ABABABABABB4ABB2AA2BB5AA7BAA10BB2AA7BAA10BABAA2BAA3BB3ABAA3BB3AA4BB3AA2BB2AA2BB2ABAA2BB5ABB6ABB5AA5BB7ABB10AA2BB8ABABB2ABB2AA3BABAA11BB2ABAA2BB2AA4BB2ABB2AA2BAA2BA䂂BAA2BB2ABB2ABB2AA2BB2AA4B䁢BABB3AA4BABB2ABAA2BAA2BABABAA2BABABB3ABAA3BAA2BB2AA3BB3ABABB3AA2BAA2BB3ABB4ABB4ABB7AA4BABB2ABABABB2ABABABABABB2ABABB5ABABB7ABABB5ABB2AA2BB2AA3䂂BB16$ABB13AA2BB2ABAB","extendedMap":"AA437$"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 6,
@@ -508,9 +509,10 @@ const MAP = {
         backPanorama: "",
         bottomPanorama: "",
         skyPanorama: "",
-        start: '[401,3]',
+        start: '[47,1]',
         decals: '[[44,4,"Cobblestone_0823","texture"],[43,4,"Cobblestone_0823","texture"],[42,4,"Cobblestone_0823","texture"],[41,4,"Cobblestone_0823","texture"],[40,4,"Cobblestone_0823","texture"],[39,4,"Cobblestone_0823","texture"],[62,4,"Cobblestone_0823","texture"],[85,4,"Cobblestone_0823","texture"],[84,4,"Cobblestone_0823","texture"],[83,4,"Cobblestone_0823","texture"],[82,4,"Cobblestone_0823","texture"],[105,4,"Cobblestone_0823","texture"],[104,4,"Cobblestone_0823","texture"],[103,4,"Cobblestone_0823","texture"],[126,4,"Cobblestone_0823","texture"],[149,4,"Cobblestone_0823","texture"],[172,4,"Cobblestone_0823","texture"],[171,4,"Cobblestone_0823","texture"],[170,4,"Cobblestone_0823","texture"],[169,4,"Cobblestone_0823","texture"],[168,4,"Cobblestone_0823","texture"],[191,4,"Cobblestone_0823","texture"],[214,4,"Cobblestone_0823","texture"],[215,4,"Cobblestone_0823","texture"],[216,4,"Cobblestone_0823","texture"],[239,4,"Cobblestone_0823","texture"],[262,4,"Cobblestone_0823","texture"],[261,4,"Cobblestone_0823","texture"],[260,4,"Cobblestone_0823","texture"],[283,4,"Cobblestone_0823","texture"],[306,4,"Cobblestone_0823","texture"],[305,4,"Cobblestone_0823","texture"],[304,4,"Cobblestone_0823","texture"],[327,4,"Cobblestone_0823","texture"],[350,4,"Cobblestone_0823","texture"],[373,4,"Cobblestone_0823","texture"],[396,4,"Cobblestone_0823","texture"],[395,4,"Cobblestone_0823","texture"],[394,4,"Cobblestone_0823","texture"],[393,4,"Cobblestone_0823","texture"],[392,4,"Cobblestone_0823","texture"]]',
-        gates: '[[45,3,"17.1","14.4","Closed"],[391,5,"17.2","20.1","Closed"]]',
+        gates: '[[45,3,"17.1","14.4","Closed"],[391,5,"17.2","20.1","Closed"],[1,7,"17.3","25.1","Blue"]]',
+        keys: '[[412,4]]',
         entities: '[[428,1,"HedgehogCorridorLady"],[74,3,"SquirrelLady"],[398,5,"BearaInForest"]]',
     }
     ,
@@ -700,6 +702,30 @@ const MAP = {
         triggers: '[[1718,1,"SmoothWallButton",1,1688],[270,3,"SmoothWallButton",1,184]]',
         lairs: '[[261,1,"Lair_607"],[86,5,"Lair33"]]',
         fires: '[[218,4,"Fireplace"]]',
+    }
+    ,
+    25: {
+        name: "Swamp",
+        data: '{"width":21,"height":21,"depth":2,"map":"BÁÁ2AA5ÁAÁÁ3BB2ÁÁ4AÁÁ2BB2ÁAA5ÁABÁAA4ÁAA9BAA2BÁÁ2BB3AÁABB2AA2ÁÁ3AÁAÁÁ2AA6ÁÁ3AÁÁ2AA2BAA2ÁÁ2AÁÁ2BÁBÁABÁAA3BAA4ÁÁ2BB2ABB2ABB4ABB2ÁBB2AÁÁ3BB4ÁÁ2ABB4ÁAÁBB2$BB6ABB2䁢ÁBB4ÁBB2ÁBÁÁ6ABB7ÁÁ2BB2ÁÁ2BB2ÁBÁÁ14AÁÁ5AÁAA2ÁÁ2AA3ÁÁ4AÁAÁÁ5BÁÁ5BB2ÁÁ4BB2ÁÁ2BÁBÁÁ16AA3ÁÁ2AÁÁ37AÁÁ5AÁÁ18BÁÁ3AÁÁ7ABB2ÁÁ3AÁÁ26AÁÁ2AÁAÁÁ8AÁÁ102BÁÁ2AA2ÁÁ2AÁÁ4AÁÁ16AÁÁ47AÁAÁÁ2AÁBÁBÁÁ4BÁÁ10AÁÁ13AÁAÁÁ14ABB2ÁÁ2BÁÁ8BÁBÁBÁÁ13BÁÁ2BÁÁ2BÁÁ38AÁÁ3AÁÁ123BÁÁ44BB2","extendedMap":"AA882$"}',
+        dungeonAmbience: 0,
+        sg: 0,
+        maxSpawned: 6,
+        killCountdown: 4,
+        killsRequiredToStopSpawning: 24,
+        spawnDelay: 9999,
+        wall: "DarkMossy78",
+        floor: "Grass17",
+        ceil: "DarkSky01",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        bottomPanorama: "",
+        skyPanorama: "",
+        start: '[401,1]',
+        lights: '[[241,7,"WallCandle_908","candle",["1.0","10.0","1.0"]],[201,5,"Candle55","candle",["1.0","10.0","1.0"]],[157,1,"WallCandle_912","candle",["1.0","10.0","1.0"]],[197,3,"WallCandle_904","candle",["1.0","10.0","1.0"]]]',
+        gates: '[[422,1,"25.1","17.3","Blue"]]',
+        fires: '[[192,4,"RedBonfire"],[388,4,"RedBonfire"],[76,4,"RedBonfire"]]',
     }
 
 };
