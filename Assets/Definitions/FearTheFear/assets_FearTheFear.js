@@ -98,12 +98,19 @@ LoadTextures = [
     { srcName: "Panorama/AlpineSideLakeForest_893.webp", name: "AlpineSideLakeForest_893" },
     { srcName: "Panorama/AlpineSideLakeForest_894.webp", name: "AlpineSideLakeForest_894" },
 
+    { srcName: "Panorama/SwampSide_934.webp", name: "SwampSide_934" },
+    { srcName: "Panorama/SwampSide_935.webp", name: "SwampSide_935" },
+    { srcName: "Panorama/SwampSide_936.webp", name: "SwampSide_936" },
+    { srcName: "Panorama/SwampSide_937.webp", name: "SwampSide_937" },
+
     //sky, bottom
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },
     { srcName: "Sky/ValleyBottom.webp", name: "ValleyBottom" },
     { srcName: "Sky/DarkSky1.webp", name: "DarkSky1" },
+    { srcName: "Sky/WarmDarkSky.webp", name: "WarmDarkSky" },
     { srcName: "Sky/Pit2.webp", name: "Pit2" },
     { srcName: "Sky/Pit1.webp", name: "Pit1" },
+    { srcName: "Sky/SwampBottom.webp", name: "SwampBottom" },
 
     //
     { srcName: "Wall/IceTexture.webp", name: "IceTexture" },
@@ -1246,7 +1253,7 @@ LoadTextures = [
     { srcName: "ObjectTextures/CakeBase2.webp", name: "cake_basecolor" },
 
     //mana items
-    { srcName: "ObjectTextures/AmanitaBaseColor.webp", name: "AmanitaBaseColor" },
+    { srcName: "ObjectTextures/AmanitaColor2.webp", name: "AmanitaBaseColor" },
     { srcName: "ObjectTextures/SnailColor.webp", name: "SnailColor" },
     { srcName: "ObjectTextures/FrogColor.webp", name: "FrogColor" },
     { srcName: "ObjectTextures/WolfSpiderRed.webp", name: "WolfSpiderRed" },
@@ -1264,7 +1271,9 @@ LoadTextures = [
     { srcName: "ObjectTextures/CandleWax.webp", name: "CandleWax" },
     { srcName: "ObjectTextures/RedCandleWax.webp", name: "RedCandleWax" },
     { srcName: "ObjectTextures/BlueCandleWax.webp", name: "BlueCandleWax" },
-    { srcName: "ObjectTextures/MushroomTexture.webp", name: "MushroomTexture" },
+    { srcName: "ObjectTextures/RedMushroomTexture.webp", name: "MushroomTexture" },
+    { srcName: "ObjectTextures/GreenMushroomTexture.webp", name: "GreenMushroomTexture" },
+    { srcName: "ObjectTextures/YellowMushroomTexture.webp", name: "YellowMushroomTexture" },
     { srcName: "ObjectTextures/HornedHelmetColor.webp", name: "HornedHelmetColor" },
     { srcName: "ObjectTextures/BloodTexture.webp", name: "BloodTexture" },
     { srcName: "ObjectTextures/IronTexture.webp", name: "IronTexture" },
@@ -1430,6 +1439,7 @@ LoadSprites = [
     { srcName: "EntityPictures/GunAss.webp", name: "GunAss" },
     { srcName: "EntityPictures/HeartAttack2.webp", name: "HeartAttack2" },
     { srcName: "EntityPictures/KleinDomme.webp", name: "KleinDomme" },
+    { srcName: "EntityPictures/BeautyRocrat.webp", name: "BeautyRocrat" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1654,7 +1664,6 @@ LoadSprites = [
     { srcName: "Skills/Heart48.webp", name: "HeartSkill" },
     { srcName: "Skills/ManaSkill.webp", name: "ManaIncSkill" },
     { srcName: "Skills/ManaSkill.webp", name: "Mana" },
-
     { srcName: "Skills/Magic.png", name: "Magic" },
     { srcName: "Skills/Attack.png", name: "Attack" },
     { srcName: "Skills/Defense.png", name: "Defense" },
@@ -1785,7 +1794,7 @@ LoadSprites = [
     { srcName: "Items/OrangeLeggings.webp", name: "OrangeLeggings" },
     { srcName: "Items/OrangeThongs.webp", name: "OrangeThongs" },
 
-    //fruit
+    //fruit, food
     { srcName: "Items/Apple.webp", name: "Apple" },
     { srcName: "Items/Pear.webp", name: "Pear" },
     { srcName: "Items/Orange.webp", name: "Orange" },
@@ -1793,6 +1802,7 @@ LoadSprites = [
     { srcName: "Items/Banana2.png", name: "Banana" },
     { srcName: "Items/HoneyComb.png", name: "HoneyComb" },
     { srcName: "Items/Cherry.png", name: "Cherry" },
+    { srcName: "Items/Mushroom.webp", name: "Mushroom" },
 
     //books
     { srcName: "Items/YoniBook.webp", name: "YoniBook" },

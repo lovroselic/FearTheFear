@@ -1679,7 +1679,7 @@ const INTERACTION_OBJECT = {
         text: "Wow. Infernal red metal."
     },
 
-    //fruit
+    //fruit, food, forest fast food
     Apple: {
         name: "Apple",
         category: "interaction_item",
@@ -1712,6 +1712,17 @@ const INTERACTION_OBJECT = {
         material: MATERIAL.standard,
         inventorySprite: "Pear",
         text: "Juicy pear? How nice."
+    },
+    RedMushroom: {
+        name: "RedMushroom",
+        category: "interaction_item",
+        element: "MUSHROOM",
+        scale: 1.4 / 2 ** 7,
+        glueToFloor: true,
+        texture: "MushroomTexture",
+        inventorySprite: "Mushroom",
+        material: MATERIAL.standard,
+        text: "Poisonous. Don't eat."
     },
 
     //candles
@@ -4133,6 +4144,32 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    SnakeSlytheress1: {
+        name: "SnakeSlytheress1",
+        sprite: "SnakeSlytheress1",
+        category: 'crest',
+        voice: "FemaleHigh6",
+        wants: ["Rat", "Rat", "Rat"],
+        gives: "GoldenScepter",
+        text: {
+            intro: `Fetch me three rats, little Princess. What for? Such an inquisitive creature. Let's discuss your reward instead. Something golden. Something fit for a ruler.`,
+            progress: `Our little arrangement is still incomplete. Fetch the rest. The sooner we're done, the sooner you can pretend this never happened.`,
+            conclusion: `Sssplendid. Here's the golden scepter. A fine symbol of authority. Do leave this part out of the royal chronicles.`,
+        },
+    },
+    BeautyRocrat: {
+        name: "BeautyRocrat",
+        sprite: "BeautyRocrat",
+        category: 'crest',
+        voice: "Female5",
+        wants: ["YellowCertificate", "GreyCertificate", "BlackCertificate", "BlackCertificate", "RedCertificate"],
+        gives: "Document",
+        text: {
+            intro: `Royal blood? Lovely. Does it come with supporting paperwork? Bring me certificates proving service to the village, and I'll issue a document recognising its bearer as local royalty.`,
+            progress: `We're still short of certificates. Bring the rest. Looking entitled is promising, but it isn't evidence.`,
+            conclusion: `Approved. Here's your document. Its bearer is officially royalty in this village. Try not to overthrow anything until the ink dries.`,
+        },
+    },
     SilverLibrarian: {
         name: "SilverLibrarian",
         sprite: "SilverLibrarian",
@@ -4185,7 +4222,6 @@ const INTERACTION_ENTITY = {
             conclusion: `Everything in its proper place. Here's your black certificate. You're officially a village benefactor. At last, I know where to file you.`,
         },
     },
-
 
     Lacy: {
         name: "Lacy",

@@ -35,15 +35,15 @@ DEBUG.checkPoint = function () {
      
     area 2: 
 
-    Shrines (1000g):
-        DONE Attack
+    Shrines (999g):
+        DONE Attack, MANA, HEARTm MAgic, DEFENSE
 
     Trainers:
             DONE YellowRaincoatDefense 22: Gold coin, Defense (1)
             DONE OilyBarbarianGirl 23: SilverCoin, CopperCoin, attack (1)
             DONE MAnaCookie 21: "GoldCoin", "CopperCoin", Mana (1)
             DONE GunAss 20: "GoldCoin", "SilverCoin", MAgic (1)
-
+            DONE HeartAttack2: "GoldCoin", "GoldCoin" Heart (1)
 
     Coins;
     - GoldCoin
@@ -53,6 +53,8 @@ DEBUG.checkPoint = function () {
     -"CopperCoin"
     -"GoldCoin", 
     -"SilverCoin"
+    "GoldCoin", 
+    "GoldCoin"
 
     Entities:
 
@@ -65,12 +67,9 @@ DEBUG.checkPoint = function () {
             DONE RedLibrarian: "TaoBook", "YinYangBook", "PentagramBook","HexagramBook", -> "RedCertificate",
             DONE GreenLibrarian: "OwlBook","RavenBook","TripleMoonBook" -> "YellowCertificate",
             DONE SilverLibrarian "AnkhBook","FireballBook", "TreeOfLifeBook", -> "GreyCertificate",
-
-    - BeutifulRocrat:  "YellowCertificate","GreyCertificate","BlackCertificate","BlackCertificate","RedCertificate",
-
+            DONE BeautyRocrat:  "YellowCertificate","GreyCertificate","BlackCertificate","BlackCertificate","RedCertificate", -> "Document"
             DONE IceIceBaby: "IceCube", "IceCube", "IceCube" -> "BlackLeatherBoots"
-
-    - SnakeSlytheress1: "Rat", "Rat", "Rat" ->
+            DONE SnakeSlytheress1: "Rat", "Rat", "Rat" -> "GoldenScepter"
     - GreenLizardLady "Fly", "Fly", "Fly"
 
             DONE Farmeressa wanst: "Stiletto", "Stiletto", "BlackLatexGloves", "BlackLatexpanties", "BlackLatexBra", --> Whip
@@ -87,8 +86,8 @@ DEBUG.checkPoint = function () {
     "Walnut", 
     "Chestnut",
     "Crown",
-    "GoldenScepter", 
-    "Document"
+                    DONE "GoldenScepter", SnakeSlytheress1 (25)
+                    DONE "Document" BeautyRocrat (21)
                     DONE "BlackLeatherBoots", IceIceBaby (12)
                     DONE "Whip",Farmeressa (14)
                     DONE HairBrush, SquirrelLady (17)
@@ -194,8 +193,9 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "GoldCoin", "GoldCoin",
-        "SilverCoin", "CopperCoin",
+        "Rat", "Rat", "Rat",
+        //"GoldCoin", "GoldCoin",
+        //"SilverCoin", "CopperCoin",
         //"YoniBook", "VenusBook", "PrincessBook", "TriquetraBook",
         //"TaoBook", "YinYangBook", "PentagramBook", "HexagramBook",
         // "OwlBook", "RavenBook", "TripleMoonBook",
@@ -288,7 +288,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.7",
+    VERSION: "0.17.8",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
