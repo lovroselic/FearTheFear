@@ -3973,6 +3973,8 @@ class $3D_player {
                 }
 
                 const value = this.GA.getValue(grid);
+                if (value === MAPDICT.EMPTY) break;                                         // Flat floor.
+                if (value === MAPDICT.HOLE) continue;                                       // Open shaft.
                 if ((value & solidMask) !== 0 || STAIRCASE_GRIDS.includes(value)) break;    // Stop at solid GA geometry, including staircase support.
             }
         }

@@ -70,13 +70,16 @@ DEBUG.checkPoint = function () {
             DONE BeautyRocrat:  "YellowCertificate","GreyCertificate","BlackCertificate","BlackCertificate","RedCertificate", -> "Document"
             DONE IceIceBaby: "IceCube", "IceCube", "IceCube" -> "BlackLeatherBoots"
             DONE SnakeSlytheress1: "Rat", "Rat", "Rat" -> "GoldenScepter"
-    - GreenLizardLady "Fly", "Fly", "Fly"
-
+            DONE GreenLizardLady "Fly", "Fly", "Fly" -> BlackLatexBra
             DONE Farmeressa wanst: "Stiletto", "Stiletto", "BlackLatexGloves", "BlackLatexpanties", "BlackLatexBra", --> Whip
             DONE Lacy -  Candle, RedCandle, BlueCandle -> RedKey
+            DONE "MushSorceress - RedMushroom", "GreenMushroom", "YellowMushroom", -> "PentagramBook"
+            DONE LonelyFarmer "BabySheep", "Chicken", "LittlePiggy" -   -> BlackLatexpanties
+            DONE RedPlatformsBlackHalterbodysuit "RedLatexBra", "RedLatexPanties", "RedLeatherBoots" -> BlackLatexGloves
+    PoorQueen "GreenBoots", "GreenDress", "GreenPanties" --> "Crown"
 
     items:
-            DONE"YellowCertificate", GreenLibrarian (15)
+            DONE "YellowCertificate", GreenLibrarian (15)
             DONE "GreyCertificate", SilverLibrarian (15)
             DONE "BlackCertificate", LibraRian7(15)
     "WhiteCertificate", to be picked;
@@ -85,7 +88,7 @@ DEBUG.checkPoint = function () {
     "Acorn", 
     "Walnut", 
     "Chestnut",
-    "Crown",
+    "Crown", PoorQueen (23)
                     DONE "GoldenScepter", SnakeSlytheress1 (25)
                     DONE "Document" BeautyRocrat (21)
                     DONE "BlackLeatherBoots", IceIceBaby (12)
@@ -93,6 +96,9 @@ DEBUG.checkPoint = function () {
                     DONE HairBrush, SquirrelLady (17)
                     DONE Comb,   -> HedgehogCorridorLady (17)
                     DONE PinkRibbon BearaInForest (17)
+    "GreenBoots", 
+    "GreenDress", 
+    "GreenPanties"
     "Apple", 
     "GreenApple", 
     "Pear", 
@@ -110,17 +116,20 @@ DEBUG.checkPoint = function () {
     "Fly"
     "Stiletto", 
     "Stiletto", 
-    "BlackLatexGloves", 
-    "BlackLatexpanties", 
-    "BlackLatexBra",
+                DONE "BlackLatexGloves", RedPlatformsBlackHalterbodysuit (22)
+                DONE "BlackLatexpanties", LonelyFarmer (26)
+                DONE "BlackLatexBra", GreenLizardLady (25)
     Candle, 
     RedCandle, 
     BlueCandle
+    "RedMushroom", 
+    "GreenMushroom", 
+    "YellowMushroom"
 
     "YoniBook",+
     "TaoBook", +
     "YinYangBook",+
-    "PentagramBook",+
+                DONE" PentagramBook", MushSorceress (26)
     "HexagramBook",+
     "TripleMoonBook",+
     "TriquetraBook",+
@@ -131,6 +140,12 @@ DEBUG.checkPoint = function () {
     "PrincessBook",+
     "TreeOfLifeBook",
     "RavenBook" +
+    "RedLatexBra", 
+    "RedLatexPanties", 
+    "RedLeatherBoots"
+    "BabySheep", 
+    "Chicken", 
+    "LittlePiggy"
    
     keys:
         DONE Pink 23
@@ -144,7 +159,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 25;
+    GAME.level = 23;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -193,7 +208,12 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "Rat", "Rat", "Rat",
+        "GreenBoots", "GreenDress", "GreenPanties",
+        //"RedLatexBra", "RedLatexPanties", "RedLeatherBoots",
+        //"BabySheep", "Chicken", "LittlePiggy",
+        //"Fly", "Fly", "Fly",
+        //"RedMushroom", "GreenMushroom", "YellowMushroom",
+        //"Rat", "Rat", "Rat",
         //"GoldCoin", "GoldCoin",
         //"SilverCoin", "CopperCoin",
         //"YoniBook", "VenusBook", "PrincessBook", "TriquetraBook",
@@ -211,7 +231,7 @@ DEBUG.checkPoint = function () {
     }
 
     let keys = [
-        "Blue", "Green", "Gold",
+        //"Blue", "Green", "Gold",
     ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
@@ -288,7 +308,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.8",
+    VERSION: "0.17.9",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

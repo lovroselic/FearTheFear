@@ -1459,19 +1459,8 @@ const HERO_TYPE = {
 };
 
 const INTERACTION_OBJECT = {
+
     //mana
-    Orb: {
-        name: "Orb-FireBall",
-        category: "action_item",
-        which: "mana",
-        element: "BALL",
-        scale: 1.5 / 2 ** 5,
-        glueToFloor: true,
-        texture: "FireballTexture",
-        material: MATERIAL.fire,
-        inventorySprite: "FireBall",
-        text: "Spent missile. Maybe I can squeeze some magic out."
-    },
     Amanita: {
         name: "Amanita",
         category: "action_item",
@@ -1483,18 +1472,6 @@ const INTERACTION_OBJECT = {
         material: MATERIAL.standard,
         inventorySprite: "Amanita",
         text: "Poisonous mushroom. I should definitely eat that, right?"
-    },
-    Snail: {
-        name: "Snail",
-        category: "action_item",
-        which: "mana",
-        element: "SNAIL",
-        scale: 1.0 / 2 ** 3,
-        glueToFloor: true,
-        texture: "SnailColor",
-        material: MATERIAL.standard,
-        inventorySprite: "Snail",
-        text: "Slimy snail, full of magic. Nam, nam."
     },
     ManaFrog: {
         name: "ManaFrog",
@@ -1520,6 +1497,18 @@ const INTERACTION_OBJECT = {
         inventorySprite: "ManaGoat",
         text: "Let's sacrifice it for magic."
     },
+    Orb: {
+        name: "Orb-FireBall",
+        category: "action_item",
+        which: "mana",
+        element: "BALL",
+        scale: 1.5 / 2 ** 5,
+        glueToFloor: true,
+        texture: "FireballTexture",
+        material: MATERIAL.fire,
+        inventorySprite: "FireBall",
+        text: "Spent missile. Maybe I can squeeze some magic out."
+    },
     Owl: {
         name: "Owl",
         category: "action_item",
@@ -1532,33 +1521,20 @@ const INTERACTION_OBJECT = {
         inventorySprite: "Owl",
         text: "Absorbing owl's wisdom.",
     },
-
+    Snail: {
+        name: "Snail",
+        category: "action_item",
+        which: "mana",
+        element: "SNAIL",
+        scale: 1.0 / 2 ** 3,
+        glueToFloor: true,
+        texture: "SnailColor",
+        material: MATERIAL.standard,
+        inventorySprite: "Snail",
+        text: "Slimy snail, full of magic. Nam, nam."
+    },
 
     //health
-    Cake: {
-        name: "Cake",
-        category: "action_item",
-        which: "health",
-        element: "CAKE",
-        scale: 1 / 2 ** 2,
-        glueToFloor: true,
-        texture: "cake_basecolor",
-        material: MATERIAL.standard,
-        inventorySprite: "Cake",
-        text: "Cake? Very healthy."
-    },
-    Steak: {
-        name: "Steak",
-        category: "action_item",
-        which: "health",
-        element: "STEAK",
-        scale: 1.8 / 2 ** 3,
-        glueToFloor: true,
-        texture: "SteakTexture",
-        material: MATERIAL.standard,
-        inventorySprite: "Steak",
-        text: "Steak? A yummy vegetarian meat."
-    },
     BeerHealth: {
         name: "BeerHealth",
         category: "action_item",
@@ -1570,6 +1546,18 @@ const INTERACTION_OBJECT = {
         material: MATERIAL.standard,
         inventorySprite: "BeerHealth",
         text: "Beer always helps me."
+    },
+    Cake: {
+        name: "Cake",
+        category: "action_item",
+        which: "health",
+        element: "CAKE",
+        scale: 1 / 2 ** 2,
+        glueToFloor: true,
+        texture: "cake_basecolor",
+        material: MATERIAL.standard,
+        inventorySprite: "Cake",
+        text: "Cake? Very healthy."
     },
     Champagne: {
         name: "Champagne",
@@ -1597,86 +1585,17 @@ const INTERACTION_OBJECT = {
         inventorySprite: "HealthBox",
         text: "A full box of healing. I should save it for dark times."
     },
-
-    //items
-    SmallBarrel: {
-        name: "SmallBarrel",
-        category: "interaction_item",
-        element: "BARREL",
-        scale: 1.75 / 2 ** 3,
+    Steak: {
+        name: "Steak",
+        category: "action_item",
+        which: "health",
+        element: "STEAK",
+        scale: 1.8 / 2 ** 3,
         glueToFloor: true,
-        texture: "Barrel",
-        material: MATERIAL.wood,
-        inventorySprite: "SmallBarrel",
-        text: "Such a small barrel. Not a lot of drink."
-    },
-    Skull: {
-        name: "Skull",
-        category: "interaction_item",
-        element: "SKULL",
-        scale: 1 / 2 ** 1,
-        glueToFloor: true,
-        texture: "Skull_texture",
-        inventorySprite: "Skull",
+        texture: "SteakTexture",
         material: MATERIAL.standard,
-        text: "Creeepy?"
-    },
-    Beer: {
-        name: "Beer",
-        category: "interaction_item",
-        element: "CAN",
-        scale: 1.1 / 2 ** 3,
-        glueToFloor: true,
-        texture: "LaskoCanTexture",
-        material: MATERIAL.metal,
-        inventorySprite: "Beer",
-        text: "A cold one. I drank that one in Slovenia."
-    },
-    Crown: {
-        name: "Crown",
-        category: "interaction_item",
-        element: "CROWN",
-        scale: 1.7 / 2 ** 2,
-        glueToFloor: true,
-        texture: "Gold",
-        material: MATERIAL.gold,
-        inventorySprite: "Crown",
-        text: "This is my crown. I should not take it with me on adventure. Best someone keeps it safe for me."
-    },
-    IceCube: {
-        name: "IceCube",
-        category: "interaction_item",
-        element: "CUBE_CENTERED",
-        scale: 1.99 / 2 ** 5,
-        glueToFloor: true,
-        texture: "IceTexture",
-        inventorySprite: "IceCube",
-        material: MATERIAL.standardShine,
-        text: "Ice cube. Cold?"
-    },
-
-    //metal
-    IronBar: {
-        name: "IronBar",
-        category: "interaction_item",
-        element: "BAR",
-        scale: 1 / 2 ** 4,
-        glueToFloor: true,
-        texture: "IronTexture",
-        inventorySprite: "IronBar",
-        material: MATERIAL.standard,
-        text: "Iron? I can make something from it."
-    },
-    RedBar: {
-        name: "RedBar",
-        category: "interaction_item",
-        element: "BAR",
-        scale: 1 / 2 ** 4,
-        glueToFloor: true,
-        texture: "RedMetal",
-        inventorySprite: "RedBar",
-        material: MATERIAL.standard,
-        text: "Wow. Infernal red metal."
+        inventorySprite: "Steak",
+        text: "Steak? A yummy vegetarian meat."
     },
 
     //fruit, food, forest fast food
@@ -1691,6 +1610,17 @@ const INTERACTION_OBJECT = {
         inventorySprite: "Apple",
         text: "Oh, it's an apple."
     },
+    Beer: {
+        name: "Beer",
+        category: "interaction_item",
+        element: "CAN",
+        scale: 1.1 / 2 ** 3,
+        glueToFloor: true,
+        texture: "LaskoCanTexture",
+        material: MATERIAL.metal,
+        inventorySprite: "Beer",
+        text: "A cold one. I drank that one in Slovenia."
+    },
     GreenApple: {
         name: "GreenApple",
         category: "interaction_item",
@@ -1701,6 +1631,17 @@ const INTERACTION_OBJECT = {
         material: MATERIAL.standard,
         inventorySprite: "GreenApple",
         text: "Oh, it's an apple. Green one."
+    },
+    GreenMushroom: {
+        name: "GreenMushroom",
+        category: "interaction_item",
+        element: "MUSHROOM",
+        scale: 1.4 / 2 ** 7,
+        glueToFloor: true,
+        texture: "GreenMushroomTexture",
+        inventorySprite: "GreenMushroom",
+        material: MATERIAL.standard,
+        text: "Poisonous. Don't eat."
     },
     Pear: {
         name: "Pear",
@@ -1720,12 +1661,34 @@ const INTERACTION_OBJECT = {
         scale: 1.4 / 2 ** 7,
         glueToFloor: true,
         texture: "MushroomTexture",
-        inventorySprite: "Mushroom",
+        inventorySprite: "RedMushroom",
+        material: MATERIAL.standard,
+        text: "Poisonous. Don't eat."
+    },
+    YellowMushroom: {
+        name: "YellowMushroom",
+        category: "interaction_item",
+        element: "MUSHROOM",
+        scale: 1.4 / 2 ** 7,
+        glueToFloor: true,
+        texture: "YellowMushroomTexture",
+        inventorySprite: "YellowMushroom",
         material: MATERIAL.standard,
         text: "Poisonous. Don't eat."
     },
 
     //candles
+    BlueCandle: {
+        name: "BlueCandle",
+        category: "interaction_item",
+        element: "CANDLE",
+        scale: 1.0 / 2 ** 2,
+        glueToFloor: true,
+        texture: "BlueCandleWax",
+        material: MATERIAL.standard,
+        inventorySprite: "BlueCandle",
+        text: "Simple blue wax candle. I can light it. Or not."
+    },
     Candle: {
         name: "Candle",
         category: "interaction_item",
@@ -1748,17 +1711,6 @@ const INTERACTION_OBJECT = {
         inventorySprite: "RedCandle",
         text: "Simple red wax candle. I can light it. Or not."
     },
-    BlueCandle: {
-        name: "BlueCandle",
-        category: "interaction_item",
-        element: "CANDLE",
-        scale: 1.0 / 2 ** 2,
-        glueToFloor: true,
-        texture: "BlueCandleWax",
-        material: MATERIAL.standard,
-        inventorySprite: "BlueCandle",
-        text: "Simple blue wax candle. I can light it. Or not."
-    },
 
     //fashion
     Stiletto: {
@@ -1774,6 +1726,17 @@ const INTERACTION_OBJECT = {
     },
 
     //coins
+    CopperCoin: {
+        name: "CopperCoin",
+        category: "interaction_item",
+        element: "COIN",
+        scale: 1.8 / 2 ** 8,
+        glueToFloor: true,
+        texture: "CopperCoin",
+        inventorySprite: "CopperCoin",
+        material: MATERIAL.copper,
+        text: "Face on the coin looks like my mother."
+    },
     GoldCoin: {
         name: "GoldCoin",
         category: "interaction_item",
@@ -1796,18 +1759,253 @@ const INTERACTION_OBJECT = {
         material: MATERIAL.silver,
         text: "Face on the coin looks like my mother."
     },
-    CopperCoin: {
-        name: "CopperCoin",
+
+    //weaponry, armor
+    Dagger: {
+        name: "Dagger",
         category: "interaction_item",
-        element: "COIN",
-        scale: 1.8 / 2 ** 8,
+        element: "DAGGER",
+        scale: 1.25 / 2 ** 5,
         glueToFloor: true,
-        texture: "CopperCoin",
-        inventorySprite: "CopperCoin",
-        material: MATERIAL.copper,
-        text: "Face on the coin looks like my mother."
+        texture: "Dagger_Base_Color",
+        material: MATERIAL.silver,
+        inventorySprite: "Dagger",
+        text: "It looks very sharp."
+    },
+    HornedHelmet: {
+        name: "HornedHelmet",
+        category: "interaction_item",
+        element: "HornedHelmet",
+        scale: 1.0 / 2 ** 6,
+        glueToFloor: true,
+        texture: "HornedHelmetColor",
+        material: MATERIAL.steel,
+        inventorySprite: "HornedHelmet",
+        text: "Wow. I would wear that but it would ruin my hairdo."
+    },
+    Shield: {
+        name: "Shield",
+        category: "interaction_item",
+        element: "SHIELD",
+        scale: 1 / 2 ** 5,
+        glueToFloor: true,
+        texture: "ScrapedMetal",
+        inventorySprite: "Shield",
+        material: MATERIAL.silver,
+        text: "I'll put that shield in the bag."
+    },
+    Sword: {
+        name: "Sword",
+        category: "interaction_item",
+        element: "STING",
+        scale: 1 / 2 ** 1,
+        glueToFloor: true,
+        texture: "Sting",
+        material: MATERIAL.silver,
+        inventorySprite: "Sword",
+        text: "I'll put that sword in the bag."
     },
 
+    //docs, scroll
+    Scroll: {
+        name: "Scroll",
+        category: "interaction_item",
+        element: "SCROLL",
+        scale: 1.6 / 2 ** 4,
+        glueToFloor: true,
+        texture: "ScrollTexture",
+        material: MATERIAL.paper,
+        inventorySprite: "Scroll",
+        text: "It's empty? I should write a poem."
+    },
+
+    //jewelery, gems
+    Crown: {
+        name: "Crown",
+        category: "interaction_item",
+        element: "CROWN",
+        scale: 1.7 / 2 ** 2,
+        glueToFloor: true,
+        texture: "Gold",
+        material: MATERIAL.gold,
+        inventorySprite: "Crown",
+        text: "This is my crown. I should not take it with me on adventure. Best someone keeps it safe for me."
+    },
+
+    //skeletal
+    Bone: {
+        name: "Bone",
+        category: "interaction_item",
+        element: "BONE",
+        scale: 1.0 / 2 ** 4,
+        glueToFloor: true,
+        texture: "Marble",
+        material: MATERIAL.standard,
+        inventorySprite: "Bone",
+        text: "Bone. Human? Or animal? I don't know. Does it matter to you?"
+    },
+    Skull: {
+        name: "Skull",
+        category: "interaction_item",
+        element: "SKULL",
+        scale: 1 / 2 ** 1,
+        glueToFloor: true,
+        texture: "Skull_texture",
+        inventorySprite: "Skull",
+        material: MATERIAL.standard,
+        text: "Creeepy?"
+    },
+
+    //liquid
+    Blood: {
+        name: "Blood",
+        category: "interaction_item",
+        element: "FLASK",
+        scale: 1.1 / 2 ** 5,
+        glueToFloor: true,
+        texture: "BloodTexture",
+        inventorySprite: "Blood",
+        material: MATERIAL.redShine,
+        text: "Disgusting. Give it to someone else."
+    },
+    BlueLiquid: {
+        name: "BlueLiquid",
+        category: "interaction_item",
+        element: "ErlenFlask",
+        scale: 1 / 2 ** 6,
+        glueToFloor: true,
+        texture: "BlueLiquid2",
+        inventorySprite: "BlueLiquid",
+        material: MATERIAL.blueShine,
+        text: "A flask of vile looking blue liquid."
+    },
+    GreenLiquid: {
+        name: "GreenLiquid",
+        category: "interaction_item",
+        element: "ErlenFlask",
+        scale: 1 / 2 ** 6,
+        glueToFloor: true,
+        texture: "GreenLiquid",
+        inventorySprite: "GreenLiquid",
+        material: MATERIAL.greenShine,
+        text: "A flask of vile looking green liquid."
+    },
+    Poison: {
+        name: "Poison",
+        category: "interaction_item",
+        element: "FLASK",
+        scale: 1.1 / 2 ** 5,
+        glueToFloor: true,
+        texture: "GreenMetal",
+        inventorySprite: "Poison",
+        material: MATERIAL.greenFluence,
+        text: "Yikes. Don't drink this. It's deadly."
+    },
+    RedLiquid: {
+        name: "RedLiquid",
+        category: "interaction_item",
+        element: "ErlenFlask",
+        scale: 1 / 2 ** 6,
+        glueToFloor: true,
+        texture: "RedLiquid2",
+        inventorySprite: "RedLiquid",
+        material: MATERIAL.redShine,
+        text: "A flask of vile looking red liquid."
+    },
+
+    //still animals
+    TropicalFish: {
+        name: "TropicalFish",
+        category: "interaction_item",
+        element: "FISH",
+        scale: 1.5 / 2 ** 4,
+        glueToFloor: true,
+        texture: "FishTexture",
+        material: MATERIAL.standard,
+        inventorySprite: "TropicalFish",
+        text: "Also smelly, but more colors."
+    },
+
+    //metals
+    GoldBar: {
+        name: "GoldBar",
+        category: "interaction_item",
+        element: "BAR",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "Gold",
+        inventorySprite: "GoldBar",
+        material: MATERIAL.gold,
+        text: "I should store some gold in the bag. Who knows ..."
+    },
+    GoldSphere: {
+        name: "GoldSphere",
+        category: "interaction_item",
+        element: "BALL",
+        scale: 1.1 / 2 ** 5,
+        glueToFloor: true,
+        texture: "Gold",
+        inventorySprite: "GoldSphere",
+        material: MATERIAL.gold,
+        text: "This one goes in the bag. Who knows ..."
+    },
+    IronBar: {
+        name: "IronBar",
+        category: "interaction_item",
+        element: "BAR",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "IronTexture",
+        inventorySprite: "IronBar",
+        material: MATERIAL.standard,
+        text: "Iron? I can make something from it."
+    },
+    RedBar: {
+        name: "RedBar",
+        category: "interaction_item",
+        element: "BAR",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "RedMetal",
+        inventorySprite: "RedBar",
+        material: MATERIAL.standard,
+        text: "Wow. Infernal red metal."
+    },
+    SilverBar: {
+        name: "SilverBar",
+        category: "interaction_item",
+        element: "BAR",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "Silver",
+        inventorySprite: "SilverBar",
+        material: MATERIAL.silver,
+        text: "Silver. Malleable."
+    },
+
+    //misc items
+    IceCube: {
+        name: "IceCube",
+        category: "interaction_item",
+        element: "CUBE_CENTERED",
+        scale: 1.99 / 2 ** 5,
+        glueToFloor: true,
+        texture: "IceTexture",
+        inventorySprite: "IceCube",
+        material: MATERIAL.standardShine,
+        text: "Ice cube. Cold?"
+    },
+    SmallBarrel: {
+        name: "SmallBarrel",
+        category: "interaction_item",
+        element: "BARREL",
+        scale: 1.75 / 2 ** 3,
+        glueToFloor: true,
+        texture: "Barrel",
+        material: MATERIAL.wood,
+        inventorySprite: "SmallBarrel",
+        text: "Such a small barrel. Not a lot of drink."
+    },
 };
 
 const MOVABLE_INTERACTION_OBJECT = {
@@ -2067,18 +2265,18 @@ const INTERACTION_ITEM = {
         which: "defense",
         level: 1,
     },
-    Magic: {
-        name: "Magic",
-        category: "skill",
-        inventorySprite: "SkillFireball",
-        which: "magic",
-        level: 1,
-    },
     HeartSkill: {
         name: "HeartSkill",
         category: "status",
         inventorySprite: "HeartSkill",
         which: "health",
+        level: 1,
+    },
+    Magic: {
+        name: "Magic",
+        category: "skill",
+        inventorySprite: "SkillFireball",
+        which: "magic",
         level: 1,
     },
     ManaSkill: {
@@ -2090,17 +2288,11 @@ const INTERACTION_ITEM = {
     },
 
     //keys
-    GoldKey: {
-        name: "GoldKey",
+    BlueKey: {
+        name: "BlueKey",
         category: "key",
-        inventorySprite: "GoldKey",
-        color: "Gold"
-    },
-    SilverKey: {
-        name: "SilverKey",
-        category: "key",
-        inventorySprite: "SilverKey",
-        color: "Silver"
+        inventorySprite: "BlueKey",
+        color: "Blue"
     },
     EmeraldKey: {
         name: "EmeraldKey",
@@ -2108,17 +2300,11 @@ const INTERACTION_ITEM = {
         inventorySprite: "EmeraldKey",
         color: "Emerald"
     },
-    PearlKey: {
-        name: "PearlKey",
+    GoldKey: {
+        name: "GoldKey",
         category: "key",
-        inventorySprite: "PearlKey",
-        color: "Pearl"
-    },
-    PurpleKey: {
-        name: "PurpleKey",
-        category: "key",
-        inventorySprite: "PurpleKey",
-        color: "Purple"
+        inventorySprite: "GoldKey",
+        color: "Gold"
     },
     GreenKey: {
         name: "GreenKey",
@@ -2126,17 +2312,17 @@ const INTERACTION_ITEM = {
         inventorySprite: "GreenKey",
         color: "Green"
     },
-    BlueKey: {
-        name: "BlueKey",
+    OrangeKey: {
+        name: "OrangeKey",
         category: "key",
-        inventorySprite: "BlueKey",
-        color: "Blue"
+        inventorySprite: "OrangeKey",
+        color: "Orange"
     },
-    RedKey: {
-        name: "RedKey",
+    PearlKey: {
+        name: "PearlKey",
         category: "key",
-        inventorySprite: "RedKey",
-        color: "Red"
+        inventorySprite: "PearlKey",
+        color: "Pearl"
     },
     PinkKey: {
         name: "PinkKey",
@@ -2144,11 +2330,23 @@ const INTERACTION_ITEM = {
         inventorySprite: "PinkKey",
         color: "Pink"
     },
-    OrangeKey: {
-        name: "OrangeKey",
+    PurpleKey: {
+        name: "PurpleKey",
         category: "key",
-        inventorySprite: "OrangeKey",
-        color: "Orange"
+        inventorySprite: "PurpleKey",
+        color: "Purple"
+    },
+    RedKey: {
+        name: "RedKey",
+        category: "key",
+        inventorySprite: "RedKey",
+        color: "Red"
+    },
+    SilverKey: {
+        name: "SilverKey",
+        category: "key",
+        inventorySprite: "SilverKey",
+        color: "Silver"
     },
 
     // money
@@ -2158,11 +2356,23 @@ const INTERACTION_ITEM = {
         inventorySprite: "Banknote10",
         text: "That is a lot of money. 10 Castle Marks."
     },
+    Banknote100: {
+        name: "Banknote100",
+        category: "interaction_item",
+        inventorySprite: "Banknote100",
+        text: "That is a lot of money. 100 Castle Marks."
+    },
     Banknote20: {
         name: "Banknote20",
         category: "interaction_item",
         inventorySprite: "Banknote20",
         text: "That is a lot of money. 20 Castle Marks."
+    },
+    Banknote200: {
+        name: "Banknote200",
+        category: "interaction_item",
+        inventorySprite: "Banknote200",
+        text: "That is a lot of money. 200 Castle Marks."
     },
     Banknote50: {
         name: "Banknote50",
@@ -2170,17 +2380,11 @@ const INTERACTION_ITEM = {
         inventorySprite: "Banknote50",
         text: "That is a lot of money. 50 Castle Marks."
     },
-    Banknote100: {
-        name: "Banknote100",
+    CopperCoin: {
+        name: "CopperCoin",
         category: "interaction_item",
-        inventorySprite: "Banknote100",
-        text: "That is a lot of money. 100 Castle Marks."
-    },
-    Banknote200: {
-        name: "Banknote200",
-        category: "interaction_item",
-        inventorySprite: "Banknote200",
-        text: "That is a lot of money. 200 Castle Marks."
+        inventorySprite: "CopperCoin",
+        text: "Face on the coin looks like my mother."
     },
     GoldCoin: {
         name: "GoldCoin",
@@ -2194,20 +2398,13 @@ const INTERACTION_ITEM = {
         inventorySprite: "SilverCoin",
         text: "Face on the coin looks like my mother."
     },
-    CopperCoin: {
-        name: "CopperCoin",
-        category: "interaction_item",
-        inventorySprite: "CopperCoin",
-        text: "Face on the coin looks like my mother."
-    },
 
-
-    //items
-    GlassOfBeer: {
-        name: "GlassOfBeer",
+    //drinks and food
+    Acorn: {
+        name: "Acorn",
         category: "interaction_item",
-        inventorySprite: "GlassOfBeer",
-        text: "Cheers mates. To victory!"
+        inventorySprite: "Acorn",
+        text: "Forest fast food.",
     },
     Beer: {
         name: "Beer",
@@ -2215,29 +2412,17 @@ const INTERACTION_ITEM = {
         inventorySprite: "Beer",
         text: "A cold one."
     },
-    WhiskeyShot: {
-        name: "WhiskeyShot",
+    Chestnut: {
+        name: "Chestnut",
         category: "interaction_item",
-        inventorySprite: "WhiskeyShot",
-        text: "Single malt?"
+        inventorySprite: "Chestnut",
+        text: "Forest fast food.",
     },
-    GlassOfWine: {
-        name: "GlassOfWine",
+    CupOfCoffee: {
+        name: "CupOfCoffee",
         category: "interaction_item",
-        inventorySprite: "GlassOfWine",
-        text: "Great vintage. But I must not indulge."
-    },
-    Wine: {
-        name: "Wine",
-        category: "interaction_item",
-        inventorySprite: "Wine",
-        text: "Red wine. Fancy a sip?"
-    },
-    Milk: {
-        name: "Milk",
-        category: "interaction_item",
-        inventorySprite: "Milk",
-        text: "I hope it's not yet spoilt.",
+        inventorySprite: "CupOfCoffee",
+        text: "Coffee."
     },
     Egg: {
         name: "Egg",
@@ -2245,17 +2430,41 @@ const INTERACTION_ITEM = {
         inventorySprite: "Egg",
         text: "An unborn chick.",
     },
-    Acorn: {
-        name: "Acorn",
+    GlassOfBeer: {
+        name: "GlassOfBeer",
         category: "interaction_item",
-        inventorySprite: "Acorn",
-        text: "Forest fast food.",
+        inventorySprite: "GlassOfBeer",
+        text: "Cheers mates. To victory!"
     },
-    Chestnut: {
-        name: "Chestnut",
+    GlassOfWine: {
+        name: "GlassOfWine",
         category: "interaction_item",
-        inventorySprite: "Chestnut",
-        text: "Forest fast food.",
+        inventorySprite: "GlassOfWine",
+        text: "Great vintage. But I must not indulge."
+    },
+    Milk: {
+        name: "Milk",
+        category: "interaction_item",
+        inventorySprite: "Milk",
+        text: "I hope it's not yet spoilt.",
+    },
+    OrangeJuice: {
+        name: "OrangeJuice",
+        category: "interaction_item",
+        inventorySprite: "OrangeJuice",
+        text: "Fresh orange juice. No vodka though?"
+    },
+    Pie: {
+        name: "Pie",
+        category: "interaction_item",
+        inventorySprite: "Pie",
+        text: "Yummy pie."
+    },
+    PieceOfCake: {
+        name: "PieceOfCake",
+        category: "interaction_item",
+        inventorySprite: "PieceOfCake",
+        text: "Delicious strawberry cake."
     },
     Walnut: {
         name: "Walnut",
@@ -2263,6 +2472,20 @@ const INTERACTION_ITEM = {
         inventorySprite: "Walnut",
         text: "Keep away from squirrels",
     },
+    WhiskeyShot: {
+        name: "WhiskeyShot",
+        category: "interaction_item",
+        inventorySprite: "WhiskeyShot",
+        text: "Single malt?"
+    },
+    Wine: {
+        name: "Wine",
+        category: "interaction_item",
+        inventorySprite: "Wine",
+        text: "Red wine. Fancy a sip?"
+    },
+
+    //hair, face, beauty
     Comb: {
         name: "Comb",
         category: "interaction_item",
@@ -2275,11 +2498,29 @@ const INTERACTION_ITEM = {
         inventorySprite: "HairBrush",
         text: "A hair brush for my messy hair."
     },
+    Lipstick: {
+        name: "Lipstick",
+        category: "interaction_item",
+        inventorySprite: "Lipstick",
+        text: "Sexy red color. Suits me fine."
+    },
+    Mirror: {
+        name: "Mirror",
+        category: "interaction_item",
+        inventorySprite: "Mirror",
+        text: "Who is the fairest? Me."
+    },
     PinkRibbon: {
         name: "PinkRibbon",
         category: "interaction_item",
         inventorySprite: "PinkRibbon",
         text: "A pink bow ribbon. I could have pigtails. No. Absolutely not."
+    },
+    Spectacles: {
+        name: "Spectacles",
+        category: "interaction_item",
+        inventorySprite: "Spectacles",
+        text: "Spectacles with round rims. This is a fashion hit of the Castle Creep."
     },
 
     //metals
@@ -2288,10 +2529,28 @@ const INTERACTION_ITEM = {
         category: "interaction_item",
         inventorySprite: "GoldBar",
     },
+    GoldIngots: {
+        name: "GoldIngots",
+        category: "interaction_item",
+        inventorySprite: "GoldIngots",
+        text: "Ingots made from gold."
+    },
+    GoldOre: {
+        name: "GoldOre",
+        category: "interaction_item",
+        inventorySprite: "GoldOre",
+        text: "I should smelt this gold ore into a bar."
+    },
     GoldSteel: {
         name: "GoldSteel",
         category: "interaction_item",
         inventorySprite: "GoldSteel",
+    },
+    IronBar: {
+        name: "IronBar",
+        category: "interaction_item",
+        inventorySprite: "IronBar",
+        text: "Iron? I can make something from it."
     },
     SilverBar: {
         name: "SilverBar",
@@ -2305,30 +2564,30 @@ const INTERACTION_ITEM = {
         inventorySprite: "UraniumBar",
         text: "Uranium. Active radio, or something like that. Right?."
     },
-    IronBar: {
-        name: "IronBar",
-        category: "interaction_item",
-        inventorySprite: "IronBar",
-        text: "Iron? I can make something from it."
-    },
 
     //books
-    YoniBook: {
-        name: "YoniBook",
+    AnkhBook: {
+        name: "AnkhBook",
         category: "interaction_item",
-        inventorySprite: "YoniBook",
+        inventorySprite: "AnkhBook",
         text: "It seems like an interesting book, full of ancient knowledge."
     },
-    TaoBook: {
-        name: "TaoBook",
+    FireballBook: {
+        name: "FireballBook",
         category: "interaction_item",
-        inventorySprite: "TaoBook",
+        inventorySprite: "FireballBook",
         text: "It seems like an interesting book, full of ancient knowledge."
     },
-    YinYangBook: {
-        name: "YinYangBook",
+    HexagramBook: {
+        name: "HexagramBook",
         category: "interaction_item",
-        inventorySprite: "YinYangBook",
+        inventorySprite: "HexagramBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    OwlBook: {
+        name: "OwlBook",
+        category: "interaction_item",
+        inventorySprite: "OwlBook",
         text: "It seems like an interesting book, full of ancient knowledge."
     },
     PentagramBook: {
@@ -2337,10 +2596,28 @@ const INTERACTION_ITEM = {
         inventorySprite: "PentagramBook",
         text: "It seems like an interesting book, full of ancient knowledge."
     },
-    HexagramBook: {
-        name: "HexagramBook",
+    PrincessBook: {
+        name: "PrincessBook",
         category: "interaction_item",
-        inventorySprite: "HexagramBook",
+        inventorySprite: "PrincessBook",
+        text: "Amazing story about my adventures. Everybody should read this."
+    },
+    RavenBook: {
+        name: "RavenBook",
+        category: "interaction_item",
+        inventorySprite: "RavenBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    TaoBook: {
+        name: "TaoBook",
+        category: "interaction_item",
+        inventorySprite: "TaoBook",
+        text: "It seems like an interesting book, full of ancient knowledge."
+    },
+    TreeOfLifeBook: {
+        name: "TreeOfLifeBook",
+        category: "interaction_item",
+        inventorySprite: "TreeOfLifeBook",
         text: "It seems like an interesting book, full of ancient knowledge."
     },
     TripleMoonBook: {
@@ -2361,41 +2638,705 @@ const INTERACTION_ITEM = {
         inventorySprite: "VenusBook",
         text: "It seems like an interesting book, full of ancient knowledge."
     },
-    AnkhBook: {
-        name: "AnkhBook",
+    YinYangBook: {
+        name: "YinYangBook",
         category: "interaction_item",
-        inventorySprite: "AnkhBook",
+        inventorySprite: "YinYangBook",
         text: "It seems like an interesting book, full of ancient knowledge."
     },
-    FireballBook: {
-        name: "FireballBook",
+    YoniBook: {
+        name: "YoniBook",
         category: "interaction_item",
-        inventorySprite: "FireballBook",
+        inventorySprite: "YoniBook",
         text: "It seems like an interesting book, full of ancient knowledge."
     },
-    OwlBook: {
-        name: "OwlBook",
+
+    //femdom
+    Handcuffs: {
+        name: "Handcuffs",
         category: "interaction_item",
-        inventorySprite: "OwlBook",
-        text: "It seems like an interesting book, full of ancient knowledge."
+        inventorySprite: "Handcuffs",
+        text: "Should I arrest someone?",
     },
-    PrincessBook: {
-        name: "PrincessBook",
+    Whip: {
+        name: "Whip",
         category: "interaction_item",
-        inventorySprite: "PrincessBook",
-        text: "Amazing story about my adventures. Everybody should read this."
+        inventorySprite: "Whip",
+        text: "I can punish someone.",
     },
-    TreeOfLifeBook: {
-        name: "TreeOfLifeBook",
+
+    //fruit, mush
+    Apple: {
+        name: "Apple",
         category: "interaction_item",
-        inventorySprite: "TreeOfLifeBook",
-        text: "It seems like an interesting book, full of ancient knowledge."
+        inventorySprite: "Apple",
+        text: "Oh, it's an apple.",
     },
-    RavenBook: {
-        name: "RavenBook",
+    Banana: {
+        name: "Banana",
         category: "interaction_item",
-        inventorySprite: "RavenBook",
-        text: "It seems like an interesting book, full of ancient knowledge."
+        inventorySprite: "Banana",
+        text: "Ripe juicy banana.",
+    },
+    Cherry: {
+        name: "Cherry",
+        category: "interaction_item",
+        inventorySprite: "Cherry",
+        text: "Ripe juicy cherry.",
+    },
+    GreenApple: {
+        name: "GreenApple",
+        category: "interaction_item",
+        inventorySprite: "Apple",
+        text: "Oh, it's an apple. Green one.",
+    },
+    GreenMushroom: {
+        name: "GreenMushroom",
+        category: "interaction_item",
+        inventorySprite: "GreenMushroom",
+        text: "Poisonous. Don't eat."
+    },
+    HoneyComb: {
+        name: "HoneyComb",
+        category: "interaction_item",
+        inventorySprite: "HoneyComb",
+        text: "Sweet Honey. Watch out for the bees.",
+    },
+    Orange: {
+        name: "Orange",
+        category: "interaction_item",
+        inventorySprite: "Orange",
+        text: "Ripe juicy orange.",
+    },
+    Pear: {
+        name: "Pear",
+        category: "interaction_item",
+        inventorySprite: "Pear",
+        text: "Ripe juicy pear.",
+    },
+    RedMushroom: {
+        name: "RedMushroom",
+        category: "interaction_item",
+        inventorySprite: "RedMushroom",
+        text: "Poisonous. Don't eat."
+    },
+    YellowMushroom: {
+        name: "YellowMushroom",
+        category: "interaction_item",
+        inventorySprite: "YellowMushroom",
+        text: "Poisonous. Don't eat."
+    },
+
+    //fashion
+    BlackLacePanties: {
+        name: "BlackLacePanties",
+        category: "interaction_item",
+        inventorySprite: "BlackLacePanties",
+        text: "Wow, that's hot."
+    },
+    BlackLatexBra: {
+        name: "BlackLatexBra",
+        category: "interaction_item",
+        inventorySprite: "BlackLatexBra",
+        text: "Smouldering hot. Maybe he'll let me wear it in the next game."
+    },
+    BlackLatexGloves: {
+        name: "BlackLatexGloves",
+        category: "interaction_item",
+        inventorySprite: "BlackLatexGloves",
+        text: "Sexy gloves.",
+    },
+    BlackLatexpanties: {
+        name: "BlackLatexpanties",
+        category: "interaction_item",
+        inventorySprite: "BlackLatexpanties",
+        text: "Wow, that's hot."
+    },
+    BlackLeatherBoots: {
+        name: "BlackLeatherBoots",
+        category: "interaction_item",
+        inventorySprite: "BlackLeatherBoots",
+        text: "This boots look amazing. Did you see those heels?"
+    },
+    BlackPump: {
+        name: "BlackPump",
+        category: "interaction_item",
+        inventorySprite: "BlackPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    BlueLatexTop: {
+        name: "BlueLatexTop",
+        category: "interaction_item",
+        inventorySprite: "BlueLatexTop",
+        text: "I look fabolous in this. As always.",
+    },
+    BluePump: {
+        name: "BluePump",
+        category: "interaction_item",
+        inventorySprite: "BluePump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    BrownLatexBootyShorts: {
+        name: "BrownLatexBootyShorts",
+        category: "interaction_item",
+        inventorySprite: "BrownLatexBootyShorts",
+        text: "My tight shorts.",
+    },
+    BrownLeatherBoots: {
+        name: "BrownLeatherBoots",
+        category: "interaction_item",
+        inventorySprite: "BrownLeatherBoots",
+        text: "My boots. Sharp heels.",
+    },
+    GoldPanties: {
+        name: "GoldPanties",
+        category: "interaction_item",
+        inventorySprite: "GoldPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    GoldPump: {
+        name: "GoldPump",
+        category: "interaction_item",
+        inventorySprite: "GoldPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    GreenBoots: {
+        name: "GreenBoots",
+        category: "interaction_item",
+        inventorySprite: "GreenBoots",
+        text: "Wow, that's hot."
+    },
+    GreenDress: {
+        name: "GreenDress",
+        category: "interaction_item",
+        inventorySprite: "GreenDress",
+        text: "Wow, that's hot."
+    },
+    GreenPanties: {
+        name: "GreenPanties",
+        category: "interaction_item",
+        inventorySprite: "GreenPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    GreenPump: {
+        name: "GreenPump",
+        category: "interaction_item",
+        inventorySprite: "GreenPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    GreyLatexPanties: {
+        name: "GreyLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "GreyLatexPanties",
+        text: "Wow, that's hot."
+    },
+    LeoHat: {
+        name: "LeoHat",
+        category: "interaction_item",
+        inventorySprite: "LeoHat",
+        text: "Cool hat. Leopard spots. I could hide in the jungle."
+    },
+    LeoPumps: {
+        name: "LeoPumps",
+        category: "interaction_item",
+        inventorySprite: "LeoPumps",
+        text: "Looks like something some wild kitty would wear."
+    },
+    Leotard: {
+        name: "Leotard",
+        category: "interaction_item",
+        inventorySprite: "Leotard",
+        text: "Leotard for leopard."
+    },
+    OrangeBoots: {
+        name: "OrangeBoots",
+        category: "interaction_item",
+        inventorySprite: "OrangeBoots",
+        text: "Cute stuff. Befitting a princess. But not my style."
+    },
+    OrangeBra: {
+        name: "OrangeBra",
+        category: "interaction_item",
+        inventorySprite: "OrangeBra",
+        text: "Cute stuff. Befitting a princess. But not my style."
+    },
+    OrangeLeggings: {
+        name: "OrangeLeggings",
+        category: "interaction_item",
+        inventorySprite: "OrangeLeggings",
+        text: "Cute stuff. Befitting a princess. But not my style."
+    },
+    OrangeThongs: {
+        name: "OrangeThongs",
+        category: "interaction_item",
+        inventorySprite: "OrangeThongs",
+        text: "Cute stuff. Befitting a princess. But not my style."
+    },
+    PinkBra: {
+        name: "PinkBra",
+        category: "interaction_item",
+        inventorySprite: "PinkBra",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    PinkHighBoots: {
+        name: "PinkHighBoots",
+        category: "interaction_item",
+        inventorySprite: "PinkHighBoots",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    PinkPanties: {
+        name: "PinkPanties",
+        category: "interaction_item",
+        inventorySprite: "PinkPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    PurpleLatexBra: {
+        name: "PurpleLatexBra",
+        category: "interaction_item",
+        inventorySprite: "PurpleLatexBra",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    PurplePump: {
+        name: "PurplePump",
+        category: "interaction_item",
+        inventorySprite: "PurplePump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    RedBootyShorts: {
+        name: "RedBootyShorts",
+        category: "interaction_item",
+        inventorySprite: "RedBootyShorts",
+        text: "Hot!"
+    },
+    RedLacePanties: {
+        name: "RedLacePanties",
+        category: "interaction_item",
+        inventorySprite: "RedLacePanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    RedLatexBra: {
+        name: "RedLatexBra",
+        category: "interaction_item",
+        inventorySprite: "RedLatexBra",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    RedLatexPanties: {
+        name: "RedLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "RedLatexPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    RedLeatherBoots: {
+        name: "RedLeatherBoots",
+        category: "interaction_item",
+        inventorySprite: "RedLeatherBoots",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    RedLeatherDress: {
+        name: "RedLeatherDress",
+        category: "interaction_item",
+        inventorySprite: "RedLeatherDress",
+        text: "Hot. Can I wear it?"
+    },
+    RedPump: {
+        name: "RedPump",
+        category: "interaction_item",
+        inventorySprite: "RedPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    RedShorts: {
+        name: "RedShorts",
+        category: "interaction_item",
+        inventorySprite: "RedShorts",
+        text: "Hot!"
+    },
+    RedThighHighBoots: {
+        name: "RedThighHighBoots",
+        category: "interaction_item",
+        inventorySprite: "RedThighHighBoots",
+        text: "This boots are so hot."
+    },
+    SilverPanties: {
+        name: "SilverPanties",
+        category: "interaction_item",
+        inventorySprite: "SilverPanties",
+        text: "Sexy stuff. I should wear these. Maybe in the next game?"
+    },
+    SilverPump: {
+        name: "SilverPump",
+        category: "interaction_item",
+        inventorySprite: "SilverPump",
+        text: "Just one of the pair. But with this heel I can stab someone."
+    },
+    TigerHat: {
+        name: "TigerHat",
+        category: "interaction_item",
+        inventorySprite: "TigerHat",
+        text: "Cool headwear."
+    },
+    TigerPump: {
+        name: "TigerPump",
+        category: "interaction_item",
+        inventorySprite: "TigerPump",
+        text: "Hot tiger sking heels."
+    },
+    TigerTard: {
+        name: "TigerTard",
+        category: "interaction_item",
+        inventorySprite: "TigerTard",
+        text: "Hot. Can I wear it?"
+    },
+    TransBlackLatexPanties: {
+        name: "TransBlackLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "TransBlackLatexPanties",
+        text: "Wow, that's hot."
+    },
+    TransRedLatexPanties: {
+        name: "TransRedLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "TransRedLatexPanties",
+        text: "Wow, that's hot."
+    },
+    WhiteBoots: {
+        name: "WhiteBoots",
+        category: "interaction_item",
+        inventorySprite: "WhiteBoots",
+        text: "Wow, that's hot."
+    },
+    WhiteDress: {
+        name: "WhiteDress",
+        category: "interaction_item",
+        inventorySprite: "WhiteDress",
+        text: "Wow, that's hot."
+    },
+    WhiteLatexBra: {
+        name: "WhiteLatexBra",
+        category: "interaction_item",
+        inventorySprite: "WhiteLatexBra",
+        text: "Smouldering hot. Maybe he'll let me wear it in the next game."
+    },
+    WhiteLacePanties: {
+        name: "WhiteLacePanties",
+        category: "interaction_item",
+        inventorySprite: "WhiteLacePanties",
+        text: "Wow, that's hot."
+    },
+    WhiteLatexPanties: {
+        name: "WhiteLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "WhiteLatexPanties",
+        text: "Wow, that's hot."
+    },
+    WhitePanties: {
+        name: "WhitePanties",
+        category: "interaction_item",
+        inventorySprite: "WhitePanties",
+        text: "Wow, that's hot."
+    },
+    YellowDress: {
+        name: "YellowDress",
+        category: "interaction_item",
+        inventorySprite: "YellowDress",
+        text: "Wow, that's hot."
+    },
+    YellowLatexPanties: {
+        name: "YellowLatexPanties",
+        category: "interaction_item",
+        inventorySprite: "YellowLatexPanties",
+        text: "Wow, that's hot."
+    },
+    YellowLatexThongs: {
+        name: "YellowLatexThongs",
+        category: "interaction_item",
+        inventorySprite: "YellowLatexThongs",
+        text: "Wow, that's hot."
+    },
+    YellowUmbrella: {
+        name: "YellowUmbrella",
+        category: "interaction_item",
+        inventorySprite: "YellowUmbrella",
+        text: "Nice umbrella. But it doesn rain in this game."
+    },
+    YellowWellies: {
+        name: "YellowWellies",
+        category: "interaction_item",
+        inventorySprite: "YellowWellies",
+        text: "Shiny yellow wellies. I can jump in the puddles. Yeah!"
+    },
+
+    //certificates and documents
+    BlackCertificate: {
+        name: "BlackCertificate",
+        category: "interaction_item",
+        inventorySprite: "BlackCertificate",
+    },
+    Document: {
+        name: "Document",
+        category: "interaction_item",
+        inventorySprite: "Document",
+        text: "This proves I am able.",
+    },
+    GreyCertificate: {
+        name: "GreyCertificate",
+        category: "interaction_item",
+        inventorySprite: "GreyCertificate",
+    },
+    RedCertificate: {
+        name: "RedCertificate",
+        category: "interaction_item",
+        inventorySprite: "RedCertificate",
+    },
+    WhiteCertificate: {
+        name: "WhiteCertificate",
+        category: "interaction_item",
+        inventorySprite: "WhiteCertificate",
+    },
+    YellowCertificate: {
+        name: "YellowCertificate",
+        category: "interaction_item",
+        inventorySprite: "YellowCertificate",
+    },
+
+    //weapons, armor, shields
+    Ammo: {
+        name: "Ammo",
+        category: "interaction_item",
+        inventorySprite: "Ammo",
+        text: "Ammunition for a revolver."
+    },
+    ArmorBlueprint: {
+        name: "ArmorBlueprint",
+        category: "interaction_item",
+        inventorySprite: "ArmorBlueprint",
+        text: "Looks like some kind of blueprint for armor."
+    },
+    AssaultRifle: {
+        name: "AssaultRifle",
+        category: "interaction_item",
+        inventorySprite: "AssaultRifle",
+        text: "We don't need guns, we have fireballs!"
+    },
+    BattleAxe: {
+        name: "BattleAxe",
+        category: "interaction_item",
+        inventorySprite: "BattleAxe",
+        text: "Oooh. Head chopping utility."
+    },
+    Bow: {
+        name: "Bow",
+        category: "interaction_item",
+        inventorySprite: "Bow",
+        text: "Bow. Silent and deadly weapon."
+    },
+    BurningBattleAxe: {
+        name: "BurningBattleAxe",
+        category: "interaction_item",
+        inventorySprite: "BurningBattleAxe",
+        text: "This can defeat Hauntessa."
+    },
+    Dagger: {
+        name: "Dagger",
+        category: "interaction_item",
+        inventorySprite: "Dagger",
+        text: "Sharp dagger."
+    },
+    GoldShield: {
+        name: "GoldShield",
+        category: "interaction_item",
+        inventorySprite: "GoldShield",
+        text: "Amazing shield."
+    },
+    GoldSword: {
+        name: "GoldSword",
+        category: "interaction_item",
+        inventorySprite: "GoldSword",
+        text: "Amazing weapon."
+    },
+    InfernalArmor: {
+        name: "InfernalArmor",
+        category: "interaction_item",
+        inventorySprite: "InfernalArmor",
+    },
+    Mace: {
+        name: "Mace",
+        category: "interaction_item",
+        inventorySprite: "Mace",
+        text: "For bashing heads."
+    },
+    MilitaryHelmet: {
+        name: "MilitaryHelmet",
+        category: "interaction_item",
+        inventorySprite: "MilitaryHelmet",
+        text: "Very modern helmet. No knight would wear this."
+    },
+    RedShield: {
+        name: "RedShield",
+        category: "interaction_item",
+        inventorySprite: "RedShield",
+        text: "Amazing shield."
+    },
+    RedSword: {
+        name: "RedSword",
+        category: "interaction_item",
+        inventorySprite: "RedSword",
+        text: "Amazing weapon."
+    },
+    Revolver: {
+        name: "Revolver",
+        category: "interaction_item",
+        inventorySprite: "Revolver",
+        text: "Small handgun. I am more of a fireball girl myself."
+    },
+    Shuriken: {
+        name: "Shuriken",
+        category: "interaction_item",
+        inventorySprite: "Shuriken",
+        text: "A deadly throwing star."
+    },
+    SilverShield: {
+        name: "SilverShield",
+        category: "interaction_item",
+        inventorySprite: "SilverShield",
+        text: "Amazing shield."
+    },
+    SilverSword: {
+        name: "SilverSword",
+        category: "interaction_item",
+        inventorySprite: "SilverSword",
+        text: "Amazing weapon."
+    },
+    Spear: {
+        name: "Spear",
+        category: "interaction_item",
+        inventorySprite: "Spear",
+        text: "Pointy spear. Let's poke someone."
+    },
+    Sword: {
+        name: "Sword",
+        category: "interaction_item",
+        inventorySprite: "Sword",
+        text: "Very good balance. But I prefer my heels."
+    },
+    Trident: {
+        name: "Trident",
+        category: "interaction_item",
+        inventorySprite: "Trident",
+        text: "Trident? Very strange weapon. For specialists."
+    },
+
+    //flowers
+    BlueRose: {
+        name: "BlueRose",
+        category: "interaction_item",
+        inventorySprite: "BlueRose",
+        text: "Beautiful blue rose."
+    },
+    PurpleRose: {
+        name: "PurpleRose",
+        category: "interaction_item",
+        inventorySprite: "PurpleRose",
+        text: "Beautiful purple rose."
+    },
+    RedRose: {
+        name: "RedRose",
+        category: "interaction_item",
+        inventorySprite: "RedRose",
+        text: "Beautiful red rose. "
+    },
+    Rose: {
+        name: "Rose",
+        category: "interaction_item",
+        inventorySprite: "Rose",
+        text: "Beautiful red rose.",
+    },
+
+    //gym
+    DumbBell: {
+        name: "DumbBell",
+        category: "interaction_item",
+        inventorySprite: "DumbBell",
+        text: "Heavy. I am building muscles as we speak."
+    },
+    RedSneaker: {
+        name: "RedSneaker",
+        category: "interaction_item",
+        inventorySprite: "RedSneaker",
+        text: "Red sneaker without pair."
+    },
+
+    //gems, jewelry
+    Amethyst: {
+        name: "Amethyst",
+        category: "interaction_item",
+        inventorySprite: "Amethyst",
+        text: "Beautiful and precious Amethyst."
+    },
+    Diamond: {
+        name: "Diamond",
+        category: "interaction_item",
+        inventorySprite: "Diamond",
+        text: "Diamond? My best friend."
+    },
+    Emerald: {
+        name: "Emerald",
+        category: "interaction_item",
+        inventorySprite: "Emerald",
+        text: "Emerald? I can make something from it."
+    },
+    GoldenBracelet: {
+        name: "GoldenBracelet",
+        category: "interaction_item",
+        inventorySprite: "GoldenBracelet",
+        text: "Very valuable golden bracelet."
+    },
+    GoldenGoblet: {
+        name: "GoldenGoblet",
+        category: "interaction_item",
+        inventorySprite: "GoldenGoblet",
+        text: "Golden goblet? For expensive drinks."
+    },
+    GoldenNecklace: {
+        name: "GoldenNecklace",
+        category: "interaction_item",
+        inventorySprite: "GoldenNecklace",
+        text: "Very valuable golden necklace."
+    },
+    JeweledCrown: {
+        name: "JeweledCrown",
+        category: "interaction_item",
+        inventorySprite: "JeweledCrown",
+        text: "Jeweled Crown. Expensive."
+    },
+    Moonstone: {
+        name: "Moonstone",
+        category: "interaction_item",
+        inventorySprite: "Moonstone",
+        text: "Beautiful and precious Moonstone."
+    },
+    Pearl: {
+        name: "Pearl",
+        category: "interaction_item",
+        inventorySprite: "Pearl",
+        text: "Pearl looks like moon's tear."
+    },
+    PurpleTear: {
+        name: "PurpleTear",
+        category: "interaction_item",
+        inventorySprite: "PurpleTear",
+        text: "Beautiful and precious gem."
+    },
+    Ring: {
+        name: "Ring",
+        category: "interaction_item",
+        inventorySprite: "Ring",
+        text: "Will it make me invisible, precious?"
+    },
+    Ruby: {
+        name: "Ruby",
+        category: "interaction_item",
+        inventorySprite: "Ruby",
+        text: "Nice shiny blood red ruby."
     },
 
     // royal items
@@ -2411,363 +3352,389 @@ const INTERACTION_ITEM = {
         inventorySprite: "GoldenScepter",
         text: "My specter. A symbol of my power. Or is that the heels?",
     },
-    Document: {
-        name: "Document",
+
+    // animals
+    Butterfly: {
+        name: "Butterfly",
         category: "interaction_item",
-        inventorySprite: "Document",
-        text: "This proves I am able.",
+        inventorySprite: "Butterfly",
+        text: "Fly made of butter? So funny."
+    },
+    Fish: {
+        name: "Fish",
+        category: "interaction_item",
+        inventorySprite: "Fish",
+        text: "Smelly little swimmer."
+    },
+    Wasp: {
+        name: "Wasp",
+        category: "interaction_item",
+        inventorySprite: "Wasp",
+        text: "Stingy?"
     },
 
-    Whip: {
-        name: "Whip",
+    //bitch on beach
+    Cap: {
+        name: "Cap",
         category: "interaction_item",
-        inventorySprite: "Whip",
-        text: "I can punish someone."
+        inventorySprite: "Cap",
+        text: "Baseball cap. I'll go undercover."
+    },
+    Fins: {
+        name: "Fins",
+        category: "interaction_item",
+        inventorySprite: "Fins",
+        text: "Fins. For scuba diving."
+    },
+    RedFin: {
+        name: "RedFin",
+        category: "interaction_item",
+        inventorySprite: "RedFin",
+        text: "A red fin. For scuba diving. But noth without the pair."
+    },
+    RedLeatherHat: {
+        name: "RedLeatherHat",
+        category: "interaction_item",
+        inventorySprite: "RedLeatherHat",
+        text: "Too big for my cute small head."
+    },
+    RedSandals: {
+        name: "RedSandals",
+        category: "interaction_item",
+        inventorySprite: "RedSandals",
+        text: "Beatchwear. Bitchwear? Bitch. Where?"
+    },
+    ScubaMask: {
+        name: "ScubaMask",
+        category: "interaction_item",
+        inventorySprite: "ScubaMask",
+        text: "Mask. For scuba diving."
+    },
+    Shell: {
+        name: "Shell",
+        category: "interaction_item",
+        inventorySprite: "Shell",
+        text: "Pretty shell."
+    },
+    SunGlasses: {
+        name: "SunGlasses",
+        category: "interaction_item",
+        inventorySprite: "SunGlasses",
+        text: "Fashionable sun glasses."
+    },
+    SunScreen: {
+        name: "SunScreen",
+        category: "interaction_item",
+        inventorySprite: "SunScreen",
+        text: "Sun screen factor 50."
+    },
+    Towel: {
+        name: "Towel",
+        category: "interaction_item",
+        inventorySprite: "Towel",
+        text: "A towel. Pity I am not wet."
     },
 
-    //fruit
-    Apple: {
-        name: "Apple",
+    //art
+    EmptyPainting: {
+        name: "EmptyPainting",
         category: "interaction_item",
-        inventorySprite: "Apple",
-        text: "Oh, it's an apple.",
+        inventorySprite: "EmptyPainting",
+        text: "Empty canvas. Pity I don't paint."
     },
-    GreenApple: {
-        name: "GreenApple",
+    PaintBrush: {
+        name: "PaintBrush",
         category: "interaction_item",
-        inventorySprite: "Apple",
-        text: "Oh, it's an apple. Green one.",
+        inventorySprite: "PaintBrush",
+        text: "PaintBrush? Painter's friend."
     },
-    Pear: {
-        name: "Pear",
+    Painting: {
+        name: "Painting",
         category: "interaction_item",
-        inventorySprite: "Pear",
-        text: "Ripe juicy pear.",
+        inventorySprite: "Painting",
+        text: "Greate painting of a nude woman."
     },
-    Orange: {
-        name: "Orange",
+    Palette: {
+        name: "Palette",
         category: "interaction_item",
-        inventorySprite: "Orange",
-        text: "Ripe juicy orange.",
-    },
-    Banana: {
-        name: "Banana",
-        category: "interaction_item",
-        inventorySprite: "Banana",
-        text: "Ripe juicy banana.",
-    },
-    Cherry: {
-        name: "Cherry",
-        category: "interaction_item",
-        inventorySprite: "Cherry",
-        text: "Ripe juicy cherry.",
-    },
-    HoneyComb: {
-        name: "HoneyComb",
-        category: "interaction_item",
-        inventorySprite: "HoneyComb",
-        text: "Sweet Honey. Watch out for the bees.",
+        inventorySprite: "Palette",
+        text: "Palette? Painter's friend."
     },
 
-    //fashion
-    BlackLeatherBoots: {
-        name: "BlackLeatherBoots",
+    // skeletal
+    Skeleton: {
+        name: "Skeleton",
         category: "interaction_item",
-        inventorySprite: "BlackLeatherBoots",
-        text: "This boots look amazing. Did you see those heels?"
+        inventorySprite: "Skeleton",
+        text: "A full human skeleton. Why am I picking that?"
     },
-    LeoPumps: {
-        name: "LeoPumps",
+    SkeletonBird: {
+        name: "SkeletonBird",
         category: "interaction_item",
-        inventorySprite: "LeoPumps",
-        text: "Looks like something some wild kitty would wear."
+        inventorySprite: "SkeletonBird",
+        text: "Creepy skeleton toy."
     },
-    RedPump: {
-        name: "RedPump",
+    SkeletonCat: {
+        name: "SkeletonCat",
         category: "interaction_item",
-        inventorySprite: "RedPump",
-        text: "Just one of the pair. But with this heel I can stab someone."
+        inventorySprite: "SkeletonCat",
+        text: "Creepy skeleton toy."
     },
-    BluePump: {
-        name: "BluePump",
+    SkeletonDoll: {
+        name: "SkeletonDoll",
         category: "interaction_item",
-        inventorySprite: "BluePump",
-        text: "Just one of the pair. But with this heel I can stab someone."
+        inventorySprite: "SkeletonDoll",
+        text: "Cute skeleton doll for little skeleton children."
     },
-    SilverPump: {
-        name: "SilverPump",
+    Skull: {
+        name: "Skull",
         category: "interaction_item",
-        inventorySprite: "SilverPump",
-        text: "Just one of the pair. But with this heel I can stab someone."
-    },
-    GreenPump: {
-        name: "GreenPump",
-        category: "interaction_item",
-        inventorySprite: "GreenPump",
-        text: "Just one of the pair. But with this heel I can stab someone."
-    },
-    BlackPump: {
-        name: "BlackPump",
-        category: "interaction_item",
-        inventorySprite: "BlackPump",
-        text: "Just one of the pair. But with this heel I can stab someone."
-    },
-    PurplePump: {
-        name: "PurplePump",
-        category: "interaction_item",
-        inventorySprite: "PurplePump",
-        text: "Just one of the pair. But with this heel I can stab someone."
-    },
-    GoldPump: {
-        name: "GoldPump",
-        category: "interaction_item",
-        inventorySprite: "GoldPump",
-        text: "Just one of the pair. But with this heel I can stab someone."
-    },
-    TigerPump: {
-        name: "TigerPump",
-        category: "interaction_item",
-        inventorySprite: "TigerPump",
-        text: "Hot tiger sking heels."
+        inventorySprite: "Skull",
+        text: "Creeepy?"
     },
 
-    BrownLatexBootyShorts: {
-        name: "BrownLatexBootyShorts",
+    //computer
+    Computer: {
+        name: "Computer",
         category: "interaction_item",
-        inventorySprite: "BrownLatexBootyShorts",
-        text: "My tight shorts.",
+        inventorySprite: "Computer",
+        text: "Wow, 8 bit computer. Thats so much more than 4."
     },
-    BlueLatexTop: {
-        name: "BlueLatexTop",
+    Floppy: {
+        name: "Floppy",
         category: "interaction_item",
-        inventorySprite: "BlueLatexTop",
-        text: "I look fabolous in this. As always.",
+        inventorySprite: "Floppy",
+        text: "Floppy disk? I can store my memoirs on it."
     },
-    BlackLatexGloves: {
-        name: "BlackLatexGloves",
+    Joystick: {
+        name: "Joystick",
         category: "interaction_item",
-        inventorySprite: "BlackLatexGloves",
-        text: "Sexy gloves.",
+        inventorySprite: "Joystick",
+        text: "With this joystick I can probably play Galactix."
     },
-    BlackLatexpanties: {
-        name: "BlackLatexpanties",
+    MicroProcessor: {
+        name: "MicroProcessor",
         category: "interaction_item",
-        inventorySprite: "BlackLatexpanties",
-        text: "Wow, that's hot."
+        inventorySprite: "MicroProcessor",
+        text: "8 bit processor. But does it run Castle Haunt?"
     },
-    BlackLatexBra: {
-        name: "BlackLatexBra",
+    OldFloppy: {
+        name: "OldFloppy",
         category: "interaction_item",
-        inventorySprite: "BlackLatexBra",
-        text: "Smouldering hot. Maybe he'll let me wear it in the next game."
-    },
-    WhiteLatexBra: {
-        name: "WhiteLatexBra",
-        category: "interaction_item",
-        inventorySprite: "WhiteLatexBra",
-        text: "Smouldering hot. Maybe he'll let me wear it in the next game."
-    },
-    YellowLatexPanties: {
-        name: "YellowLatexPanties",
-        category: "interaction_item",
-        inventorySprite: "YellowLatexPanties",
-        text: "Wow, that's hot."
-    },
-    WhiteLatexPanties: {
-        name: "WhiteLatexPanties",
-        category: "interaction_item",
-        inventorySprite: "WhiteLatexPanties",
-        text: "Wow, that's hot."
-    },
-    GreyLatexPanties: {
-        name: "GreyLatexPanties",
-        category: "interaction_item",
-        inventorySprite: "GreyLatexPanties",
-        text: "Wow, that's hot."
-    },
-    TransRedLatexPanties: {
-        name: "TransRedLatexPanties",
-        category: "interaction_item",
-        inventorySprite: "TransRedLatexPanties",
-        text: "Wow, that's hot."
-    },
-    TransBlackLatexPanties: {
-        name: "TransBlackLatexPanties",
-        category: "interaction_item",
-        inventorySprite: "TransBlackLatexPanties",
-        text: "Wow, that's hot."
-    },
-    RedLatexBra: {
-        name: "RedLatexBra",
-        category: "interaction_item",
-        inventorySprite: "RedLatexBra",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    RedLatexPanties: {
-        name: "RedLatexPanties",
-        category: "interaction_item",
-        inventorySprite: "RedLatexPanties",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    PurpleLatexBra: {
-        name: "PurpleLatexBra",
-        category: "interaction_item",
-        inventorySprite: "PurpleLatexBra",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    PinkPanties: {
-        name: "PinkPanties",
-        category: "interaction_item",
-        inventorySprite: "PinkPanties",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    GoldPanties: {
-        name: "GoldPanties",
-        category: "interaction_item",
-        inventorySprite: "GoldPanties",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    SilverPanties: {
-        name: "SilverPanties",
-        category: "interaction_item",
-        inventorySprite: "SilverPanties",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    PinkBra: {
-        name: "PinkBra",
-        category: "interaction_item",
-        inventorySprite: "PinkBra",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    YellowLatexThongs: {
-        name: "YellowLatexThongs",
-        category: "interaction_item",
-        inventorySprite: "YellowLatexThongs",
-        text: "Wow, that's hot."
-    },
-    RedLeatherDress: {
-        name: "RedLeatherDress",
-        category: "interaction_item",
-        inventorySprite: "RedLeatherDress",
-        text: "Hot. Can I wear it?"
-    },
-    GreenDress: {
-        name: "GreenDress",
-        category: "interaction_item",
-        inventorySprite: "GreenDress",
-        text: "Wow, that's hot."
-    },
-    WhiteDress: {
-        name: "WhiteDress",
-        category: "interaction_item",
-        inventorySprite: "WhiteDress",
-        text: "Wow, that's hot."
-    },
-    YellowDress: {
-        name: "YellowDress",
-        category: "interaction_item",
-        inventorySprite: "YellowDress",
-        text: "Wow, that's hot."
-    },
-    WhiteBoots: {
-        name: "WhiteBoots",
-        category: "interaction_item",
-        inventorySprite: "WhiteBoots",
-        text: "Wow, that's hot."
-    },
-    GreenBoots: {
-        name: "GreenBoots",
-        category: "interaction_item",
-        inventorySprite: "GreenBoots",
-        text: "Wow, that's hot."
-    },
-    PinkHighBoots: {
-        name: "PinkHighBoots",
-        category: "interaction_item",
-        inventorySprite: "PinkHighBoots",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    OrangeBoots: {
-        name: "OrangeBoots",
-        category: "interaction_item",
-        inventorySprite: "OrangeBoots",
-        text: "Cute stuff. Befitting a princess. But not my style."
-    },
-    RedThighHighBoots: {
-        name: "RedThighHighBoots",
-        category: "interaction_item",
-        inventorySprite: "RedThighHighBoots",
-        text: "This boots are so hot."
-    },
-    RedLeatherBoots: {
-        name: "RedLeatherBoots",
-        category: "interaction_item",
-        inventorySprite: "RedLeatherBoots",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    BlackLeatherBoots: {
-        name: "BlackLeatherBoots",
-        category: "interaction_item",
-        inventorySprite: "BlackLeatherBoots",
-        text: "This boots look amazing. Did you see those heels?"
-    },
-    BrownLeatherBoots: {
-        name: "BrownLeatherBoots",
-        category: "interaction_item",
-        inventorySprite: "BrownLeatherBoots",
-        text: "My boots. Sharp heels.",
-    },
-    PinkBra: {
-        name: "PinkBra",
-        category: "interaction_item",
-        inventorySprite: "PinkBra",
-        text: "Sexy stuff. I should wear these. Maybe in the next game?"
-    },
-    OrangeBra: {
-        name: "OrangeBra",
-        category: "interaction_item",
-        inventorySprite: "OrangeBra",
-        text: "Cute stuff. Befitting a princess. But not my style."
-    },
-    OrangeThongs: {
-        name: "OrangeThongs",
-        category: "interaction_item",
-        inventorySprite: "OrangeThongs",
-        text: "Cute stuff. Befitting a princess. But not my style."
-    },
-    OrangeLeggings: {
-        name: "OrangeLeggings",
-        category: "interaction_item",
-        inventorySprite: "OrangeLeggings",
-        text: "Cute stuff. Befitting a princess. But not my style."
+        inventorySprite: "OldFloppy",
+        text: "Very old 5 and 25 inch floppy, containing Princess Wants Everything game. So rare."
     },
 
-    //certificates
-    YellowCertificate: {
-        name: "YellowCertificate",
+    //liquids
+    Blood: {
+        name: "Blood",
         category: "interaction_item",
-        inventorySprite: "YellowCertificate",
+        inventorySprite: "Blood",
+        text: "Blood? Yuck."
     },
-    GreyCertificate: {
-        name: "GreyCertificate",
+    BlueLiquid: {
+        name: "BlueLiquid",
         category: "interaction_item",
-        inventorySprite: "GreyCertificate",
+        inventorySprite: "BlueLiquid",
+        text: "A flask of vile looking blue liquid."
     },
-    BlackCertificate: {
-        name: "BlackCertificate",
+    GreenLiquid: {
+        name: "GreenLiquid",
         category: "interaction_item",
-        inventorySprite: "BlackCertificate",
+        inventorySprite: "GreenLiquid",
+        text: "A flask of vile looking green liquid."
     },
-    WhiteCertificate: {
-        name: "WhiteCertificate",
+    RedLiquid: {
+        name: "RedLiquid",
         category: "interaction_item",
-        inventorySprite: "WhiteCertificate",
+        inventorySprite: "RedLiquid",
+        text: "A flask of vile looking red liquid."
     },
-    RedCertificate: {
-        name: "RedCertificate",
+
+    //feathers
+    BlueFeather: {
+        name: "BlueFeather",
         category: "interaction_item",
-        inventorySprite: "RedCertificate",
+        inventorySprite: "BlueFeather",
+        text: "A feather. Blue."
     },
+    GreenFeather: {
+        name: "GreenFeather",
+        category: "interaction_item",
+        inventorySprite: "GreenFeather",
+        text: "A feather. Green."
+    },
+    RedFeather: {
+        name: "RedFeather",
+        category: "interaction_item",
+        inventorySprite: "RedFeather",
+        text: "A feather. Red."
+    },
+    WhiteFeather: {
+        name: "WhiteFeather",
+        category: "interaction_item",
+        inventorySprite: "WhiteFeather",
+        text: "A feather. White."
+    },
+
+    //tools
+    Anvil: {
+        name: "Anvil",
+        category: "interaction_item",
+        inventorySprite: "Anvil",
+        text: "Anvil. Blacksmistress might want it."
+    },
+    Brush: {
+        name: "Brush",
+        category: "interaction_item",
+        inventorySprite: "Brush",
+        text: "A brush for polishing boots."
+    },
+    Hammer: {
+        name: "Hammer",
+        category: "interaction_item",
+        inventorySprite: "Hammer",
+        text: "Hammer. I could hammer someone."
+    },
+    Quill: {
+        name: "Quill",
+        category: "interaction_item",
+        inventorySprite: "Quill",
+        text: "Quill? For writing, I guess?."
+    },
+
+    //holy symbols
+    Ankh: {
+        name: "Ankh",
+        category: "interaction_item",
+        inventorySprite: "Ankh",
+        text: "A powerful magical object."
+    },
+    Cross: {
+        name: "Cross",
+        category: "interaction_item",
+        inventorySprite: "Cross",
+        text: "A powerful magical object."
+    },
+    Kiss: {
+        name: "Kiss",
+        category: "interaction_item",
+        inventorySprite: "Kiss",
+        text: "This looks like a portable kiss voucher. What a fascinating concept."
+    },
+    Pentagram: {
+        name: "Pentagram",
+        category: "interaction_item",
+        inventorySprite: "Pentagram",
+        text: "A powerful magical object."
+    },
+
+    //swimsuits
+    BlueSwimsuit: {
+        name: "BlueSwimsuit",
+        category: "interaction_item",
+        inventorySprite: "BlueSwimsuit",
+        text: "Hot swimsuit."
+    },
+    GreenSwimsuit: {
+        name: "GreenSwimsuit",
+        category: "interaction_item",
+        inventorySprite: "GreenSwimsuit",
+        text: "Hot swimsuit."
+    },
+    MagentaSwimsuit: {
+        name: "MagentaSwimsuit",
+        category: "interaction_item",
+        inventorySprite: "MagentaSwimsuit",
+        text: "Hot swimsuit."
+    },
+    RedSwimsuit: {
+        name: "RedSwimsuit",
+        category: "interaction_item",
+        inventorySprite: "RedSwimsuit",
+        text: "Hot swimsuit."
+    },
+    YellowSwimsuit: {
+        name: "YellowSwimsuit",
+        category: "interaction_item",
+        inventorySprite: "YellowSwimsuit",
+        text: "Hot swimsuit."
+    },
+
+    //misc
+    ArcadeToken: {
+        name: "ArcadeToken",
+        category: "interaction_item",
+        inventorySprite: "ArcadeToken",
+        text: "Token for arcade cabinet. Let's play some Pac Man."
+    },
+    BurningTorch: {
+        name: "BurningTorch",
+        category: "interaction_item",
+        inventorySprite: "BurningTorch",
+        text: "Fiery!"
+    },
+    GasolineCan: {
+        name: "GasolineCan",
+        category: "interaction_item",
+        inventorySprite: "GasolineCan",
+        text: "Full of gasoline."
+    },
+    KeyMould: {
+        name: "KeyMould",
+        category: "interaction_item",
+        inventorySprite: "KeyMould",
+        text: "Mould for making keys. This will come handy."
+    },
+    Lantern: {
+        name: "Lantern",
+        category: "interaction_item",
+        inventorySprite: "Lantern",
+        text: "A source of light in a dark times. Or forest."
+    },
+    Moon: {
+        name: "Moon",
+        category: "interaction_item",
+        inventorySprite: "Moon",
+        text: "Moon? Really? What's next."
+    },
+    PinkDuster: {
+        name: "PinkDuster",
+        category: "interaction_item",
+        inventorySprite: "PinkDuster",
+        text: "A duster. For cleaning dust. That is not my job.",
+    },
+    Postcard: {
+        name: "Postcard",
+        category: "interaction_item",
+        inventorySprite: "Postcard",
+        text: "Postcard from my journey."
+    },
+    RubberDuck: {
+        name: "RubberDuck",
+        category: "interaction_item",
+        inventorySprite: "RubberDuck",
+        text: "One should never bath alone."
+    },
+    Sponge: {
+        name: "Sponge",
+        category: "interaction_item",
+        inventorySprite: "Sponge",
+        text: "Maybe I should take a bath?"
+    },
+    StarDestroyer: {
+        name: "StarDestroyer",
+        category: "interaction_item",
+        inventorySprite: "StarDestroyer",
+        text: "A pocket sized star destroyer."
+    },
+
+    //scrolls
+    SCROLL_Explode: {
+        name: "SCROLL_Explode",
+        category: "scrollshop",
+        which: "Explode"
+    }
 };
 
 const MONSTER_TYPE = {
@@ -4144,6 +5111,71 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    PoorQueen: {
+        name: "PoorQueen",
+        sprite: "PoorQueen",
+        category: 'crest',
+        voice: "Female5",
+        wants: ["GreenBoots", "GreenDress", "GreenPanties"],
+        gives: "Crown",
+        text: {
+            intro: `I once ruled Praisebutt Village. Now I'd rather leave it unnoticed. Find me a new look in green, dear. My crown is all I can offer. It rather spoils the disguise.`,
+            progress: `There's still something missing, dear. Please find the rest. Even a fresh start ought to coordinate.`,
+            conclusion: `Bless you, dear. Take my crown. If anyone asks, you met an ordinary old lady with unusually strong opinions about taxation.`,
+        },
+    },
+    RedPlatformsBlackHalterbodysuit: {
+        name: "RedPlatformsBlackHalterbodysuit",
+        sprite: "RedPlatformsBlackHalterbodysuit",
+        category: 'crest',
+        voice: "FemaleLow4",
+        wants: ["RedLatexBra", "RedLatexPanties", "RedLeatherBoots"],
+        gives: "BlackLatexGloves",
+        text: {
+            intro: `The gloves? Yes, I could part with them. Black goes with everything, including the rut I'm in. Bring me a new look in red, darling and you'll get the gloves.`,
+            progress: `The outfit is still incomplete, darling. Fetch the rest. I want people staring for reasons I intended.`,
+            conclusion: `Perfect. Here are the black latex gloves. A whole new look, and someone else did the shopping. This is how fashion should work.`,
+        },
+    },
+    LonelyFarmer: {
+        name: "LonelyFarmer",
+        sprite: "LonelyFarmer",
+        category: 'crest',
+        voice: "FemaleLow3",
+        wants: ["BabySheep", "Chicken", "LittlePiggy"],
+        gives: "BlackLatexpanties",
+        text: {
+            intro: `My lamb, chicken and piglet have wandered off. Bring my little pets home, darling. I'll even give you my black latex panties. That's how lonely it's become.`,
+            progress: `My little family isn't all home yet. Please find the rest. I've been talking to the furniture, and I suspect it's getting bored.`,
+            conclusion: `My darlings! All home at last. Here are the black latex panties I promised. Let's call them vintage and leave it at that.`,
+        },
+    },
+    MushSorceress: {
+        name: "MushSorceress",
+        sprite: "MushSorceress",
+        category: 'crest',
+        voice: "FemaleVeryLow6",
+        wants: ["RedMushroom", "GreenMushroom", "YellowMushroom"],
+        gives: "PentagramBook",
+        text: {
+            intro: `I collect mushrooms in many colours. Poisonous, naturally. Such cheerful colours for such unfriendly little things. Fetch them, and I'll trade you a book of magic.`,
+            progress: `The assortment is still incomplete. Fetch the rest, Princess. And resist the urge to taste anything. I'd hate to lose a useful pair of hands.`,
+            conclusion: `Here's the Pentagram Book. I know every spell by heart. The library's return date was apparently less memorable.`,
+        },
+    },
+    GreenLizardLady: {
+        name: "GreenLizardLady",
+        sprite: "GreenLizardLady",
+        category: 'crest',
+        voice: "FemaleHigh5",
+        wants: ["Fly", "Fly", "Fly"],
+        gives: "BlackLatexBra",
+        text: {
+            intro: `Bring me three flies, Princess. Their purpose is private. This lovely black latex bra could be yours. Surely that deserves a little less gagging.`,
+            progress: `Keep collecting, Princess. The bargain is still incomplete. You can wrinkle your nose and work at the same time.`,
+            conclusion: `Here's the black latex bra. Lizard skin? The label says latex. I'd stop investigating while you're still pleased with it.`,
+        },
+    },
     SnakeSlytheress1: {
         name: "SnakeSlytheress1",
         sprite: "SnakeSlytheress1",
