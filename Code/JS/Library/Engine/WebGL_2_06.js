@@ -7073,6 +7073,7 @@ class $Movable_Interactive_entity extends $3D_Entity {
         this.IAM.remove(this.id);
     }
 }
+
 /** model formats */
 
 class $3D_Model {

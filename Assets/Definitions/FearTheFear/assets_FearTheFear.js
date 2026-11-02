@@ -50,6 +50,7 @@ LoadObjects = [
     "Goat.obj", "Pillar.obj", "owl.obj", "Stiletto.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
     "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj", "TopDoorWedge.obj", "TopDoorWedge2.obj",
+    "Cabinet2.obj","BookShelf3.obj",
 ];
 
 LoadModels = [
@@ -1232,6 +1233,8 @@ LoadTextures = [
     { srcName: "ObjectTextures/Chest10.webp", name: "Chest10" },
     { srcName: "ObjectTextures/BarrelMedieval.webp", name: "BarrelMedieval" },
     { srcName: "ObjectTextures/x_barrel_BaseColor.webp", name: "x_barrel_BaseColor" },
+    { srcName: "ObjectTextures/Boohshelf3a.webp", name: "Boohshelf3a" },
+    { srcName: "ObjectTextures/Cabinet3.webp", name: "Cabinet3" },
 
     //common items
     { srcName: "ObjectTextures/FireballTexture2.webp", name: "FireballTexture" },
@@ -1440,7 +1443,12 @@ LoadSprites = [
     { srcName: "EntityPictures/MushSorceress.webp", name: "MushSorceress" },
     { srcName: "EntityPictures/LonelyFarmer.webp", name: "LonelyFarmer" },
     { srcName: "EntityPictures/RedPlatformsBlackHalterbodysuit.webp", name: "RedPlatformsBlackHalterbodysuit" },
-    { srcName: "EntityPictures/LonelyFarmer.webp", name: "PoorQueen" },//
+    { srcName: "EntityPictures/PoorQueen.webp", name: "PoorQueen" },
+    { srcName: "EntityPictures/DarkBride.webp", name: "DarkBride" },
+    { srcName: "EntityPictures/LasAngelas.webp", name: "LasAngelas" },
+    { srcName: "EntityPictures/ThronedDomme.webp", name: "ThronedDomme" },
+    { srcName: "EntityPictures/GirlishDemon.webp", name: "GirlishDemon" },
+    { srcName: "EntityPictures/StepSitter.webp", name: "StepSitter" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },

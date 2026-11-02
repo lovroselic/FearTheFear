@@ -34,9 +34,12 @@ DEBUG.checkPoint = function () {
     /**
      
     area 2: 
+    
+    Scrollshop:
+
 
     Shrines (999g):
-        DONE Attack, MANA, HEARTm MAgic, DEFENSE
+            DONE Attack, MANA, HEARTm MAgic, DEFENSE
 
     Trainers:
             DONE YellowRaincoatDefense 22: Gold coin, Defense (1)
@@ -46,13 +49,13 @@ DEBUG.checkPoint = function () {
             DONE HeartAttack2: "GoldCoin", "GoldCoin" Heart (1)
 
     Coins;
-    - GoldCoin
-    -"SilverCoin", 
-    - "CopperCoin"
-    -"GoldCoin", 
-    -"CopperCoin"
-    -"GoldCoin", 
-    -"SilverCoin"
+            DONE GoldCoin (15)
+            DONE "SilverCoin", (16)
+            DONE "CopperCoin" (18)
+            DONE "GoldCoin", (19)
+            DONE "CopperCoin" (20)
+            DONE"GoldCoin", (21)
+            DONE "SilverCoin" (12)
     "GoldCoin", 
     "GoldCoin"
 
@@ -76,19 +79,36 @@ DEBUG.checkPoint = function () {
             DONE "MushSorceress - RedMushroom", "GreenMushroom", "YellowMushroom", -> "PentagramBook"
             DONE LonelyFarmer "BabySheep", "Chicken", "LittlePiggy" -   -> BlackLatexpanties
             DONE RedPlatformsBlackHalterbodysuit "RedLatexBra", "RedLatexPanties", "RedLeatherBoots" -> BlackLatexGloves
-    PoorQueen "GreenBoots", "GreenDress", "GreenPanties" --> "Crown"
+            DONE PoorQueen "GreenBoots", "GreenDress", "GreenPanties" --> "Crown"
+            DONE DarkBride "Lantern","BurningTorch" --> "RavenBook"
+            DONE LasAngelas "BlueFeather", "GreenFeather", "RedFeather", "WhiteFeather" -->
+            DONE ThronedDomme "Ankh", "Cross", "Pentagram" --> FireballBook
+            DONE GirlishDemon "SkeletonBird", "SkeletonCat" --> HexagramBook
 
+    essenttial scrolls: 
+            DONE -Fly (21)
     items:
             DONE "YellowCertificate", GreenLibrarian (15)
             DONE "GreyCertificate", SilverLibrarian (15)
             DONE "BlackCertificate", LibraRian7(15)
-    "WhiteCertificate", to be picked;
+            DONE "WhiteCertificate", to be picked; (24)
             DONE "RedCertificate", RedLibrarian (15)
 
-    "Acorn", 
-    "Walnut", 
-    "Chestnut",
-    "Crown", PoorQueen (23)
+            DONE "SkeletonBird", (19)
+            DONE "SkeletonCat" (21)
+            DONE "Ankh", (21)
+            DONE "Cross", (26)
+            DONE "Pentagram" (22)
+            DONE BlueFeather", (15)
+            DONE "GreenFeather", (12)
+    "RedFeather", 
+    "WhiteFeather"
+            DONE "Lantern", (20)
+    "BurningTorch"
+                    DONE "Acorn", (15)
+                    DONE "Walnut",    (26)   
+                    DONE "Chestnut", (15)
+                    DONE "Crown", PoorQueen (27)
                     DONE "GoldenScepter", SnakeSlytheress1 (25)
                     DONE "Document" BeautyRocrat (21)
                     DONE "BlackLeatherBoots", IceIceBaby (12)
@@ -96,56 +116,56 @@ DEBUG.checkPoint = function () {
                     DONE HairBrush, SquirrelLady (17)
                     DONE Comb,   -> HedgehogCorridorLady (17)
                     DONE PinkRibbon BearaInForest (17)
-    "GreenBoots", 
-    "GreenDress", 
-    "GreenPanties"
-    "Apple", 
-    "GreenApple", 
-    "Pear", 
-    "Pear",
-    "HoneyComb", 
-    "Cherry"
-    "IceCube", 
-    "IceCube", 
-    "IceCube"
-    "Rat", 
-    "Rat", 
-    "Rat"
-    "Fly", 
-    "Fly", 
-    "Fly"
-    "Stiletto", 
-    "Stiletto", 
-                DONE "BlackLatexGloves", RedPlatformsBlackHalterbodysuit (22)
-                DONE "BlackLatexpanties", LonelyFarmer (26)
-                DONE "BlackLatexBra", GreenLizardLady (25)
-    Candle, 
-    RedCandle, 
-    BlueCandle
-    "RedMushroom", 
-    "GreenMushroom", 
-    "YellowMushroom"
+                    DONE "GreenBoots", (24)
+                    DONE "GreenDress", (27)
+                    DONE "GreenPanties" (16)
+                    DONE "Apple", (14)
+                    DONE "GreenApple", (25)
+                    DONE "Pear", (23)
+                    DONE "Pear",  (26)           
+                    DONE "HoneyComb", (25)
+                    DONE "Cherry" (23)
+                    DONE "IceCube",  (15)
+                    DONE "IceCube", (17)
+                    DONE "IceCube" (21)
+                    DONE "Rat",  (17)
+                    DONE "Rat",      (18)
+                    DONE "Rat" 27
+                    DONE "Fly", 27
+                    DONE "Fly", (14)
+                    DONE "Fly" (17)
+                    DONE "Stiletto", (23)
+                    DONE "Stiletto", (22)
+                    DONE "BlackLatexGloves", RedPlatformsBlackHalterbodysuit (22)
+                    DONE "BlackLatexpanties", LonelyFarmer (26)
+                    DONE "BlackLatexBra", GreenLizardLady (25)
+                    DONE Candle, (27)
+                    DONE RedCandle, (19)
+                    DONE BlueCandle (20)
+                    DONE "RedMushroom", - (17)
+                    DONE "GreenMushroom", (25)
+                    DONE "YellowMushroom" (20)
 
-    "YoniBook",+
-    "TaoBook", +
-    "YinYangBook",+
-                DONE" PentagramBook", MushSorceress (26)
-    "HexagramBook",+
-    "TripleMoonBook",+
-    "TriquetraBook",+
-    "VenusBook",+
-    "AnkhBook",+
-    "FireballBook",
-    "OwlBook", +
-    "PrincessBook",+
-    "TreeOfLifeBook",
-    "RavenBook" +
-    "RedLatexBra", 
-    "RedLatexPanties", 
-    "RedLeatherBoots"
-    "BabySheep", 
-    "Chicken", 
-    "LittlePiggy"
+                    DONE "YoniBook",  LasAngelas (27)
+                    DONE "TaoBook", (18)
+                    DONE "YinYangBook",+ (27)
+                    DONE" PentagramBook", MushSorceress (26)
+                    DONE "HexagramBook",+ GirlishDemon (18)
+                    DONE "TripleMoonBook",(27)
+                    DONE "TriquetraBook", (18)
+                    DONE "VenusBook", (26)
+                    DONE "AnkhBook",+ (17)
+                    DONE "FireballBook", ThronedDomme (18)
+                    DONE "OwlBook", (22)
+                    DONE "PrincessBook",(16)
+                    DONE "TreeOfLifeBook",(23)
+                    DONE "RavenBook" DarkBride (24)
+                    DONE "RedLatexBra", (23)
+                    DONE "RedLatexPanties", (15)
+                    DONE "RedLeatherBoots" (20)
+                    DONE "BabySheep", 27
+                    DONE "Chicken", (26)
+                    DONE "LittlePiggy" 17
    
     keys:
         DONE Pink 23
@@ -159,7 +179,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 23;
+    GAME.level = 16;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -208,7 +228,10 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "GreenBoots", "GreenDress", "GreenPanties",
+        "SkeletonBird", "SkeletonCat",
+        //"Lantern", "BurningTorch",
+        //"BlueFeather", "GreenFeather", "RedFeather", "WhiteFeather",
+        //"GreenBoots", "GreenDress", "GreenPanties",
         //"RedLatexBra", "RedLatexPanties", "RedLeatherBoots",
         //"BabySheep", "Chicken", "LittlePiggy",
         //"Fly", "Fly", "Fly",
@@ -308,7 +331,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.9",
+    VERSION: "0.17.10",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

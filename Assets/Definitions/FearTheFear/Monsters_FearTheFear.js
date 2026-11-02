@@ -98,6 +98,14 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    StepSitter: {
+        name: "StepSitter",
+        sprite: "StepSitter",
+        category: 'crest',
+        voice: "FemaleLow6",
+        text: `Mind your inventory, Princess. If it's full, you can't pick up anything else. Even royalty has baggage limits.`,
+        interactionCategory: "oracle",
+    },
     KleinDomme: {
         name: "KleinDomme",
         sprite: "KleinDomme",
@@ -1355,6 +1363,26 @@ const CONTAINER_ITEM_TYPE = {
         texture: "BarrelTexture_1002",
         material: MATERIAL.wood,
         rotateToNorth: 0
+    },
+     BookShelf3: {
+        name: "BookShelf3",
+        category: "chest",
+        element: "BookShelf3",
+        scale: 1.7 / (2 ** 2),
+        glueToFloor: true,
+        texture: "Boohshelf3a",
+        material: MATERIAL.wood,
+        rotateToNorth: Math.PI,
+    },
+     Cabinet2: {
+        name: "Cabinet2",
+        category: "chest",
+        element: "Cabinet2",
+        scale: 1.4 / (2 ** 5),
+        glueToFloor: true,
+        texture: "Cabinet3",
+        material: MATERIAL.wood,
+        rotateToNorth: Math.PI,
     },
 
 };
@@ -3734,6 +3762,11 @@ const INTERACTION_ITEM = {
         name: "SCROLL_Explode",
         category: "scrollshop",
         which: "Explode"
+    },
+    SCROLL_Flight: {
+        name: "SCROLL_Flight",
+        category: "scrollshop",
+        which: "Flight"
     }
 };
 
@@ -5111,6 +5144,58 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    GirlishDemon: {
+        name: "GirlishDemon",
+        sprite: "GirlishDemon",
+        category: 'crest',
+        voice: "FemaleLow3",
+        wants: ["SkeletonBird", "SkeletonCat"],
+        gives: "HexagramBook",
+        text: {
+            intro: `My skeletal pets are missing. Bring my little darlings home, and I'll give you a magic book. They're very affectionate. Mind the sharp edges.`,
+            progress: `Keep looking. My darlings aren't all home yet. Worrying about pets is seriously interfering with my sinister thoughts.`,
+            conclusion: `My darlings! Here's the Hexagram Book. Six points! A pentagram only has five. That's twenty percent more magic. I did the maths.`,
+        },
+    },
+    ThronedDomme: {
+        name: "ThronedDomme",
+        sprite: "ThronedDomme",
+        category: 'crest',
+        voice: "FemaleLow2",
+        wants: ["Ankh", "Cross", "Pentagram"],
+        gives: "FireballBook",
+        text: {
+            intro: `My studies require symbols of sacred power. Life, faith and a little pointed geometry. Fetch them, Princess, and you may have my book on fireballs.`,
+            progress: `The collection is still incomplete. Fetch the rest. Sacred knowledge rewards patience. I prefer punctuality.`,
+            conclusion: `Very good. Here's the Fireball Book. I know it by heart. My curtains learnt it the hard way.`,
+        },
+    },
+    LasAngelas: {
+        name: "LasAngelas",
+        sprite: "LasAngelas",
+        category: 'crest',
+        voice: "FemaleLow",
+        wants: ["BlueFeather", "GreenFeather", "RedFeather", "WhiteFeather"],
+        gives: "YoniBook",
+        text: {
+            intro: `My wings need patching, darling. Blue, green, red and white feathers, please. Even heavenly bodies need maintenance. I can offer a book about the sacred feminine.`,
+            progress: `A promising improvement. Fetch the rest. I'd like to stop shedding on people. They keep founding religions around the evidence.`,
+            conclusion: `Here's the Yoni Book. Sacred feminine wisdom. Do read it before giving it one of your charming little nicknames.`,
+        },
+    },
+    DarkBride: {
+        name: "DarkBride",
+        sprite: "DarkBride",
+        category: 'crest',
+        voice: "FemaleHigh3",
+        wants: ["Lantern", "BurningTorch"],
+        gives: "RavenBook",
+        text: {
+            intro: `I'm in a dark place, dear. People keep suggesting a brighter outlook. I'd settle for actual light. Bring me some, and I'll trade you a book about death and darkness.`,
+            progress: `Better, but still too gloomy. Fetch the rest, dear. I'd like to see what's depressing me.`,
+            conclusion: `Much better. Here's the Raven Book. Death, darkness and despair. I'd recommend lighter reading, but that's your problem now.`,
+        },
+    },
     PoorQueen: {
         name: "PoorQueen",
         sprite: "PoorQueen",
