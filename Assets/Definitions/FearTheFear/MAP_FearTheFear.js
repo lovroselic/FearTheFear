@@ -408,7 +408,7 @@ const MAP = {
         start: '[382,1]',
         decals: '[[316,4,"Water30","texture"]]',
         gates: '[[422,1,"12.1","19.2","Silver"],[419,3,"12.2","10.3","Closed"]]',
-        containers: '[[66,"IronChest2","INTERACTION_ITEM.GreenFeather",5]]',
+        containers: '[[66,"IronChest2","INTERACTION_ITEM.GreenFeather",5],[262,"WoodenCrate427","INTERACTION_ITEM.BurningTorch",1]]',
         entities: '[[315,5,"IceIceBaby"]]',
         objects: '[[82,"SilverCoin"]]',
     }
@@ -730,6 +730,7 @@ const MAP = {
         doors: '[41,138,250]',
         triggers: '[[1718,1,"SmoothWallButton",1,1688],[270,3,"SmoothWallButton",1,184]]',
         entities: '[[259,3,"DarkBride"]]',
+        objects: '[[35,"GoldCoin"]]',
         lairs: '[[261,1,"Lair_607"],[86,5,"Lair33"]]',
         fires: '[[218,4,"Fireplace"]]',
     }
@@ -813,10 +814,10 @@ const MAP = {
         start: '[287,1]',
         decals: '[[64,5,"BlueSky_0855","texture"],[110,5,"BlueSky_0855","texture"],[64,7,"BlueSky_0855","texture"],[110,1,"BlueSky_0855","texture"],[89,4,"WaterPuddle_921","crest"]]',
         gates: '[[460,5,"27.1","26.2","Closed"],[20,7,"27.2","15.11","Closed"]]',
-        containers: '[[28,"Crate1b","INTERACTION_ITEM.GreenDress",7],[40,"LongBox","INTERACTION_ITEM.TripleMoonBook",3],[242,"BookShelf3","INTERACTION_ITEM.YinYangBook",7]]',
+        containers: '[[28,"Crate1b","INTERACTION_ITEM.GreenDress",7],[40,"LongBox","INTERACTION_ITEM.TripleMoonBook",3],[242,"BookShelf3","INTERACTION_ITEM.YinYangBook",7],[185,"WoodenCrate51","INTERACTION_ITEM.RedFeather",1],[434,"WoodenCrate58","INTERACTION_ITEM.WhiteFeather",7]]',
         doors: '[96,135,261,267,333,465,478]',
         entities: '[[394,7,"PoorQueen"],[86,5,"LasAngelas"]]',
-        objects: '[[448,"Candle"]]',
+        objects: '[[448,"Candle"],[280,"GoldCoin"]]',
         oracles: '[[2,7,"StepSitter"]]',
         movables: '[[383,"Fly"],[146,"BabySheep"],[159,"TinyRat"]]',
     }

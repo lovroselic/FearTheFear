@@ -56,8 +56,8 @@ DEBUG.checkPoint = function () {
             DONE "CopperCoin" (20)
             DONE"GoldCoin", (21)
             DONE "SilverCoin" (12)
-    "GoldCoin", 
-    "GoldCoin"
+            DONE "GoldCoin", (27)
+            DONE "GoldCoin" (24)
 
     Entities:
 
@@ -101,10 +101,10 @@ DEBUG.checkPoint = function () {
             DONE "Pentagram" (22)
             DONE BlueFeather", (15)
             DONE "GreenFeather", (12)
-    "RedFeather", 
-    "WhiteFeather"
-            DONE "Lantern", (20)
-    "BurningTorch"
+            DONE "RedFeather",  (27)
+            DONE "WhiteFeather" (27)
+                    DONE "Lantern", (20)
+                    DONE "BurningTorch" (12)
                     DONE "Acorn", (15)
                     DONE "Walnut",    (26)   
                     DONE "Chestnut", (15)
@@ -179,7 +179,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 16;
+    GAME.level = 14;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -331,7 +331,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.10",
+    VERSION: "0.17.11",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
