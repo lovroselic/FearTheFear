@@ -363,7 +363,7 @@ const MAP = {
     ,
     11: {
         name: "Path to the Village",
-        data: '{"width":"23","height":"15","depth":1,"map":"BB2AA3BB3ABAA7BAA3BAA2BB2AA11BAA3BAA4BAA5BAA12BAA2BAA3BAA2BABAA2BABAA2BAA14BAA9BABB3AA5BABB3ABB3ABAA4BABB2ABB5ABB2ABABB2ABABABB2ABB8AA11BB3AA3BB4ABB2AA3BB3䁆BB10AA2BB5䁢BB5AA2BB2AA2BB2AA3BABB6ABB2ABABB3ABABABAA2BAA2BB4ABB2ABB4ABB3ABB2AB䁆BABB7ABABABB31ABB3$ABB6ABB3A","extendedMap":"AA281ࡅ$AA63"}',
+        data: '{"width":"23","height":"15","depth":1,"map":"B䁢AA3BB3ABAA7BAA3BAA2BB2AA11BAA3BAA4BAA5BAA12BAA2BAA3BAA2BABAA3BAA2BABAA13BAA9BABB3AA5BABB3ABB3ABAA4BABB7ABB2ABABB2ABABABABABB7AA11BB3AA3BB4ABB2AA3BB3䁆BB10AA2BB4䁢BB4ABABB2AA2BB2AA3BABB6ABB3ABB4AA2BABAA2BAA2BB4ABB2ABB4ABB3ABB2AB䁆BABB7ABABABB31ABB3$ABB6AA2BB5A","extendedMap":"AA281ࡅ$AA63"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 6,
@@ -379,11 +379,12 @@ const MAP = {
         backPanorama: "",
         bottomPanorama: "",
         skyPanorama: "",
-        start: '[67,3]',
+        start: '[277,7]',
         lights: '[[19,7,"Light_642","standardYellow",["1","5.0","1.0"]],[204,7,"DuaLLantern_001","standardYellow",["3.0","5.0","1.0"]],[194,5,"AlpineLight_162","standardYellow",["3.0","5.0","1.0"]],[194,3,"DuaLLantern_006","standardYellow",["3.0","5.0","1.0"]],[337,1,"Lights113","standardYellow",["3.0","5.0","1.0"]]]',
         gates: '[[68,3,"11.1","10.2","Closed"],[92,5,"11.2","14.1","Closed"]]',
         doors: '[168,134]',
         triggers: '[[58,5,"SmoothWallButton",1,62]]',
+        objects: '[[300,"PrincessBookObj"],[243,"ManaBookObj"],[317,"PentagramBookObj"],[153,"SwordBookObj"],[136,"ShieldBookObj"]]',
         lairs: '[[321,3,"Lair80"],[332,1,"Lair80"]]',
     }
     ,

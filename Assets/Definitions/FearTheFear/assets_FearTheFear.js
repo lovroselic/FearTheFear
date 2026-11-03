@@ -50,7 +50,7 @@ LoadObjects = [
     "Goat.obj", "Pillar.obj", "owl.obj", "Stiletto.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
     "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj", "TopDoorWedge.obj", "TopDoorWedge2.obj",
-    "Cabinet2.obj","BookShelf3.obj",
+    "Cabinet2.obj", "BookShelf3.obj", "Book.obj",
 ];
 
 LoadModels = [
@@ -1287,6 +1287,11 @@ LoadTextures = [
     { srcName: "ObjectTextures/LaskoCanTexture.webp", name: "LaskoCanTexture" },
     { srcName: "ObjectTextures/StilettoBase.webp", name: "StilettoBase" },
     { srcName: "ObjectTextures/Copper.webp", name: "Copper" },
+    { srcName: "ObjectTextures/ManaBookTexture.webp", name: "ManaBookTexture" },
+    { srcName: "ObjectTextures/PentagramBookTexture.webp", name: "PentagramBookTexture" },
+    { srcName: "ObjectTextures/PrincessBookTexture.webp", name: "PrincessBookTexture" },
+    { srcName: "ObjectTextures/ShieldBookTexture.webp", name: "ShieldBookTexture" },
+    { srcName: "ObjectTextures/SwordBookTexture.webp", name: "SwordBookTexture" },
 
     /** other monster textures */
     { srcName: "ObjectTextures/RedGoldBat.webp", name: "RedGoldBat" },
@@ -1949,6 +1954,11 @@ LoadSprites = [
     { srcName: "Items/PrincessBook.webp", name: "PrincessBook" },
     { srcName: "Items/RavenBook.webp", name: "RavenBook" },
     { srcName: "Items/TreeOfLifeBook.webp", name: "TreeOfLifeBook" },
+    { srcName: "Items/ManaBookObj.png", name: "ManaBookObj" },
+    { srcName: "Items/PentagramBookObj.png", name: "PentagramBookObj" },
+    { srcName: "Items/PrincessBookObj.png", name: "PrincessBookObj" },
+    { srcName: "Items/ShieldBookObj.png", name: "ShieldBookObj" },
+    { srcName: "Items/SwordBookObj.png", name: "SwordBookObj" },
 
     //scrolls
     { srcName: "Scrolls/SCR_Cripple2.webp", name: "SCR_Cripple" },

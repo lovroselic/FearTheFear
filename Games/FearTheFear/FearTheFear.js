@@ -35,6 +35,10 @@ DEBUG.checkPoint = function () {
      
     area 2: 
     
+    dungeon 11, forgotten quest
+
+    ### "PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj" --> $$
+
     Scrollshop:
 
 
@@ -179,7 +183,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 14;
+    GAME.level = 11;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -228,7 +232,8 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "SkeletonBird", "SkeletonCat",
+        "PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj",
+        //"SkeletonBird", "SkeletonCat",
         //"Lantern", "BurningTorch",
         //"BlueFeather", "GreenFeather", "RedFeather", "WhiteFeather",
         //"GreenBoots", "GreenDress", "GreenPanties",
@@ -331,7 +336,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.11",
+    VERSION: "0.17.12",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

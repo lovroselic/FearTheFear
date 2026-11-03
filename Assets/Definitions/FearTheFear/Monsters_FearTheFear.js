@@ -1364,7 +1364,7 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: 0
     },
-     BookShelf3: {
+    BookShelf3: {
         name: "BookShelf3",
         category: "chest",
         element: "BookShelf3",
@@ -1374,7 +1374,7 @@ const CONTAINER_ITEM_TYPE = {
         material: MATERIAL.wood,
         rotateToNorth: Math.PI,
     },
-     Cabinet2: {
+    Cabinet2: {
         name: "Cabinet2",
         category: "chest",
         element: "Cabinet2",
@@ -2010,6 +2010,64 @@ const INTERACTION_OBJECT = {
         material: MATERIAL.silver,
         text: "Silver. Malleable."
     },
+
+    //books
+    PrincessBookObj: {
+        name: "PrincessBookObj",
+        category: "interaction_item",
+        element: "BOOK",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "PrincessBookTexture",
+        inventorySprite: "PrincessBookObj",
+        material: MATERIAL.standard,
+        text: "Amazing story about my adventures. Everybody should read this."
+    },
+    ManaBookObj: {
+        name: "ManaBookObj",
+        category: "interaction_item",
+        element: "BOOK",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "ManaBookTexture",
+        inventorySprite: "ManaBookObj",
+        material: MATERIAL.standard,
+        text: ""
+    },
+    PentagramBookObj: {
+        name: "PentagramBookObj",
+        category: "interaction_item",
+        element: "BOOK",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "PentagramBookTexture",
+        inventorySprite: "PentagramBookObj",
+        material: MATERIAL.standard,
+        text: ""
+    },
+    ShieldBookObj: {
+        name: "ShieldBookObj",
+        category: "interaction_item",
+        element: "BOOK",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "ShieldBookTexture",
+        inventorySprite: "ShieldBookObj",
+        material: MATERIAL.standard,
+        text: ""
+    },
+    SwordBookObj: {
+        name: "SwordBookObj",
+        category: "interaction_item",
+        element: "BOOK",
+        scale: 1 / 2 ** 4,
+        glueToFloor: true,
+        texture: "SwordBookTexture",
+        inventorySprite: "SwordBookObj",
+        material: MATERIAL.standard,
+        text: ""
+    },
+
 
     //misc items
     IceCube: {
