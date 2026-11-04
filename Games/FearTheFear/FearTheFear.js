@@ -37,7 +37,7 @@ DEBUG.checkPoint = function () {
     
     dungeon 11, forgotten quest
 
-    ### "PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj" --> $$
+            DONE TeeCha "PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj" --> Heart (2)
 
     Scrollshop:
 
@@ -336,7 +336,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.17.12",
+    VERSION: "0.18.0",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

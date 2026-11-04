@@ -5583,6 +5583,20 @@ const INTERACTION_ENTITY = {
 };
 
 const INTERACTION_SHRINE = {
+    TeeCha: {
+        name: "TeeCha",
+        sprite: "TeeCha",
+        category: 'crest',
+        voice: "Female4",
+        wants: ["PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj"],
+        gives: "HeartSkill",
+        level: 2,
+        text: {
+            intro: `Have you been a naughty Princess? Detention with me, then. Bring the essential skill books. We'll study together. Royalty is no excuse for skipping homework.`,
+            progress: `A promising effort, but we're still short of material. Fetch the rest. Detention ends when I say it does.`,
+            conclusion: `Lesson complete. Your health has improved. Consider the handprint on your bottom a passing mark.`,
+        },
+    },
     HeartAttack2: {
         name: "HeartAttack2",
         sprite: "HeartAttack2",
