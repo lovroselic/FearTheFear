@@ -16,7 +16,25 @@ for (let [index, key] of KEY_TYPES.entries()) {
     KEY_TYPE[key] = new KeyTypeDefinition(key, `${key}Key`, key, KEY_TEXTURES[index], MATERIAL[KEY_MATERIAL[index]]);
 }
 
+const SCROLL_TYPE = [
+    "Invisibility", "Cripple", "HalfLife", "Explode", "Luck", "Flight", "BoostWeapon", "BoostArmor", "MagicBoost",
+    "DestroyWeapon", "DestroyArmor", "DrainMana", "FeatherFall", "Radar", "VeryLucky", "Death",
+    "ReduceMana", "ReduceManaMore", "DestroyOrbs", "Light",
+];
+
 const SHRINE_TYPE = {
+    FlyScrollSellerFF1: {
+        name: "FlyScrollSellerFF1",
+        sprite: "FlyScrollSellerFF1",
+        which: "Flight",
+        category: 'crest',
+        interactionCategory: 'scrollshop',
+        inventorySprite: "HeartSkill",
+        price: 500,
+        text: `In case you need a spare, you can buy a Flight scroll for a mere 500 gold.`,
+        introduce: true,
+        voice: "FemaleLow3",
+    },
     Climber3: {
         name: "Climber2",
         sprite: "Climber2",
@@ -111,6 +129,14 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    NewDarka2: {
+        name: "NewDarka2",
+        sprite: "NewDarka2",
+        category: 'crest',
+        voice: "Female6",
+        text: `Different monsters, different tactics. Study their strengths and weaknesses. Experiment with close combat and ranged attacks. Ideally, finish the thinking before the bleeding starts.`,
+        interactionCategory: "oracle",
+    },
     StepSitter: {
         name: "StepSitter",
         sprite: "StepSitter",
@@ -202,12 +228,6 @@ The Princess's cousin, the Cousin, acting regent of Castle Creep, has allegedly 
         interactionCategory: "oracle",
     },
 };
-
-const SCROLL_TYPE = [
-    "Invisibility", "Cripple", "HalfLife", "Explode", "Luck", "Flight", "BoostWeapon", "BoostArmor", "MagicBoost",
-    "DestroyWeapon", "DestroyArmor", "DrainMana", "FeatherFall", "Radar", "VeryLucky", "Death",
-    "ReduceMana", "ReduceManaMore", "DestroyOrbs", "Light",
-];
 
 const GOLD_ITEM_TYPE = {
     GoldSphere: {
@@ -1391,7 +1411,7 @@ const CONTAINER_ITEM_TYPE = {
         name: "Cabinet2",
         category: "chest",
         element: "Cabinet2",
-        scale: 1.4 / (2 ** 5),
+        scale: 1.0 / (2 ** 3),
         glueToFloor: true,
         texture: "Cabinet3",
         material: MATERIAL.wood,

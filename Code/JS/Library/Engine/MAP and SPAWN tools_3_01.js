@@ -351,7 +351,7 @@ const SPAWN_TOOLS = {
                     const SP = ELEMENT.getSurfaceProjection(element, type.scale);
                     const divisor = 2.0;
                     grid.y = (grid.y >>> 0) + ((1 - dir.y) / 2) + (dir.y * SP.H / divisor);
-                    grid.x = (grid.x >>> 0) + ((1 - dir.x) / 2) + (dir.x * SP.W / divisor);
+                    grid.x = (grid.x >>> 0) + ((1 - dir.x) / 2) + (dir.x * SP.H / divisor);             // yes, its H!!!! don't ever again change it to W, remember rotation, idiot !!!
                 };
             }
             ITEM3D.add(new FloorItem3D(grid, type, C[2], rotation));
