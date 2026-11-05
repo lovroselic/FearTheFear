@@ -17,6 +17,19 @@ for (let [index, key] of KEY_TYPES.entries()) {
 }
 
 const SHRINE_TYPE = {
+    Climber3: {
+        name: "Climber2",
+        sprite: "Climber2",
+        which: "health",
+        category: 'crest',
+        interactionCategory: 'shrine',
+        inventorySprite: "HeartSkill",
+        price: 1999,
+        level: 1,
+        text: "Pray to my bum for a better health. Pray and pay, 1999 gold.",
+        introduce: true,
+        voice: "FemaleLow2",
+    },
     PrincessDefenseShrine: {
         name: "PrincessDefenseShrine",
         sprite: "PrincessDefenseShrine",
@@ -417,7 +430,7 @@ const CONTAINER_ITEM_TYPE = {
     BarrelMedieval2: {
         name: "Barrel",
         category: "chest",
-        element: "BarrelMedieval2",
+        element: "BarrelMedieval",
         scale: 0.97 / 2 ** 3,
         glueToFloor: true,
         texture: "BarrelMedieval2",
@@ -2021,7 +2034,7 @@ const INTERACTION_OBJECT = {
         texture: "PrincessBookTexture",
         inventorySprite: "PrincessBookObj",
         material: MATERIAL.standard,
-        text: "Amazing story about my adventures. Everybody should read this."
+        text: "Amazing story about my adventures. Everybody should read this.",
     },
     ManaBookObj: {
         name: "ManaBookObj",
@@ -2032,7 +2045,7 @@ const INTERACTION_OBJECT = {
         texture: "ManaBookTexture",
         inventorySprite: "ManaBookObj",
         material: MATERIAL.standard,
-        text: ""
+        text: "Amazing story about increasing mana."
     },
     PentagramBookObj: {
         name: "PentagramBookObj",
@@ -2043,7 +2056,7 @@ const INTERACTION_OBJECT = {
         texture: "PentagramBookTexture",
         inventorySprite: "PentagramBookObj",
         material: MATERIAL.standard,
-        text: ""
+        text: "A book about how to increase your magic power."
     },
     ShieldBookObj: {
         name: "ShieldBookObj",
@@ -2054,7 +2067,7 @@ const INTERACTION_OBJECT = {
         texture: "ShieldBookTexture",
         inventorySprite: "ShieldBookObj",
         material: MATERIAL.standard,
-        text: ""
+        text: "13 Chapters about self protection. "
     },
     SwordBookObj: {
         name: "SwordBookObj",
@@ -2065,7 +2078,7 @@ const INTERACTION_OBJECT = {
         texture: "SwordBookTexture",
         inventorySprite: "SwordBookObj",
         material: MATERIAL.standard,
-        text: ""
+        text: "How to slice your opponent in three moves. I should study that."
     },
 
 

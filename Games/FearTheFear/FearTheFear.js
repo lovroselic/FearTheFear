@@ -183,7 +183,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 11;
+    GAME.level = 15;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -232,7 +232,7 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj",
+        //"PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj",
         //"SkeletonBird", "SkeletonCat",
         //"Lantern", "BurningTorch",
         //"BlueFeather", "GreenFeather", "RedFeather", "WhiteFeather",
@@ -336,7 +336,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.18.0",
+    VERSION: "0.18.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
