@@ -103,7 +103,7 @@ const SHRINE_TYPE = {
     PrincessKickAttackShrine: {
         name: "PrincessKickAttackShrine",
         sprite: "PrincessKickAttackShrine",
-        which: "health",
+        which: "attack",
         category: 'crest',
         interactionCategory: 'shrine',
         inventorySprite: "SkillKick",
@@ -753,7 +753,7 @@ const CONTAINER_ITEM_TYPE = {
         element: "BARREL2",
         scale: 1.8 / 2 ** 4,
         glueToFloor: true,
-        texture: "Barrel2b",
+        texture: "Barell2b",
         material: MATERIAL.wood,
         rotateToNorth: 0,
     },

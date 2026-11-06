@@ -33,13 +33,16 @@ DEBUG.INF_MANA = false;
 DEBUG.checkPoint = function () {
     /**
      
-    area 2: 
+    area 2:
+    
+    TODO:23 forgetten pac gold
     
     dungeon 11, forgotten quest
 
             DONE TeeCha "PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj" --> Heart (2)
 
     Scrollshop:
+            DONE Flight (22)
 
 
     Shrines (999g):
@@ -183,7 +186,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 23;
+    GAME.level = 21;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -336,7 +339,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.18.2",
+    VERSION: "0.18.3",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -724,6 +727,7 @@ const HERO = {
         this.health = this.maxHealth;
         this.mana = this.maxMana;
         TITLE.health();
+        TITLE.skills();
     },
     incStatus(type, level = 1) {
         let Type = type.capitalize();
