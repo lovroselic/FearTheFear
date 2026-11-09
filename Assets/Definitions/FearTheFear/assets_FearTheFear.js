@@ -62,7 +62,7 @@ LoadModels = [
     "Wolf.gltf", "ButterFly.gltf", "Cat.gltf", "Goblin.gltf", "SkeleDwarf.gltf",
     "Astro.gltf", "Basilisk.gltf", "Raptor.gltf", "DinoAir.gltf", "Hulk.gltf", "GhostFace.gltf",
     "Rex.gltf", "Drax.gltf", "MissWhite.gltf", "Skeleton.gltf", "Devilla.gltf",
-    "Rat.gltf", "Fly.gltf", "whiteWidow.gltf",
+    "Rat.gltf", "Fly.gltf", "whiteWidow.gltf", "Fox.gltf", "Eagle.gltf",
 ];
 
 LoadTextures = [
@@ -1315,6 +1315,10 @@ LoadTextures = [
     { srcName: "ObjectTextures/BrownSpider.webp", name: "BrownSpider" },
     { srcName: "ObjectTextures/GreenSpider.webp", name: "GreenSpider" },
     { srcName: "ObjectTextures/RedSpider.webp", name: "RedSpider" },
+    { srcName: "ObjectTextures/BlackLatexMandly.webp", name: "BlackLatexMandly" },
+    { srcName: "ObjectTextures/RedLatexMandy.webp", name: "RedLatexMandy" },
+    { srcName: "ObjectTextures/YellowLatexMandy.webp", name: "YellowLatexMandy" },
+    { srcName: "ObjectTextures/WhiteLeatherMandy.webp", name: "WhiteLeatherMandy" },
 ];
 
 LoadAudio = [
@@ -1458,6 +1462,9 @@ LoadSprites = [
     { srcName: "EntityPictures/TeeCha.webp", name: "TeeCha" },
     { srcName: "EntityPictures/FlyScrollSellerFF1.webp", name: "FlyScrollSellerFF1" },
     { srcName: "EntityPictures/NewDarka2.webp", name: "NewDarka2" },
+    { srcName: "EntityPictures/GhostFaceJR2.webp", name: "GhostFaceJR2" },
+    { srcName: "EntityPictures/FetishBabe4.webp", name: "FetishBabe4" },
+    { srcName: "EntityPictures/Laced.webp", name: "Laced" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },

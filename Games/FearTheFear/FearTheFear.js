@@ -32,6 +32,21 @@ DEBUG.INF_MANA = false;
 
 DEBUG.checkPoint = function () {
     /**
+     * level reqs
+     * - entity, oracle, shrine
+     * - item, object
+     * - light
+     * - gold
+     * - container
+     * - skill
+     * - scroll
+     * - mana/health
+     * - decal
+     * - lair
+     * - monster
+     * - trigger
+     */
+    /**
      
     area 2:
     
@@ -186,7 +201,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 21;
+    GAME.level = 20;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -339,7 +354,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.18.4",
+    VERSION: "0.18.5",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

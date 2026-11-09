@@ -261,6 +261,7 @@ const SAVE_GAME = {
     $(id).html("");
     SAVE_GAME.setManager();
     const activeSG = localStorage[SAVE_GAME.key + SAVE_GAME.STATABR];
+    //const activeSG = false;
     let active, isSG;
 
     if (activeSG) {
@@ -277,6 +278,8 @@ const SAVE_GAME = {
       active = "<p>No active save game</p><hr>";
       isSG = false;
     }
+
+    //isSG = true;
 
     $(id).append(active);
     if (!isSG) return;

@@ -94,7 +94,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.27.0",
+    VERSION: "0.27.1",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -1781,15 +1781,13 @@ const GAME = {
                         $("#error_message").html(`Oracle placement not supported on value: ${currentValue}`);
                         return;
                 }
-                console.log("adding oracle on", grid);
-                dirs = GA.getDirections(grid, MAPDICT.EMPTY);
-                console.log("dirs", dirs);
-                if (dirs.length > 1) {
-                    alert(`Bad oracle position, posible exits ${dirs.length}`);
-                    break;
+                dir = GAME.getSelectedDir();
+                if (dir.same(NOWAY)) {
+                    $("#error_message").html(`Oracle decal placement requires face/direction`);
+                    return;
                 }
-                dirIndex = dirs[0].toInt();
-                $MAP.map.oracles.push(Array(gridIndex, dirIndex, $("#oracle_type")[0].value));
+
+                $MAP.map.oracles.push(Array(gridIndex, dir.toInt(), $("#oracle_type")[0].value));
                 break;
 
             case "trigger":
