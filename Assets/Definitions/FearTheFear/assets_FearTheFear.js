@@ -62,7 +62,7 @@ LoadModels = [
     "Wolf.gltf", "ButterFly.gltf", "Cat.gltf", "Goblin.gltf", "SkeleDwarf.gltf",
     "Astro.gltf", "Basilisk.gltf", "Raptor.gltf", "DinoAir.gltf", "Hulk.gltf", "GhostFace.gltf",
     "Rex.gltf", "Drax.gltf", "MissWhite.gltf", "Skeleton.gltf", "Devilla.gltf",
-    "Rat.gltf", "Fly.gltf", "whiteWidow.gltf", "Fox.gltf", "Eagle.gltf",
+    "Rat.gltf", "Fly.gltf", "whiteWidow.gltf", "Fox.gltf", "Eagle.gltf", "Snail.gltf", "Frog.gltf",
 ];
 
 LoadTextures = [

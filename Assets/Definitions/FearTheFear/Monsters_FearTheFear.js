@@ -2389,7 +2389,34 @@ const MOVABLE_INTERACTION_OBJECT = {
         moveSpeed: 1.3,
         material: MATERIAL.standard,
     },
-
+    Snail: {
+        /** mana */
+        name: "Snail",
+        category: "action_item",
+        which: "mana",
+        model: "SNAIL",
+        scale: 1.0 / 2 ** 3,
+        rotateToNorth: Math.PI,
+        moveSpeed: 0.10,
+        material: MATERIAL.standard,
+        behaviourArguments: [Infinity, ["wanderer"], -1],
+        inventorySprite: "Snail",
+        text: "Slimy snail, full of magic. Nam, nam."
+    },
+    ManaFrog: {
+        /** mana */
+        name: "ManaFrog",
+        category: "action_item",
+        which: "mana",
+        model: "FROG",
+        scale: 1.0 / 2 ** 6,
+        rotateToNorth: Math.PI,
+        moveSpeed: 0.60,
+        material: MATERIAL.standard,
+        behaviourArguments: [Infinity, ["wanderer"], -1],
+        inventorySprite: "ManaFrog",
+        text: "Ribbit."
+    }
 };
 
 const INTERACTION_ITEM = {
