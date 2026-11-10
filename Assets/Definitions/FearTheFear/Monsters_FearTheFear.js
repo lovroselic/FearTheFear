@@ -141,7 +141,7 @@ const ORACLE_TYPE = {
         name: "FetishBabe4",
         sprite: "FetishBabe4",
         category: 'crest',
-        voice: "Female6Low",
+        voice: "FemaleLow6",
         text: `Sometimes it's wise to leave the dungeon, regroup, catch your breath and try again. Or explore elsewhere. Retreat looks remarkably clever when you're alive to explain it.`,
         interactionCategory: "oracle",
     },

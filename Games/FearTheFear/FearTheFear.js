@@ -51,6 +51,7 @@ DEBUG.checkPoint = function () {
     area 2:
     
     TODO:23 forgetten pac gold
+    TODO: 20 more eagles at ini
     
     dungeon 11, forgotten quest
 
@@ -201,7 +202,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 20;
+    GAME.level = 19;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -354,7 +355,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.18.5",
+    VERSION: "0.18.6",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
@@ -1289,7 +1290,7 @@ const GAME = {
         if (DEBUG._2D_display) {
             GAME.drawPlayer();
         }
-        WebGL.renderScene(MAP[GAME.level].map);
+        WebGL.renderScene(MAP[GAME.level].map, false);
         TITLE.compassNeedle();
         TITLE.time();
         MINIMAP.draw(HERO.radar);

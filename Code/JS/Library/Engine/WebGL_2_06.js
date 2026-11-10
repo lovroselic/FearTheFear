@@ -1373,6 +1373,9 @@ const WebGL = {
         if (this.CONFIG.firstperson) this.drawTexturedRange("skyPanorama", this.texture.skyPanorama, true);
         this.drawTexturedRange("floorPanorama", this.texture.floorPanorama, true);
 
+        //those have same unlit uniform
+        gl.uniform1i(this.program.uniformLocations.uUnlitTexture, unlit ? 1 : 0);
+
         //static decals
         let decalCount = 0;
         for (const iam of WebGL.staticDecalList) {
@@ -1456,6 +1459,7 @@ const WebGL = {
 
         //entities
         gl.useProgram(WebGL.model_program.program);
+        gl.uniform1i(this.model_program.uniforms.uUnlitTexture, unlit ? 1 : 0);
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
         for (const entity of ENTITY3D.POOL) {
             if (entity) {
