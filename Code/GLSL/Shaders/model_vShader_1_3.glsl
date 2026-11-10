@@ -2,6 +2,7 @@
 ///model_vShader///
 /*
 * v1.2 Haunting the Hauntessa
+* v1.3 Fear the Fear
 */
 #ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
@@ -34,11 +35,14 @@ void main(void) {
         aWeight.z * u_jointMat[int(aJoint.z)] +
         aWeight.w * u_jointMat[int(aJoint.w)];
 
-    vec4 position = skinMat * aVertexPosition;
-    gl_Position = uProjectionMatrix * uModelViewMatrix * uTranslate * uRotateY * uScale * position;
+    mat4 model = uTranslate * uRotateY * uScale;
+    vec4 worldPos = model * skinMat * aVertexPosition;                              // world position includes skinning AND object placement.
+
+    gl_Position = uProjectionMatrix * uModelViewMatrix * worldPos;
     vTextureCoord = aTextureCoord;
-    FragPos = vec3(position); 
-    v_normal = vec3(skinMat * vec4(aVertexNormal, 0.0));   
-    vec4 transformedNormal = uRotateY * vec4(v_normal, 0.0); 
-    v_normal = transformedNormal.xyz;
+
+    FragPos = worldPos.xyz;                                                         // lighting and occlusion require WORLD coordinates.
+
+    mat3 normalMat = transpose(inverse(mat3(model * skinMat)));
+    v_normal = normalize(normalMat * aVertexNormal);
 }

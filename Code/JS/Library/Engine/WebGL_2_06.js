@@ -1284,7 +1284,10 @@ const WebGL = {
         gl.useProgram(this.model_program.program);
         gl.uniformMatrix4fv(this.model_program.uniforms.projection_matrix, false, this.projectionMatrix);
         gl.uniformMatrix4fv(this.model_program.uniforms.modelViewMatrix, false, this.viewMatrix);
-        gl.uniform3fv(this.model_program.uniforms.cameraPos, this.camera.pos.array);
+        gl.uniform3fv(
+            this.model_program.uniforms.cameraPos,
+            WebGL.HERO_AS_INNER ? this.hero.player.pos.array : this.camera.pos.array
+        );
 
         gl.uniform3fv(this.model_program.uniforms.lights, lights);
         gl.uniform3fv(this.model_program.uniforms.lightColors, lightColors);
@@ -1457,7 +1460,7 @@ const WebGL = {
             }
         }
 
-        //entities
+        //entities, considered unlit
         gl.useProgram(WebGL.model_program.program);
         gl.uniform1i(this.model_program.uniforms.uUnlitTexture, unlit ? 1 : 0);
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
