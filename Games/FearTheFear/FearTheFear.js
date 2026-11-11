@@ -202,7 +202,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 19;
+    GAME.level = 12;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -355,7 +355,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.18.8",
+    VERSION: "0.18.9",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

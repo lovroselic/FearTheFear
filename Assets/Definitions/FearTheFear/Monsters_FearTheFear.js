@@ -4171,10 +4171,10 @@ const MONSTER_TYPE = {
     Eagle: {
         name: "Eagle",
         model: "EAGLE",
-        scale: 1.3 / 2 ** 8,
+        scale: 1.0 / 2 ** 8,
         rotateToNorth: Math.PI,
-        midHeight: 0.05,
-        fly: 0.05,
+        midHeight: 0.15,
+        fly: 0.15,
         deathType: "BloodExplosion",
         inventory: GOLD_ITEM_TYPE.SilverBar,
         mana: 10,
@@ -5428,7 +5428,6 @@ const MONSTER_TYPE = {
         missile: BouncingMissile,
         missileType: COMMON_ITEM_TYPE.Bounceball,
     },
-
     GreenRex: {
         name: "GreenRex",
         texture: "GreenRex",

@@ -5933,7 +5933,8 @@ class Trap extends WallFeature3D {
         const target = Grid.toCenter(this.grid);
         const direction2D = position.direction(target);
         const dir = Vector3.from_2D_dir(direction2D);
-        const missile = new this.prototype.construct(Vector3.from_grid3D(FP_Grid3D.to_center_block(this.targetGrid)), dir, this.prototype, hero.magic);
+        const missile = new this.prototype.construct(Vector3.from_grid3D(FP_Grid3D.to_center_block(this.targetGrid)), dir, this.prototype, hero.magic, this.prototype.explosionType);
+        console.log("trap missile", missile, "this", this);
         MISSILE3D.add(missile);
     }
 }
