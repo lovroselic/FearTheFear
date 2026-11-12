@@ -23,6 +23,19 @@ const SCROLL_TYPE = [
 ];
 
 const SHRINE_TYPE = {
+    MountainHeartPrincess: {
+        name: "MountainHeartPrincess",
+        sprite: "MountainHeartPrincess",
+        which: "health",
+        category: 'crest',
+        interactionCategory: 'shrine',
+        inventorySprite: "HeartSkill",
+        price: 1500,
+        level: 1,
+        text: "1,500 gold for a prayer. Even divine mercy keeps up with inflation. I'd better take the blessing before the price goes up again.",
+        introduce: true,
+        voice: "Princess",
+    },
     FlyScrollSellerFF1: {
         name: "FlyScrollSellerFF1",
         sprite: "FlyScrollSellerFF1",
@@ -129,6 +142,22 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    BlackTransaBlackBoots3: {
+        name: "BlackTransaBlackBoots3",
+        sprite: "BlackTransaBlackBoots3",
+        category: 'crest',
+        voice: "FemaleLow5",
+        text: `Dodging or retreating in melee would be terribly dishonourable. Stand still and take every hit, Princess. Honour looks splendid on a gravestone.`,
+        interactionCategory: "oracle",
+    },
+    BW: {
+        name: "BW",
+        sprite: "BW",
+        category: 'crest',
+        voice: "FemaleLow4",
+        text: `If you'd like a fireball to the face, stand still and give the monsters time to aim. It's only polite.`,
+        interactionCategory: "oracle",
+    },
     Laced: {
         name: "Laced",
         sprite: "Laced",

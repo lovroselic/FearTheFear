@@ -1465,6 +1465,9 @@ LoadSprites = [
     { srcName: "EntityPictures/GhostFaceJR2.webp", name: "GhostFaceJR2" },
     { srcName: "EntityPictures/FetishBabe4.webp", name: "FetishBabe4" },
     { srcName: "EntityPictures/Laced.webp", name: "Laced" },
+    { srcName: "EntityPictures/BW.webp", name: "BW" },
+    { srcName: "EntityPictures/MountainHeartPrincess.webp", name: "MountainHeartPrincess" },
+    { srcName: "EntityPictures/BlackTransaBlackBoots3.webp", name: "BlackTransaBlackBoots3" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
