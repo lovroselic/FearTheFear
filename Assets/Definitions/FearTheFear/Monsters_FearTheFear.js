@@ -142,6 +142,22 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    PurpleLotus: {
+        name: "PurpleLotus",
+        sprite: "PurpleLotus",
+        category: 'crest',
+        voice: "FemaleLow2",
+        text: `A scroll works fine on its own, girl. Try using a few together. For once, more paperwork might actually help.`,
+        interactionCategory: "oracle",
+    },
+    CaveTransa: {
+        name: "CaveTransa",
+        sprite: "CaveTransa",
+        category: 'crest',
+        voice: "FemaleLow6",
+        text: `Did you figure it out what is so amazing about this maze? That you are still breathing.`,
+        interactionCategory: "oracle",
+    },
     BlackTransaBlackBoots3: {
         name: "BlackTransaBlackBoots3",
         sprite: "BlackTransaBlackBoots3",
