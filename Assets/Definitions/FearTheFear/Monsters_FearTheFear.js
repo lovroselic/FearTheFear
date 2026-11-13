@@ -5637,7 +5637,7 @@ const INTERACTION_ENTITY = {
         sprite: "BeautyRocrat",
         category: 'crest',
         voice: "Female5",
-        wants: ["YellowCertificate", "GreyCertificate", "BlackCertificate", "BlackCertificate", "RedCertificate"],
+        wants: ["YellowCertificate", "GreyCertificate", "BlackCertificate", "WhiteCertificate", "RedCertificate"],
         gives: "Document",
         text: {
             intro: `Royal blood? Lovely. Does it come with supporting paperwork? Bring me certificates proving service to the village, and I'll issue a document recognising its bearer as local royalty.`,

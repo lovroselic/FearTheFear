@@ -48,154 +48,32 @@ DEBUG.checkPoint = function () {
      */
     /**
      
-    area 2:
-    
-    TODO:23 forgetten pac gold
-    TODO: 20 more eagles at ini
-    
-    dungeon 11, forgotten quest
-
-            DONE TeeCha "PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj" --> Heart (2)
+    area 3:
 
     Scrollshop:
-            DONE Flight (22)
+           
 
 
-    Shrines (999g):
-            DONE Attack, MANA, HEARTm MAgic, DEFENSE
+    Shrines (1999g):
+            
 
     Trainers:
-            DONE YellowRaincoatDefense 22: Gold coin, Defense (1)
-            DONE OilyBarbarianGirl 23: SilverCoin, CopperCoin, attack (1)
-            DONE MAnaCookie 21: "GoldCoin", "CopperCoin", Mana (1)
-            DONE GunAss 20: "GoldCoin", "SilverCoin", MAgic (1)
-            DONE HeartAttack2: "GoldCoin", "GoldCoin" Heart (1)
+            
 
     Coins;
-            DONE GoldCoin (15)
-            DONE "SilverCoin", (16)
-            DONE "CopperCoin" (18)
-            DONE "GoldCoin", (19)
-            DONE "CopperCoin" (20)
-            DONE"GoldCoin", (21)
-            DONE "SilverCoin" (12)
-            DONE "GoldCoin", (27)
-            DONE "GoldCoin" (24)
+
 
     Entities:
 
-            DONE BlondieLongHair: HairBrush, Comb,  PinkRibbon -> SilverKey
-            DONE Maniac: "Crown","GoldenScepter", "Document", "BlackLeatherBoots", "Whip", -> GoldKey (symbols of rule)
-            DONE SquirrelLady: Acorn, Walnut, Chestnut -> HairBrush
-            DONE BearaInForest: "HoneyComb", "Cherry", "Pear" -> PinkRibbon
-            DONE HedgehogCorridorLady: "Apple", "GreenApple", "Pear", -> Comb
-            DONE LibraRian7: "YoniBook","VenusBook","PrincessBook","TriquetraBook" -> "BlackCertificate",
-            DONE RedLibrarian: "TaoBook", "YinYangBook", "PentagramBook","HexagramBook", -> "RedCertificate",
-            DONE GreenLibrarian: "OwlBook","RavenBook","TripleMoonBook" -> "YellowCertificate",
-            DONE SilverLibrarian "AnkhBook","FireballBook", "TreeOfLifeBook", -> "GreyCertificate",
-            DONE BeautyRocrat:  "YellowCertificate","GreyCertificate","BlackCertificate","BlackCertificate","RedCertificate", -> "Document"
-            DONE IceIceBaby: "IceCube", "IceCube", "IceCube" -> "BlackLeatherBoots"
-            DONE SnakeSlytheress1: "Rat", "Rat", "Rat" -> "GoldenScepter"
-            DONE GreenLizardLady "Fly", "Fly", "Fly" -> BlackLatexBra
-            DONE Farmeressa wanst: "Stiletto", "Stiletto", "BlackLatexGloves", "BlackLatexpanties", "BlackLatexBra", --> Whip
-            DONE Lacy -  Candle, RedCandle, BlueCandle -> RedKey
-            DONE "MushSorceress - RedMushroom", "GreenMushroom", "YellowMushroom", -> "PentagramBook"
-            DONE LonelyFarmer "BabySheep", "Chicken", "LittlePiggy" -   -> BlackLatexpanties
-            DONE RedPlatformsBlackHalterbodysuit "RedLatexBra", "RedLatexPanties", "RedLeatherBoots" -> BlackLatexGloves
-            DONE PoorQueen "GreenBoots", "GreenDress", "GreenPanties" --> "Crown"
-            DONE DarkBride "Lantern","BurningTorch" --> "RavenBook"
-            DONE LasAngelas "BlueFeather", "GreenFeather", "RedFeather", "WhiteFeather" -->
-            DONE ThronedDomme "Ankh", "Cross", "Pentagram" --> FireballBook
-            DONE GirlishDemon "SkeletonBird", "SkeletonCat" --> HexagramBook
+           
 
     essenttial scrolls: 
-            DONE -Fly (21)
+           
     items:
-            DONE "YellowCertificate", GreenLibrarian (15)
-            DONE "GreyCertificate", SilverLibrarian (15)
-            DONE "BlackCertificate", LibraRian7(15)
-            DONE "WhiteCertificate", to be picked; (24)
-            DONE "RedCertificate", RedLibrarian (15)
-
-            DONE "SkeletonBird", (19)
-            DONE "SkeletonCat" (21)
-            DONE "Ankh", (21)
-            DONE "Cross", (26)
-            DONE "Pentagram" (22)
-            DONE BlueFeather", (15)
-            DONE "GreenFeather", (12)
-            DONE "RedFeather",  (27)
-            DONE "WhiteFeather" (27)
-                    DONE "Lantern", (20)
-                    DONE "BurningTorch" (12)
-                    DONE "Acorn", (15)
-                    DONE "Walnut",    (26)   
-                    DONE "Chestnut", (15)
-                    DONE "Crown", PoorQueen (27)
-                    DONE "GoldenScepter", SnakeSlytheress1 (25)
-                    DONE "Document" BeautyRocrat (21)
-                    DONE "BlackLeatherBoots", IceIceBaby (12)
-                    DONE "Whip",Farmeressa (14)
-                    DONE HairBrush, SquirrelLady (17)
-                    DONE Comb,   -> HedgehogCorridorLady (17)
-                    DONE PinkRibbon BearaInForest (17)
-                    DONE "GreenBoots", (24)
-                    DONE "GreenDress", (27)
-                    DONE "GreenPanties" (16)
-                    DONE "Apple", (14)
-                    DONE "GreenApple", (25)
-                    DONE "Pear", (23)
-                    DONE "Pear",  (26)           
-                    DONE "HoneyComb", (25)
-                    DONE "Cherry" (23)
-                    DONE "IceCube",  (15)
-                    DONE "IceCube", (17)
-                    DONE "IceCube" (21)
-                    DONE "Rat",  (17)
-                    DONE "Rat",      (18)
-                    DONE "Rat" 27
-                    DONE "Fly", 27
-                    DONE "Fly", (14)
-                    DONE "Fly" (17)
-                    DONE "Stiletto", (23)
-                    DONE "Stiletto", (22)
-                    DONE "BlackLatexGloves", RedPlatformsBlackHalterbodysuit (22)
-                    DONE "BlackLatexpanties", LonelyFarmer (26)
-                    DONE "BlackLatexBra", GreenLizardLady (25)
-                    DONE Candle, (27)
-                    DONE RedCandle, (19)
-                    DONE BlueCandle (20)
-                    DONE "RedMushroom", - (17)
-                    DONE "GreenMushroom", (25)
-                    DONE "YellowMushroom" (20)
-
-                    DONE "YoniBook",  LasAngelas (27)
-                    DONE "TaoBook", (18)
-                    DONE "YinYangBook",+ (27)
-                    DONE" PentagramBook", MushSorceress (26)
-                    DONE "HexagramBook",+ GirlishDemon (18)
-                    DONE "TripleMoonBook",(27)
-                    DONE "TriquetraBook", (18)
-                    DONE "VenusBook", (26)
-                    DONE "AnkhBook",+ (17)
-                    DONE "FireballBook", ThronedDomme (18)
-                    DONE "OwlBook", (22)
-                    DONE "PrincessBook",(16)
-                    DONE "TreeOfLifeBook",(23)
-                    DONE "RavenBook" DarkBride (24)
-                    DONE "RedLatexBra", (23)
-                    DONE "RedLatexPanties", (15)
-                    DONE "RedLeatherBoots" (20)
-                    DONE "BabySheep", 27
-                    DONE "Chicken", (26)
-                    DONE "LittlePiggy" 17
+            
    
     keys:
-        DONE Pink 23
-        DONE GOld 21 Maniac
-        DONE Silver 20 Blondie
-        DONE Red 18 lacy
-        DONE Blue 17 floor
+
 
 
      */
@@ -252,23 +130,6 @@ DEBUG.checkPoint = function () {
 
     let invItems = [
         //"PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj",
-        //"SkeletonBird", "SkeletonCat",
-        //"Lantern", "BurningTorch",
-        //"BlueFeather", "GreenFeather", "RedFeather", "WhiteFeather",
-        //"GreenBoots", "GreenDress", "GreenPanties",
-        //"RedLatexBra", "RedLatexPanties", "RedLeatherBoots",
-        //"BabySheep", "Chicken", "LittlePiggy",
-        //"Fly", "Fly", "Fly",
-        //"RedMushroom", "GreenMushroom", "YellowMushroom",
-        //"Rat", "Rat", "Rat",
-        //"GoldCoin", "GoldCoin",
-        //"SilverCoin", "CopperCoin",
-        //"YoniBook", "VenusBook", "PrincessBook", "TriquetraBook",
-        //"TaoBook", "YinYangBook", "PentagramBook", "HexagramBook",
-        // "OwlBook", "RavenBook", "TripleMoonBook",
-        //"AnkhBook", "FireballBook", "TreeOfLifeBook",
-        //"YellowCertificate", "GreyCertificate", "BlackCertificate", "BlackCertificate", "RedCertificate",
-        //"Candle", "RedCandle", "BlueCandle",
 
     ];
 
@@ -355,7 +216,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.18.11",
+    VERSION: "0.18.12",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

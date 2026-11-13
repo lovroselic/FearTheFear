@@ -1741,7 +1741,7 @@ LoadSprites = [
     { srcName: "Items/YellowCertificate.webp", name: "YellowCertificate" },
     { srcName: "Items/GreyCertificate.webp", name: "GreyCertificate" },
     { srcName: "Items/BlackCertificate.webp", name: "BlackCertificate" },
-    { srcName: "Items/WhiteCertificate.webp", name: "BlackCertificate" },
+    { srcName: "Items/WhiteCertificate.webp", name: "WhiteCertificate" },
     { srcName: "Items/RedCertificate.webp", name: "RedCertificate" },
 
     //items
