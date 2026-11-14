@@ -52,35 +52,28 @@ DEBUG.checkPoint = function () {
 
     Scrollshop:
            
-
-
     Shrines (1999g):
             
-
     Trainers:
             
-
     Coins;
 
-
     Entities:
-
-           
+    CaveBoss wants "RareSteak", "RareSteak" gives Orange Key
 
     essenttial scrolls: 
            
     items:
             
-   
     keys:
-
+    Orange -> CaveBoss
 
 
      */
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 24;
+    GAME.level = 28;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -129,7 +122,7 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        //"PrincessBookObj", "ManaBookObj", "PentagramBookObj", "ShieldBookObj", "SwordBookObj",
+        "RareSteak", "RareSteak",
 
     ];
 
@@ -139,7 +132,7 @@ DEBUG.checkPoint = function () {
     }
 
     let keys = [
-        //"Blue", "Green", "Gold",
+        "Orange",
     ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
@@ -216,7 +209,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.18.12",
+    VERSION: "0.18.13",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

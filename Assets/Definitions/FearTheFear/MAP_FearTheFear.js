@@ -34,6 +34,7 @@ const MAP_TEXT = {
     25: `Smels like death and decay. And more death.`,
     26: `Smells like farm pets. Let's cuddle them. Not.`,
     27: `Looks like another deadly maze. Who designed this game? Fucker!`,
+    28: ``,
 };
 
 /** Map definitions */
@@ -431,7 +432,34 @@ const MAP = {
         monsterList: '["Eagle","BigBat","Dragon","BlackLatexMandly"]',
     }
     ,
-    13: {}
+    13: {
+        name: "Burrowing",
+        data: '{"width":"19","height":"19","depth":1,"map":"BB2AA2BAA6BAA2BABB3AA3BB5AA2BB2AA13BB2AA3BB2ABB4ABABAA3BB6ABABB13ABABB4AA2BB6AA2BABB2ABB7ABB2ABABB10AA2BB2ABABABABB6ABB23ABB4ABB12ABABB8ABB13ABABAA2BB4ABB6䁢BB15ABAA2BAA3BAA4BABB3AA2BABAA2BABABB6AA4BB8AA3BB4AA3BB4ABB2ABB2ABAA3BABB4ABABABB5ABB4䁢$BB13ABB6","extendedMap":"AA28ࡅ$AA20ᡅAA5ᡅAA6ᡅAᡅAA11ᡅᡅ2AA5ᡅAA8ᡅࡅAA6ᡅAA6ᡅAᡅAA2ᡅAA5ࡅAA16ᡅAA11ᡅᡅ2Aᡅᡅ2AA7ᡅAA11ᡅᡅ3AA3ࡅAA9ᡅᡅ2AA7ᡅᡅ4Aᡅᡅ3AA21ᡅᡅ3AA2ᡅAᡅAA11ࡅAA15ࡅAA24ᡅAA7ᡅᡅ2AA4ᡅᡅ2AA2ࡅࡅ7Aࡅࡅ2AࡅAA2ࡅࡅ2AA42"}',
+        dungeonAmbience: 0,
+        sg: 0,
+        maxSpawned: 6,
+        killCountdown: 6,
+        killsRequiredToStopSpawning: 24,
+        spawnDelay: 12999,
+        wall: "DarkWallSDXL318",
+        floor: "Cracked01",
+        ceil: "GoldBlackSDXL345",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        bottomPanorama: "",
+        skyPanorama: "",
+        start: '[321,7]',
+        decals: '[[268,4,"Moss10","crest"],[34,7,"WallSconce_662","crest"]]',
+        gates: '[[344,1,"13.1","10.4","Gold"],[16,7,"13.2","28.1","Orange"]]',
+        scrolls: '[[286,19]]',
+        gold: '[[249,"GoldCube"],[196,"GoldCube"],[314,"GoldCube"],[220,"GoldCube"],[47,"GoldCube"],[63,"GoldCube"],[89,"GoldCube"],[186,"GoldCube"],[243,"GoldCube"],[320,"GoldCube"],[130,"GoldCube"],[97,"GoldCube"],[121,"GoldCube"]]',
+        skills: '[[161,"Mana"]]',
+        entities: '[[359,1,"CaveBoss"]]',
+        objects: '[[21,"RareSteak"],[330,"RareSteak"]]',
+        fires: '[[53,1,"Torch"]]',
+    }
     ,
     14: {
         name: "Town Triangle",
@@ -924,6 +952,28 @@ const MAP = {
         oracles: '[[2,7,"StepSitter"],[30,5,"CaveTransa"],[195,7,"PurpleLotus"]]',
         movables: '[[383,"Fly"],[146,"BabySheep"],[159,"TinyRat"],[81,"RoastChicken"],[450,"RoastChicken"],[259,"Snail"],[291,"Snail"],[228,"Snail"],[420,"Snail"],[98,"GreenBat"],[36,"GreenBat"],[155,"GreenBat"],[424,"GreenBat"],[491,"GreenBat"],[301,"RedWolfSpider"],[342,"RedWolfSpider"]]',
         lairs: '[[129,1,"Lair46"],[521,1,"Lair04"],[322,5,"Lair01"],[344,3,"Lair14"]]',
+    }
+    ,
+    28: {
+        name: "Well",
+        data: '{"width":"13","height":"13","depth":9,"map":"BB3ÁÁ5AA2BB4AÁAA6BÁAA5BB50ABB7ABABB4AA2BB8AA2BB6ABB38ÁBB45ÁÁ7BB96$BB62䁢BB200AÁBÁBB21ÁÁ8BB8ÁÁ8BB19ÁÁ2BB27ÁÁ7BB10ÁÁ7BB36ÁÁ7BB7ÁÁ7BB43ÁÁ7BB14ÁÁ6BAÁBB288ÁÁ3AA2ÁÁ3BÁÁ7BÁÁ134AA2ÁÁ2BB8ÁÁ8BB8ÁÁ99AA3BB10ÁÁ7BB7ÁÁ63BB21ÁÁ7BB7ÁÁ7BB6B","extendedMap":"AA1102㡔$AA80㡔AA337"}',
+        dungeonAmbience: 0,
+        sg: 0,
+        maxSpawned: 6,
+        killCountdown: 6,
+        killsRequiredToStopSpawning: 24,
+        spawnDelay: 12999,
+        wall: "DarkWAll43234",
+        floor: "DarkWallSDXL301",
+        ceil: "SpiderWeb15",
+        frontPanorama: "",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "",
+        bottomPanorama: "Pit1",
+        skyPanorama: "",
+        start: '[318,1]',
+        gates: '[[331,1,"28.1","13.2","Orange"]]',
     }
 
 };

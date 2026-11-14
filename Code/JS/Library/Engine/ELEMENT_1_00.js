@@ -1034,7 +1034,7 @@ const SHAPE_PATH = (() => {
             ),
             color: "#32d39d",
         },
-         [EXT_MAPDICT.TOPDOOR2]: {
+        [EXT_MAPDICT.TOPDOOR2]: {
             path: new Path2D(
                 `M 0 0 L ${SIZE} 0 L ${SIZE} ${OFF} L 0 ${OFF} Z`
             ),
@@ -1059,6 +1059,12 @@ const SHAPE_PATH = (() => {
                 Z`
             ),
             color: "#1beba6",
+        },
+        [EXT_MAPDICT.CLIMBWALL]: {
+            path: new Path2D(
+                `M 0 0 L ${SIZE} 0 L ${SIZE} ${OFF} L 0 ${OFF} Z`
+            ),
+            color: "#d34f32",
         },
     };
 

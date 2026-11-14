@@ -1041,7 +1041,7 @@ const MAPDICT = {
     //original - for random maps
     VACANT_PLACEHOLDER1: 2 ** 3,            //8
     BLOCKWALL: 2 ** 4,                      //16 - wall that is removable
-    STAIR: 2 ** 5,                          //32 - also covers ladders
+    STAIR: 2 ** 5,                          //32 - ladders now excluded!
     SHRINE: 2 ** 6,                         //64
 
     //alternative1 - RUN specific
@@ -1066,7 +1066,7 @@ const MAPDICT = {
     WALL8: 2 ** 11,
 
     // 3d dungeons
-    UNUSED4: 2 ** 6,                        // 64 - alias SHRINE
+    LADDER: 2 ** 6,                        // 64 - alias SHRINE
     UNUSED: 2 ** 12,                        // 4096
     UNUSED2: 2 ** 13,                       // 8192 - alias START_POSITION
 
@@ -1098,6 +1098,7 @@ const EXT_MAPDICT = {
     ROUNDBOUNDCORNER: 16,
     TOPDOORWEDGE: 17,
     TOPDOOR2: 18,
+    CLIMBWALL: 19,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1174,6 +1175,7 @@ const EXT_TO_SHAPE = {
     16: "ROUNDBOUNDCORNER",
     17: "TOPDOORWEDGE",
     18: "TOPDOOR2",
+    19: "CLIMBWALL",
 };
 
 const WallSizeToHeight = (value) => {
@@ -1373,6 +1375,18 @@ class GA_Dimension_Agnostic_Methods {
     }
     notStair(grid) {
         return !this.isStair(grid);
+    }
+    addLadder(grid) {
+        this.set(grid, MAPDICT.LADDER);
+    }
+    toLadder(grid) {
+        this.setValue(grid, MAPDICT.LADDER);
+    }
+    isLadder(grid) {
+        return this.check(grid, MAPDICT.LADDER) === MAPDICT.LADDER;
+    }
+    notLAdder(grid) {
+        return !this.isLadder(grid);
     }
     closeDoor(grid) {
         if (this.isDoor(grid)) {

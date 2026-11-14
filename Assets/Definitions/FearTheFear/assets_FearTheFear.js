@@ -26,6 +26,7 @@ ElementsToCompile = [
     { shapeName: "TOPDOORWEDGE", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "TOPDOOR2", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "HALFROOF", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
+    { shapeName: "CLIMBWALL", collisionMode: "CONVEX", occlusionType: "PASS", passable: true},
 ];
 
 // assets 
@@ -50,7 +51,7 @@ LoadObjects = [
     "Goat.obj", "Pillar.obj", "owl.obj", "Stiletto.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
     "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj", "TopDoorWedge.obj", "TopDoorWedge2.obj",
-    "Cabinet2.obj", "BookShelf3.obj", "Book.obj",
+    "Cabinet2.obj", "BookShelf3.obj", "Book.obj", "ClimbWall.obj",
 ];
 
 LoadModels = [
@@ -1470,6 +1471,7 @@ LoadSprites = [
     { srcName: "EntityPictures/BlackTransaBlackBoots3.webp", name: "BlackTransaBlackBoots3" },
     { srcName: "EntityPictures/PurpleLotus.webp", name: "PurpleLotus" },
     { srcName: "EntityPictures/CaveTransa.webp", name: "CaveTransa" },
+    { srcName: "EntityPictures/CaveBoss.webp", name: "CaveBoss" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1494,6 +1496,7 @@ LoadSprites = [
     { srcName: "Items/Champagne.webp", name: "Champagne" },
     { srcName: "Items/HealthBox.webp", name: "HealthBox" },
     { srcName: "Items/Steak.webp", name: "Steak" },
+    { srcName: "Items/Steak.webp", name: "RareSteak" },
     { srcName: "Items/RoastChicken.webp", name: "RoastChicken" },
     { srcName: "Items/RoastPig.webp", name: "RoastPig" },
 

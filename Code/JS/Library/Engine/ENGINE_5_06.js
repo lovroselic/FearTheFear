@@ -3420,6 +3420,9 @@ const ENGINE = {
                 case MAPDICT.STAIR:
                     FS = "#87CEFA";
                     break;
+                case MAPDICT.LADDER:
+                    FS = "#0bd412";
+                    break;
                 case MAPDICT.SHRINE:
                     FS = "#FF00FF";
                     break;

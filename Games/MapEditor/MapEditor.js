@@ -1411,7 +1411,8 @@ const GAME = {
 
             case "stair":
                 // stair has no limitations, sets stair, clears previous
-                GA.toStair(grid);
+                GA.toWall(grid);
+                GA.addLadder(grid);
                 $("#error_message").html("All is fine");
                 break;
 

@@ -1806,6 +1806,18 @@ const INTERACTION_OBJECT = {
         material: MATERIAL.standard,
         text: "Poisonous. Don't eat."
     },
+    RareSteak: {
+        name: "RareSteak",
+        category: "action_item",
+        which: "health",
+        element: "STEAK",
+        scale: 1.8 / 2 ** 3,
+        glueToFloor: true,
+        texture: "SteakTexture",
+        material: MATERIAL.standard,
+        inventorySprite: "Steak",
+        text: "Rare Steak? will it say moo?."
+    },
 
     //candles
     BlueCandle: {
@@ -5502,6 +5514,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    CaveBoss: {
+        name: "CaveBoss",
+        sprite: "CaveBoss",
+        category: 'crest',
+        voice: "Female3",
+        wants: ["RareSteak", "RareSteak"],
+        gives: "OrangeKey",
+        text: {
+            intro: `Dinner first, Princess, I have needs. For meat. The fire's ready. Bring me two rare steaks and you can carry on. Menacing adventurers is hungry work.`,
+            progress: `Better. Keep cooking. I'm still hungry enough to be difficult.`,
+            conclusion: `That'll do. Here's the orange key. Off you go before I decide that was the starter.`,
+        },
+    },
     GirlishDemon: {
         name: "GirlishDemon",
         sprite: "GirlishDemon",

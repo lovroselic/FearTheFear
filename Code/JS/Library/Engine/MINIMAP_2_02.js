@@ -29,7 +29,7 @@ const MINIMAP = {
         EMPTY: "#000",
         ROOM: "#111",
         DOOR: "#333",
-        STAIR: "#008000",
+        STAIR: "#076981",
         WALL: "#8b4513",            //brown
         PILLAR: "#8b4513",
         LOCKED_DOOR: "#826644",
@@ -39,6 +39,7 @@ const MINIMAP = {
         BLOCKWALL: "#d2691e",
         ENEMY: "#ff9800",           //orange
         STAIR_WALL: "#0000CC",
+        LADDER: "#11cc00",
         EGA_IMPASSABLE: "#8b4513",
     },
     DATA: {
@@ -143,6 +144,9 @@ const MINIMAP = {
                             case MAPDICT.STAIR:
                                 CTX.fillStyle = MINIMAP.LEGEND.STAIR;
                                 break;
+                             case MAPDICT.LADDER:
+                                CTX.fillStyle = MINIMAP.LEGEND.LADDER;
+                                break;
                             case MAPDICT.DOOR:
                                 CTX.fillStyle = MINIMAP.LEGEND.LOCKED_DOOR;
                                 break;
@@ -174,6 +178,9 @@ const MINIMAP = {
             CTX.pixelAt(this.DATA.drawX + this.DATA.dungeon.keys[key].x * this.DATA.PIX_SIZE, this.DATA.drawY + this.DATA.dungeon.keys[key].y * this.DATA.PIX_SIZE, this.DATA.PIX_SIZE);
         }
 
+        //gates
+
+        //hero
         CTX.fillStyle = MINIMAP.LEGEND.HERO;
 
         let heroPos;
