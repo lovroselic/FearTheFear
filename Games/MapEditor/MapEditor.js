@@ -94,7 +94,7 @@ const $MAP = {
 };
 
 const PRG = {
-    VERSION: "0.27.1",
+    VERSION: "0.27.2",
     NAME: "MapEditor",
     YEAR: "2026",
     CSS: "color: #239AFF;",
@@ -1410,8 +1410,12 @@ const GAME = {
                 break;
 
             case "stair":
-                // stair has no limitations, sets stair, clears previous
-                GA.toWall(grid);
+                const stair = $("#ladder input[name=ladder]:checked").val();
+
+                if (stair === "wall") {
+                    GA.toWall(grid);
+                } else GA.toEmpty(grid);
+
                 GA.addLadder(grid);
                 $("#error_message").html("All is fine");
                 break;
