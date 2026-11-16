@@ -3740,7 +3740,7 @@ class $3D_player {
 
         this.setMode("idle");
         this.actionModes = ["attacking"];
-        this.continuousModes = ["falling", "jumping"];
+        this.continuousModes = ["falling", "jumping", "Climb"];
         this.actionCallback = null;
         this.initTextureMap(TEXTURE[this.texture]);
         this.velocity_Z = 0.0;
@@ -4131,6 +4131,10 @@ class $3D_player {
                     this.actor.animationIndex = this.getAnimationIndex("Fall");
                     this.actionCallback = null;
                     break;
+                case "Climb":
+                    this.actor.animationIndex = this.getAnimationIndex("Climb");
+                    this.actionCallback = null;
+                    break;
                 default:
                     throw Error(`3D player mode error: ${this.mode}`);
             }
@@ -4328,6 +4332,8 @@ class $3D_player {
         this.fov = Math.radians(fov);
     }
     rotate(rotDirection, lapsedTime, label = null) {
+        if (this.mode === "Climb") return;
+
         if (WebGL.DEBUG) {
             if (!Number.isFinite(rotDirection) || !Number.isFinite(lapsedTime)) {
                 console.error("rotate issue", {
@@ -4373,6 +4379,7 @@ class $3D_player {
     _route_movement(lapsedTime, dir, label) {
         switch (WebGL.CONFIG.movementMode) {
             case "basic":
+                if (this.mode === "Climb") return this._climb_(lapsedTime, dir, label);
                 this._applyMove_(lapsedTime, dir, label);
                 break;
             case "surface":
@@ -4383,6 +4390,39 @@ class $3D_player {
             default:
                 throw new Error("WebGL movementMode error", WebGL.CONFIG.movementMode);
         }
+    }
+    _climb_(lapsedTime, dir, label) {
+        // climbing ladder
+
+        if (["left", "right"].includes(label)) {
+            this.setDir(dir);
+            WebGL.GAME.positionUpdate();
+            this.jump(this.parent.jumpPower);
+            return;
+        }
+
+        const convertedDirection = new Vector3(dir.y, -dir.x, 0);
+        const length = (lapsedTime / 1000) * this.moveSpeed;
+        let nextPos3 = this.pos.translate(convertedDirection, length);
+        let checkPos = null;
+
+        switch (label) {
+            case "forward":
+                checkPos = nextPos3.translate(dir, 1.7 * this.r);                                   // check into ladder
+                checkPos = checkPos.translate(DOWN3, 0.15);                                         // head position
+                break;
+            case "backward":
+                checkPos = nextPos3.translate(new Vector3(-dir.x, dir.y, -dir.z), 2 * this.r);      // check into ladder
+                checkPos = checkPos.translate(UP3, this.heigth);                                    // feet position
+                break;
+        }
+
+        const checkGrid3D = Vector3.to_Grid3D(checkPos);
+
+        if (this.GA.isLadder(checkGrid3D)) {
+            return this.setPos(nextPos3);
+        }
+
     }
     _apply_surface_move(lapsedTime, dir) {
 
@@ -4447,7 +4487,7 @@ class $3D_player {
         let Dir2D = Vector3.to_FP_Vector(dir);
         const elevation = nextPos3.y - this.floorReference();
 
-        if (elevation <= WebGL.INI.DELTA_HEIGHT_CLIMB + 0.01) {                                                                     // if elevation is too big then climbing needs to be resolved first
+        if (elevation <= WebGL.INI.DELTA_HEIGHT_CLIMB + 0.01) {                         // if elevation is too big then stair climbing needs to be resolved first
             let check;                                                                                                              // boolean, if true there is no collision
             let extendedCheck = true;
 
@@ -4463,7 +4503,6 @@ class $3D_player {
                 check = this.GA.entityNotInWall(nextPos, Dir2D, this.r, this.depth);
             }
 
-
             if (check) {
                 if (!extendedCheck) return;                                                                                         // EGA shape blocks movement
                 nextPos3.set_y(this.minY + this.heigth + this.depth);                                                               // reset from climbing, if applicable 
@@ -4478,10 +4517,10 @@ class $3D_player {
         const forwardPoint = nextPos3.translate(faceNormal, this.r);                    // only forward point can be used to climb
         const nextGrid3D = Vector3.to_Grid3D(forwardPoint);
 
-        //console.warn("ladder", nextGrid3D, this.GA.isLadder(nextGrid3D), "forwardPoint", forwardPoint, "dir", dir, "faceNormal", faceNormal);
         if (this.GA.isLadder(nextGrid3D)) {
             this.setDir(faceNormal);
             WebGL.GAME.positionUpdate();
+            this.setMode("Climb");
             return true;
         }
 
@@ -4684,6 +4723,7 @@ class $3D_player {
             case "Breaking":
             case "jumping":
             case "falling":
+            case "Climb":
                 gl.uniformMatrix4fv(uJointMat, false, this.jointMatrix);
                 break;
             default:
