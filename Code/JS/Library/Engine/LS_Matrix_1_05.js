@@ -175,7 +175,7 @@ class Vector3 {
      *
      * @static
      * @param {*} vector3
-     * @return {Vector3}  face normal based on dominant dimension, this is not OK in ALL scenarios!
+     * @return {Vector3}  face normal based on dominant dimension, this is not OK in ALL scenarios! but it s great for getting orto vecor of forward blocking cube face
      * @memberof Vector3
      */
     static getFaceNormal(vector3) {

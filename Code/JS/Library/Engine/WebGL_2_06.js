@@ -4328,7 +4328,6 @@ class $3D_player {
         this.fov = Math.radians(fov);
     }
     rotate(rotDirection, lapsedTime, label = null) {
-
         if (WebGL.DEBUG) {
             if (!Number.isFinite(rotDirection) || !Number.isFinite(lapsedTime)) {
                 console.error("rotate issue", {
@@ -4374,7 +4373,7 @@ class $3D_player {
     _route_movement(lapsedTime, dir, label) {
         switch (WebGL.CONFIG.movementMode) {
             case "basic":
-                this._applyMove_(lapsedTime, dir);
+                this._applyMove_(lapsedTime, dir, label);
                 break;
             case "surface":
                 if (["left", "right"].includes(label)) return;              // side strafe is not legal move for this concept
@@ -4427,10 +4426,15 @@ class $3D_player {
         this.stopSliding();
         if (this.parent.crash) this.parent.crash(this.slidingSpeed * WebGL.INI.GRID_SIZE * 3.6);    //call parent's crash handler
     }
-    _applyMove_(lapsedTime, dir) {
+    _applyMove_(lapsedTime, dir, label) {
         let length = (lapsedTime / 1000) * this.moveSpeed;
         let nextPos3 = this.pos.translate(dir, length);                                                                             //3D - Vector3
         let nextPos = Vector3.to_FP_Grid(nextPos3);
+
+        if (label === "forward") {
+            if (this.usingLadder(nextPos3, dir)) return;                                // only forward point can be used to climb
+        }
+
         let bump = this.usingStaircase(nextPos);
 
         if (bump !== null) {
@@ -4468,6 +4472,20 @@ class $3D_player {
         }
 
         return this.blockClimb(nextPos3, Dir2D, nextPos, elevation);
+    }
+    usingLadder(nextPos3, dir) {
+        const faceNormal = Vector3.getFaceNormal(dir);
+        const forwardPoint = nextPos3.translate(faceNormal, this.r);                    // only forward point can be used to climb
+        const nextGrid3D = Vector3.to_Grid3D(forwardPoint);
+
+        //console.warn("ladder", nextGrid3D, this.GA.isLadder(nextGrid3D), "forwardPoint", forwardPoint, "dir", dir, "faceNormal", faceNormal);
+        if (this.GA.isLadder(nextGrid3D)) {
+            this.setDir(faceNormal);
+            WebGL.GAME.positionUpdate();
+            return true;
+        }
+
+        return false;
     }
     blockClimb(nextPos3, Dir2D, nextPos, elevation) {
         /**
