@@ -138,9 +138,9 @@ class Vector3 {
         return new Vector3(x, y, z);
     }
     mul(factor) {
-        let x = this.x *= factor;
-        let y = this.y *= factor;
-        let z = this.z *= factor;
+        let x = this.x * factor;
+        let y = this.y * factor;
+        let z = this.z * factor;
         return new Vector3(x, y, z);
     }
     direction(vector) {

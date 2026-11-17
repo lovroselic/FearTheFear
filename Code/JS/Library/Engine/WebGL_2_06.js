@@ -136,6 +136,7 @@ const WebGL = {
         VANISHING_RESET: -1,
         VANISHING_WARNING_ALPHA: 0.55,
         VIEWPORT_SPEED: 16,             // vp movement speed
+        CLIMB_LADDER_OFFSET: 0.2,
     },
     setGridSize(size) {
         this.INI.GRID_SIZE = size;
@@ -4401,17 +4402,20 @@ class $3D_player {
             return;
         }
 
-        const convertedDirection = new Vector3(dir.y, -dir.x, 0);
         const length = (lapsedTime / 1000) * this.moveSpeed;
-        let nextPos3 = this.pos.translate(convertedDirection, length);
+        let nextPos3 = null;
         let checkPos = null;
+
+        console.info("climb", label, "dir", dir);
 
         switch (label) {
             case "forward":
-                checkPos = nextPos3.translate(dir, 1.7 * this.r);                                   // check into ladder
+                nextPos3 = this.pos.translate(DOWN3, length);
+                checkPos = nextPos3.translate(dir, 2 * this.r);                                     // check into ladder
                 checkPos = checkPos.translate(DOWN3, 0.15);                                         // head position
                 break;
             case "backward":
+                nextPos3 = this.pos.translate(UP3, length);
                 checkPos = nextPos3.translate(new Vector3(-dir.x, dir.y, -dir.z), 2 * this.r);      // check into ladder
                 checkPos = checkPos.translate(UP3, this.heigth);                                    // feet position
                 break;
@@ -4420,9 +4424,10 @@ class $3D_player {
         const checkGrid3D = Vector3.to_Grid3D(checkPos);
 
         if (this.GA.isLadder(checkGrid3D)) {
+            // polish nextPos3
+            console.warn("..nextPos3", nextPos3);
             return this.setPos(nextPos3);
         }
-
     }
     _apply_surface_move(lapsedTime, dir) {
 
@@ -4519,8 +4524,25 @@ class $3D_player {
 
         if (this.GA.isLadder(nextGrid3D)) {
             this.setDir(faceNormal);
-            WebGL.GAME.positionUpdate();
+            //WebGL.GAME.positionUpdate(); //
             this.setMode("Climb");
+
+            let offsetVector = faceNormal.mul(-WebGL.INI.CLIMB_LADDER_OFFSET);
+            //console.log("..offsetVector", offsetVector);
+
+            for (let [index, dim] of faceNormal.array.entries()) {
+                //if (dim === 0) continue;
+                if (dim > 0) {
+                    nextPos3.array[index] = Math.ceil(nextPos3.array[index]);
+                } else if (dim < 0) {
+                    nextPos3.array[index] = Math.floor(nextPos3.array[index]);
+                }
+            }
+
+            nextPos3.refresh();
+            nextPos3 = nextPos3.add(offsetVector);
+            console.log("usingLadder nextPos3", nextPos3, "faceNormal", faceNormal, "WebGL.INI.CLIMB_LADDER_OFFSET", WebGL.INI.CLIMB_LADDER_OFFSET);
+            this.setPos(nextPos3);
             return true;
         }
 
@@ -4665,6 +4687,7 @@ class $3D_player {
         }
     }
     requestJump(jumpPower) {
+        if (this.mode === "Climb") return;
         if (!this.onGround) return;
         this.jump(jumpPower);
     }
