@@ -142,6 +142,14 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    RedClimber: {
+    name: "RedClimber",
+    sprite: "RedClimber",
+    category: 'crest',
+    voice: "Female2",
+    text: `This route's taken, Princess. Head to the other side and find your own way up. Yes, you'll have to climb. The mountain won't lower itself for you.`,
+    interactionCategory: "oracle",
+},
     PurpleLotus: {
         name: "PurpleLotus",
         sprite: "PurpleLotus",

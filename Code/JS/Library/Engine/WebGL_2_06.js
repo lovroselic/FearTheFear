@@ -136,7 +136,7 @@ const WebGL = {
         VANISHING_RESET: -1,
         VANISHING_WARNING_ALPHA: 0.55,
         VIEWPORT_SPEED: 16,             // vp movement speed
-        CLIMB_LADDER_OFFSET: 0.2,
+        CLIMB_LADDER_OFFSET: 0.25,
     },
     setGridSize(size) {
         this.INI.GRID_SIZE = size;
@@ -4400,7 +4400,7 @@ class $3D_player {
         let nextPos3 = null;
         let checkPos = null;
 
-        console.info("\nclimb", label, "dir", dir, "this.climbingNormal", this.climbingNormal);
+        //console.info("\nclimb", label, "dir", dir, "this.climbingNormal", this.climbingNormal);
 
         switch (label) {
             case "forward":
@@ -4414,54 +4414,20 @@ class $3D_player {
                 checkPos = checkPos.translate(UP3, this.heigth);                                    // feet position
                 break;
             case "left":
-                //console.log("BELOW3", BELOW3, dir, this.climbingNormal);
-                //left below  z:-1, dir.z -1
-                //right above z: +1, dir.z +1
-
-                if (this.climbingNormal.z === 0) {
-                    if (dir.z < 0) {
-                        nextPos3 = this.pos.translate(BELOW3, length);
-                    } else if (dir.z > 0) {
-                        nextPos3 = this.pos.translate(ABOVE3, length);
-                    }
-                } else if (this.climbingNormal.x === 0) {
-                    if (dir.x < 0) {
-                        nextPos3 = this.pos.translate(LEFT3, length);
-                    } else if (dir.x > 0) {
-                        nextPos3 = this.pos.translate(RIGHT3, length);
-                    }
-                }
-
-                checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
-                break;
             case "right":
-                //console.log("ABOVE3", ABOVE3, dir, this.climbingNormal);
-
-                if (this.climbingNormal.z === 0) {
-                    if (dir.z > 0) {
-                        nextPos3 = this.pos.translate(ABOVE3, length);
-                    } else if (dir.z < 0) {
-                        nextPos3 = this.pos.translate(BELOW3, length);
-                    }
-                } else if (this.climbingNormal.x === 0) {
-                    if (dir.x > 0) {
-                        nextPos3 = this.pos.translate(RIGHT3, length);
-                    } else if (dir.x < 0) {
-                        nextPos3 = this.pos.translate(LEFT3, length);
-                    }
-                }
-
+                nextPos3 = this.pos.translate(dir, length);
                 checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
+                checkPos = checkPos.translate(dir, this.r);                                         // check side
                 break;
 
             default: throw new Error(`Label ${label} not considered in climbing`);
         }
 
         const checkGrid3D = Vector3.to_Grid3D(checkPos);
-        console.error("..checks", checkGrid3D, "checkPos", checkPos, "ladder", this.GA.isLadder(checkGrid3D));
+        //console.error("..checks", checkGrid3D, "checkPos", checkPos, "ladder", this.GA.isLadder(checkGrid3D), "\n");
 
         if (this.GA.isLadder(checkGrid3D)) {
-            console.warn("..nextPos3", nextPos3);
+            //console.warn("..nextPos3", nextPos3);
             return this.setPos(nextPos3);
 
         } else {
@@ -4472,7 +4438,6 @@ class $3D_player {
                 this.jump(this.parent.jumpPower);
                 return;
             }
-
         }
     }
     _apply_surface_move(lapsedTime, dir) {

@@ -1472,6 +1472,7 @@ LoadSprites = [
     { srcName: "EntityPictures/PurpleLotus.webp", name: "PurpleLotus" },
     { srcName: "EntityPictures/CaveTransa.webp", name: "CaveTransa" },
     { srcName: "EntityPictures/CaveBoss.webp", name: "CaveBoss" },
+    { srcName: "EntityPictures/RedClimber.webp", name: "RedClimber" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },

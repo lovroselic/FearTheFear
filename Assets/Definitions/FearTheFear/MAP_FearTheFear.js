@@ -954,9 +954,9 @@ const MAP = {
         lairs: '[[129,1,"Lair46"],[521,1,"Lair04"],[322,5,"Lair01"],[344,3,"Lair14"]]',
     }
     ,
-    29: {
-        name: "Well DEVELOPMENT",
-        data: '{"width":"13","height":"13","depth":9,"map":"BB3ÁÁ10AA2BÁÁ5BB10ÁÁ2AA4ÁAA7BB2AA2BABB3ÁÁ2AÁÁ3AA14BB3BBB17ÁBB21ÁBB2ÁBB38ABB5AA2BB11AA2BB3ABB11ABB3ABB6AA4BB14ABABB10AA2BABB2BB37ÁBB23ÁÁ2BB10ÁBB5ÁBB9AB$BB110BB64AÁBBB8ÁÁ2BB3ÁBB2ÁBB10ÁBB6ÁBB5ABB4ÁÁ3BÁÁ3BB7ÁÁ6BB24ÁÁ2BB16AA2BB14ÁÁ3BÁÁ2BB7ÁÁ5BB26AA2BB13ÁÁ5BB5ÁÁ4BB41AA2BB13ÁBÁÁ3ABB6ÁBB37ÁBB14ÁBB5ABB6ABB36BBB62BB12ÁBB68BB4BB4BB76BBB3ÁAÁÁ3AA22BB4ÁÁ7AA4ÁÁ18BÁBÁÁ2BB2ÁÁ124AÁAA3ÁÁ13BB10ÁÁ6BB6ÁÁ88AA3BÁÁ5AÁÁ2AÁÁ2BB9ÁÁ5BB5ÁÁ56BB2ÁAA2BB2AA2BB8ÁÁ2BB7ÁBÁÁ7BBÁÁ7BÁBÁÁ4BB5","extendedMap":"AA235ᡔ$AA20ᡔᡔ2AA39ᡔAA189⡔AA198㡔㡔2AA56ࡔࡔ2AA52㡔AA82ࡔAA78⡔AA12⡔AA325ᡔAA3ᡔAA7㡔AA57㡔AA90ᡔAA40ࡔࡔ2AA8⡔AA2⡔AA6"}',
+    28: {
+        name: "Well",
+        data: '{"width":"13","height":"13","depth":9,"map":"BB3AA3BB2AÁÁ7AÁÁ2AA3BB2ÁÁ4BB8ÁÁ2AA4ÁAA7BB2ABAA2BB3ABÁÁ2AÁÁ3AA12BB3BBB20ÁBB21ÁBB3ÁBB41ABB6AA2BB11ABABB4ABB12ABB4ABB2ABB5AA3BB18ABB2ABB15AA2BB2ÁABB96ÁBB68ÁBB8ÁBB6ÁBB10ÁABB2ABB3AB$BB33䁢BB127AÁBÁABB16ÁÁ6BB6ÁÁ6BB15ÁÁ2BB9ABB12ÁÁ5BB8ÁÁ5BB4ABB12AA2BB13ÁÁ5BB5ÁÁ4BB32AA2BB13ÁBÁÁ3BAÁBB34ÁBB13ÁBB6AA2BB32BBB6BBB11ÁBB59BB4BB5BB67ÁAÁÁ3AA2BB2ÁÁ7AA2ÁÁ20BÁBÁÁ120AÁAA3ÁÁ13BB8ÁÁ6BB6ÁÁ88AA3BÁÁ5AÁÁ2AÁÁ2BB9ÁÁ5BB5ÁÁ56BB2ÁAA2BB2AA2BB7ÁBÁBB7ÁBÁÁ7BBÁÁ7BÁBÁÁ4BB6","extendedMap":"AA235ᡔ㡔AA9ᡔ㡔AA36㡔AA8ᡔAA4ᡔAA15桌AA549$AA249塌AᡌAA26塌AA5䡌AA139ᡔAA3ᡔAA4㡔AA46塌AA3桌AA7㡔AA90ᡔAA7䡌AA41硌AA23"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 6,
@@ -971,8 +971,11 @@ const MAP = {
         rightPanorama: "",
         backPanorama: "",
         bottomPanorama: "Pit1",
-        skyPanorama: "",
-        start: '[201,1]',
+        skyPanorama: "WarmDarkSky",
+        start: '[256,1]',
+        lights: '[[400,3,"WallCandle_909","dimRed",["1.0","10.0","1.0"]],[825,1,"WallCandle_900","dimRed",["1.0","10.0","1.0"]],[1120,5,"WallCandle_918","dimRed",["1.0","10.0","1.0"]],[1371,7,"Candle59","dimRed",["1.0","10.0","1.0"]],[730,7,"Candle69","dimRed",["1.0","10.0","1.0"]],[1467,1,"WallCandle_898","dimRed",["1.0","10.0","1.0"]]]',
+        gates: '[[331,1,"28.1","13.2","Orange"]]',
+        oracles: '[[258,3,"RedClimber"]]',
+        lairs: '[[851,7,"Lair_588"],[1007,1,"Lair74"]]',
     }
-
 };
