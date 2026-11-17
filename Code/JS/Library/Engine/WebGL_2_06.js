@@ -3749,6 +3749,7 @@ class $3D_player {
         this.lookingAround = false;
         this.sliding = false;
         this.slidingSpeed = 0;
+        this.climbingNormal = null;
     }
     getWorldYBelow() {
         let Grid3D = Vector3.to_Grid3D(this.pos.sub(new Vector3(0, this.bb_deltas.y, 0)));
@@ -4395,38 +4396,65 @@ class $3D_player {
     _climb_(lapsedTime, dir, label) {
         // climbing ladder
 
-        if (["left", "right"].includes(label)) {
-            this.setDir(dir);
-            WebGL.GAME.positionUpdate();
-            this.jump(this.parent.jumpPower);
-            return;
-        }
-
         const length = (lapsedTime / 1000) * this.moveSpeed;
         let nextPos3 = null;
         let checkPos = null;
 
-        console.info("climb", label, "dir", dir);
+        console.info("\nclimb", label, "dir", dir);
 
         switch (label) {
             case "forward":
                 nextPos3 = this.pos.translate(DOWN3, length);
-                checkPos = nextPos3.translate(dir, 2 * this.r);                                     // check into ladder
+                checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
                 checkPos = checkPos.translate(DOWN3, 0.15);                                         // head position
                 break;
             case "backward":
                 nextPos3 = this.pos.translate(UP3, length);
-                checkPos = nextPos3.translate(new Vector3(-dir.x, dir.y, -dir.z), 2 * this.r);      // check into ladder
+                checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
                 checkPos = checkPos.translate(UP3, this.heigth);                                    // feet position
                 break;
+            case "left":
+                //console.log("BELOW3", BELOW3, dir, this.climbingNormal);
+
+                if (dir.z < 0) {
+                    nextPos3 = this.pos.translate(BELOW3, length);
+                } else if (dir.z > 0) {
+                    nextPos3 = this.pos.translate(ABOVE3, length);
+                }
+
+                checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
+                break;
+            case "right":
+                //console.log("ABOVE3", ABOVE3, dir, this.climbingNormal);
+
+                if (dir.z > 0) {
+                    nextPos3 = this.pos.translate(ABOVE3, length);
+                } else if (dir.z < 0) {
+                    nextPos3 = this.pos.translate(BELOW3, length);
+                }
+
+                checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
+                break;
+
+            default: throw new Error(`Label ${label} not considered in climbing`);
         }
 
         const checkGrid3D = Vector3.to_Grid3D(checkPos);
+        //console.error("..checks", checkGrid3D, "checkPos", checkPos, "ladder", this.GA.isLadder(checkGrid3D));
 
         if (this.GA.isLadder(checkGrid3D)) {
-            // polish nextPos3
-            console.warn("..nextPos3", nextPos3);
+            //console.warn("..nextPos3", nextPos3);
             return this.setPos(nextPos3);
+
+        } else {
+            //if not ladder and side move, then jump
+            if (["left", "right"].includes(label)) {
+                this.setDir(dir);
+                WebGL.GAME.positionUpdate();
+                this.jump(this.parent.jumpPower);
+                return;
+            }
+
         }
     }
     _apply_surface_move(lapsedTime, dir) {
@@ -4528,10 +4556,8 @@ class $3D_player {
             this.setMode("Climb");
 
             let offsetVector = faceNormal.mul(-WebGL.INI.CLIMB_LADDER_OFFSET);
-            //console.log("..offsetVector", offsetVector);
 
             for (let [index, dim] of faceNormal.array.entries()) {
-                //if (dim === 0) continue;
                 if (dim > 0) {
                     nextPos3.array[index] = Math.ceil(nextPos3.array[index]);
                 } else if (dim < 0) {
@@ -4543,6 +4569,7 @@ class $3D_player {
             nextPos3 = nextPos3.add(offsetVector);
             console.log("usingLadder nextPos3", nextPos3, "faceNormal", faceNormal, "WebGL.INI.CLIMB_LADDER_OFFSET", WebGL.INI.CLIMB_LADDER_OFFSET);
             this.setPos(nextPos3);
+            this.climbingNormal = faceNormal;
             return true;
         }
 
