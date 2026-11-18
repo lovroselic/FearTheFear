@@ -1473,6 +1473,7 @@ LoadSprites = [
     { srcName: "EntityPictures/CaveTransa.webp", name: "CaveTransa" },
     { srcName: "EntityPictures/CaveBoss.webp", name: "CaveBoss" },
     { srcName: "EntityPictures/RedClimber.webp", name: "RedClimber" },
+    { srcName: "EntityPictures/BlackCutieSittingInSnow.webp", name: "BlackCutieSittingInSnow" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },
@@ -1894,6 +1895,8 @@ LoadSprites = [
     { srcName: "Items/YellowSwimsuit.png", name: "YellowSwimsuit" },
     { srcName: "Items/YellowUmbrella.webp", name: "YellowUmbrella" },
     { srcName: "Items/YellowWellies.webp", name: "YellowWellies" },
+    { srcName: "Items/Shawl.png", name: "Shawl" },
+    { srcName: "Items/WoolenCap.png", name: "WoolenCap" },
 
     //leather fashion
     { srcName: "Items/BlackLeatherBoots2.png", name: "BlackLeatherBoots" },

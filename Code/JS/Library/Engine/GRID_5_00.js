@@ -1066,8 +1066,7 @@ const MAPDICT = {
     WALL8: 2 ** 11,
 
     // 3d dungeons
-    LADDER: 2 ** 6,                        // 64 - alias SHRINE
-    UNUSED: 2 ** 12,                        // 4096
+    LADDER: 2 ** 12,                        // 4096
     UNUSED2: 2 ** 13,                       // 8192 - alias START_POSITION
 
     //special

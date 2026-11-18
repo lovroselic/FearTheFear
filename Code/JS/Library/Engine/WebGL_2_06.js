@@ -130,8 +130,8 @@ const WebGL = {
         INITIAL_SLIDING_SPEED: 0.35,    // initial speed
         MIN_SLIDING_SPEED: 0.75,        // speed after which you cannot use 'push' anymore
         PUSH_SPEED: 0.05,               // how much each push adds to sliding speed   
-        CAMERA_SAFETY_RADIUS: 0.225,
-        CAMERA_SAFETY_LERP_STEPS: 12,
+        CAMERA_SAFETY_RADIUS: 0.25,
+        CAMERA_SAFETY_LERP_STEPS: 25,
         VANISHING_WARNING_FACTOR: 0.2,
         VANISHING_RESET: -1,
         VANISHING_WARNING_ALPHA: 0.55,
@@ -2364,6 +2364,7 @@ const WORLD = {
                     break;
                 case MAPDICT.WALL:
                 case MAPDICT.WALL + MAPDICT.STAIR:
+                case MAPDICT.WALL + MAPDICT.LADDER:
                 case MAPDICT.WALL + MAPDICT.SHRINE:
                     if (!WebGL.PRUNE_BLOCKS || GA.blockVisible(grid) || GA.isTopGrid(grid)) this.addCube(grid.z, grid, "wall", prune);                  //plain old wall - show only visible block or top (for 3rd person view)
                     if (WebGL.CONFIG.holesSupported && grid.z === 0) this.addCube(- 1, grid, "wall");                                                   //support for holes so that they have 3d look if in the floor
@@ -4400,45 +4401,43 @@ class $3D_player {
         let nextPos3 = null;
         let checkPos = null;
 
-        //console.info("\nclimb", label, "dir", dir, "this.climbingNormal", this.climbingNormal);
-
         switch (label) {
             case "forward":
                 nextPos3 = this.pos.translate(DOWN3, length);
-                checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
-                checkPos = checkPos.translate(DOWN3, 0.15);                                         // head position
+                checkPos = nextPos3
+                    .translate(this.climbingNormal, 2 * this.r)
+                    .translate(DOWN3, 0.15);                                                                    // head position
                 break;
             case "backward":
                 nextPos3 = this.pos.translate(UP3, length);
-                checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
-                checkPos = checkPos.translate(UP3, this.heigth);                                    // feet position
+                checkPos = nextPos3
+                    .translate(this.climbingNormal, 2 * this.r)
+                    .translate(UP3, this.heigth);                                                               // feet position
                 break;
             case "left":
             case "right":
                 nextPos3 = this.pos.translate(dir, length);
-                checkPos = nextPos3.translate(this.climbingNormal, 2 * this.r);                     // check into ladder;
-                checkPos = checkPos.translate(dir, this.r);                                         // check side
-                break;
+                checkPos = nextPos3
+                    .translate(this.climbingNormal, 2 * this.r)
+                    .translate(dir, this.r);                                                                    // side position
+
+                const headGrid = Vector3.to_Grid3D(checkPos.translate(DOWN3, 0.15));
+                const feetGrid = Vector3.to_Grid3D(checkPos.translate(UP3, this.heigth));
+                const headOnLadder = this.GA.isLadder(headGrid);
+                const feetOnLadder = this.GA.isLadder(feetGrid);
+
+                if (headOnLadder && feetOnLadder) return this.setPos(nextPos3);
+                if (headOnLadder || feetOnLadder) return;                                                       // Partial overlap: hold position.
+
+                                                                                                                // if not ladder and side move, then set dir sideways and jump
+                this.setDir(dir);
+                WebGL.GAME.positionUpdate();
+                return this.jump(this.parent.jumpPower);
 
             default: throw new Error(`Label ${label} not considered in climbing`);
         }
 
-        const checkGrid3D = Vector3.to_Grid3D(checkPos);
-        //console.error("..checks", checkGrid3D, "checkPos", checkPos, "ladder", this.GA.isLadder(checkGrid3D), "\n");
-
-        if (this.GA.isLadder(checkGrid3D)) {
-            //console.warn("..nextPos3", nextPos3);
-            return this.setPos(nextPos3);
-
-        } else {
-            //if not ladder and side move, then jump
-            if (["left", "right"].includes(label)) {
-                this.setDir(dir);
-                WebGL.GAME.positionUpdate();
-                this.jump(this.parent.jumpPower);
-                return;
-            }
-        }
+        if (this.GA.isLadder(Vector3.to_Grid3D(checkPos))) return this.setPos(nextPos3);
     }
     _apply_surface_move(lapsedTime, dir) {
 

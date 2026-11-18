@@ -143,13 +143,13 @@ const SHRINE_TYPE = {
 
 const ORACLE_TYPE = {
     RedClimber: {
-    name: "RedClimber",
-    sprite: "RedClimber",
-    category: 'crest',
-    voice: "Female2",
-    text: `This route's taken, Princess. Head to the other side and find your own way up. Yes, you'll have to climb. The mountain won't lower itself for you.`,
-    interactionCategory: "oracle",
-},
+        name: "RedClimber",
+        sprite: "RedClimber",
+        category: 'crest',
+        voice: "Female2",
+        text: `This route's taken, Princess. Head to the other side and find your own way up. Yes, you'll have to climb. The mountain won't lower itself for you.`,
+        interactionCategory: "oracle",
+    },
     PurpleLotus: {
         name: "PurpleLotus",
         sprite: "PurpleLotus",
@@ -2583,6 +2583,12 @@ const INTERACTION_ITEM = {
         inventorySprite: "SilverKey",
         color: "Silver"
     },
+    CyanKey: {
+        name: "CyanKey",
+        category: "key",
+        inventorySprite: "CyanKey",
+        color: "Cyan"
+    },
 
     // money
     Banknote10: {
@@ -3298,6 +3304,20 @@ const INTERACTION_ITEM = {
         category: "interaction_item",
         inventorySprite: "YellowWellies",
         text: "Shiny yellow wellies. I can jump in the puddles. Yeah!"
+    },
+
+    //alpine clothes
+    Shawl: {
+        name: "Shawl",
+        category: "interaction_item",
+        inventorySprite: "Shawl",
+        text: "Nice, warm knitted shawl to protect my neck."
+    },
+    WoolenCap: {
+        name: "WoolenCap",
+        category: "interaction_item",
+        inventorySprite: "WoolenCap",
+        text: "Nice, warm knitted cap to protect my head."
     },
 
     //certificates and documents
@@ -5522,6 +5542,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    BlackCutieSittingInSnow: {
+        name: "BlackCutieSittingInSnow",
+        sprite: "BlackCutieSittingInSnow",
+        category: 'crest',
+        voice: "Female3",
+        wants: ["Shawl", "WoolenCap"],
+        gives: "CyanKey",
+        text: {
+            intro: `Everyone says I'm hot. The snow seems unconvinced. Fetch me some warm woollen things, Princess. The path forward will be open once I stop shivering.`,
+            progress: `Better, but I'm still cold. Fetch the rest. Shivering is doing very little for my mystique.`,
+            conclusion: `Much better. Here's the cyan key. Carry on, Princess. I'll stay here and reconsider my choice of seating.`,
+        },
+    },
     CaveBoss: {
         name: "CaveBoss",
         sprite: "CaveBoss",

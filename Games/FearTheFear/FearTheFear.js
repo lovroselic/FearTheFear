@@ -60,6 +60,7 @@ DEBUG.checkPoint = function () {
 
     Entities:
     CaveBoss wants "RareSteak", "RareSteak" gives Orange Key
+    BlackCutieSittingInSnow wants "Shawl", "WoolenCap"
 
     essenttial scrolls: 
            
@@ -123,6 +124,7 @@ DEBUG.checkPoint = function () {
 
     let invItems = [
         "RareSteak", "RareSteak",
+        "Shawl", "WoolenCap",
 
     ];
 
@@ -209,7 +211,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.19.0",
+    VERSION: "0.19.1",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

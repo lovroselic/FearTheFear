@@ -956,7 +956,7 @@ const MAP = {
     ,
     28: {
         name: "Well",
-        data: '{"width":"13","height":"13","depth":9,"map":"BB3AA3BB2AÁÁ7AÁÁ2AA3BB2ÁÁ4BB8ÁÁ2AA4ÁAA7BB2ABAA2BB3ABÁÁ2AÁÁ3AA12BB3BBB20ÁBB21ÁBB3ÁBB41ABB6AA2BB11ABABB4ABB12ABB4ABB2ABB5AA3BB18ABB2ABB15AA2BB2ÁABB96ÁBB68ÁBB8ÁBB6ÁBB10ÁABB2ABB3AB$BB33䁢BB127AÁBÁABB16ÁÁ6BB6ÁÁ6BB15ÁÁ2BB9ABB12ÁÁ5BB8ÁÁ5BB4ABB12AA2BB13ÁÁ5BB5ÁÁ4BB32AA2BB13ÁBÁÁ3BAÁBB34ÁBB13ÁBB6AA2BB32BBB6BBB11ÁBB59BB4BB5BB67ÁAÁÁ3AA2BB2ÁÁ7AA2ÁÁ20BÁBÁÁ120AÁAA3ÁÁ13BB8ÁÁ6BB6ÁÁ88AA3BÁÁ5AÁÁ2AÁÁ2BB9ÁÁ5BB5ÁÁ56BB2ÁAA2BB2AA2BB7ÁBÁBB7ÁBÁÁ7BBÁÁ7BÁBÁÁ4BB6","extendedMap":"AA235ᡔ㡔AA9ᡔ㡔AA36㡔AA8ᡔAA4ᡔAA15桌AA549$AA249塌AᡌAA26塌AA5䡌AA139ᡔAA3ᡔAA4㡔AA46塌AA3桌AA7㡔AA90ᡔAA7䡌AA41硌AA23"}',
+        data: '{"width":"13","height":"13","depth":9,"map":"BB2AA2BAA4BÁÁ2ABÁÁ2AA2BAÁÁ2ABÁAÁA䂂ÁBB8၂ÁÁ3BÁAA3BAA3ÁÁ2ABB2AA3ÁAA4BB2ABB5ÁÁ2AÁBÁÁ2AA9BB3၂B၂AA5BB5ABB11ABB6ÁBB23ABB3ÁÁ2BB10ABB10ABB15AA2BB2ABB7䂂BAA2BB2ABB2ABB3ABB6ABB2ABB3ABB9AA2BB17ABB18ÁABB116ÁBB54ABB12ÁBB17ÁBB6ÁBB10ÁABB4A$BB25䁢BB101AÁBÁABB12ABB2ÁÁ6BB5ÁÁ6BB15ÁÁ2BB10ABB11ÁÁ5BB8ÁÁ5BB16AA2BB13ÁÁ5BB5ÁÁ4BB5䁢BB26AA2BB13ÁBÁÁ3BB35ÁBB13ÁBB4AÁBB17ABB15၂B၂BB6၂B၂BB11ÁBB4AA2BB54၂BB4၂BB70၂BB5ÁÁ2AÁÁ4AÁÁ21BÁBÁÁ111AA2ÁAA2ÁÁ14BB8ÁÁ6BB6ÁÁ80AA2BÁÁ3AÁÁ2AÁÁ2AÁÁ2BB9ÁÁ5BB5ÁÁ48BB2ÁAA2BB2AA2BB7ÁBÁBB7ÁÁ3BÁ၂B၂BÁÁ3BÁBB6ÁÁ36BB3ÁAÁÁ3AA2BB3ABA","extendedMap":"AA235ᡔ㡔AA9ᡔ㡔AA36㡔AA8ᡔAA4ᡔAA15桌AA549$AA249塌AᡌAA26塌AA5䡌AA139ᡔAA3ᡔAA4㡔AA46塌AA3桌AA7㡔AA90ᡔAA7䡌AA41硌AA23"}',
         dungeonAmbience: 0,
         sg: 0,
         maxSpawned: 6,
@@ -972,10 +972,14 @@ const MAP = {
         backPanorama: "",
         bottomPanorama: "Pit1",
         skyPanorama: "WarmDarkSky",
-        start: '[256,1]',
+        start: '[1284,5]',
         lights: '[[400,3,"WallCandle_909","dimRed",["1.0","10.0","1.0"]],[825,1,"WallCandle_900","dimRed",["1.0","10.0","1.0"]],[1120,5,"WallCandle_918","dimRed",["1.0","10.0","1.0"]],[1371,7,"Candle59","dimRed",["1.0","10.0","1.0"]],[730,7,"Candle69","dimRed",["1.0","10.0","1.0"]],[1467,1,"WallCandle_898","dimRed",["1.0","10.0","1.0"]]]',
-        gates: '[[331,1,"28.1","13.2","Orange"]]',
+        gates: '[[331,1,"28.1","13.2","Orange"],[1208,3,"28.2","29.1","Cyan"]]',
+        containers: '[[192,"WoodenCrateTexture1001","INTERACTION_ITEM.Shawl",5],[661,"MetalCrate50","INTERACTION_ITEM.WoolenCap",1]]',
+        entities: '[[1334,5,"BlackCutieSittingInSnow"]]',
         oracles: '[[258,3,"RedClimber"]]',
         lairs: '[[851,7,"Lair_588"],[1007,1,"Lair74"]]',
     }
+    ,
+    29: {}
 };
