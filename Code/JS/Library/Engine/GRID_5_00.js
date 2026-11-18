@@ -1098,6 +1098,7 @@ const EXT_MAPDICT = {
     TOPDOORWEDGE: 17,
     TOPDOOR2: 18,
     CLIMBWALL: 19,
+    PYRAMID: 20,
 
     // unused
     UNUSED8: 2 ** 8,                // 256
@@ -1175,6 +1176,7 @@ const EXT_TO_SHAPE = {
     17: "TOPDOORWEDGE",
     18: "TOPDOOR2",
     19: "CLIMBWALL",
+    20: "PYRAMID"
 };
 
 const WallSizeToHeight = (value) => {

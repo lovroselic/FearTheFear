@@ -35,6 +35,7 @@ const MAP_TEXT = {
     26: `Smells like farm pets. Let's cuddle them. Not.`,
     27: `Looks like another deadly maze. Who designed this game? Fucker!`,
     28: `Well? It looks like well.`,
+    29: ``,
 };
 
 /** Map definitions */
@@ -981,5 +982,29 @@ const MAP = {
         lairs: '[[851,7,"Lair_588"],[1007,1,"Lair74"]]',
     }
     ,
-    29: {}
+    29: {
+        name: "Long Ridge",
+        data: '{"width":"25","height":"13","depth":7,"map":"ÁÁ2AA2ÁABÁBÁAA2ŁAA2BAA2ÁA䁢AA4ÁÁ2ABAA6BAA3BÁAA5ÁÁ2AA2ÁAÁÁ4AÁAA2BB6၂AA4BAA3BÁAÁAA7ÁAA2ÁAA2ÁAA3BABB3ÁBB2၂BB4Á၂BB3ÁBÁÁ2BB2ABB5ÁBÁB၂BB8ÁBB3ÁÁ4BB5ÁBB5AA3BB9ABB5၂BB15ÁÁ2BÁBB7၂BB5ÁBB22ABB7ÁBB30ÁBB8AA2ÁBB2ÁÁ2BB9ÁBB2ABB10ÁBÁBB3ÁÁ2BB6ABB14ÁBABÁÁ3BÁBÁÁ2BB4ÁBB7ABB3ABB9AÁBB8ABB3ABB4၂BÁÁ2AÁBÁÁ2AÁÁ9BÁÁ2AÁÁ23BÁÁ13BÁÁ6BÁÁ9AÁAÁÁ18BÁÁ16BÁÁ5AÁÁ7AÁÁ31AÁÁ34BÁÁ16AÁÁ3AÁÁ39AÁÁ58AÁÁ2BÁÁ14BB2ÁÁ4BÁBÁBB6ÁBB3ÁÁ5BAÁÁ4BÁÁ38AÁÁ50AÁÁ3AÁÁ7BÁÁ17BÁÁ43BÁÁ8BÁÁ23BÁÁ10BÁÁ3BÁÁ28BÁÁ11BB3ÁÁ628$ÁÁ349BÁBÁBÁÁ60AÁÁ164BÁAÁÁ20ABÁÁ4BÁÁ5ŁɁсс2ࡁB၂Á၂BABABB2Á","extendedMap":"AA184ࡕ$AA186ࡔAA126ࡕࡃAA48ᡂAA34ࡔAA1156ᡔAA63⡌AA85ࡕAA48ᡔAA56ࡔAA23ࡕAA28ࡔAA45⡂AA47ࡆAA14㡂AA8ࡕAA37ࡕAA11ᡔAA34ࡆࡆ2AA3ࡔࡔ2AA11ࡊAA4"}',
+        dungeonAmbience: 10,
+        sg: 0,
+        maxSpawned: 6,
+        killCountdown: 6,
+        killsRequiredToStopSpawning: 24,
+        spawnDelay: 12999,
+        wall: "MountainWall_106",
+        floor: "SnowyAlpineRockTexture",
+        ceil: "MountainWall_104",
+        frontPanorama: "HotelBalconyView",
+        leftPanorama: "MoodyAlpinePanorama1",
+        rightPanorama: "MoodyAlpinePanorama2",
+        backPanorama: "TerraceView",
+        bottomPanorama: "ValleyBottom",
+        skyPanorama: "DarkSky1",
+        start: '[1177,7]',
+        gates: '[[1125,5,"29.1","28.2","Cyan"]]',
+        skills: '[[1795,"Heart"]]',
+        containers: '[[1178,"WarmChest","INTERACTION_ITEM.HikingBoot",7],[1734,"MetalCrate423","INTERACTION_ITEM.HikingBoot",1],[763,"Crate","INTERACTION_ITEM.HikingBoot",3]]',
+        triggers: '[[1738,7,"SmoothWallButton",1,1791]]',
+        lairs: '[[129,1,"Lair_584"],[154,7,"Lair454"]]',
+    }
 };

@@ -3319,6 +3319,18 @@ const INTERACTION_ITEM = {
         inventorySprite: "WoolenCap",
         text: "Nice, warm knitted cap to protect my head."
     },
+    Gloves: {
+        name: "Gloves",
+        category: "interaction_item",
+        inventorySprite: "Gloves",
+        text: "Nice, warm knitted gloves to protect my delicate hands."
+    },
+    HikingBoot: {
+        name: "HikingBoot",
+        category: "interaction_item",
+        inventorySprite: "HikingBoot",
+        text: "Whoa. No heels? I am now wearing that!"
+    },
 
     //certificates and documents
     BlackCertificate: {

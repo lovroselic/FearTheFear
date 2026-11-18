@@ -27,6 +27,7 @@ ElementsToCompile = [
     { shapeName: "TOPDOOR2", collisionMode: "CONVEX", occlusionType: "PASS", passable: true },
     { shapeName: "HALFROOF", collisionMode: "CELL", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85, },
     { shapeName: "CLIMBWALL", collisionMode: "CONVEX", occlusionType: "PASS", passable: true},
+    { shapeName: "PYRAMID", collisionMode: "CONVEX", occlusionType: "BLOCK", passable: false, rayTargetBias: 0.85}, 
 ];
 
 // assets 
@@ -51,7 +52,7 @@ LoadObjects = [
     "Goat.obj", "Pillar.obj", "owl.obj", "Stiletto.obj",
     "Balcony.obj", "Crennel.obj", "Arch.obj", "HalfArch.obj", "Grille.obj", "RoundBound.obj", "Pillar3.obj", "ExtrudedWedge.obj", "BigArch.obj", "CornerWedge.obj",
     "Tit.obj", "RoundWedge.obj", "TopHorizontalWedge.obj", "HalfRoof.obj", "RoundBoundCorner.obj", "TopDoorWedge.obj", "TopDoorWedge2.obj",
-    "Cabinet2.obj", "BookShelf3.obj", "Book.obj", "ClimbWall.obj",
+    "Cabinet2.obj", "BookShelf3.obj", "Book.obj", "ClimbWall.obj", "Pyramid.obj",
 ];
 
 LoadModels = [
@@ -104,6 +105,9 @@ LoadTextures = [
     { srcName: "Panorama/SwampSide_935.webp", name: "SwampSide_935" },
     { srcName: "Panorama/SwampSide_936.webp", name: "SwampSide_936" },
     { srcName: "Panorama/SwampSide_937.webp", name: "SwampSide_937" },
+
+    { srcName: "Panorama/MoodyAlpinePanorama1.webp", name: "MoodyAlpinePanorama1" },
+    { srcName: "Panorama/MoodyAlpinePanorama2.webp", name: "MoodyAlpinePanorama2" },
 
     //sky, bottom
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },
@@ -1897,6 +1901,8 @@ LoadSprites = [
     { srcName: "Items/YellowWellies.webp", name: "YellowWellies" },
     { srcName: "Items/Shawl.png", name: "Shawl" },
     { srcName: "Items/WoolenCap.png", name: "WoolenCap" },
+    { srcName: "Items/Gloves.png", name: "Gloves" },
+    { srcName: "Items/HikingBoot.png", name: "HikingBoot" },
 
     //leather fashion
     { srcName: "Items/BlackLeatherBoots2.png", name: "BlackLeatherBoots" },

@@ -1991,7 +1991,8 @@ const PANORAMA_DECALS = [
     "HotelBalconyView", "TerraceView", "SideDoom1", "SideDoom2", "SideDoom3", "SideDoom4", "CreepyForest1", "CreepyForest2", "CreepyForest3", "CreepyForest4",
     "BrightCreepyForest1", "BrightCreepyForest2", "BrightCreepyForest3", "BrightCreepyForest4",
     "AlpineSideLakeForest_889", "AlpineSideLakeForest_890", "AlpineSideLakeForest_891", "AlpineSideLakeForest_892", "AlpineSideLakeForest_893", "AlpineSideLakeForest_894",
-    "SwampSide_934", "SwampSide_935", "SwampSide_936", "SwampSide_937"
+    "SwampSide_934", "SwampSide_935", "SwampSide_936", "SwampSide_937",
+    "MoodyAlpinePanorama1", "MoodyAlpinePanorama2",
 ].sort();
 
 //bottom
