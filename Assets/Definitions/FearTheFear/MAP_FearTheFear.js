@@ -36,6 +36,7 @@ const MAP_TEXT = {
     27: `Looks like another deadly maze. Who designed this game? Fucker!`,
     28: `Well? It looks like well.`,
     29: ``,
+    30: ``,
 };
 
 /** Map definitions */
@@ -984,7 +985,7 @@ const MAP = {
     ,
     29: {
         name: "Long Ridge",
-        data: '{"width":"25","height":"13","depth":7,"map":"ÁÁ2AA2ÁABÁBÁAA2ŁAA2BAA2ÁA䁢AA4ÁÁ2ABAA6BAA3BÁAA5ÁÁ2AA2ÁAÁÁ4AÁAA2BB6၂AA4BAA3BÁAÁAA7ÁAA2ÁAA2ÁAA3BABB3ÁBB2၂BB4Á၂BB3ÁBÁÁ2BB2ABB5ÁBÁB၂BB8ÁBB3ÁÁ4BB5ÁBB5AA3BB9ABB5၂BB15ÁÁ2BÁBB7၂BB5ÁBB22ABB7ÁBB30ÁBB8AA2ÁBB2ÁÁ2BB9ÁBB2ABB10ÁBÁBB3ÁÁ2BB6ABB14ÁBABÁÁ3BÁBÁÁ2BB4ÁBB7ABB3ABB9AÁBB8ABB3ABB4၂BÁÁ2AÁBÁÁ2AÁÁ9BÁÁ2AÁÁ23BÁÁ13BÁÁ6BÁÁ9AÁAÁÁ18BÁÁ16BÁÁ5AÁÁ7AÁÁ31AÁÁ34BÁÁ16AÁÁ3AÁÁ39AÁÁ58AÁÁ2BÁÁ14BB2ÁÁ4BÁBÁBB6ÁBB3ÁÁ5BAÁÁ4BÁÁ38AÁÁ50AÁÁ3AÁÁ7BÁÁ17BÁÁ43BÁÁ8BÁÁ23BÁÁ10BÁÁ3BÁÁ28BÁÁ11BB3ÁÁ628$ÁÁ349BÁBÁBÁÁ60AÁÁ164BÁAÁÁ20ABÁÁ4BÁÁ5ŁɁсс2ࡁB၂Á၂BABABB2Á","extendedMap":"AA184ࡕ$AA186ࡔAA126ࡕࡃAA48ᡂAA34ࡔAA1156ᡔAA63⡌AA85ࡕAA48ᡔAA56ࡔAA23ࡕAA28ࡔAA45⡂AA47ࡆAA14㡂AA8ࡕAA37ࡕAA11ᡔAA34ࡆࡆ2AA3ࡔࡔ2AA11ࡊAA4"}',
+        data: '{"width":"25","height":"13","depth":7,"map":"ÁÁ2AA2ÁABÁBÁAA2ŁAA2BAA2ÁA䁢AA4ÁABAA5ÁABAA3BÁAA4ÁÁ2AA2ÁAÁÁ4AÁAA3BB6၂AA4BAA2BÁAÁAA7ÁAA2ÁAA2ÁAA4BABB3ÁBB2၂BB4Á၂BB3ÁBÁÁ2BB2ABB5ÁBÁB၂BB8ÁBB3ÁÁ4BB5ÁBB5AA3BB9ABB5၂BB15ÁÁ2BÁBB7၂BB5ÁBB22ABB7ÁBB30ÁBB8AA2ÁBB2ÁÁ2BB9ÁBB2ABB10ÁBÁBB3ÁÁ2BB6ABB14ÁBABÁÁ3BÁBÁÁ2BB4ÁBB7ABB3ABB9AÁBB11ABB4၂BÁÁ2AÁBÁÁ3AÁÁ8BÁÁ2AÁÁ23BÁÁ13BÁÁ6BÁÁ9AÁAÁÁ18BÁÁ16BÁÁ5AÁÁ7AÁÁ31AÁÁ34BÁÁ16AÁÁ3AÁÁ39AÁÁ58AÁÁ2BÁÁ14BB2ÁÁ4BÁBÁBB6ÁBB3ÁÁ5BAÁÁ4BÁÁ38AÁÁ50AÁÁ3AÁÁ7BÁÁ17BÁÁ43BÁÁ8BÁÁ23BÁÁ10BÁÁ3BÁÁ28BÁÁ11BB2䁢ÁÁ628$ÁÁ349BÁBÁBÁÁ60AÁÁ164BÁAÁÁ20ABÁÁ4BÁÁ5ŁɁсс2ࡁB၂Á၂BABABB2ÁA","extendedMap":"AA184ࡕ$AA186ࡔAA126ࡕࡃAA48ᡂAA34ࡔAA1210⡌AA27ᡆAA54ࡕAA48ᡔAA56ࡔAA23ࡕAA28ࡔAA22ᡔAA24⡂AA51ࡆAA15㡂AA8ࡕAA39ࡕAA12ᡔAA36ࡆࡆ2AA3ࡔࡔ2AA11ࡊAA5"}',
         dungeonAmbience: 10,
         sg: 0,
         maxSpawned: 6,
@@ -1000,11 +1001,36 @@ const MAP = {
         backPanorama: "TerraceView",
         bottomPanorama: "ValleyBottom",
         skyPanorama: "DarkSky1",
-        start: '[1177,7]',
-        gates: '[[1125,5,"29.1","28.2","Cyan"]]',
+        start: '[514,5]',
+        gates: '[[1125,5,"29.1","28.2","Cyan"],[574,3,"29.2","30.1","Purple"]]',
         skills: '[[1795,"Heart"]]',
         containers: '[[1178,"WarmChest","INTERACTION_ITEM.HikingBoot",7],[1734,"MetalCrate423","INTERACTION_ITEM.HikingBoot",1],[763,"Crate","INTERACTION_ITEM.HikingBoot",3]]',
         triggers: '[[1738,7,"SmoothWallButton",1,1791]]',
+        entities: '[[465,7,"AsianSnowSitter"]]',
         lairs: '[[129,1,"Lair_584"],[154,7,"Lair454"]]',
+    }
+    ,
+    30: {
+        name: "The Clear Clearing",
+        data: '{"width":"23","height":"23","depth":7,"map":"BB15AA112BAA15BAA12BB3AA78ÁÁ2AA18BB5AA53ÁÁ4䁢AÁÁ13AA25ÁAÁAA4BABAA32ÁÁ4AA7ÁAA5BABAA9BAA8BB53ABB8AA13BB5AA6BB10AA2BB3AA5BB121ÁBB2$BB47AÁÁ2AÁÁ2BB425ÁÁ6BB2ÁBB3ÁÁ5BB6ÁÁ4BB5ÁBB16ÁÁ4BB6ÁBB82AÁÁ250AA5ÁÁ205BB3ÁÁ6BÁÁ51BÁÁ243AÁÁ14AA5ÁÁ6BB6ÁÁ32BB4ÁÁ28BB4ÁAA14ÁÁ1106BÁÁ5BÁÁ45BÁAÁÁ86BB2ÁÁ16BÁÁ2BÁÁ262BB2","extendedMap":"AA3703$"}',
+        dungeonAmbience: 1,
+        sg: 0,
+        maxSpawned: 6,
+        killCountdown: 6,
+        killsRequiredToStopSpawning: 24,
+        spawnDelay: 12999,
+        wall: "KreaWall_522",
+        floor: "Grass_957",
+        ceil: "JuggWall_498",
+        frontPanorama: "MoodyAlpineScene3",
+        leftPanorama: "",
+        rightPanorama: "",
+        backPanorama: "CreepyForest1",
+        bottomPanorama: "",
+        skyPanorama: "DarkSky2",
+        start: '[2377,5]',
+        decals: '[[2377,4,"AlpineFloor2","texture"],[2355,4,"AlpineFloor2","texture"],[2378,4,"AlpineFloor2","texture"],[2401,4,"AlpineFloor2","texture"],[2402,4,"AlpineFloor2","texture"],[2379,4,"AlpineFloor2","texture"],[2356,4,"AlpineFloor2","texture"],[2333,4,"AlpineFloor2","texture"],[2425,4,"AlpineFloor2","texture"],[2310,4,"AlpineFloor2","texture"],[2309,4,"AlpineFloor2","texture"],[2308,4,"AlpineFloor2","texture"],[2307,4,"AlpineFloor2","texture"],[2306,4,"AlpineFloor2","texture"],[2305,4,"AlpineFloor2","texture"],[2328,4,"AlpineFloor2","texture"],[2351,4,"AlpineFloor2","texture"],[2374,4,"AlpineFloor2","texture"],[2397,4,"AlpineFloor2","texture"],[2420,4,"AlpineFloor2","texture"],[2443,4,"AlpineFloor2","texture"],[2444,4,"AlpineFloor2","texture"],[2445,4,"AlpineFloor2","texture"],[2446,4,"AlpineFloor2","texture"],[2447,4,"AlpineFloor2","texture"],[2448,4,"AlpineFloor2","texture"],[575,4,"Canopy_959","texture"],[598,4,"Canopy_959","texture"],[621,4,"Canopy_959","texture"],[644,4,"Canopy_959","texture"],[667,4,"Canopy_959","texture"],[690,4,"Canopy_959","texture"],[713,4,"Canopy_959","texture"],[736,4,"Canopy_959","texture"],[759,4,"Canopy_959","texture"],[782,4,"Canopy_959","texture"],[805,4,"Canopy_959","texture"],[828,4,"Canopy_959","texture"],[851,4,"Canopy_959","texture"],[874,4,"Canopy_959","texture"],[897,4,"Canopy_959","texture"],[920,4,"Canopy_959","texture"],[943,4,"Canopy_959","texture"],[966,4,"Canopy_959","texture"],[989,4,"Canopy_959","texture"],[460,5,"Forest_973","texture"],[437,5,"Forest_973","texture"],[414,5,"Forest_973","texture"],[391,5,"Forest_973","texture"],[368,5,"Forest_973","texture"],[345,5,"Forest_973","texture"],[322,5,"Forest_973","texture"],[299,5,"Forest_973","texture"],[276,5,"Forest_973","texture"],[253,5,"Forest_973","texture"],[230,5,"Forest_973","texture"],[207,5,"Forest_973","texture"],[184,5,"Forest_973","texture"],[161,5,"Forest_973","texture"],[138,5,"Forest_973","texture"],[115,5,"Forest_973","texture"],[92,5,"Forest_973","texture"],[69,5,"Forest_973","texture"],[46,5,"Forest_973","texture"],[596,4,"Canopy_963","texture"],[597,4,"Canopy_963","texture"],[619,4,"Canopy_963","texture"],[620,4,"Canopy_963","texture"],[642,4,"Canopy_963","texture"],[643,4,"Canopy_963","texture"],[665,4,"Canopy_963","texture"],[666,4,"Canopy_963","texture"],[688,4,"Canopy_963","texture"],[689,4,"Canopy_963","texture"],[711,4,"Canopy_963","texture"],[712,4,"Canopy_963","texture"],[734,4,"Canopy_963","texture"],[735,4,"Canopy_963","texture"],[757,4,"Canopy_963","texture"],[758,4,"Canopy_963","texture"],[780,4,"Canopy_963","texture"],[781,4,"Canopy_963","texture"],[804,4,"Canopy_963","texture"],[826,4,"Canopy_963","texture"],[827,4,"Canopy_963","texture"],[849,4,"Canopy_963","texture"],[850,4,"Canopy_963","texture"],[872,4,"Canopy_963","texture"],[873,4,"Canopy_963","texture"],[895,4,"Canopy_963","texture"],[896,4,"Canopy_963","texture"],[918,4,"Canopy_963","texture"],[919,4,"Canopy_963","texture"],[941,4,"Canopy_963","texture"],[942,4,"Canopy_963","texture"],[964,4,"Canopy_963","texture"],[965,4,"Canopy_963","texture"],[987,4,"Canopy_963","texture"],[988,4,"Canopy_963","texture"],[1010,4,"Canopy_963","texture"],[1011,4,"Canopy_963","texture"],[67,3,"ForbiddenForest_974","texture"],[90,3,"ForbiddenForest_974","texture"],[113,3,"ForbiddenForest_974","texture"],[136,3,"ForbiddenForest_974","texture"],[159,3,"ForbiddenForest_974","texture"],[182,3,"ForbiddenForest_974","texture"],[205,3,"ForbiddenForest_974","texture"],[228,3,"ForbiddenForest_974","texture"],[251,3,"ForbiddenForest_974","texture"],[297,3,"ForbiddenForest_974","texture"],[320,3,"ForbiddenForest_974","texture"],[343,3,"ForbiddenForest_974","texture"],[366,3,"ForbiddenForest_974","texture"],[389,3,"ForbiddenForest_974","texture"],[275,3,"ForbiddenForest_974","texture"],[412,3,"ForbiddenForest_974","texture"],[435,3,"ForbiddenForest_974","texture"],[458,3,"ForbiddenForest_974","texture"],[481,3,"ForbiddenForest_974","texture"],[251,7,"ForbiddenForest_974","texture"],[297,1,"ForbiddenForest_974","texture"]]',
+        gates: '[[2376,5,"30.1","29.2","Purple"]]',
+        scrolls: '[[2333,12]]',
     }
 };

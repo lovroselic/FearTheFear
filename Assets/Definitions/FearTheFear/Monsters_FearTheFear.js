@@ -5554,6 +5554,19 @@ const MONSTER_TYPE = {
 };
 
 const INTERACTION_ENTITY = {
+    AsianSnowSitter: {
+        name: "AsianSnowSitter",
+        sprite: "AsianSnowSitter",
+        category: 'crest',
+        voice: "Female5",
+        wants: ["Gloves", "HikingBoot", "HikingBoot"],
+        gives: "PurpleKey",
+        text: {
+            intro: `Hot enough to turn heads. Cold enough to lose toes. Bring me proper protection for my hands and feet, Princess, and the purple key is yours.`,
+            progress: `Keep looking, Princess. I'm still freezing. At this rate, my next admirer will need a chisel.`,
+            conclusion: `Much better. Here's the purple key. I should have worn stilettos. Wonderful grip in snow. Sensible footwear has clearly been oversold.`,
+        },
+    },
     BlackCutieSittingInSnow: {
         name: "BlackCutieSittingInSnow",
         sprite: "BlackCutieSittingInSnow",

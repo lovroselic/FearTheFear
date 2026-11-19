@@ -89,6 +89,11 @@ const TEXTURE_LIST = [
     "KreaWall_566", "KreaWall_567", "KreaWall_568", "KreaWall_569", "KreaWall_570", "KreaWall_571", "KreaWall_572", "KreaWall_573", "KreaWall_574", "KreaWall_575", "KreaWall_576",
     "Wood_726", "Wood_727", "Wood_728", "Wood_729", "Wood_730", "Wood_731", "Wood_732", "Wood_733", "Wood_734", "Wood_735", "Wood_736", "Wood_737",
     "Wood_738", "Wood_739", "Wood_740", "Wood_741", "Wood_742", "Wood_743", "Wood_744", "AlpineFloor2", "AlpineGround", "ButtCrackTexture", "OchreSlabs", "SnowyAlpineRockTexture",
+    "Grass_938", "Grass_939", "Grass_940", "Grass_941", "Grass_942", "Grass_943", "Grass_944", "Grass_945", "Grass_946", "Grass_947", "Grass_948", "Grass_949",
+    "Grass_950", "Grass_951", "Grass_952", "Grass_953", "Grass_954", "Grass_955", "Grass_956", "Grass_957",
+    "Canopy_958", "Canopy_959", "Canopy_960", "Canopy_961", "Canopy_962", "Canopy_963", "Canopy_964", "Canopy_965",
+    "Forest_966", "Forest_967", "Forest_968", "Forest_969", "Forest_970", "Forest_971", "Forest_972", "Forest_973",
+    "ForbiddenForest_974", "ForbiddenForest_975", "ForbiddenForest_976", "ForbiddenForest_977",
 ].sort();
 
 /** Decals */
@@ -1992,7 +1997,7 @@ const PANORAMA_DECALS = [
     "BrightCreepyForest1", "BrightCreepyForest2", "BrightCreepyForest3", "BrightCreepyForest4",
     "AlpineSideLakeForest_889", "AlpineSideLakeForest_890", "AlpineSideLakeForest_891", "AlpineSideLakeForest_892", "AlpineSideLakeForest_893", "AlpineSideLakeForest_894",
     "SwampSide_934", "SwampSide_935", "SwampSide_936", "SwampSide_937",
-    "MoodyAlpinePanorama1", "MoodyAlpinePanorama2",
+    "MoodyAlpinePanorama1", "MoodyAlpinePanorama2", "MoodyAlpineScene3", "MoodyAlpineScene4",
 ].sort();
 
 //bottom
@@ -2002,7 +2007,7 @@ const BOTTOM_DECALS = [
 
 //sky
 const SKY_DECALS = [
-    "Sky_204", "DarkSky1", "WarmDarkSky",
+    "Sky_204", "DarkSky1", "WarmDarkSky", "DarkSky2",
 ].sort();
 
 

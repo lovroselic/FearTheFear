@@ -47,8 +47,10 @@ DEBUG.checkPoint = function () {
      * - trigger
      */
     /**
+     * 
+     * 
      
-    area 3:
+    area 4:
 
     Scrollshop:
            
@@ -61,7 +63,7 @@ DEBUG.checkPoint = function () {
     Entities:
     CaveBoss wants "RareSteak", "RareSteak" gives Orange Key
     BlackCutieSittingInSnow wants "Shawl", "WoolenCap" gives CyanKey
-    AsianSnowSitter wants "Gloves", "HikingBoot", "HikingBoot"
+    AsianSnowSitter wants "Gloves", "HikingBoot", "HikingBoot" gives PurpleKey
 
     essenttial scrolls: 
            
@@ -75,7 +77,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 29;
+    GAME.level = 30;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -136,7 +138,7 @@ DEBUG.checkPoint = function () {
     }
 
     let keys = [
-        "Orange",
+        "Orange", "Cyan", "Purple",
     ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
@@ -213,7 +215,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.19.2",
+    VERSION: "0.19.3",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
