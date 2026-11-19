@@ -94,6 +94,7 @@ const TEXTURE_LIST = [
     "Canopy_958", "Canopy_959", "Canopy_960", "Canopy_961", "Canopy_962", "Canopy_963", "Canopy_964", "Canopy_965",
     "Forest_966", "Forest_967", "Forest_968", "Forest_969", "Forest_970", "Forest_971", "Forest_972", "Forest_973",
     "ForbiddenForest_974", "ForbiddenForest_975", "ForbiddenForest_976", "ForbiddenForest_977",
+    "Jungle_978", "Jungle_979", "Jungle_980", "Jungle_981", "PineForest_982", "PineForest_983", "PineForest_984", "PineForest_985", "Red_Roof",
 ].sort();
 
 /** Decals */
@@ -1997,7 +1998,7 @@ const PANORAMA_DECALS = [
     "BrightCreepyForest1", "BrightCreepyForest2", "BrightCreepyForest3", "BrightCreepyForest4",
     "AlpineSideLakeForest_889", "AlpineSideLakeForest_890", "AlpineSideLakeForest_891", "AlpineSideLakeForest_892", "AlpineSideLakeForest_893", "AlpineSideLakeForest_894",
     "SwampSide_934", "SwampSide_935", "SwampSide_936", "SwampSide_937",
-    "MoodyAlpinePanorama1", "MoodyAlpinePanorama2", "MoodyAlpineScene3", "MoodyAlpineScene4",
+    "MoodyAlpinePanorama1", "MoodyAlpinePanorama2", "MoodyAlpineScene3", "MoodyAlpineScene4","JungleRama1",
 ].sort();
 
 //bottom

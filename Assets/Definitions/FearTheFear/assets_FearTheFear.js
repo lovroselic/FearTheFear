@@ -110,6 +110,7 @@ LoadTextures = [
     { srcName: "Panorama/MoodyAlpinePanorama2.webp", name: "MoodyAlpinePanorama2" },
     { srcName: "Panorama/MoodyAlpineScene3.webp", name: "MoodyAlpineScene3" },
     { srcName: "Panorama/MoodyAlpineScene4.webp", name: "MoodyAlpineScene4" },
+    { srcName: "Panorama/JungleRama1.webp", name: "JungleRama1" },
 
     //sky, bottom
     { srcName: "Sky/Sky_204.webp", name: "Sky_204" },
@@ -1129,10 +1130,19 @@ LoadTextures = [
     { srcName: "Wall/Forest_971.webp", name: "Forest_971" },
     { srcName: "Wall/Forest_972.webp", name: "Forest_972" },
     { srcName: "Wall/Forest_973.webp", name: "Forest_973" },
-    { srcName: "Wall/ForbiddenForest_974.webp", name: "ForbiddenForest_974"},
-{ srcName: "Wall/ForbiddenForest_975.webp", name: "ForbiddenForest_975"},
-{ srcName: "Wall/ForbiddenForest_976.webp", name: "ForbiddenForest_976"},
-{ srcName: "Wall/ForbiddenForest_977.webp", name: "ForbiddenForest_977"},
+    { srcName: "Wall/ForbiddenForest_974.webp", name: "ForbiddenForest_974" },
+    { srcName: "Wall/ForbiddenForest_975.webp", name: "ForbiddenForest_975" },
+    { srcName: "Wall/ForbiddenForest_976.webp", name: "ForbiddenForest_976" },
+    { srcName: "Wall/ForbiddenForest_977.webp", name: "ForbiddenForest_977" },
+    { srcName: "Wall/Jungle_978.webp", name: "Jungle_978" },
+    { srcName: "Wall/Jungle_979.webp", name: "Jungle_979" },
+    { srcName: "Wall/Jungle_980.webp", name: "Jungle_980" },
+    { srcName: "Wall/Jungle_981.webp", name: "Jungle_981" },
+    { srcName: "Wall/PineForest_982.webp", name: "PineForest_982" },
+    { srcName: "Wall/PineForest_983.webp", name: "PineForest_983" },
+    { srcName: "Wall/PineForest_984.webp", name: "PineForest_984" },
+    { srcName: "Wall/PineForest_985.webp", name: "PineForest_985" },
+    { srcName: "Wall/Red_Roof.webp", name: "Red_Roof" },
 
     //decal-gates
     { srcName: "Gates/WoodenGate2.webp", name: "WoodenGate1" },

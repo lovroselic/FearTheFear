@@ -215,7 +215,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.19.3",
+    VERSION: "0.19.5",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",
