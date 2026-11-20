@@ -36,7 +36,7 @@ const MAP_TEXT = {
     27: `Looks like another deadly maze. Who designed this game? Fucker!`,
     28: `Well? It looks like well.`,
     29: `Fun fact. Castle Creep does not look much closer than before.`,
-    30: ``,
+    30: `Jumping from great heights seems to be a stable in my life.`,
 };
 
 /** Map definitions */
@@ -995,7 +995,7 @@ const MAP = {
     ,
     29: {
         name: "Long Ridge",
-        data: '{"width":"25","height":"13","depth":7,"map":"ÁÁ2AA2ÁABÁBÁAA2ŁAA2BAA2ÁA䁢AA4ÁABAA5ÁABAA3BÁAA4ÁÁ2AA2ÁAÁÁ4AÁAA3BB6၂AA4BAA2BÁAÁAA7ÁAA2ÁAA2ÁAA4BABB3ÁBB2၂BB4Á၂BB3ÁBÁÁ2BB2ABB5ÁBÁB၂BB8ÁBB3ÁÁ4BB5ÁBB5AA3BB9ABB5၂BB15ÁÁ2BÁBB7၂BB5ÁBB22ABB7ÁBB30ÁBB8AA2ÁBB2ÁÁ2BB9ÁBB2ABB10ÁBÁBB3ÁÁ2BB6ABB14ÁBABÁÁ3BÁBÁÁ2BB4ÁBB7ABB3ABB9AÁBB11ABB4၂BÁÁ2AÁBÁÁ3AÁÁ8BÁÁ2AÁÁ23BÁÁ13BÁÁ6BÁÁ9AÁAÁÁ18BÁÁ16BÁÁ5AÁÁ7AÁÁ31AÁÁ34BÁÁ16AÁÁ3AÁÁ39AÁÁ58AÁÁ2BÁÁ14BB2ÁÁ4BÁBÁBB6ÁBB3ÁÁ5BAÁÁ4BÁÁ38AÁÁ50AÁÁ3AÁÁ7BÁÁ17BÁÁ43BÁÁ8BÁÁ23BÁÁ10BÁÁ3BÁÁ28BÁÁ11BB2䁢ÁÁ628$ÁÁ349BÁBÁBÁÁ60AÁÁ164BÁAÁÁ20ABÁÁ4BÁÁ5ŁɁсс2ࡁB၂Á၂BABABB2ÁA","extendedMap":"AA184ࡕ$AA186ࡔAA126ࡕࡃAA48ᡂAA34ࡔAA1210⡌AA27ᡆAA54ࡕAA48ᡔAA56ࡔAA23ࡕAA28ࡔAA22ᡔAA24⡂AA51ࡆAA15㡂AA8ࡕAA39ࡕAA12ᡔAA36ࡆࡆ2AA3ࡔࡔ2AA11ࡊAA5"}',
+        data: '{"width":"25","height":"13","depth":7,"map":"ÁÁ2AA2ÁABÁBÁAA2ŁAA2BAA2ÁA䁢AA4ÁABAA5ÁABAA3BÁAA4ÁÁ2AA2ÁAÁÁ4AÁAA3BB6၂AA4BAA2BÁAÁAA7ÁAA2ÁAA2ÁAA4BABB3ÁBB2၂BB4Á၂BB3ÁBÁÁ2BB2ABB5ÁBÁB၂BB8ÁBB3ÁÁ3BB4ÁÁ2BB3ABAA2BB9ABB5၂BB14ÁÁ2BB2ÁBB6၂BB6ÁBB21ABB8ÁBB30ÁBB7AA2ÁBB2ÁÁ2BB10ÁBB2ABB9ÁBÁBB4ÁÁ2BB6ABB13ÁBABÁÁ3BÁBÁÁ2BB5ÁBB7ABB3ABB4䂂BB4AÁBB11ABB4၂BÁBÁAÁBÁÁ3AÁÁ8BÁÁ2AÁÁ23BÁÁ13BÁÁ6BÁÁ9AÁAÁÁ18BÁÁ16BÁÁ5AÁÁ7AÁÁ31AÁÁ34BÁÁ16AÁÁ3AÁÁ39AÁÁ58AÁÁ2BÁÁ14BB2ÁÁ4BÁBÁBB5ÁBB4ÁÁ5BAÁÁ4BÁÁ38AÁÁ50AÁÁ3AÁÁ7BÁÁ17BÁÁ43BÁÁ8BÁÁ23BÁÁ10BÁÁ3BÁÁ28BÁÁ11BB2䁢ÁÁ628$ÁÁ349BÁBÁBÁÁ60AÁÁ164BÁAÁÁ20ABÁÁ4BÁÁ5ŁɁсс2ࡁB၂Á၂BABABB2ÁAB","extendedMap":"AA184ࡕ$AA186ࡔAA126ࡕࡃAA48ᡂAA34ࡔAA1210⡌AA27ᡆAA54ࡕAA48ᡔAA56ࡔAA23ࡕAA28ࡔAA22ᡔAA24⡂AA51ࡆAA15㡂AA8ࡕAA39ࡕAA12ᡔAA36ࡆࡆ2AA3ࡔࡔ2AA11ࡊAA5"}',
         dungeonAmbience: 10,
         sg: 0,
         maxSpawned: 6,
@@ -1011,13 +1011,17 @@ const MAP = {
         backPanorama: "TerraceView",
         bottomPanorama: "ValleyBottom",
         skyPanorama: "DarkSky1",
-        start: '[514,5]',
+        start: '[1126,5]',
+        decals: '[[1765,7,"NewDommes_255","picture"],[1759,7,"FemDommes_6057","picture"],[1456,7,"FemDommes_27209","picture"],[1153,7,"NewDommes_3898","picture"],[489,7,"FemDommes_19879","picture"],[512,7,"FemDommes_24221","picture"],[786,1,"FemDommes_5235","picture"],[1759,1,"GameDommes_114","picture"],[1765,3,"FemDommes_23032","picture"],[1483,3,"FluxDommes3111","picture"],[764,3,"GemDommes_139","picture"],[838,3,"FemDommes_19900","picture"],[511,3,"FemDommes_21242","picture"],[548,3,"NewDommes_3260","picture"],[598,3,"FemDommes_15027","picture"],[508,5,"FemDommes_22948","picture"],[513,5,"FemDommes_16899","picture"],[1101,5,"NewDommes_2744","picture"],[1759,5,"CCC_117","picture"],[1738,5,"FemDommes_25087","picture"]]',
         gates: '[[1125,5,"29.1","28.2","Cyan"],[574,3,"29.2","30.1","Purple"]]',
+        monsters: '[[1793,"Rogue",4],[1735,"WolfSpideGreen",4],[1789,"WolfSpideGreen",4],[787,"WolfSpideGreen",4],[538,"Viking",4]]',
+        gold: '[[1128,"GoldCube"],[812,"GoldCube"],[535,"GoldCube"],[517,"GoldCube"],[1482,"GoldCube"],[1786,"GoldCube"]]',
         skills: '[[1795,"Heart"]]',
-        containers: '[[1178,"WarmChest","INTERACTION_ITEM.HikingBoot",7],[1734,"MetalCrate423","INTERACTION_ITEM.HikingBoot",1],[763,"Crate","INTERACTION_ITEM.HikingBoot",3]]',
+        containers: '[[1178,"WarmChest","INTERACTION_ITEM.Gloves",7],[1734,"MetalCrate423","INTERACTION_ITEM.HikingBoot",1],[763,"Crate","INTERACTION_ITEM.HikingBoot",3],[1781,"WoodenCrate442","GOLD_ITEM_TYPE.GoldCube",5],[1739,"MetalCrate53","GOLD_ITEM_TYPE.GoldCube",5],[1505,"Barrel","GOLD_ITEM_TYPE.GoldCube",1],[509,"Barrel_471","GOLD_ITEM_TYPE.GoldCube",5]]',
         triggers: '[[1738,7,"SmoothWallButton",1,1791]]',
         entities: '[[465,7,"AsianSnowSitter"]]',
         lairs: '[[129,1,"Lair_584"],[154,7,"Lair454"]]',
+        monsterList: '["Eagle"]',
     }
     ,
     30: {

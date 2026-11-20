@@ -61,7 +61,7 @@ DEBUG.checkPoint = function () {
     Coins;
 
     Entities:
-    AsianSnowSitter wants "Gloves", "HikingBoot", "HikingBoot" gives PurpleKey
+    
 
     essenttial scrolls: 
            
@@ -75,7 +75,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 28;
+    GAME.level = 30;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -136,7 +136,7 @@ DEBUG.checkPoint = function () {
     }
 
     let keys = [
-        "Orange", "Cyan", "Purple",
+        //"Orange", "Cyan", "Purple",
     ];
     for (let key of keys) {
         const K = new Key(key, `${key}Key`);
@@ -213,7 +213,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.19.6",
+    VERSION: "0.20.0",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

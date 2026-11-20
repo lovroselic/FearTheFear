@@ -3337,7 +3337,7 @@ const INTERACTION_ITEM = {
         name: "HikingBoot",
         category: "interaction_item",
         inventorySprite: "HikingBoot",
-        text: "Whoa. No heels? I am now wearing that!"
+        text: "Whoa. No heels? I am not wearing that!"
     },
 
     //certificates and documents
