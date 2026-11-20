@@ -61,8 +61,6 @@ DEBUG.checkPoint = function () {
     Coins;
 
     Entities:
-    CaveBoss wants "RareSteak", "RareSteak" gives Orange Key
-    BlackCutieSittingInSnow wants "Shawl", "WoolenCap" gives CyanKey
     AsianSnowSitter wants "Gloves", "HikingBoot", "HikingBoot" gives PurpleKey
 
     essenttial scrolls: 
@@ -77,7 +75,7 @@ DEBUG.checkPoint = function () {
 
     console.info("DEBUG::Starting from checkpoint, this may clash with LOAD");
 
-    GAME.level = 30;
+    GAME.level = 28;
     GAME.gold = 20000;
     //GAME.gold = 5;
     GAME.lives = 3;
@@ -126,9 +124,9 @@ DEBUG.checkPoint = function () {
     TITLE.scrolls();
 
     let invItems = [
-        "RareSteak", "RareSteak",
-        "Shawl", "WoolenCap",
-        "Gloves", "HikingBoot", "HikingBoot",
+        //"RareSteak", "RareSteak",
+        //"Shawl", "WoolenCap",
+        //"Gloves", "HikingBoot", "HikingBoot",
 
     ];
 
@@ -215,7 +213,7 @@ const INI = {
 /////////////////////////////////////////////
 
 const PRG = {
-    VERSION: "0.19.5",
+    VERSION: "0.19.6",
     NAME: "Fear The Fear",
     YEAR: "2026",
     SG: "FTF",

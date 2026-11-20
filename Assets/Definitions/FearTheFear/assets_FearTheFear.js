@@ -64,7 +64,7 @@ LoadModels = [
     "Wolf.gltf", "ButterFly.gltf", "Cat.gltf", "Goblin.gltf", "SkeleDwarf.gltf",
     "Astro.gltf", "Basilisk.gltf", "Raptor.gltf", "DinoAir.gltf", "Hulk.gltf", "GhostFace.gltf",
     "Rex.gltf", "Drax.gltf", "MissWhite.gltf", "Skeleton.gltf", "Devilla.gltf",
-    "Rat.gltf", "Fly.gltf", "whiteWidow.gltf", "Fox.gltf", "Eagle.gltf", "Snail.gltf", "Frog.gltf",
+    "Rat.gltf", "Fly.gltf", "whiteWidow.gltf", "Fox.gltf", "Eagle.gltf", "Snail.gltf", "Frog.gltf", "Rogue.gltf"
 ];
 
 LoadTextures = [
@@ -1143,6 +1143,10 @@ LoadTextures = [
     { srcName: "Wall/PineForest_984.webp", name: "PineForest_984" },
     { srcName: "Wall/PineForest_985.webp", name: "PineForest_985" },
     { srcName: "Wall/Red_Roof.webp", name: "Red_Roof" },
+    { srcName: "Wall/MossyForest_986.webp", name: "MossyForest_986" },
+    { srcName: "Wall/MossyForest_987.webp", name: "MossyForest_987" },
+    { srcName: "Wall/MossyForest_988.webp", name: "MossyForest_988" },
+    { srcName: "Wall/MossyForest_989.webp", name: "MossyForest_989" },
 
     //decal-gates
     { srcName: "Gates/WoodenGate2.webp", name: "WoodenGate1" },
@@ -1532,6 +1536,7 @@ LoadSprites = [
     { srcName: "EntityPictures/RedClimber.webp", name: "RedClimber" },
     { srcName: "EntityPictures/BlackCutieSittingInSnow.webp", name: "BlackCutieSittingInSnow" },
     { srcName: "EntityPictures/AsianSnowSitter.webp", name: "AsianSnowSitter" },
+    { srcName: "EntityPictures/SnakeSlytheress3.webp", name: "SnakeSlytheress3" },
 
     //action movables
     { srcName: "ActionMovables/GreenSpider.webp", name: "BabyGreenSpider" },

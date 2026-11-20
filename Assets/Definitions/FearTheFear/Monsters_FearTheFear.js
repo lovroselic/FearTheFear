@@ -142,6 +142,14 @@ const SHRINE_TYPE = {
 };
 
 const ORACLE_TYPE = {
+    SnakeSlytheress3: {
+        name: "SnakeSlytheress3",
+        sprite: "SnakeSlytheress3",
+        category: 'crest',
+        voice: "FemaleHigh4",
+        text: `Are you saving some scrolls for the dark times? Well, dark times are here.`,
+        interactionCategory: "oracle",
+    },
     RedClimber: {
         name: "RedClimber",
         sprite: "RedClimber",
@@ -1816,15 +1824,15 @@ const INTERACTION_OBJECT = {
     },
     RareSteak: {
         name: "RareSteak",
-        category: "action_item",
+        category: "interaction_item",
         which: "health",
         element: "STEAK",
         scale: 1.8 / 2 ** 3,
         glueToFloor: true,
         texture: "SteakTexture",
         material: MATERIAL.standard,
-        inventorySprite: "Steak",
-        text: "Rare Steak? will it say moo?."
+        inventorySprite: "RareSteak",
+        text: "Rare Steak? Will it say moo?"
     },
 
     //candles
@@ -4556,6 +4564,33 @@ const MONSTER_TYPE = {
         behaviourArguments: [10, ["wanderer"], 8, ["advancer"]],
         moveSpeed: 1.1,
         material: MATERIAL.standard,
+    },
+    Rogue: {
+        name: "Rogue",
+        model: "ROGUE",
+        scale: 1.60 / 2 ** 1,
+        rotateToNorth: Math.PI,
+        midHeight: 0.55,
+        deathType: "BloodExplosion",
+        inventory: null,
+        mana: 10,
+        health: 40,
+        attack: 25,
+        magic: 25,
+        defense: 10,
+        xp: 50,
+        caster: true,
+        shootDistance: 5,
+        stalkDistance: 6,
+        attackSound: "FemaleAttack3",
+        hurtSound: "Ow2",
+        behaviourArguments: [13, ["wanderer"], 8, ["shoot"]],
+        shootDistance: 8,
+        stalkDistance: 3,
+        moveSpeed: 1.25,
+        material: MATERIAL.standardShine,
+        missile: BouncingMissile,
+        missileType: COMMON_ITEM_TYPE.Bounceball,
     },
     Viking: {
         name: "Viking",
